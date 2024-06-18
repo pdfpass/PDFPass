@@ -32,6 +32,6 @@ Restrictions: you may not use the term "Official" or "Original" to designate for
 
 # Plánované zmeny
 * podpora viacerých jazykov
-* podpora aj odstránenia hesla
+* funkcionalita odstránenia hesla
 * možnosť inštalácie z Microsoft Store
 * vlastná stránka
