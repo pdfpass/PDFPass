@@ -16,7 +16,7 @@ namespace PDFPass
 		private void frmSettings_Load(object sender, EventArgs e)
 		{
 			// Show program version
-			lblVersion.Text = "Verzia: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			lblVersion.Text = "Verzia: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
 
 			// Load encryption types: (Thanks https://stackoverflow.com/a/11745699/1502289)
 			var encryption_types = new Dictionary<int, string>
@@ -56,12 +56,6 @@ namespace PDFPass
 			chkAssembly.Checked = Settings.allow_assembly;
 			chkScreenreaders.Checked = Settings.allow_screenreaders;
 
-		}
-
-		private void chkRun_CheckedChanged(object sender, EventArgs e)
-		{
-			txtRun.Enabled = chkRun.Checked;
-			btnRunBrowse.Enabled = chkRun.Checked;
 		}
 
 		private void btnRunBrowse_Click(object sender, EventArgs e)
@@ -121,7 +115,7 @@ namespace PDFPass
 
 		private void lblVisitSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			// System.Diagnostics.Process.Start("https://PDFPass.net");
+			 openWebSite("https://github.com/pdfpass/PDF");
 		}
 
         private void chkRun_CheckedChanged_1(object sender, EventArgs e)
@@ -131,17 +125,18 @@ namespace PDFPass
 
         private void linkDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-			
-			
-			var urlToOpen = "https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ";
-
-// Method 1: Process.Start (All .NET platforms)
-			var startInfo = new ProcessStartInfo(urlToOpen)
-			{
-				UseShellExecute = true, // Essential for opening in default browser
-			};
-			Process.Start(startInfo);
-
+	        openWebSite("https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ");
         }
-    }
+
+        private static void openWebSite(string urlToOpen)
+        {
+	        
+	        // Method 1: Process.Start (All .NET platforms)
+	        var startInfo = new ProcessStartInfo(urlToOpen)
+	        {
+		        UseShellExecute = true, // Essential for opening in default browser
+	        };
+	        Process.Start(startInfo);
+        }
+	}
 }
