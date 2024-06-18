@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Win32;  // Registry access
 using iText.Kernel.Pdf;
+using Microsoft.Win32;
 
-namespace PDFEncrypt
+// Registry access
+
+
+namespace PDFPass
 {
 	class Settings
 	{
@@ -154,7 +154,7 @@ namespace PDFEncrypt
 		// Notify all listeners of updates.
 		{
 			// Notify each listener of the updates.
-			foreach (SettingChangedNotification s in notify)
+			foreach (var s in notify)
 			{
 				s();	// Call the function.
 			}
@@ -164,26 +164,26 @@ namespace PDFEncrypt
 		public static void save()
 		// Write all settings to registry
 		{
-			Registry.SetValue(REG_KEY, "run_after", (object)run_after, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "run_after_file", (object)run_after_file, RegistryValueKind.String);
-			Registry.SetValue(REG_KEY, "run_after_arguments", (object)run_after_arguments, RegistryValueKind.String);
+			Registry.SetValue(REG_KEY, "run_after", run_after, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "run_after_file", run_after_file, RegistryValueKind.String);
+			Registry.SetValue(REG_KEY, "run_after_arguments", run_after_arguments, RegistryValueKind.String);
 
-			Registry.SetValue(REG_KEY, "password_confirm", (object)password_confirm, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "close_after", (object)close_after, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "show_folder_after", (object)show_folder_after, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "open_after", (object)open_after, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "password_confirm", password_confirm, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "close_after", close_after, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "show_folder_after", show_folder_after, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "open_after", open_after, RegistryValueKind.DWord);
 
 			// Encryption options:
-			Registry.SetValue(REG_KEY, "encryption_type", (object)encryption_type, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "encrypt_metadata", (object)encrypt_metadata, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_printing", (object)allow_printing, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_degraded_printing", (object)allow_degraded_printing, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_modifying", (object)allow_modifying, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_modifying_annotations", (object)allow_modifying_annotations, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_copying", (object)allow_copying, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_form_fill", (object)allow_form_fill, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_assembly", (object)allow_assembly, RegistryValueKind.DWord);
-			Registry.SetValue(REG_KEY, "allow_screenreaders", (object)allow_screenreaders, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "encryption_type", encryption_type, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "encrypt_metadata", encrypt_metadata, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_printing", allow_printing, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_degraded_printing", allow_degraded_printing, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_modifying", allow_modifying, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_modifying_annotations", allow_modifying_annotations, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_copying", allow_copying, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_form_fill", allow_form_fill, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_assembly", allow_assembly, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "allow_screenreaders", allow_screenreaders, RegistryValueKind.DWord);
 
 			// Notify all listeners
 			callNotify();

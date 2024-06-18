@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using CommandLine;
-namespace PDFEncrypt
+
+namespace PDFPass
 {
-	static class Program
-	{
-		// Command line options (CommandLineParser plugin) https://github.com/commandlineparser/commandline
-		public class Options
-		{
-			[Option("owner_pass", Required = false, HelpText = "Specify the Owner password")]
-			public string OwnerPass { get; set; }
+    static class Program
+    {
+        // Command line options (CommandLineParser plugin) https://github.com/commandlineparser/commandline
+        private class Options
+        {
+            [Option("owner_pass", Required = false, HelpText = "Zadajte heslo vlastníka")]
+            public string OwnerPass { get; set; }
 
-			[Option("user_pass", Required = false, HelpText = "Specify the User password")]
-			public string UserPass { get; set; }
+            [Option("user_pass", Required = false, HelpText = "Zadajte heslo používateľa")]
+            public string UserPass { get; set; }
 
-			[Option('i', "input", Required = false, HelpText = "Specify input PDF file to encrypt")]
-			public string InputFile { get; set; }
+            [Option('i', "input", Required = false, HelpText = "Uveďte vstupný PDF súbor k zašifrovaniu")]
+            public string InputFile { get; set; }
 
-			[Option('o', "output", Required = false, HelpText = "Specify the output encrypted PDF file to create.")]
-			public string OutputFile { get; set; }
+            [Option('o', "output", Required = false, HelpText = "Uveďte výstupný zašifrovaný súbor")]
+            public string OutputFile { get; set; }
 
-			[Option("run", HelpText = "Run the encryption immediately upon startup (don't require user to click Encrypt button)")]
-			public bool Immediate { get; set; }
-
-		}
+            [Option("run",
+                HelpText = "Spustiť šifrovanie okamžite po štarte (nevyžaduje stlačenie tlačidla Zahesluj)")]
+            public bool Immediate { get; set; }
+        }
 
 
 		/// <summary>
@@ -36,7 +36,7 @@ namespace PDFEncrypt
 		static void Main(string[] args)
 		{
 			// Parse command line:
-			CommandLine.Parser.Default.ParseArguments<Options>(args)
+			Parser.Default.ParseArguments<Options>(args)
 				.WithParsed(HandleParsed)
 				.WithNotParsed(HandleParseError); 
 		}
@@ -47,7 +47,7 @@ namespace PDFEncrypt
 			Application.SetCompatibleTextRenderingDefault(false);
 
 			// Create the UI form instance
-			var form = new frmMain();
+			var form = new FrmMain();
 											
 			// If input filename was specified, set it in the main form
 			if (opts.InputFile != null)
@@ -60,6 +60,15 @@ namespace PDFEncrypt
             {
 				form.txtOutputFile.Text = opts.OutputFile;
             }
+            else if (opts.InputFile != null)
+            {
+                var outputFile = opts.InputFile;
+                var extension = Path.GetExtension(opts.InputFile);
+                {
+	                var result = outputFile.Substring(0, outputFile.Length - extension.Length);
+	                form.txtOutputFile.Text = result + "_zašifrovaný" + extension;
+                }
+            }
 
 			// If user password was specified, set it in the main form
 			if (opts.UserPass != null)
@@ -70,23 +79,24 @@ namespace PDFEncrypt
 			// If owner password was specified, set it in the main form and show message.
 			if (opts.OwnerPass != null)
             {
-				form.owner_password = opts.OwnerPass;
+				form.OwnerPassword = opts.OwnerPass;
 				form.lblOwnerPasswordSet.Visible = true;
             }
 
 			// If executing immediately, set the Run flag.
-			form.encrypt_on_start = (opts.Immediate);
+			form.EncryptOnStart = (opts.Immediate);
 
 			Application.EnableVisualStyles();
 			Application.Run(form);
 		}
 
-		static void HandleParseError(IEnumerable<Error> errors)
-		// This function is called if the CommandLine.Parser fails to parse some command line options
-		// It should output error messages to CLI and/or desktop.
-		{
-			Console.WriteLine("Invalid command line options: " + errors.ToString());
-			MessageBox.Show("Invalid command line options: " + errors.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-		}
-	}
+        static void HandleParseError(IEnumerable<Error> errors)
+            // This function is called if the CommandLine.Parser fails to parse some command line options
+            // It should output error messages to CLI and/or desktop.
+        {
+            Console.WriteLine("Chybné parametre príkazového riadku: " + errors.ToString());
+            MessageBox.Show("Chybné parametre príkazového riadku: " + errors.ToString(), "Chyba", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+        }
+    }
 }

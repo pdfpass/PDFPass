@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PDFEncrypt.Properties
+namespace PDFPass.Properties
 {
 
 

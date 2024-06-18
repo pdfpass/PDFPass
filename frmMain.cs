@@ -1,49 +1,40 @@
 ﻿using System;
-using System.IO;
 using System.Diagnostics;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using iText;
-using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas;
-using iText.Kernel.Pdf.Xobject;
-using Microsoft.VisualBasic;	// LOL
 
-namespace PDFEncrypt
+// LOL
+
+namespace PDFPass
 {
 	
 
-	public partial class frmMain : Form
+	public partial class FrmMain : Form
 	{
 		const int PW_LENGTH_MIN = 12;	// Minimum generated password length
 		const int PW_LENGTH_MAX = 24;   // Maximum generated password length
 		const string PW_CHARS = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // List of characters to be used in random passwords
 
-		public string owner_password = "";  // The owner password, if any.
-		public bool encrypt_on_start = false;	// Allows encryption via command line without user interaction
+		public string OwnerPassword = "";  // The owner password, if any.
+		public bool EncryptOnStart = false;	// Allows encryption via command line without user interaction
 
 
-		public frmMain()
+		public FrmMain()
 		{
 			InitializeComponent();
 		}
 
-		private string GetFilenameWithSuffix(string file, string suffix = "-encrypted")
+		private string GetFilenameWithSuffix(string file, string suffix = "-zašifrovaný")
 		{
-			var newFileName = $"{System.IO.Path.GetFileNameWithoutExtension(file)}{suffix}.pdf";
-			return System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file), newFileName);
+			var newFileName = $"{Path.GetFileNameWithoutExtension(file)}{suffix}.pdf";
+			return Path.Combine(Path.GetDirectoryName(file)!, newFileName);
 		}
 
 		private void btnInputBrowse_Click(object sender, EventArgs e)
 		{
-			DialogResult result = dlgOpen.ShowDialog();
+			var result = dlgOpen.ShowDialog();
 			if (result == DialogResult.Cancel) { return; }
 
 			txtInputFile.Text = dlgOpen.FileName;
@@ -52,7 +43,7 @@ namespace PDFEncrypt
 
 		private void btnOutputBrowse_Click(object sender, EventArgs e)
 		{
-			DialogResult result = dlgSave.ShowDialog();
+			var result = dlgSave.ShowDialog();
 			if (result == DialogResult.Cancel) { return; }
 
 			txtOutputFile.Text = dlgSave.FileName;
@@ -67,7 +58,7 @@ namespace PDFEncrypt
 			Settings.load();		
 			
 			// If immediate run is enabled, click Run button (see command line options)
-			if (encrypt_on_start)
+			if (EncryptOnStart)
             {
 				// Click the Encrypt button immediately.
 				btnEncrypt_Click(sender, e);
@@ -77,24 +68,24 @@ namespace PDFEncrypt
 		private void settingsChanged()
 		{
 			// This function is executed when settings change.
-			Console.WriteLine("Settings changed notification.");
+			Console.WriteLine("Notifikacia zmeny nastavenia.");
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
 			// Close the app
-			this.Close();
+			Close();
 		}
 
 		private void btnPasswordGenerate_Click(object sender, EventArgs e)
 		{
 			// Generate a random password
-			var rnd = new System.Random();	// Random number generator
-			int length = rnd.Next(PW_LENGTH_MIN, PW_LENGTH_MAX);	// Choose password length.
-			string result = "";
+			var rnd = new Random();	// Random number generator
+			var length = rnd.Next(PW_LENGTH_MIN, PW_LENGTH_MAX);	// Choose password length.
+			var result = "";
 
 			// Pick 'length' characters from the allowed characters.
-			for(int i = 0; i<length; i++)
+			for(var i = 0; i<length; i++)
 			{
 				result += PW_CHARS[rnd.Next(0, PW_CHARS.Length - 1)].ToString();
 			}
@@ -111,10 +102,14 @@ namespace PDFEncrypt
 			// Copy password to clipboard.
 			txtPassword.Focus();
 			txtPassword.SelectAll();
-			Clipboard.SetText(txtPassword.Text);
 
+			if (string.IsNullOrEmpty(txtPassword.Text)) return;
+			
+			Clipboard.SetText(txtPassword.Text);
 			// Show Copied label
 			lblCopied.Visible = true;
+
+
 		}
 
 		private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -141,9 +136,9 @@ namespace PDFEncrypt
 			txtOutputFile.Text = txtOutputFile.Text.Trim();
 
 			// Ensure input and output are not the same.
-			if (txtInputFile.Text.ToLower() == txtOutputFile.Text.ToLower())
+			if (string.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
 			{
-				MessageBox.Show("Source and Destination files cannot be the same.", "Invalid source/destination", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Zdrojový a výstupný súbor nemožu byt rovnaké alebo prázdne.", "Chybný zdroj/výstup", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				txtOutputFile.Focus();
 				txtOutputFile.SelectAll();
 				return;
@@ -152,7 +147,7 @@ namespace PDFEncrypt
 			// Ensure input file exists.
 			if (!File.Exists(txtInputFile.Text))
 			{
-				MessageBox.Show("Source file does not exist.");
+				MessageBox.Show("Zdrojový súbor neexistuje.");
 				txtInputFile.Focus();
 				txtInputFile.SelectAll();
 				return;
@@ -161,7 +156,7 @@ namespace PDFEncrypt
 			// If output file exists, prompt to overwrite.
 			if (File.Exists(txtOutputFile.Text))
 			{
-				if(MessageBox.Show("Destination file already exists.  Overwrite this file?","Overwrite file?", MessageBoxButtons.YesNo) != DialogResult.Yes)
+				if(MessageBox.Show(this, "Výstupny súbor už existuje. Želate si prepísať súbor?","Prepísať súbor?", MessageBoxButtons.YesNo) != DialogResult.Yes)
 				{
 					txtOutputFile.Focus();
 					txtOutputFile.SelectAll();
@@ -172,7 +167,7 @@ namespace PDFEncrypt
 			// Verify password:
 			if (txtPassword.Text == "")
 			{
-				MessageBox.Show("No password specified.");
+				MessageBox.Show("Nebolo zadané heslo.");
 				txtPassword.Focus();
 				return;
 			}
@@ -180,9 +175,9 @@ namespace PDFEncrypt
 			// Confirm password:
 			if (Settings.password_confirm)
 			{
-				var input = new frmInputBox();
-				input.prompt = "Please retype the User password to confirm.";
-				input.title = "Confirm User Password";
+				var input = new FrmInputBox();
+				input.prompt = "Zadajte heslo pre potvrdenie.";
+				input.title = "Potvrdenie hesla";
 				input.password = true;
 				input.ShowDialog();	// Modal, blocking call
 
@@ -191,20 +186,20 @@ namespace PDFEncrypt
 				// If password doesn't match, stop.
 				if (input.result != txtPassword.Text)
 				{
-					MessageBox.Show("User password does not match. Please retry.");
+					MessageBox.Show("Hesla sa nezhodujú. Zopakujte.");
 					return;
 				}
 
-				if (owner_password != "")
+				if (OwnerPassword != "")
                 {
-					input.prompt = "An Owner password has been set. Please confirm Owner password.";
-					input.title = "Confirm Owner Password";
+					input.prompt = "Heslo pre editovanie bolo nastavené. Potvrdťe prosím heslo opät.";
+					input.title = "Potvrdenie hesla pre editovanie";
 					input.password = true;
 					input.ShowDialog();
 					if (input.cancelled) { return; }
-					if (input.result != owner_password)
+					if (input.result != OwnerPassword)
                     {
-						MessageBox.Show("Owner password does not match. Please retry.");
+						MessageBox.Show("Heslo pre editovanie nie je rovnaké. Prosím, zopakujte.");
 						return;
                     }
                 }
@@ -219,38 +214,38 @@ namespace PDFEncrypt
 				Application.DoEvents();
 
 				// Encryption properties:
-				int encryption_properties = (int) Settings.encryption_type;
+				var encryptionProperties = (int) Settings.encryption_type;
 				
 				// If specified, disable encrypting metadata.
 				if (!Settings.encrypt_metadata)
 				{
-					encryption_properties |= EncryptionConstants.DO_NOT_ENCRYPT_METADATA;
+					encryptionProperties |= EncryptionConstants.DO_NOT_ENCRYPT_METADATA;
 				}
 
 				// Set document options
-				int document_options = 0;
-				if (Settings.allow_printing)	{ document_options |= EncryptionConstants.ALLOW_PRINTING; }
-				if (Settings.allow_degraded_printing) { document_options |= EncryptionConstants.ALLOW_DEGRADED_PRINTING; }
-				if (Settings.allow_modifying) { document_options |= EncryptionConstants.ALLOW_MODIFY_CONTENTS; }
-				if (Settings.allow_modifying_annotations) { document_options |= EncryptionConstants.ALLOW_MODIFY_ANNOTATIONS; }
-				if (Settings.allow_copying) { document_options |= EncryptionConstants.ALLOW_COPY; }
-				if (Settings.allow_form_fill) { document_options |= EncryptionConstants.ALLOW_FILL_IN; }
-				if (Settings.allow_assembly) { document_options |= EncryptionConstants.ALLOW_ASSEMBLY; }
-				if (Settings.allow_screenreaders) { document_options |= EncryptionConstants.ALLOW_SCREENREADERS; }
+				var documentOptions = 0;
+				if (Settings.allow_printing)	{ documentOptions |= EncryptionConstants.ALLOW_PRINTING; }
+				if (Settings.allow_degraded_printing) { documentOptions |= EncryptionConstants.ALLOW_DEGRADED_PRINTING; }
+				if (Settings.allow_modifying) { documentOptions |= EncryptionConstants.ALLOW_MODIFY_CONTENTS; }
+				if (Settings.allow_modifying_annotations) { documentOptions |= EncryptionConstants.ALLOW_MODIFY_ANNOTATIONS; }
+				if (Settings.allow_copying) { documentOptions |= EncryptionConstants.ALLOW_COPY; }
+				if (Settings.allow_form_fill) { documentOptions |= EncryptionConstants.ALLOW_FILL_IN; }
+				if (Settings.allow_assembly) { documentOptions |= EncryptionConstants.ALLOW_ASSEMBLY; }
+				if (Settings.allow_screenreaders) { documentOptions |= EncryptionConstants.ALLOW_SCREENREADERS; }
 
-				PdfReader reader = new PdfReader(txtInputFile.Text);	// Create a PdfReader with the input file.
-				WriterProperties prop = new WriterProperties();	// Set properties of output
+				var reader = new PdfReader(txtInputFile.Text);	// Create a PdfReader with the input file.
+				var prop = new WriterProperties();	// Set properties of output
 	
-				prop.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text), owner_password == "" ? null : Encoding.ASCII.GetBytes(owner_password), document_options, encryption_properties);  // Enable encryption
+				prop.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text), OwnerPassword == "" ? null : Encoding.ASCII.GetBytes(OwnerPassword), documentOptions, encryptionProperties);  // Enable encryption
 				// Setting Owner Password to null generates random password.
 
-				PdfWriter writer = new PdfWriter(txtOutputFile.Text, prop);	// Set up the output file
-				PdfDocument pdf = new PdfDocument(reader, writer);	// Create the new document
+				var writer = new PdfWriter(txtOutputFile.Text, prop);	// Set up the output file
+				var pdf = new PdfDocument(reader, writer);	// Create the new document
 				pdf.Close();	// Close the output document.
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("An error occurred while processing the file: " + ex.Message);
+				MessageBox.Show("Chyba počas spracovania súboru: " + ex.Message);
 				Cursor.Current = Cursors.Default;
 				return;
 			}
@@ -265,7 +260,7 @@ namespace PDFEncrypt
 				}
 				catch (Exception ex)
                 {
-					MessageBox.Show("Unable to run command.  Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					MessageBox.Show("Nie je možné spustiť príkaz.  Chyba: " + ex.Message, "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 			}
@@ -274,20 +269,29 @@ namespace PDFEncrypt
 			if (Settings.open_after)
 			{
 				// Attempt to launch the default app for the file.
-				Process.Start(txtOutputFile.Text);
+				var psi = new ProcessStartInfo
+				{
+					FileName = txtOutputFile.Text,
+					UseShellExecute = true
+				};
+
+				Process.Start(psi);
+
 			}
 
 			// If launching Explorer:
 			if (Settings.show_folder_after)
 			{
 				// Attempt to launch the folder with the file highlighted.
-				Process.Start("explorer.exe", "/select," + txtOutputFile.Text);
+				var argument = "/select, \"" + txtOutputFile.Text + "\"";
+
+				Process.Start("explorer.exe", argument);
 			}
 
 			// If closing after encryption
 			if (Settings.close_after)
 			{
-				this.Close();
+				Close();
 			}
 
 			Cursor.Current = Cursors.Default;	// Return to default cursor.
@@ -301,20 +305,13 @@ namespace PDFEncrypt
 
         private void lnkPasswordOwner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-			var input = new frmInputBox();
-			input.title = "Set Owner Password";
-			input.prompt = "Specify Owner password.\r\n(Owner password allows the viewer to bypass all permissions and gain full control of the PDF file.)\r\nIf no Owner password is specified, a random one will be generated.\r\n Click Cancel to clear existing Owner password.";
+			var input = new FrmInputBox();
+			input.title = "Nastaviť heslo pre editovanie";
+			input.prompt = "Zadajte heslo pre editovanie.\r\n(Heslo pre editovanie umožní plnú kontrolu nad obsahom súboru PDF.)\r\nAk nebude heslo zadané, bude vygenerované náhodné heslo.\r\nStlačte Storno ak chcete anulovať heslo pre editovanie";
 			input.password = true;
 			input.ShowDialog();
-			if (input.cancelled)
-			{
-				owner_password = "";
-			}
-			else
-			{
-				owner_password = input.result;
-			}
-			lblOwnerPasswordSet.Visible = (owner_password != "");
+			OwnerPassword = input.cancelled ? "" : input.result;
+			lblOwnerPasswordSet.Visible = (OwnerPassword != "");
         }
 
       

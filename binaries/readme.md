@@ -1,1 +1,1 @@
-Binary installation files are available at https://pdfencrypt.net
+Binary installation files are available at https://PDFPass.net

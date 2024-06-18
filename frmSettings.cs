@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Diagnostics;
 using System.IO;
+using System.Windows.Forms;
 
-
-namespace PDFEncrypt
+namespace PDFPass
 {
 	public partial class frmSettings : Form
 	{
@@ -22,15 +16,15 @@ namespace PDFEncrypt
 		private void frmSettings_Load(object sender, EventArgs e)
 		{
 			// Show program version
-			lblVersion.Text = "Version: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			lblVersion.Text = "Verzia: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
 			// Load encryption types: (Thanks https://stackoverflow.com/a/11745699/1502289)
-			Dictionary<int, string> encryption_types = new Dictionary<int, string>
+			var encryption_types = new Dictionary<int, string>
 			{
-				{ (int)Settings.EncryptionType.AES_256, "AES-256 (Adobe Reader 8+) [recommended]" },
+				{ (int)Settings.EncryptionType.AES_256, "AES-256 (Adobe Reader 8+) [odporúčané]" },
 				{ (int)Settings.EncryptionType.AES_128, "AES-128 (Adobe Reader 7+" },
 				{ (int)Settings.EncryptionType.RC4_128, "RC4-128 (Adobe Reader 6+)" },
-				{ (int)Settings.EncryptionType.RC4_40, "RC4-40 (Adobe Reader 3+) [not recommended]" }
+				{ (int)Settings.EncryptionType.RC4_40, "RC4-40 (Adobe Reader 3+) [neodporúčané]" }
 			};
 
 			// Attach datasource to combo box.
@@ -86,7 +80,7 @@ namespace PDFEncrypt
             {
                 if (!File.Exists(txtRun.Text))
                 {
-                    MessageBox.Show("The file to run does not exist.");
+                    MessageBox.Show("Súbor pre spustenie neexistuje.");
                     txtRun.Focus();
                     txtRun.SelectAll();
                     return;
@@ -127,7 +121,7 @@ namespace PDFEncrypt
 
 		private void lblVisitSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
 		{
-			System.Diagnostics.Process.Start("https://pdfencrypt.net");
+			// System.Diagnostics.Process.Start("https://PDFPass.net");
 		}
 
         private void chkRun_CheckedChanged_1(object sender, EventArgs e)
@@ -137,7 +131,17 @@ namespace PDFEncrypt
 
         private void linkDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-			System.Diagnostics.Process.Start("https://www.paypal.com/donate?hosted_button_id=KBE8SENS5JCSG");
+			
+			
+			var urlToOpen = "https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ";
+
+// Method 1: Process.Start (All .NET platforms)
+			var startInfo = new ProcessStartInfo(urlToOpen)
+			{
+				UseShellExecute = true, // Essential for opening in default browser
+			};
+			Process.Start(startInfo);
+
         }
     }
 }
