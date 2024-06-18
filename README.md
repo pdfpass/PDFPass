@@ -5,6 +5,11 @@ Toto je oficiálna, verzia PDFPass založená na pôvodnom projekte pdfencrypt.n
 
 Stiahnite si binárne súbory systému Windows zo stránky: https://tinyurl.com/pdfpas
 
+![App Screenshot](screenshots%2Fmain.png)
+![Settings](screenshots%2Fsettings.png)
+
+
+
 # Zmeny oproti pôvodnej verzii
 
 * prechod na platformu .net 8
