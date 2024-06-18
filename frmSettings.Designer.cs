@@ -119,14 +119,13 @@
             // 
             lblVisitSite.AutoSize = true;
             lblVisitSite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblVisitSite.Location = new System.Drawing.Point(242, 447);
+            lblVisitSite.Location = new System.Drawing.Point(237, 446);
             lblVisitSite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblVisitSite.Name = "lblVisitSite";
             lblVisitSite.Size = new System.Drawing.Size(77, 15);
             lblVisitSite.TabIndex = 14;
             lblVisitSite.TabStop = true;
             lblVisitSite.Text = "Zdrojový kód";
-            lblVisitSite.Visible = true;
             lblVisitSite.LinkClicked += lblVisitSite_LinkClicked;
             // 
             // groupBox1
@@ -424,11 +423,11 @@
             // linkDonate
             // 
             linkDonate.AutoSize = true;
-            linkDonate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            linkDonate.Location = new System.Drawing.Point(82, 471);
+            linkDonate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            linkDonate.Location = new System.Drawing.Point(83, 471);
             linkDonate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             linkDonate.Name = "linkDonate";
-            linkDonate.Size = new System.Drawing.Size(280, 15);
+            linkDonate.Size = new System.Drawing.Size(358, 19);
             linkDonate.TabIndex = 17;
             linkDonate.TabStop = true;
             linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou!";
