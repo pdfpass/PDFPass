@@ -95,7 +95,7 @@ namespace PDFPass
             // It should output error messages to CLI and/or desktop.
         {
             Console.WriteLine("Chybné parametre príkazového riadku: " + errors.ToString());
-            MessageBox.Show("Chybné parametre príkazového riadku: " + errors.ToString(), "Chyba", MessageBoxButtons.OK,
+            MessageBox.Show("Chybné parametre príkazového riadku: " + errors.ToString(), "Chyba!", MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
     }
