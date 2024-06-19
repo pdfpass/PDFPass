@@ -23,7 +23,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o $(Build.ArtifactStagingDirectory)/PDFPass-portable
+      run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
       with:
