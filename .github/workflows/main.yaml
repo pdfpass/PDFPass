@@ -1,35 +1,35 @@
-name: Build and Publish
+name: .NET Publish on Commit
 
 on:
   push:
     branches:
-      - main  # Change this to your main branch name
+      - main
 
 jobs:
-  build:
-    runs-on: windows-latest
+  build_and_publish:
+    runs-on: windows-latest  # Ensure Windows environment for win-x86
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x  # Ensure this matches your .NET version
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Install dependencies
-      run: dotnet restore
+      - name: Restore
+        run: dotnet restore
 
-    - name: Build
-      run: dotnet build --configuration Release
+      - name: Build
+        run: dotnet build -c Release
 
-    - name: Publish
-      run: |
-        dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o $(Build.ArtifactStagingDirectory)/PDFPass-portable
+      - name: Publish
+        run: |
+          dotnet publish -r win-x86 -c Release -p:PublishSingleFile=true --self-contained true 
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: PDFPass-portable
-        path: $(Build.ArtifactStagingDirectory)/PDFPass-portable
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: published-app
+          path: bin\Release\net8.0\win-x86\publish\  # Adjust if your publish folder differs
