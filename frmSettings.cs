@@ -135,7 +135,7 @@ namespace PDFPass
 	        // Method 1: Process.Start (All .NET platforms)
 	        var startInfo = new ProcessStartInfo(urlToOpen)
 	        {
-		        UseShellExecute = true, // Essential for opening in default browser
+		        UseShellExecute = true // Essential for opening in default browser
 	        };
 	        Process.Start(startInfo);
         }
