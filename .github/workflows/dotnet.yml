@@ -32,8 +32,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: PDFPass-${{ github.sha }}
-          release_name: Release ${{ github.sha }}
+          tag_name: ${{ github.ref_name }} # Use github.ref_name to get tag name
+          release_name: Release ${{ github.ref_name }} # Update release_name as well
           draft: false
           prerelease: false
       - name: Upload Release Asset
