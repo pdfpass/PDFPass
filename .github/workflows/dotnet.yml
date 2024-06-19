@@ -19,7 +19,7 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-      - name: Upload Artifact
+      - name: Upload Artifact (Optional)
         uses: actions/upload-artifact@v3
         with:
           name: published-app
@@ -41,5 +41,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: bin\Release\win-x86\ # Path to your published app
-          asset_name: PDFPass-x86-portable.exe # Choose a name for your release asset
+          asset_name: PDFPass.exe # Choose a name for your release asset
           asset_content_type: application/octet-stream
