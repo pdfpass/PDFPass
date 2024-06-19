@@ -18,6 +18,12 @@ Stiahnite si binárne súbory systému Windows zo stránky: https://tinyurl.com/
 * vizuálne vylepšenia
 
 
+# Plánované zmeny
+* podpora viacerých jazykov
+* funkcionalita odstránenia hesla
+* možnosť inštalácie z Microsoft Store
+* vlastná stránka
+
 
 # License
 
@@ -30,8 +36,4 @@ Restrictions: you may not use the term "Official" or "Original" to designate for
 **The PDFPass Logo is a trademark of, and copyrighted by, PDFPass.net/Gabriel Boss and is not licensed under the AGPL. If you fork this project, you must create your own logo which is materially different from the official logo, to avoid confusion between yours and the official/original version.**
 
 
-# Plánované zmeny
-* podpora viacerých jazykov
-* funkcionalita odstránenia hesla
-* možnosť inštalácie z Microsoft Store
-* vlastná stránka
+
