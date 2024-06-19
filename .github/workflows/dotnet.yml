@@ -1,6 +1,3 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
 name: .NET
 
 on:
@@ -11,21 +8,38 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: published-app
-        path: bin\Release\win-x86\
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
+      - name: Upload Artifact (Optional)
+        uses: actions/upload-artifact@v3
+        with:
+          name: published-app
+          path: bin\Release\win-x86\
+      - name: Create Release
+        id: create_release  # Add an ID to reference the output later
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.sha }} # Use commit SHA as tag (or customize)
+          release_name: Release ${{ github.sha }}
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: bin\Release\win-x86\ # Path to your published app
+          asset_name: PDFPass-x86-portable.exe # Choose a name for your release asset
+          asset_content_type: application/octet-stream
