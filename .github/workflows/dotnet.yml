@@ -24,6 +24,8 @@ jobs:
         with:
           name: published-app
           path: bin\Release\win-x86\
+      - name: List Files
+        run: ls bin\Release\
       - name: Create Release
         id: create_release  # Add an ID to reference the output later
         uses: actions/create-release@v1
@@ -35,7 +37,6 @@ jobs:
           draft: false
           prerelease: false
       - name: Upload Release Asset
-        needs: build
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
