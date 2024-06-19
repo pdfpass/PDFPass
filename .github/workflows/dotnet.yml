@@ -19,7 +19,7 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true
-      - name: Upload Artifact (Optional)
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: published-app
