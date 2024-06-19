@@ -1,7 +1,7 @@
 # PDFPass
 PDFPass je bezplatný nástroj s otvoreným zdrojovým kódom napísaný v jazyku C# (.NET 8) na rýchle a jednoduché šifrovanie/heslovanie súborov PDF.
 
-Toto je oficiálna, verzia PDFPass založená na pôvodnom projekte pdfencrypt.net.   Upozorňujeme, že všetky ostatné verzie sú forky a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva pôvodný autor.
+Toto je oficiálna, verzia PDFPass založená na pôvodnom projekte PDFEncrypt.net/Ryan Griggs.   Upozorňujeme, že všetky ostatné verzie sú forky a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva pôvodný autor.
 
 Stiahnite si binárne súbory systému Windows zo stránky: https://tinyurl.com/pdfpas
 
