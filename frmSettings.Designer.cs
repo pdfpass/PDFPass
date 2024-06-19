@@ -449,7 +449,7 @@
             Controls.Add(label1);
             Controls.Add(lblVersion);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            Margin = new System.Windows.Forms.Padding(3);
+            Margin = new System.Windows.Forms.Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmSettings";
