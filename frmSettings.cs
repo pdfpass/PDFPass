@@ -91,7 +91,8 @@ namespace PDFPass
 			Settings.open_after = chkOpen.Checked;
 			
 			// Encryption options
-			Settings.encryption_type = (Settings.EncryptionType)cboEncryptionType.SelectedValue;
+			if (cboEncryptionType.SelectedValue != null)
+				Settings.encryption_type = (Settings.EncryptionType)cboEncryptionType.SelectedValue;
 			Settings.encrypt_metadata = chkEncryptMetadata.Checked;
 			Settings.allow_printing = chkPrinting.Checked;
 			Settings.allow_degraded_printing = chkDegradedPrinting.Checked;
