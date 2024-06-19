@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.3  # Ensure this matches your .NET version
+        dotnet-version: 8.0.x  # Ensure this matches your .NET version
 
     - name: Install dependencies
       run: dotnet restore
@@ -29,7 +29,7 @@ jobs:
         dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o $(Build.ArtifactStagingDirectory)/PDFPass-portable
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: PDFPass-portable
         path: $(Build.ArtifactStagingDirectory)/PDFPass-portable
