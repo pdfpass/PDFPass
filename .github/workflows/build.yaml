@@ -1,0 +1,35 @@
+name: Build and Publish
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.3  # Ensure this matches your .NET version
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Publish
+      run: |
+        dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o $(Build.ArtifactStagingDirectory)/PDFPass-portable
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: PDFPass-portable
+        path: $(Build.ArtifactStagingDirectory)/PDFPass-portable
