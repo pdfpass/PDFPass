@@ -12,7 +12,7 @@ Stiahnite si binárne súbory systému Windows zo stránky: https://tinyurl.com/
 
 # Zmeny oproti pôvodnej verzii
 
-* prechod na novšiu platformu .NET 4.7 ⮕ .NET 8
+* prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
 * upgrade knižníc na prácu s PDF (iText). Pôvodná verzia obsahovala problematickú verziu. Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
 * vizuálne vylepšenia
