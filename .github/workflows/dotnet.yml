@@ -19,7 +19,7 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\Release\"
-      - name: Upload Artifact (Optional)
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: published-app
@@ -27,16 +27,14 @@ jobs:
       - name: List Files
         run: ls bin\Release\
       - name: Create Release Folder
-        run: New-Item -ItemType Directory -Force -Path release
+        run: New-Item -ItemType Directory -Force -Path release-zip
       - name: Copy Files to Release Folder
         run: |
           Copy-Item "bin\Release\PDFPass.exe" release-zip\
           Copy-Item "cmds\kontextove-menu-ako-admin-registruj.cmd" release-zip\ 
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
       - name: Zip Release Files
-        uses: montudor/action-zip@v1
-        with:
-          args: zip -r release.zip release-zip
+        run: Compress-Archive -Path release-zip\* -DestinationPath PDFPass-portable.zip
       - name: Create Release
         id: create_release  # Add an ID to reference the output later
         uses: actions/create-release@v1
