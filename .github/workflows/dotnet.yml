@@ -5,8 +5,7 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-env:
-  release_Version: "2014.0.18"
+
 jobs:
   build:
     runs-on: windows-latest
@@ -18,15 +17,10 @@ jobs:
           dotnet-version: 8.0.x
       - name: Restore dependencies
         run: dotnet restore
+      - name: Set release version
+        run: echo "release_Version=$(date +'%Y.%m.%d.%H%M%S')" >> $GITHUB_ENV
       - name: Build
-        run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\Release\"
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: published-app
-          path: bin\Release
-      - name: List Files
-        run: ls bin\Release\
+        run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\
       - name: Create Release Folder
         run: New-Item -ItemType Directory -Force -Path release-zip
       - name: Copy Files to Release Folder
@@ -36,10 +30,8 @@ jobs:
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
-      - name: List Files
-        run: ls release-zip
       - name: Create Release
-        id: create_release  # Add an ID to reference the output later
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
