@@ -20,7 +20,7 @@ jobs:
       - name: Set release version
         run: echo "release_Version=$(date +'%Y.%m.%d.%H%M%S')" >> $GITHUB_ENV
       - name: Build
-        run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\
+        run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\"
       - name: Create Release Folder
         run: New-Item -ItemType Directory -Force -Path release-zip
       - name: Copy Files to Release Folder
