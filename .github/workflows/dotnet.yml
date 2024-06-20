@@ -26,6 +26,17 @@ jobs:
           path: bin\Release
       - name: List Files
         run: ls bin\Release\
+      - name: Create Release Folder
+        run: New-Item -ItemType Directory -Force -Path release
+      - name: Copy Files to Release Folder
+        run: |
+          Copy-Item "bin\Release\PDFPass.exe" release-zip\
+          Copy-Item "cmds\kontextove-menu-ako-admin-registruj.cmd" release-zip\ 
+          Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
+      - name: Zip Release Files
+        uses: montudor/action-zip@v1
+        with:
+          args: zip -r release.zip release-zip
       - name: Create Release
         id: create_release  # Add an ID to reference the output later
         uses: actions/create-release@v1
@@ -42,6 +53,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: bin\Release\PDFPass.exe # Path to your published app
-          asset_name: PDFPass-portable.exe # Choose a name for your release asset
+          asset_path: bin\release-zip\release.zip # Path to your published app
+          asset_name: PDFPass-portable.zip # Choose a name for your release asset
           asset_content_type: application/octet-stream
