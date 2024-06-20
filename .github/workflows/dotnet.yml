@@ -11,6 +11,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set release version
+        id: vars
+        run: echo ::set-output name=release_Version::$(date +%Y%m%d%H%M%S)
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -41,8 +44,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }} # Use github.ref_name to get tag name
-          release_name: Release ${{ github.ref_name }} # Update release_name as well
+          tag_name: ${{ steps.vars.outputs.release_Version }} 
+          release_name: Release ${{ steps.vars.outputs.release_Version }} 
           draft: false
           prerelease: false
       - name: Upload Release Asset
@@ -51,6 +54,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: bin\release-zip\PDFPass-portable.zip # Path to your published app
+          asset_path: bin\release-zip\PDFPass-portable.zip
           asset_name: PDFPass-portable.zip # Choose a name for your release asset
           asset_content_type: application/octet-stream
