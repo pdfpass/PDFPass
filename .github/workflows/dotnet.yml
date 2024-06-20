@@ -52,6 +52,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: bin\release-zip\PDFPass-portable.zip
+          asset_path: release-zip\PDFPass-portable.zip
           asset_name: PDFPass-portable.zip # Choose a name for your release asset
           asset_content_type: application/octet-stream
