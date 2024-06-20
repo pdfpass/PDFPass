@@ -5,7 +5,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+env:
+  release_Version: "2024.0.14"
 jobs:
   build:
     runs-on: windows-latest
@@ -44,8 +45,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.vars.outputs.release_Version }} 
-          release_name: Release ${{ steps.vars.outputs.release_Version }} 
+          tag_name: ${{ env.release_Version }}
+          release_name: Release ${{ env.release_Version }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
