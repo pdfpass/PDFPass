@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "master" ]
 env:
-  release_Version: "2024.0.14"
+  release_Version: $(date +%Y.%m.%d.%H%M%S)
 jobs:
   build:
     runs-on: windows-latest
@@ -35,7 +35,7 @@ jobs:
           Copy-Item "cmds\kontextove-menu-ako-admin-registruj.cmd" release-zip\ 
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
       - name: Zip Release Files
-        run: Compress-Archive -Path release-zip\* -DestinationPath PDFPass-portable.zip
+        run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: List Files
         run: ls bin
       - name: Set release version
