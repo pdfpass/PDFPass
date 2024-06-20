@@ -11,9 +11,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set release version
-        id: vars
-        run: echo ::set-output name=release_Version::$(date +%Y%m%d%H%M%S)
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -38,6 +35,9 @@ jobs:
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\* -DestinationPath PDFPass-portable.zip
+      - name: Set release version
+        id: vars
+        run: echo ::set-output name=release_Version::$(date +%Y%m%d%H%M%S)
       - name: Create Release
         id: create_release  # Add an ID to reference the output later
         uses: actions/create-release@v1
