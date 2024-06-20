@@ -36,6 +36,8 @@ jobs:
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\* -DestinationPath PDFPass-portable.zip
+      - name: List Files
+        run: ls bin
       - name: Set release version
         id: vars
         run: echo ::set-output name=release_Version::$(date +%Y%m%d%H%M%S)
