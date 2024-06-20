@@ -22,7 +22,7 @@ Stiahnite si binárne súbory systému Windows zo stránky: https://tinyurl.com/
 * podpora viacerých jazykov
 * funkcionalita odstránenia hesla
 * možnosť inštalácie z Microsoft Store
-* vlastná stránka
+* vlastná web stránka
 
 
 # License
