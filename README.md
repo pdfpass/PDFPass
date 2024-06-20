@@ -21,7 +21,7 @@ Stiahnite si binárne súbory systému Windows zo stránky: https://tinyurl.com/
 # Plánované zmeny
 * podpora viacerých jazykov
 * funkcionalita odstránenia hesla z PDF
-* možnosť inštalácie z Microsoft Store
+* možnosť inštalácie aplikácie z Microsoft Store
 * vlastná web stránka
 
 
