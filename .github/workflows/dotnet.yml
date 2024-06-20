@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "master" ]
 env:
-  release_Version: $(date +'%Y%m%d%H%M%S')
+  release_Version: "$(date +'%Y.%m.%d.%H%M%S')"
 jobs:
   build:
     runs-on: windows-latest
@@ -37,7 +37,7 @@ jobs:
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: List Files
-        run: ls bin
+        run: ls release-zip
       - name: Set release version
         id: vars
         run: echo ::set-output name=release_Version::$(date +%Y%m%d%H%M%S)
