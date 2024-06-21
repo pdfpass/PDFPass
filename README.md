@@ -8,13 +8,14 @@ Stiahnite ZIP balík pre systém Windows: https://github.com/pdfpass/PDF/release
 ![App Screenshot](screenshots%2Fmain.png)
 ![Settings](screenshots%2Fsettings.png)
 
-# "Inštalácia" a kontextove menu
+# "Inštalácia" a kontextové menu
 
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:Program Files``` alebo ```c:Program Files (x86)``` (niektorí používatelia nemajú na to oprávnenia). Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor kontextove-menu-ako-admin-registruj.cmd s právami administrátora (viď screenshot)
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:Program Files``` alebo ```c:Program Files (x86)``` (niektorí používatelia nemajú na to oprávnenia). Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-registruj.cmd``` s právami administrátora (viď screenshot)
 
 ![register-menu.png](screenshots%2Fregister-menu.png)
 
 Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na súbor PDF sa zobrazi kontextová ponuka **Zahesluj PDF** (viď screenshot)
+
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
 
