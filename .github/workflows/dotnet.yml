@@ -28,14 +28,14 @@ jobs:
           name: published-app
           path: bin\Release
       - name: Create Release Folder
-        run: New-Item -ItemType Directory -Force -Path release-zip
+        run: New-Item -ItemType Directory -Force -Path release-zip\pdfpass-portable
       - name: Copy Files to Release Folder
         run: |
-          Copy-Item "bin\Release\PDFPass.exe" release-zip\
-          Copy-Item "cmds\kontextove-menu-ako-admin-registruj.cmd" release-zip\ 
-          Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\
+          Copy-Item "bin\Release\PDFPass.exe" release-zip\pdfpass-portable
+          Copy-Item "cmds\kontextove-menu-ako-admin-registruj.cmd" release-zip\pdfpass-portable 
+          Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\pdfpass-portable
       - name: Zip Release Files
-        run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
+        run: Compress-Archive -Path release-zip\pdfpass-portable\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
