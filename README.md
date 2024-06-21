@@ -3,7 +3,7 @@ PDFPass je bezplatný nástroj s otvoreným zdrojovým kódom napísaný v jazyk
 
 Toto je oficiálna, verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Griggs. Upozorňujeme, že všetky ostatné verzie sú forky a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva pôvodný autor.
 
-Stiahnite ZIP balík pre systém Windows: https://github.com/pdfpass/PDF/releases/latest
+Stiahnite ZIP balík pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
 ![App Screenshot](screenshots%2Fmain.png)
 ![Settings](screenshots%2Fsettings.png)
