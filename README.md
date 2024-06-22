@@ -10,7 +10,7 @@ Aktualny ZIP balík pre systém Windows: https://github.com/pdfpass/PDFPass/rele
 
 # "Inštalácia" a kontextové menu
 
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)``` (niektorí používatelia nemajú na to oprávnenia). Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-registruj.cmd``` s právami administrátora (viď screenshot)
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)``` (niektorí používatelia nemajú na to oprávnenia). Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
 ![register-menu.png](screenshots%2Fregister-menu.png)
 
