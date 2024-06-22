@@ -1,3 +1,5 @@
+![ref-card.jpg](screenshots%2Fref-card.jpg)
+
 # PDFPass 🇸🇰
 PDFPass je bezplatný nástroj s otvoreným zdrojovým kódom napísaný v jazyku C# (.NET 8) na rýchle a jednoduché šifrovanie/heslovanie súborov PDF.
 
