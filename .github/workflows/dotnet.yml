@@ -32,7 +32,7 @@ jobs:
       - name: Copy Files to Release Folder
         run: |
           Copy-Item "bin\Release\PDFPass.exe" release-zip\pdfpass-portable
-          Copy-Item "cmds\kontextove-menu-ako-admin-registruj.cmd" release-zip\pdfpass-portable 
+          Copy-Item "cmds\kontextove-menu-ako-admin-zaregistruj.cmd" release-zip\pdfpass-portable 
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\pdfpass-portable
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\pdfpass-portable\* -DestinationPath release-zip\PDFPass-portable.zip
