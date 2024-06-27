@@ -7,10 +7,10 @@ Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Gri
 
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Hlavná obrazovka nastavenia hesla
+## Hlavná obrazovka pre nastavenia hesla
 ![App Screenshot](screenshots%2Fencrypt.png)
 
-## Hlavná obrazovka odstránenia hesla
+## Hlavná obrazovka pre odstránenia hesla
 ![App Screenshot](screenshots%2Fdecrypt.png)
 
 ## Nastavenia
