@@ -47,7 +47,7 @@ namespace PDFPass
             lblPasswordLength = new Label();
             lblCopied = new Label();
             btnCopy = new Button();
-            label3 = new Label();
+            labelPassword = new Label();
             btnPasswordGenerate = new Button();
             txtPassword = new TextBox();
             btnEncrypt = new Button();
@@ -55,6 +55,7 @@ namespace PDFPass
             dlgOpen = new OpenFileDialog();
             dlgSave = new SaveFileDialog();
             btnSettings = new Button();
+            btnDecrypt = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -154,12 +155,13 @@ namespace PDFPass
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnDecrypt);
             groupBox3.Controls.Add(lblOwnerPasswordSet);
             groupBox3.Controls.Add(lnkPasswordOwner);
             groupBox3.Controls.Add(lblPasswordLength);
             groupBox3.Controls.Add(lblCopied);
             groupBox3.Controls.Add(btnCopy);
-            groupBox3.Controls.Add(label3);
+            groupBox3.Controls.Add(labelPassword);
             groupBox3.Controls.Add(btnPasswordGenerate);
             groupBox3.Controls.Add(txtPassword);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -193,7 +195,7 @@ namespace PDFPass
             lnkPasswordOwner.Size = new Size(212, 15);
             lnkPasswordOwner.TabIndex = 15;
             lnkPasswordOwner.TabStop = true;
-            lnkPasswordOwner.Text = "Zadať heslo pre uzamknutia editovania";
+            lnkPasswordOwner.Text = "Zadať heslo pre uzamknutie editovania";
             lnkPasswordOwner.LinkClicked += lnkPasswordOwner_LinkClicked;
             // 
             // lblPasswordLength
@@ -236,16 +238,16 @@ namespace PDFPass
             btnCopy.UseVisualStyleBackColor = true;
             btnCopy.Click += btnCopy_Click;
             // 
-            // label3
+            // labelPassword
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(24, 32);
-            label3.Margin = new Padding(2, 0, 2, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(213, 21);
-            label3.TabIndex = 11;
-            label3.Text = "Heslo pre uzamknutie čítania:";
+            labelPassword.AutoSize = true;
+            labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelPassword.Location = new Point(24, 32);
+            labelPassword.Margin = new Padding(2, 0, 2, 0);
+            labelPassword.Name = "labelPassword";
+            labelPassword.Size = new Size(213, 21);
+            labelPassword.TabIndex = 11;
+            labelPassword.Text = "Heslo pre uzamknutie čítania:";
             // 
             // btnPasswordGenerate
             // 
@@ -277,15 +279,15 @@ namespace PDFPass
             btnEncrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEncrypt.Image = (Image)resources.GetObject("btnEncrypt.Image");
             btnEncrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEncrypt.Location = new Point(440, 418);
+            btnEncrypt.Location = new Point(429, 418);
             btnEncrypt.Margin = new Padding(2);
             btnEncrypt.Name = "btnEncrypt";
-            btnEncrypt.Size = new Size(113, 37);
+            btnEncrypt.Size = new Size(119, 37);
             btnEncrypt.TabIndex = 14;
             btnEncrypt.Text = "Zahesluj  ";
             btnEncrypt.TextAlign = ContentAlignment.MiddleRight;
             btnEncrypt.UseVisualStyleBackColor = true;
-            btnEncrypt.Click += btnEncrypt_Click;
+            btnEncrypt.Click += BtnEncryptClick;
             // 
             // btnClose
             // 
@@ -293,7 +295,7 @@ namespace PDFPass
             btnClose.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClose.Location = new Point(341, 418);
+            btnClose.Location = new Point(330, 418);
             btnClose.Margin = new Padding(2);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(95, 37);
@@ -328,6 +330,21 @@ namespace PDFPass
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
             // 
+            // btnDecrypt
+            // 
+            btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
+            btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDecrypt.Location = new Point(429, 418);
+            btnDecrypt.Margin = new Padding(2);
+            btnDecrypt.Name = "btnDecrypt";
+            btnDecrypt.Size = new Size(111, 37);
+            btnDecrypt.TabIndex = 17;
+            btnDecrypt.Text = "Odhesluj";
+            btnDecrypt.TextAlign = ContentAlignment.MiddleRight;
+            btnDecrypt.UseVisualStyleBackColor = true;
+            btnDecrypt.Click += BtnDecryptClick;
+            // 
             // FrmMain
             // 
             AcceptButton = btnEncrypt;
@@ -339,6 +356,7 @@ namespace PDFPass
             Controls.Add(btnSettings);
             Controls.Add(btnClose);
             Controls.Add(btnEncrypt);
+            Controls.Add(btnDecrypt);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -369,7 +387,7 @@ namespace PDFPass
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button btnOutputBrowse;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label labelPassword;
 		private System.Windows.Forms.Button btnPasswordGenerate;
 		private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.OpenFileDialog dlgOpen;
@@ -384,6 +402,7 @@ namespace PDFPass
         public System.Windows.Forms.TextBox txtPassword;
         public System.Windows.Forms.Button btnEncrypt;
         public System.Windows.Forms.Label lblOwnerPasswordSet;
+        public Button btnDecrypt;
     }
 }
 

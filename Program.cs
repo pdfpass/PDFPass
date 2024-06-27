@@ -29,66 +29,66 @@ namespace PDFPass
         }
 
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main(string[] args)
-		{
-			// Parse command line:
-			Parser.Default.ParseArguments<Options>(args)
-				.WithParsed(HandleParsed)
-				.WithNotParsed(HandleParseError); 
-		}
-
-		static void HandleParsed(Options opts)
-        // This function is called if the CommandLine.Parser succeeds in parsing all command line options.
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main(string[] args)
         {
-			Application.SetCompatibleTextRenderingDefault(false);
+            // Parse command line:
+            Parser.Default.ParseArguments<Options>(args)
+                .WithParsed(HandleParsed)
+                .WithNotParsed(HandleParseError);
+        }
 
-			// Create the UI form instance
-			var form = new FrmMain();
-											
-			// If input filename was specified, set it in the main form
-			if (opts.InputFile != null)
+        static void HandleParsed(Options opts)
+            // This function is called if the CommandLine.Parser succeeds in parsing all command line options.
+        {
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // Create the UI form instance
+            var form = new FrmMain();
+
+            // If input filename was specified, set it in the main form
+            if (opts.InputFile != null)
             {
-				form.txtInputFile.Text = opts.InputFile;
+                form.txtInputFile.Text = opts.InputFile;
             }
 
-			// If output filename was specified, set it in the main form
-			if (opts.OutputFile != null)
+            // If output filename was specified, set it in the main form
+            if (opts.OutputFile != null)
             {
-				form.txtOutputFile.Text = opts.OutputFile;
+                form.txtOutputFile.Text = opts.OutputFile;
             }
             else if (opts.InputFile != null)
             {
                 var outputFile = opts.InputFile;
                 var extension = Path.GetExtension(opts.InputFile);
                 {
-	                var result = outputFile.Substring(0, outputFile.Length - extension.Length);
-	                form.txtOutputFile.Text = result + "_zašifrovaný" + extension;
+                    var result = outputFile.Substring(0, outputFile.Length - extension.Length);
                 }
             }
 
-			// If user password was specified, set it in the main form
-			if (opts.UserPass != null)
+            // If user password was specified, set it in the main form
+            if (opts.UserPass != null)
             {
-				form.txtPassword.Text = opts.UserPass;
+                form.txtPassword.Text = opts.UserPass;
             }
 
-			// If owner password was specified, set it in the main form and show message.
-			if (opts.OwnerPass != null)
+            // If owner password was specified, set it in the main form and show message.
+            if (opts.OwnerPass != null)
             {
-				form.OwnerPassword = opts.OwnerPass;
-				form.lblOwnerPasswordSet.Visible = true;
+                form.OwnerPassword = opts.OwnerPass;
+                form.lblOwnerPasswordSet.Visible = true;
             }
 
-			// If executing immediately, set the Run flag.
-			form.EncryptOnStart = (opts.Immediate);
-
-			Application.EnableVisualStyles();
-			Application.Run(form);
-		}
+            // If executing immediately, set the Run flag.
+            form.EncryptOnStart = (opts.Immediate);
+            
+            form.InitFormControls();
+            Application.EnableVisualStyles();
+            Application.Run(form);
+        }
 
         static void HandleParseError(IEnumerable<Error> errors)
             // This function is called if the CommandLine.Parser fails to parse some command line options
