@@ -32,7 +32,7 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
-* upgrade knižníc na prácu s PDF (iText). Pôvodná verzia obsahovala problematickú verziu. Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
+* upgrade knižníc na prácu s PDF (iText 8.x). Pôvodná verzia (iText 7) obsahovala problematickú verziu. Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
 * vizuálne vylepšenia
 
 
