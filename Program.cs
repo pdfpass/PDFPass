@@ -84,8 +84,7 @@ namespace PDFPass
 
             // If executing immediately, set the Run flag.
             form.EncryptOnStart = (opts.Immediate);
-            
-            form.InitFormControls();
+
             Application.EnableVisualStyles();
             Application.Run(form);
         }

@@ -8,4 +8,4 @@ if %errorlevel% == 0 (
     exit
 )
 
-REG DELETE HKEY_CLASSES_ROOT\SystemFileAssociations\.pdf\shell\encrypt.2.PDF /f
+REG DELETE HKEY_CLASSES_ROOT\SystemFileAssociations\.pdf\shell\PDFPass.PDF /f
