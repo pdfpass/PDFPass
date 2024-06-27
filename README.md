@@ -8,17 +8,17 @@ Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Gri
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
 ## Hlavná obrazovka nastavenia hesla
-![App Screenshot](screenshots%2Fdecrypt.png)
+![App Screenshot](screenshots%2Fencrypt.png)
 
 ## Hlavná obrazovka odstránenia hesla
-![App Screenshot](screenshots%2Fmain.png)
+![App Screenshot](screenshots%2Fdecrypt.png)
 
 ## Nastavenia
 ![Settings](screenshots%2Fsettings.png)
 
-# "Inštalácia" a kontextové menu
+# "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
 
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)``` (niektorí používatelia nemajú na to oprávnenia). Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
 ![register-menu.png](screenshots%2Fregister-menu.png)
 
@@ -26,6 +26,10 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
+
+# "Inštalácia" a odkaz na ploche (bez práv administrátora)
+
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spusťiť ```pridaj-odkaz-na-plochu.cmd```
 
 
 # Zmeny oproti pôvodnej verzii
@@ -38,9 +42,9 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 
 # Plánované zmeny
 * funkcionalita odstránenia hesla z PDF ✅
-* podpora viacerých jazykov
-* možnosť inštalácie aplikácie z Microsoft Store
-* vlastná web stránka
+* podpora viacerých jazykov ⏳
+* možnosť inštalácie aplikácie z Microsoft Store ⏳
+* vlastná web stránka ⏳
 
 
 # License
