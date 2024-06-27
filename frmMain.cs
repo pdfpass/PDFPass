@@ -100,6 +100,8 @@ namespace PDFPass
             // Load settings from registry
             Settings.load();
             
+            InitFormControls();
+            
             // If immediate run is enabled, click Run button (see command line options)
             if (EncryptOnStart)
             {
