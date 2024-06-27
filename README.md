@@ -37,8 +37,8 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 
 
 # Plánované zmeny
+* funkcionalita odstránenia hesla z PDF ✅
 * podpora viacerých jazykov
-* funkcionalita odstránenia hesla z PDF
 * možnosť inštalácie aplikácie z Microsoft Store
 * vlastná web stránka
 
