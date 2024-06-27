@@ -18,7 +18,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Set release version
-        run: echo "release_Version=2024.5.4" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+        run: echo "release_Version=2024.5.5" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
         shell: pwsh      
       - name: Build
         run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\Release\"
@@ -34,6 +34,8 @@ jobs:
           Copy-Item "bin\Release\PDFPass.exe" release-zip\pdfpass-portable
           Copy-Item "cmds\kontextove-menu-ako-admin-zaregistruj.cmd" release-zip\pdfpass-portable 
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\pdfpass-portable
+          Copy-Item "cmds\pridaj-odkaz-na-plochu.cmd" release-zip\pdfpass-portable
+          
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\pdfpass-portable\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: Create Release
