@@ -29,7 +29,7 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 
 # "Inštalácia" a odkaz na ploche (bez práv administrátora)
 
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spusťiť subor ```pridaj-odkaz-na-plochu.cmd```
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spusťiť súbor ```pridaj-odkaz-na-plochu.cmd```
 
 
 # Zmeny oproti pôvodnej verzii
