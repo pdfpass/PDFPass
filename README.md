@@ -22,7 +22,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie
 
 ![register-menu.png](screenshots%2Fregister-menu.png)
 
-Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na súbor PDF sa zobrazí kontextová ponuka **Zahesluj PDF** (viď screenshot)
+Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na súbor PDF sa zobrazí kontextová ponuka **Otvor v PDFPass** (viď screenshot)
 
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
