@@ -10,9 +10,9 @@ if %errorlevel% == 0 (
 
 SET EXT=pdf
 SET ACTION=encrypt.2.PDF
-SET MENU_TEXT="Zahesluj PDF"
+SET MENU_TEXT="Otvor v PDFPass"
 SET EXE_FILE=%~dp0PDFPass.exe
-SET COMMAND=%EXE_FILE%\" -i \"%%1\" --owner_pass \"bbCdTWVF3$Uy6nNLsUWFAr\"
+SET COMMAND=%EXE_FILE%\" -i \"%%1\"
 
 SET REG_DIR=HKCR\SystemFileAssociations\.%EXT%\shell\%ACTION%
 REG ADD %REG_DIR% /f /ve /t REG_EXPAND_SZ /d %MENU_TEXT%
