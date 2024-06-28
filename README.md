@@ -9,6 +9,8 @@ Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDF
 
 Kontakt: **pdfpass@outlook.com**
 
+Autora možete finančne podporiť cez [Platbu prevodom (Payme)](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=)
+
 ## Parametre príkazového riadku
 
 ```
