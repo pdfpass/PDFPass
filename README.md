@@ -13,6 +13,7 @@ Kontakt: **pdfpass@outlook.com**
 Autora môžete finančne podporiť:
 * platbou prevodom - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (cenu je možné upraviť)
 * platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať)
+Váš príspevok pomôže zaplatiť web stránku a rozvoj programu, ktorý zostane navždy zadarmo.
 
 ## Parametre príkazového riadku
 
