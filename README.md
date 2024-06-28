@@ -39,7 +39,7 @@ Váš príspevok pomôže zaplatiť web stránku a rozvoj programu, ktorý zosta
 ## Nastavenia
 ![Settings](screenshots%2Fsettings.png)
 
-# "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
+## "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
@@ -50,12 +50,12 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
 
-# "Inštalácia" a odkaz na ploche (bez práv administrátora)
+## "Inštalácia" a odkaz na ploche (bez práv administrátora)
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
 
 
-# Zmeny oproti pôvodnej verzii
+## Zmeny oproti pôvodnej verzii
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
@@ -63,7 +63,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 * vizuálne vylepšenia
 
 
-# Plánované zmeny
+## Plánované zmeny
 * **funkcionalita odstránenia hesla z PDF ✅**
 * podpora viacerých jazykov ⏳
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
