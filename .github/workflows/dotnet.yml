@@ -37,7 +37,7 @@ jobs:
           Copy-Item "cmds\pridaj-odkaz-na-plochu.cmd" release-zip\pdfpass-portable
           
       - name: Zip Release Files
-        run: Compress-Archive -Path release-zip\pdfpass-portable\* -DestinationPath release-zip\PDFPass-portable.zip
+        run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
