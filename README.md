@@ -7,6 +7,8 @@ Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Gri
 
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
+Kontakt: **pdfpass@outlook.com**
+
 ## Parametre príkazového riadku
 
 ```
