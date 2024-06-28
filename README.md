@@ -7,7 +7,7 @@ Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Gri
 
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Parametre prikazoveho riadku
+## Parametre príkazoveho riadku
 
 ```
 -i [cesta vstupného súboru] alebo --input [cesta vstupného súboru]
