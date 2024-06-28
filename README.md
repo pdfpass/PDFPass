@@ -36,7 +36,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
-* upgrade knižnice na prácu s PDF (iText 8.x). Pôvodná verzia (iText 7) obsahovala chybu (bug). Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
+* upgrade knižnice na prácu s PDF (iText 8.x). Pôvodná verzia (iText 7) obsahovala zraniteľnosť. Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
 * vizuálne vylepšenia
 
 
