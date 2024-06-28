@@ -13,7 +13,7 @@ Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDF
 
 ## Podpora projektu 💶
 Projekt môžete finančne podporiť:
-* platbou prevodom - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po klinuti na link by ste mali byť presmerovany do svojej bankovej Android/iOS aplikácie - cenu je možné upraviť)
+* platbou prevodom - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie - údaje budú predvyplnené, cenu je možné upraviť)
 * platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať)
 
 Váš príspevok pomôže zaplatiť web stránku, bezpečnostné aktualizácie a rozvoj programu, ktorý zostane navždy zadarmo.
