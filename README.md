@@ -7,10 +7,10 @@ Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Gri
 
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Hlavná obrazovka nastavenia hesla
+## Hlavná obrazovka pre nastavenia hesla
 ![App Screenshot](screenshots%2Fencrypt.png)
 
-## Hlavná obrazovka odstránenia hesla
+## Hlavná obrazovka pre odstránenia hesla
 ![App Screenshot](screenshots%2Fdecrypt.png)
 
 ## Nastavenia
@@ -18,7 +18,7 @@ Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDF
 
 # "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
 
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivacia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
 ![register-menu.png](screenshots%2Fregister-menu.png)
 
@@ -29,14 +29,14 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 
 # "Inštalácia" a odkaz na ploche (bez práv administrátora)
 
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spusťiť ```pridaj-odkaz-na-plochu.cmd```
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
 
 
 # Zmeny oproti pôvodnej verzii
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
-* upgrade knižníc na prácu s PDF (iText 8.x). Pôvodná verzia (iText 7) obsahovala chybu (bug). Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
+* upgrade knižnice na prácu s PDF (iText 8.x). Pôvodná verzia (iText 7) obsahovala zraniteľnosť. Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
 * vizuálne vylepšenia
 
 
