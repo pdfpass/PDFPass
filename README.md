@@ -5,9 +5,11 @@ PDFPass je bezplatný offline nástroj s otvoreným zdrojovým kódom napísaný
 
 Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Griggs. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
 
+Kontakt: **pdfpass@outlook.com**
+
+## Súbor na stiahnutie 💾
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
-Kontakt: **pdfpass@outlook.com**
 
 ### Podpora projektu 💶
 Projekt môžete finančne podporiť:
