@@ -7,7 +7,7 @@ Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Gri
 
 Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Parametre príkazoveho riadku
+## Parametre príkazového riadku
 
 ```
 -i [cesta vstupného súboru] alebo --input [cesta vstupného súboru]
@@ -18,7 +18,7 @@ Aktuálny ZIP balík PDFPass pre systém Windows: https://github.com/pdfpass/PDF
 
 --owner_pass [heslo vlastníka]
 
---run - okamžite vykonať funkciu Zahesluj pri spustení (nečakať, kým používateľ klikne na tlačidlo)
+--run - okamžite vykonať funkciu "Zahesluj" po spustení (nečakať, kým používateľ klikne na tlačidlo)
 ```
 
 ## Hlavná obrazovka pre nastavenia hesla
