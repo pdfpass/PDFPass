@@ -61,24 +61,13 @@ namespace PDFPass
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
-            if (isInputEncrypted)
-            {
-                btnEncrypt.Visible = false;
-                btnDecrypt.Visible = !btnEncrypt.Visible;
-                btnSettings.Visible = false;
-                btnPasswordGenerate.Enabled = false;
-                lnkPasswordOwner.Visible = false;
-                labelPassword.Text = "Zadať heslo pre odomknutie PDF:";
-            }
-            else
-            {
-                btnEncrypt.Visible = true;
-                btnDecrypt.Visible = !btnEncrypt.Visible;
-                btnSettings.Visible = true;
-                btnPasswordGenerate.Enabled = true;
-                lnkPasswordOwner.Visible = true;
-                labelPassword.Text = "Zadať heslo pre uzamknutie čítania:";
-            }
+            labelPassword.Text = isInputEncrypted ? "Zadať heslo pre odomknutie PDF:" : "Zadať heslo pre uzamknutie čítania:";
+            btnEncrypt.Visible = !isInputEncrypted;
+            btnDecrypt.Visible = isInputEncrypted;
+            btnSettings.Visible = !isInputEncrypted;
+            btnPasswordGenerate.Enabled = !isInputEncrypted;
+            lnkPasswordOwner.Visible = !isInputEncrypted;
+            lblOwnerPasswordSet.Visible = !isInputEncrypted;
         }
 
         private void btnOutputBrowse_Click(object sender, EventArgs e)
