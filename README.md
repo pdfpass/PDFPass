@@ -3,7 +3,7 @@
 # PDFPass 🇸🇰
 PDFPass je bezplatný offline nástroj s otvoreným zdrojovým kódom napísaný v jazyku C# (.NET 8) na rýchle a jednoduché šifrovanie/heslovanie súborov PDF ako aj odstraňovanie hesiel. 
 
-Toto je oficiálna verzia PDFPass založená na projekte PDFEncrypt.net/Ryan Griggs. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
+Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
 
 Kontakt: **pdfpass@outlook.com**
 
@@ -16,7 +16,7 @@ Projekt môžete finančne podporiť:
 * platbou prevodom - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie - údaje budú predvyplnené, cenu je možné upraviť)
 * platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať)
 
-Váš príspevok pomôže zaplatiť web stránku, bezpečnostné aktualizácie a rozvoj programu, ktorý zostane navždy zadarmo.
+Váš príspevok pomôže zaplatiť web stránku, **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**.
 
 ## Parametre príkazového riadku
 
