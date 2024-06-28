@@ -18,6 +18,20 @@ Projekt môžete finančne podporiť:
 
 Váš príspevok pomôže zaplatiť web stránku, **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**.
 
+## "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
+
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
+
+![register-menu.png](screenshots%2Fregister-menu.png)
+
+Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na súbor PDF sa zobrazí kontextová ponuka **Otvor v PDFPass** (viď screenshot)
+
+![context-menu.png](screenshots%2Fcontext-menu.png)
+
+
+## "Inštalácia" a odkaz na ploche (bez práv administrátora)
+
+Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
 ## Parametre príkazového riadku
 
 ```
@@ -38,23 +52,8 @@ Váš príspevok pomôže zaplatiť web stránku, **bezpečnostné aktualizácie
 ## Hlavná obrazovka pre odstránenia hesla
 ![App Screenshot](screenshots%2Fdecrypt.png)
 
-## Nastavenia
+## Obrazovka nastavení
 ![Settings](screenshots%2Fsettings.png)
-
-## "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
-
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
-
-![register-menu.png](screenshots%2Fregister-menu.png)
-
-Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na súbor PDF sa zobrazí kontextová ponuka **Otvor v PDFPass** (viď screenshot)
-
-![context-menu.png](screenshots%2Fcontext-menu.png)
-
-
-## "Inštalácia" a odkaz na ploche (bez práv administrátora)
-
-Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche stači spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
 
 
 ## Zmeny oproti pôvodnej verzii
