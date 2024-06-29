@@ -42,6 +42,7 @@ namespace PDFPass
             btnOutputBrowse = new Button();
             txtOutputFile = new TextBox();
             groupBox3 = new GroupBox();
+            btnDecrypt = new Button();
             lblOwnerPasswordSet = new Label();
             lnkPasswordOwner = new LinkLabel();
             lblPasswordLength = new Label();
@@ -55,7 +56,6 @@ namespace PDFPass
             dlgOpen = new OpenFileDialog();
             dlgSave = new SaveFileDialog();
             btnSettings = new Button();
-            btnDecrypt = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -155,7 +155,6 @@ namespace PDFPass
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnDecrypt);
             groupBox3.Controls.Add(lblOwnerPasswordSet);
             groupBox3.Controls.Add(lnkPasswordOwner);
             groupBox3.Controls.Add(lblPasswordLength);
@@ -173,6 +172,21 @@ namespace PDFPass
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
             groupBox3.Text = "Heslo";
+            // 
+            // btnDecrypt
+            // 
+            btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
+            btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDecrypt.Location = new Point(429, 418);
+            btnDecrypt.Margin = new Padding(2);
+            btnDecrypt.Name = "btnDecrypt";
+            btnDecrypt.Size = new Size(111, 37);
+            btnDecrypt.TabIndex = 17;
+            btnDecrypt.Text = "Odhesluj";
+            btnDecrypt.TextAlign = ContentAlignment.MiddleRight;
+            btnDecrypt.UseVisualStyleBackColor = true;
+            btnDecrypt.Click += BtnDecryptClick;
             // 
             // lblOwnerPasswordSet
             // 
@@ -329,21 +343,6 @@ namespace PDFPass
             btnSettings.TextAlign = ContentAlignment.MiddleRight;
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
-            // 
-            // btnDecrypt
-            // 
-            btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
-            btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDecrypt.Location = new Point(429, 418);
-            btnDecrypt.Margin = new Padding(2);
-            btnDecrypt.Name = "btnDecrypt";
-            btnDecrypt.Size = new Size(111, 37);
-            btnDecrypt.TabIndex = 17;
-            btnDecrypt.Text = "Odhesluj";
-            btnDecrypt.TextAlign = ContentAlignment.MiddleRight;
-            btnDecrypt.UseVisualStyleBackColor = true;
-            btnDecrypt.Click += BtnDecryptClick;
             // 
             // FrmMain
             // 

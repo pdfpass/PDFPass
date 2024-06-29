@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.Windows.Navigation;
-using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
 
 // LOL
@@ -61,7 +58,8 @@ namespace PDFPass
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
-            labelPassword.Text = isInputEncrypted ? "Zadať heslo pre odomknutie PDF:" : "Zadať heslo pre uzamknutie čítania:";
+            labelPassword.Text =
+                isInputEncrypted ? "Zadať heslo pre odomknutie PDF:" : "Zadať heslo pre uzamknutie čítania:";
             btnEncrypt.Visible = !isInputEncrypted;
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
@@ -88,9 +86,9 @@ namespace PDFPass
 
             // Load settings from registry
             Settings.load();
-            
+
             InitFormControls();
-            
+
             // If immediate run is enabled, click Run button (see command line options)
             if (EncryptOnStart)
             {
