@@ -8,7 +8,7 @@ using Microsoft.Win32;
 
 namespace PDFPass
 {
-	class Settings
+	public static class Settings
 	{
 		public enum EncryptionType
 		{
@@ -37,131 +37,143 @@ namespace PDFPass
 		public static bool allow_form_fill;    // Should end user be allowed to fill in form fields?
 		public static bool allow_assembly;    // Should end user be allowed to assemble the document?
 		public static bool allow_screenreaders;    // Should screenreaders be allowed to access the document?
+		public static string owner_password;
+		
 
 		// Events to execute upon setting changes
 		public delegate void SettingChangedNotification();
-		public static List<SettingChangedNotification> notify = new List<SettingChangedNotification>();	// Add delegate functions to this list to be notified.
+		public static List<SettingChangedNotification> Notify = [];	// Add delegate functions to this list to be notified.
 
 		// Constants:
 		const string REG_KEY = "HKEY_CURRENT_USER\\Software\\PDFEncrypt\\";	// Main registry key
 
-		public static void load()
+		public static void Load()
 		{
 			// Read settings from registry.
-			object x;
+			object obj;
 
 			// Run program after encryption?
-			x = Registry.GetValue(REG_KEY, "run_after", 0);
-			if (x == null) { x = 0; }
-			run_after = (int)x == 1;	// Convert to boolean.
+			obj = Registry.GetValue(REG_KEY, "run_after", 0);
+			if (obj == null) { obj = 0; }
+			run_after = (int)obj == 1;	// Convert to boolean.
 			
 			// Program to run:
-			x = Registry.GetValue(REG_KEY, "run_after_file", null);
-			if (x == null) { x = ""; }
-			run_after_file = (string)x;
+			obj = Registry.GetValue(REG_KEY, "run_after_file", null);
+			if (obj == null) { obj = ""; }
+			run_after_file = (string)obj;
 
 			// Run After arguments
-			x = Registry.GetValue(REG_KEY, "run_after_arguments", null);
-			if (x == null) { x = ""; }
-			run_after_arguments = (string)x;
+			obj = Registry.GetValue(REG_KEY, "run_after_arguments", null);
+			if (obj == null) { obj = ""; }
+			run_after_arguments = (string)obj;
 
 			// Require password confirmation
-			x = Registry.GetValue(REG_KEY, "password_confirm", 0);
-			if (x == null) { x = 0; }
-			password_confirm = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "password_confirm", 0);
+			if (obj == null) { obj = 0; }
+			password_confirm = (int)obj == 1;
 
 			// Close after encrypting
-			x = Registry.GetValue(REG_KEY, "close_after", 0);
-			if (x == null) { x = 0; }
-			close_after = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "close_after", 0);
+			if (obj == null) { obj = 0; }
+			close_after = (int)obj == 1;
 
 			
 
 			// Show folder after encrypting
-			x = Registry.GetValue(REG_KEY, "show_folder_after", 0);
-			if (x == null) { x = 0; }
-			show_folder_after = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "show_folder_after", 0);
+			if (obj == null) { obj = 0; }
+			show_folder_after = (int)obj == 1;
 
 			// Open file after encrypting
-			x = Registry.GetValue(REG_KEY, "open_after", 0);
-			if (x == null) { x = 0; }
-			open_after = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "open_after", 0);
+			if (obj == null) { obj = 0; }
+			open_after = (int)obj == 1;
 
 
 			// Encryption options:
 			// Encryption type:
-			x = Registry.GetValue(REG_KEY, "encryption_type", 0);
-			if (x == null) { x = (int)EncryptionType.AES_256; }
-			if (!Enum.IsDefined(typeof(EncryptionType), (int)x))    // If not a valid option, use default:
+			obj = Registry.GetValue(REG_KEY, "encryption_type", null);
+			if (obj == null ) { obj = (int)EncryptionType.AES_256; }
+			if (!Enum.IsDefined(typeof(EncryptionType), (int)obj))    // If not a valid option, use default:
 			{
 				encryption_type = EncryptionType.AES_256;   // Default to AES_256
 			}
 			else
 			{
-				encryption_type = (EncryptionType)x;
+				encryption_type = (EncryptionType)obj;
 			}
 
 			// Encrypt metadata
-			x = Registry.GetValue(REG_KEY, "encrypt_metadata", 0);
-			if (x == null) { x = 0; }
-			encrypt_metadata = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "encrypt_metadata", 0);
+			if (obj == null) { obj = 0; }
+			encrypt_metadata = (int)obj == 1;
 			
 			// Allow printing
-			x = Registry.GetValue(REG_KEY, "allow_printing", 0);
-			if (x == null) { x = 0; }
-			allow_printing = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_printing", 0);
+			if (obj == null) { obj = 0; }
+			allow_printing = (int)obj == 1;
 
 			// Allow degraded printing
-			x = Registry.GetValue(REG_KEY, "allow_degraded_printing", 0);
-			if (x == null) { x = 0; }
-			allow_degraded_printing = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_degraded_printing", 0);
+			if (obj == null) { obj = 0; }
+			allow_degraded_printing = (int)obj == 1;
 
 			// Allow modifying
-			x = Registry.GetValue(REG_KEY, "allow_modifying", 0);
-			if (x == null) { x = 0; }
-			allow_modifying = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_modifying", 0);
+			if (obj == null) { obj = 0; }
+			allow_modifying = (int)obj == 1;
 
 			// Allow modifying notations
-			x = Registry.GetValue(REG_KEY, "allow_modifying_annotations", 0);
-			if (x == null) { x = 0; }
-			allow_modifying_annotations = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_modifying_annotations", 0);
+			if (obj == null) { obj = 0; }
+			allow_modifying_annotations = (int)obj == 1;
 
 			// Allow copying
-			x = Registry.GetValue(REG_KEY, "allow_copying", 0);
-			if (x == null) { x = 0; }
-			allow_copying = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_copying", 0);
+			if (obj == null) { obj = 0; }
+			allow_copying = (int)obj == 1;
 
 			// Allow form fill
-			x = Registry.GetValue(REG_KEY, "allow_form_fill", 0);
-			if (x == null) { x = 0; }
-			allow_form_fill = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_form_fill", 0);
+			if (obj == null) { obj = 0; }
+			allow_form_fill = (int)obj == 1;
 
 			// Allow assembly
-			x = Registry.GetValue(REG_KEY, "allow_assembly", 0);
-			if (x == null) { x = 0; }
-			allow_assembly = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_assembly", 0) ?? 0;
+			allow_assembly = (int)obj == 1;
 
 			// Allow screenreaders
-			x = Registry.GetValue(REG_KEY, "allow_screenreaders", 0);
-			if (x == null) { x = 0; }
-			allow_screenreaders = (int)x == 1;
+			obj = Registry.GetValue(REG_KEY, "allow_screenreaders", 0);
+			if (obj == null) { obj = 0; }
+			allow_screenreaders = (int)obj == 1;
+			
+			// Owner Password:
+			obj = Registry.GetValue(REG_KEY, "owner_password",null);
+			if (obj == null) 
+			{
+				obj = PdfUtils.GenerateRandomPassword(20,25) ;
+				Registry.SetValue(REG_KEY, "owner_password", (string) obj, RegistryValueKind.String);
+			}
+			owner_password = (string)obj;
+			
+			
 
 			// Notify all listeners of updates.
-			callNotify();
+			CallNotify();
 		}
 
-		public static void callNotify()
+		private static void CallNotify()
 		// Notify all listeners of updates.
 		{
 			// Notify each listener of the updates.
-			foreach (var s in notify)
+			foreach (var changedNotification in Notify)
 			{
-				s();	// Call the function.
+				changedNotification();	// Call the function.
 			}
 		}
 
 
-		public static void save()
+		public static void Save()
 		// Write all settings to registry
 		{
 			Registry.SetValue(REG_KEY, "run_after", run_after, RegistryValueKind.DWord);
@@ -184,9 +196,10 @@ namespace PDFPass
 			Registry.SetValue(REG_KEY, "allow_form_fill", allow_form_fill, RegistryValueKind.DWord);
 			Registry.SetValue(REG_KEY, "allow_assembly", allow_assembly, RegistryValueKind.DWord);
 			Registry.SetValue(REG_KEY, "allow_screenreaders", allow_screenreaders, RegistryValueKind.DWord);
+			Registry.SetValue(REG_KEY, "owner_password", owner_password, RegistryValueKind.String);
 
 			// Notify all listeners
-			callNotify();
+			CallNotify();
 		}
 	}
 }

@@ -209,7 +209,7 @@ namespace PDFPass
             lnkPasswordOwner.Size = new Size(212, 15);
             lnkPasswordOwner.TabIndex = 15;
             lnkPasswordOwner.TabStop = true;
-            lnkPasswordOwner.Text = "Zadať heslo pre uzamknutie editovania";
+            lnkPasswordOwner.Text = "Zmeniť heslo pre uzamknutie editovania";
             lnkPasswordOwner.LinkClicked += lnkPasswordOwner_LinkClicked;
             // 
             // lblPasswordLength

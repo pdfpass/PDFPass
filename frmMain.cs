@@ -14,9 +14,6 @@ namespace PDFPass
         const int PwLengthMin = 12; // Minimum generated password length
         const int PwLengthMax = 24; // Maximum generated password length
 
-        // List of characters to be used in random passwords
-        const string PwChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-
         public string OwnerPassword = ""; // The owner password, if any.
         public bool EncryptOnStart = false; // Allows encryption via command line without user interaction
 
@@ -55,6 +52,7 @@ namespace PDFPass
                 return;
             }
 
+            OwnerPassword = Settings.owner_password;
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
@@ -65,7 +63,7 @@ namespace PDFPass
             btnSettings.Visible = !isInputEncrypted;
             btnPasswordGenerate.Enabled = !isInputEncrypted;
             lnkPasswordOwner.Visible = !isInputEncrypted;
-            lblOwnerPasswordSet.Visible = !isInputEncrypted;
+            lblOwnerPasswordSet.Visible = !isInputEncrypted && !string.IsNullOrEmpty(OwnerPassword);
         }
 
         private void btnOutputBrowse_Click(object sender, EventArgs e)
@@ -82,10 +80,10 @@ namespace PDFPass
         private void frmMain_Load(object sender, EventArgs e)
         {
             // Add listener for updated settings
-            Settings.notify.Add(SettingsChanged);
+            Settings.Notify.Add(SettingsChanged);
 
             // Load settings from registry
-            Settings.load();
+            Settings.Load();
 
             InitFormControls();
 
@@ -111,23 +109,14 @@ namespace PDFPass
 
         private void btnPasswordGenerate_Click(object sender, EventArgs e)
         {
-            // Generate a random password
-            var rnd = new Random(); // Random number generator
-            var length = rnd.Next(PwLengthMin, PwLengthMax); // Choose password length.
-            var result = "";
-
-            // Pick 'length' characters from the allowed characters.
-            for (var i = 0; i < length; i++)
-            {
-                result += PwChars[rnd.Next(0, PwChars.Length - 1)].ToString();
-            }
-
             // Set password
-            txtPassword.Text = result;
+            txtPassword.Text = PdfUtils.GenerateRandomPassword(PwLengthMin,PwLengthMax);
 
             // Copy to clipboard
             btnCopy_Click(sender, e);
         }
+
+        
 
         private void btnCopy_Click(object sender, EventArgs e)
         {

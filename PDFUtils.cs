@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Windows.Forms;
 using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
@@ -8,6 +9,8 @@ namespace PDFPass;
 
 public abstract class PdfUtils
 {
+    // List of characters to be used in random passwords
+    private const string PwChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789#@&";
     public static bool IsPdfReaderPasswordSet(string pdfFilePath)
     {
         try
@@ -75,5 +78,21 @@ public abstract class PdfUtils
         var pdfDocument = new PdfDocument(pdfReader, new PdfWriter(outputFileName));
         // Close the PDF documents
         pdfDocument.Close();
+    }
+
+  public static string GenerateRandomPassword(int pwLengthMin, int pwLengthMax)
+    {
+        // Generate a random password
+        var rnd = new Random(); // Random number generator
+        var length = rnd.Next(pwLengthMin, pwLengthMax); // Choose password length.
+        var result = "";
+
+        // Pick 'length' characters from the allowed characters.
+        for (var i = 0; i < length; i++)
+        {
+            result += PwChars[rnd.Next(0, PwChars.Length - 1)].ToString();
+        }
+
+        return result;
     }
 }

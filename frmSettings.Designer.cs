@@ -60,6 +60,8 @@
             cboEncryptionType = new System.Windows.Forms.ComboBox();
             chkPasswordConfirmation = new System.Windows.Forms.CheckBox();
             linkDonate = new System.Windows.Forms.LinkLabel();
+            lblOwnerPassword = new System.Windows.Forms.Label();
+            txtOwnerPassword = new System.Windows.Forms.TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -68,7 +70,7 @@
             // 
             lblVersion.AutoSize = true;
             lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblVersion.Location = new System.Drawing.Point(10, 430);
+            lblVersion.Location = new System.Drawing.Point(10, 485);
             lblVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new System.Drawing.Size(51, 15);
@@ -79,7 +81,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(10, 447);
+            label1.Location = new System.Drawing.Point(10, 502);
             label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(228, 15);
@@ -119,7 +121,7 @@
             // 
             lblVisitSite.AutoSize = true;
             lblVisitSite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblVisitSite.Location = new System.Drawing.Point(237, 446);
+            lblVisitSite.Location = new System.Drawing.Point(237, 501);
             lblVisitSite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblVisitSite.Name = "lblVisitSite";
             lblVisitSite.Size = new System.Drawing.Size(77, 15);
@@ -140,7 +142,7 @@
             groupBox1.Controls.Add(txtRun);
             groupBox1.Controls.Add(chkRun);
             groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(13, 258);
+            groupBox1.Location = new System.Drawing.Point(13, 313);
             groupBox1.Margin = new System.Windows.Forms.Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -227,6 +229,7 @@
             txtRun.Location = new System.Drawing.Point(148, 78);
             txtRun.Margin = new System.Windows.Forms.Padding(2);
             txtRun.Name = "txtRun";
+            txtRun.PlaceholderText = "cesta k programu";
             txtRun.Size = new System.Drawing.Size(245, 23);
             txtRun.TabIndex = 15;
             // 
@@ -244,6 +247,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(txtOwnerPassword);
+            groupBox2.Controls.Add(lblOwnerPassword);
             groupBox2.Controls.Add(label4);
             groupBox2.Controls.Add(chkDegradedPrinting);
             groupBox2.Controls.Add(chkAssembly);
@@ -263,7 +268,7 @@
             groupBox2.Margin = new System.Windows.Forms.Padding(2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            groupBox2.Size = new System.Drawing.Size(394, 242);
+            groupBox2.Size = new System.Drawing.Size(394, 282);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
             groupBox2.Text = "Možnosti šifrovania:";
@@ -424,7 +429,7 @@
             // 
             linkDonate.AutoSize = true;
             linkDonate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
-            linkDonate.Location = new System.Drawing.Point(83, 471);
+            linkDonate.Location = new System.Drawing.Point(83, 526);
             linkDonate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             linkDonate.Name = "linkDonate";
             linkDonate.Size = new System.Drawing.Size(358, 19);
@@ -433,13 +438,34 @@
             linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou!";
             linkDonate.LinkClicked += linkDonate_LinkClicked;
             // 
+            // lblOwnerPassword
+            // 
+            lblOwnerPassword.AutoSize = true;
+            lblOwnerPassword.Location = new System.Drawing.Point(3, 246);
+            lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lblOwnerPassword.Name = "lblOwnerPassword";
+            lblOwnerPassword.Size = new System.Drawing.Size(89, 15);
+            lblOwnerPassword.TabIndex = 27;
+            lblOwnerPassword.Text = "Heslo vlastníka:";
+            // 
+            // txtOwnerPassword
+            // 
+            txtOwnerPassword.Location = new System.Drawing.Point(90, 242);
+            txtOwnerPassword.Margin = new System.Windows.Forms.Padding(2);
+            txtOwnerPassword.MaxLength = 32;
+            txtOwnerPassword.Name = "txtOwnerPassword";
+            txtOwnerPassword.PlaceholderText = "trvalé heslo vlastníka";
+            txtOwnerPassword.Size = new System.Drawing.Size(291, 23);
+            txtOwnerPassword.TabIndex = 28;
+            txtOwnerPassword.TextChanged += txtOwnerPassword_TextChanged;
+            // 
             // frmSettings
             // 
             AcceptButton = btnOK;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(512, 498);
+            ClientSize = new System.Drawing.Size(512, 555);
             Controls.Add(linkDonate);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -497,5 +523,7 @@
         private System.Windows.Forms.TextBox txtArguments;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel linkDonate;
+        private System.Windows.Forms.TextBox txtOwnerPassword;
+        private System.Windows.Forms.Label lblOwnerPassword;
     }
 }
