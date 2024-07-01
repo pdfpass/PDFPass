@@ -10,7 +10,7 @@ namespace PDFPass;
 public abstract class PdfUtils
 {
     // List of characters to be used in random passwords
-    private const string PwChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789#@&";
+    private const string PwChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789#@&#@&#@&#@&";
     public static bool IsPdfReaderPasswordSet(string pdfFilePath)
     {
         try

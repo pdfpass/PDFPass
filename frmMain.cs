@@ -446,7 +446,7 @@ namespace PDFPass
             var input = new FrmInputBox();
             input.title = "Nastaviť heslo pre editovanie";
             input.prompt =
-                "Zadajte heslo pre editovanie.\r\n(Heslo pre editovanie umožní plnú kontrolu nad obsahom súboru PDF.)\r\nAk nebude heslo zadané, bude vygenerované náhodné heslo.\r\nStlačte Storno ak chcete anulovať heslo pre editovanie";
+                "Zadajte heslo pre editovanie.\r\n(Heslo pre editovanie umožní plnú kontrolu nad obsahom súboru PDF.)\r\n\r\nStlačte Storno ak chcete anulovať heslo pre editovanie";
             input.password = true;
             input.ShowDialog();
             OwnerPassword = input.cancelled ? "" : input.result;
