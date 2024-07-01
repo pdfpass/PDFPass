@@ -32,11 +32,12 @@
             btnCancel = new System.Windows.Forms.Button();
             txtInput = new System.Windows.Forms.TextBox();
             lblPrompt = new System.Windows.Forms.TextBox();
+            btnClose = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // btnOK
             // 
-            btnOK.Location = new System.Drawing.Point(394, 12);
+            btnOK.Location = new System.Drawing.Point(394, 7);
             btnOK.Margin = new System.Windows.Forms.Padding(2);
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(65, 32);
@@ -48,7 +49,7 @@
             // btnCancel
             // 
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            btnCancel.Location = new System.Drawing.Point(394, 48);
+            btnCancel.Location = new System.Drawing.Point(394, 43);
             btnCancel.Margin = new System.Windows.Forms.Padding(2);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(65, 32);
@@ -59,9 +60,10 @@
             // 
             // txtInput
             // 
-            txtInput.Location = new System.Drawing.Point(14, 108);
+            txtInput.Location = new System.Drawing.Point(14, 100);
             txtInput.Margin = new System.Windows.Forms.Padding(2);
             txtInput.Name = "txtInput";
+            txtInput.PlaceholderText = "(zadajte heslo)";
             txtInput.Size = new System.Drawing.Size(337, 23);
             txtInput.TabIndex = 3;
             txtInput.TextChanged += txtInput_TextChanged;
@@ -75,9 +77,21 @@
             lblPrompt.Name = "lblPrompt";
             lblPrompt.ReadOnly = true;
             lblPrompt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            lblPrompt.Size = new System.Drawing.Size(364, 88);
+            lblPrompt.Size = new System.Drawing.Size(364, 80);
             lblPrompt.TabIndex = 4;
             lblPrompt.Text = "prompt";
+            // 
+            // btnClose
+            // 
+            btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnClose.Location = new System.Drawing.Point(394, 96);
+            btnClose.Margin = new System.Windows.Forms.Padding(2);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new System.Drawing.Size(65, 32);
+            btnClose.TabIndex = 5;
+            btnClose.Text = "Zatvoriť";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
             // 
             // FrmInputBox
             // 
@@ -85,7 +99,8 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(471, 148);
+            ClientSize = new System.Drawing.Size(471, 140);
+            Controls.Add(btnClose);
             Controls.Add(lblPrompt);
             Controls.Add(txtInput);
             Controls.Add(btnCancel);
@@ -109,5 +124,6 @@
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.TextBox lblPrompt;
+        private System.Windows.Forms.Button btnClose;
     }
 }

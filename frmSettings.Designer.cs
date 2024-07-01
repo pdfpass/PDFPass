@@ -177,6 +177,7 @@
             txtArguments.Location = new System.Drawing.Point(148, 110);
             txtArguments.Margin = new System.Windows.Forms.Padding(2);
             txtArguments.Name = "txtArguments";
+            txtArguments.PlaceholderText = "(parametre programu)";
             txtArguments.Size = new System.Drawing.Size(245, 23);
             txtArguments.TabIndex = 20;
             // 
@@ -229,7 +230,7 @@
             txtRun.Location = new System.Drawing.Point(148, 78);
             txtRun.Margin = new System.Windows.Forms.Padding(2);
             txtRun.Name = "txtRun";
-            txtRun.PlaceholderText = "cesta k programu";
+            txtRun.PlaceholderText = "(cesta k programu)";
             txtRun.Size = new System.Drawing.Size(245, 23);
             txtRun.TabIndex = 15;
             // 
@@ -454,7 +455,7 @@
             txtOwnerPassword.Margin = new System.Windows.Forms.Padding(2);
             txtOwnerPassword.MaxLength = 32;
             txtOwnerPassword.Name = "txtOwnerPassword";
-            txtOwnerPassword.PlaceholderText = "trvalé heslo vlastníka";
+            txtOwnerPassword.PlaceholderText = "(trvalé heslo vlastníka)";
             txtOwnerPassword.Size = new System.Drawing.Size(291, 23);
             txtOwnerPassword.TabIndex = 28;
             txtOwnerPassword.TextChanged += txtOwnerPassword_TextChanged;
