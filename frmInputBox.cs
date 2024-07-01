@@ -56,5 +56,11 @@ namespace PDFPass
         {
 
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            // Close the app
+            Close();
+        }
     }
 }
