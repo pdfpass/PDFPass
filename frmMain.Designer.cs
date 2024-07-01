@@ -268,6 +268,7 @@ namespace PDFPass
             txtPassword.Location = new Point(24, 58);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
+            txtPassword.PlaceholderText = "(zadajte heslo)";
             txtPassword.Size = new Size(348, 29);
             txtPassword.TabIndex = 8;
             txtPassword.TextChanged += txtPassword_TextChanged;
