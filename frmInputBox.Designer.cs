@@ -59,10 +59,10 @@
             // 
             // txtInput
             // 
-            txtInput.Location = new System.Drawing.Point(13, 122);
+            txtInput.Location = new System.Drawing.Point(14, 108);
             txtInput.Margin = new System.Windows.Forms.Padding(2);
             txtInput.Name = "txtInput";
-            txtInput.Size = new System.Drawing.Size(364, 23);
+            txtInput.Size = new System.Drawing.Size(337, 23);
             txtInput.TabIndex = 3;
             txtInput.TextChanged += txtInput_TextChanged;
             // 
@@ -75,7 +75,7 @@
             lblPrompt.Name = "lblPrompt";
             lblPrompt.ReadOnly = true;
             lblPrompt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            lblPrompt.Size = new System.Drawing.Size(364, 105);
+            lblPrompt.Size = new System.Drawing.Size(364, 88);
             lblPrompt.TabIndex = 4;
             lblPrompt.Text = "prompt";
             // 
@@ -85,7 +85,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(471, 159);
+            ClientSize = new System.Drawing.Size(471, 148);
             Controls.Add(lblPrompt);
             Controls.Add(txtInput);
             Controls.Add(btnCancel);
