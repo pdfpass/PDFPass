@@ -42,7 +42,6 @@ namespace PDFPass
             btnOutputBrowse = new Button();
             txtOutputFile = new TextBox();
             groupBox3 = new GroupBox();
-            btnDecrypt = new Button();
             lblOwnerPasswordSet = new Label();
             lnkPasswordOwner = new LinkLabel();
             lblPasswordLength = new Label();
@@ -51,6 +50,7 @@ namespace PDFPass
             labelPassword = new Label();
             btnPasswordGenerate = new Button();
             txtPassword = new TextBox();
+            btnDecrypt = new Button();
             btnEncrypt = new Button();
             btnClose = new Button();
             dlgOpen = new OpenFileDialog();
@@ -173,27 +173,12 @@ namespace PDFPass
             groupBox3.TabStop = false;
             groupBox3.Text = "Heslo";
             // 
-            // btnDecrypt
-            // 
-            btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
-            btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDecrypt.Location = new Point(429, 418);
-            btnDecrypt.Margin = new Padding(2);
-            btnDecrypt.Name = "btnDecrypt";
-            btnDecrypt.Size = new Size(111, 37);
-            btnDecrypt.TabIndex = 17;
-            btnDecrypt.Text = "Odhesluj";
-            btnDecrypt.TextAlign = ContentAlignment.MiddleRight;
-            btnDecrypt.UseVisualStyleBackColor = true;
-            btnDecrypt.Click += BtnDecryptClick;
-            // 
             // lblOwnerPasswordSet
             // 
             lblOwnerPasswordSet.AutoSize = true;
             lblOwnerPasswordSet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Location = new Point(252, 107);
+            lblOwnerPasswordSet.Location = new Point(270, 108);
             lblOwnerPasswordSet.Name = "lblOwnerPasswordSet";
             lblOwnerPasswordSet.Size = new Size(101, 15);
             lblOwnerPasswordSet.TabIndex = 16;
@@ -206,7 +191,7 @@ namespace PDFPass
             lnkPasswordOwner.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lnkPasswordOwner.Location = new Point(22, 107);
             lnkPasswordOwner.Name = "lnkPasswordOwner";
-            lnkPasswordOwner.Size = new Size(212, 15);
+            lnkPasswordOwner.Size = new Size(220, 15);
             lnkPasswordOwner.TabIndex = 15;
             lnkPasswordOwner.TabStop = true;
             lnkPasswordOwner.Text = "Zmeniť heslo pre uzamknutie editovania";
@@ -287,6 +272,21 @@ namespace PDFPass
             txtPassword.TabIndex = 8;
             txtPassword.TextChanged += txtPassword_TextChanged;
             txtPassword.KeyDown += txtPassword_KeyDown;
+            // 
+            // btnDecrypt
+            // 
+            btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
+            btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDecrypt.Location = new Point(429, 418);
+            btnDecrypt.Margin = new Padding(2);
+            btnDecrypt.Name = "btnDecrypt";
+            btnDecrypt.Size = new Size(111, 37);
+            btnDecrypt.TabIndex = 17;
+            btnDecrypt.Text = "Odhesluj";
+            btnDecrypt.TextAlign = ContentAlignment.MiddleRight;
+            btnDecrypt.UseVisualStyleBackColor = true;
+            btnDecrypt.Click += BtnDecryptClick;
             // 
             // btnEncrypt
             // 
