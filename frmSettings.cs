@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PDFPass
@@ -16,7 +17,8 @@ namespace PDFPass
         private void frmSettings_Load(object sender, EventArgs e)
         {
             // Show program version
-            lblVersion.Text = "Verzia: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));;
 
             // Load encryption types: (Thanks https://stackoverflow.com/a/11745699/1502289)
             var encryption_types = new Dictionary<int, string>
