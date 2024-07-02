@@ -444,8 +444,8 @@ namespace PDFPass
         {
             var settings = new frmSettings();
             // Calculate the center position
-            int posX = this.Location.X + (this.Width - settings.Width) / 2;
-            int posY = this.Location.Y + (this.Height - settings.Height) / 2;
+            var posX = this.Location.X + (this.Width - settings.Width) / 2;
+            var posY = this.Location.Y + (this.Height - settings.Height) / 2;
 
             // Ensure the position is not negative
             posX = Math.Max(0, posX);
