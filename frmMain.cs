@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using System.Windows;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
 using Application = System.Windows.Forms.Application;

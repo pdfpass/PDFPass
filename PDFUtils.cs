@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Text;
-using System.Windows.Forms;
 using iText.Kernel.Exceptions;
 using iText.Kernel.Pdf;
-using iText.Kernel.Utils;
 
 namespace PDFPass;
 

@@ -93,8 +93,8 @@ namespace PDFPass
             // This function is called if the CommandLine.Parser fails to parse some command line options
             // It should output error messages to CLI and/or desktop.
         {
-            Console.WriteLine("Chybné parametre príkazového riadku: " + errors.ToString());
-            MessageBox.Show("Chybné parametre príkazového riadku: " + errors.ToString(), "Chyba!", MessageBoxButtons.OK,
+            Console.WriteLine("Chybné parametre príkazového riadku: " + errors);
+            MessageBox.Show("Chybné parametre príkazového riadku: " + errors, "Chyba!", MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
     }
