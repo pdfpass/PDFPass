@@ -45,6 +45,8 @@
             txtRun = new System.Windows.Forms.TextBox();
             chkRun = new System.Windows.Forms.CheckBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            txtOwnerPassword = new System.Windows.Forms.TextBox();
+            lblOwnerPassword = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             chkDegradedPrinting = new System.Windows.Forms.CheckBox();
             chkAssembly = new System.Windows.Forms.CheckBox();
@@ -60,8 +62,6 @@
             cboEncryptionType = new System.Windows.Forms.ComboBox();
             chkPasswordConfirmation = new System.Windows.Forms.CheckBox();
             linkDonate = new System.Windows.Forms.LinkLabel();
-            lblOwnerPassword = new System.Windows.Forms.Label();
-            txtOwnerPassword = new System.Windows.Forms.TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -149,7 +149,7 @@
             groupBox1.Size = new System.Drawing.Size(457, 170);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Po úspešnom zašifrovaní:";
+            groupBox1.Text = " Po úspešnom zašifrovaní ";
             // 
             // label6
             // 
@@ -165,7 +165,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(72, 113);
+            label5.Location = new System.Drawing.Point(69, 110);
             label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(64, 15);
@@ -174,11 +174,11 @@
             // 
             // txtArguments
             // 
-            txtArguments.Location = new System.Drawing.Point(148, 110);
+            txtArguments.Location = new System.Drawing.Point(137, 107);
             txtArguments.Margin = new System.Windows.Forms.Padding(2);
             txtArguments.Name = "txtArguments";
             txtArguments.PlaceholderText = "(parametre programu)";
-            txtArguments.Size = new System.Drawing.Size(245, 23);
+            txtArguments.Size = new System.Drawing.Size(253, 23);
             txtArguments.TabIndex = 20;
             // 
             // chkOpen
@@ -216,7 +216,7 @@
             // 
             // btnRunBrowse
             // 
-            btnRunBrowse.Location = new System.Drawing.Point(398, 78);
+            btnRunBrowse.Location = new System.Drawing.Point(398, 76);
             btnRunBrowse.Margin = new System.Windows.Forms.Padding(2);
             btnRunBrowse.Name = "btnRunBrowse";
             btnRunBrowse.Size = new System.Drawing.Size(43, 22);
@@ -227,11 +227,11 @@
             // 
             // txtRun
             // 
-            txtRun.Location = new System.Drawing.Point(148, 78);
+            txtRun.Location = new System.Drawing.Point(137, 75);
             txtRun.Margin = new System.Windows.Forms.Padding(2);
             txtRun.Name = "txtRun";
             txtRun.PlaceholderText = "(cesta k programu)";
-            txtRun.Size = new System.Drawing.Size(245, 23);
+            txtRun.Size = new System.Drawing.Size(253, 23);
             txtRun.TabIndex = 15;
             // 
             // chkRun
@@ -272,7 +272,28 @@
             groupBox2.Size = new System.Drawing.Size(394, 282);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Možnosti šifrovania:";
+            groupBox2.Text = " Možnosti šifrovania ";
+            // 
+            // txtOwnerPassword
+            // 
+            txtOwnerPassword.Location = new System.Drawing.Point(96, 242);
+            txtOwnerPassword.Margin = new System.Windows.Forms.Padding(2);
+            txtOwnerPassword.MaxLength = 32;
+            txtOwnerPassword.Name = "txtOwnerPassword";
+            txtOwnerPassword.PlaceholderText = "(trvalé heslo vlastníka)";
+            txtOwnerPassword.Size = new System.Drawing.Size(285, 23);
+            txtOwnerPassword.TabIndex = 28;
+            txtOwnerPassword.TextChanged += txtOwnerPassword_TextChanged;
+            // 
+            // lblOwnerPassword
+            // 
+            lblOwnerPassword.AutoSize = true;
+            lblOwnerPassword.Location = new System.Drawing.Point(3, 246);
+            lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            lblOwnerPassword.Name = "lblOwnerPassword";
+            lblOwnerPassword.Size = new System.Drawing.Size(89, 15);
+            lblOwnerPassword.TabIndex = 27;
+            lblOwnerPassword.Text = "Heslo vlastníka:";
             // 
             // label4
             // 
@@ -398,7 +419,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(5, 210);
+            label3.Location = new System.Drawing.Point(23, 210);
             label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(69, 15);
@@ -409,10 +430,10 @@
             // 
             cboEncryptionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             cboEncryptionType.FormattingEnabled = true;
-            cboEncryptionType.Location = new System.Drawing.Point(90, 207);
+            cboEncryptionType.Location = new System.Drawing.Point(96, 206);
             cboEncryptionType.Margin = new System.Windows.Forms.Padding(2);
             cboEncryptionType.Name = "cboEncryptionType";
-            cboEncryptionType.Size = new System.Drawing.Size(291, 23);
+            cboEncryptionType.Size = new System.Drawing.Size(285, 23);
             cboEncryptionType.TabIndex = 14;
             // 
             // chkPasswordConfirmation
@@ -430,6 +451,7 @@
             // 
             linkDonate.AutoSize = true;
             linkDonate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            linkDonate.LinkColor = System.Drawing.Color.MediumSlateBlue;
             linkDonate.Location = new System.Drawing.Point(83, 526);
             linkDonate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             linkDonate.Name = "linkDonate";
@@ -438,27 +460,6 @@
             linkDonate.TabStop = true;
             linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou!";
             linkDonate.LinkClicked += linkDonate_LinkClicked;
-            // 
-            // lblOwnerPassword
-            // 
-            lblOwnerPassword.AutoSize = true;
-            lblOwnerPassword.Location = new System.Drawing.Point(3, 246);
-            lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            lblOwnerPassword.Name = "lblOwnerPassword";
-            lblOwnerPassword.Size = new System.Drawing.Size(89, 15);
-            lblOwnerPassword.TabIndex = 27;
-            lblOwnerPassword.Text = "Heslo vlastníka:";
-            // 
-            // txtOwnerPassword
-            // 
-            txtOwnerPassword.Location = new System.Drawing.Point(90, 242);
-            txtOwnerPassword.Margin = new System.Windows.Forms.Padding(2);
-            txtOwnerPassword.MaxLength = 32;
-            txtOwnerPassword.Name = "txtOwnerPassword";
-            txtOwnerPassword.PlaceholderText = "(trvalé heslo vlastníka)";
-            txtOwnerPassword.Size = new System.Drawing.Size(291, 23);
-            txtOwnerPassword.TabIndex = 28;
-            txtOwnerPassword.TextChanged += txtOwnerPassword_TextChanged;
             // 
             // frmSettings
             // 
