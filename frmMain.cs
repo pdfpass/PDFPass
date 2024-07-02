@@ -2,8 +2,13 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text;
+using System.Windows;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
+using Application = System.Windows.Forms.Application;
+using Clipboard = System.Windows.Forms.Clipboard;
+using MessageBox = System.Windows.Forms.MessageBox;
+using Point = System.Drawing.Point;
 
 // LOL
 
@@ -438,6 +443,17 @@ namespace PDFPass
         private void btnSettings_Click(object sender, EventArgs e)
         {
             var settings = new frmSettings();
+            // Calculate the center position
+            int posX = this.Location.X + (this.Width - settings.Width) / 2;
+            int posY = this.Location.Y + (this.Height - settings.Height) / 2;
+
+            // Ensure the position is not negative
+            posX = Math.Max(0, posX);
+            posY = Math.Max(0, posY);
+
+            // Set the start position manually and set the location to the calculated position
+            settings.StartPosition = FormStartPosition.Manual;
+            settings.Location = new Point(posX, posY);
             settings.ShowDialog();
         }
 
