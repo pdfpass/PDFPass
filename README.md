@@ -19,9 +19,9 @@ Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFP
 * Právne alebo regulačné požiadavky: V niektorých prípadoch môžu byť požiadavky na ochranu dokumentov heslom dané právnymi predpismi alebo internými reguláciami organizácie.
 
 ## Kedy použiť "heslo vlastníka" (owner password) 🔐? 
-Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, čo môžu používatelia s dokumentom robiť. Tu sú hlavné možnosti ochrany, ktoré môžete nastaviť pomocou "hesla vlastníka":
+Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, čo môžu používatelia s dokumentom robiť. Tu sú hlavné možnosti ochrany, ktoré môžete nastaviť pomocou "hesla vlastníka" v **Nastaveniach**:
 * Zabránenie úpravám dokumentu:
-  * Zabránenie všetkým úpravám: Môžete nastaviť heslo, aby nikto nemohol dokument upravovať.
+  * Zabránenie všetkým úpravám: Môžete nastaviť, aby nikto nemohol dokument upravovať.
   * Obmedzené úpravy: Môžete povoliť len určité typy úprav, ako je napríklad vyplňovanie formulárov alebo pridávanie komentárov.
 * Zabránenie tlače dokumentu:
   * Zabránenie všetkej tlače: Môžete nastaviť heslo, aby nikto nemohol dokument tlačiť.
