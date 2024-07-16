@@ -454,6 +454,7 @@ namespace PDFPass
             settings.StartPosition = FormStartPosition.Manual;
             settings.Location = new Point(posX, posY);
             settings.ShowDialog();
+            InitFormControls();
         }
 
         private void lnkPasswordOwner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
