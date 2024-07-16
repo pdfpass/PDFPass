@@ -10,7 +10,7 @@ Kontakt: **pdfpass@outlook.com**
 ## Súbor na stiahnutie 💾
 Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Kedy použiť "heslo na čítanie" (user password) 🔐?
+## Kedy použiť "heslo pre uzamknutie čítania" (user password) 🔐?
 
 * Ochrana citlivých informácií: Ak PDF dokument obsahuje citlivé alebo dôverné informácie, je vhodné ho chrániť heslom, aby ste zamedzili neoprávnenému prístupu.
 
