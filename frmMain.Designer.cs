@@ -178,7 +178,7 @@ namespace PDFPass
             lblOwnerPasswordSet.AutoSize = true;
             lblOwnerPasswordSet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Location = new Point(270, 108);
+            lblOwnerPasswordSet.Location = new Point(170, 108);
             lblOwnerPasswordSet.Name = "lblOwnerPasswordSet";
             lblOwnerPasswordSet.Size = new Size(101, 15);
             lblOwnerPasswordSet.TabIndex = 16;
@@ -194,7 +194,7 @@ namespace PDFPass
             lnkPasswordOwner.Size = new Size(220, 15);
             lnkPasswordOwner.TabIndex = 15;
             lnkPasswordOwner.TabStop = true;
-            lnkPasswordOwner.Text = "Zmeniť heslo pre uzamknutie editovania";
+            lnkPasswordOwner.Text = "Zmeniť heslo vlastníka";
             lnkPasswordOwner.LinkClicked += lnkPasswordOwner_LinkClicked;
             // 
             // lblPasswordLength

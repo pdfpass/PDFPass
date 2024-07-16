@@ -27,7 +27,11 @@ Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, 
   * Zabránenie všetkej tlače: Môžete nastaviť heslo, aby nikto nemohol dokument tlačiť.
   * Zabránenie kvalitnej tlače: Môžete povoliť len tlač v nízkej kvalite, čím sa zabezpečí, že dokument nebude možné vytlačiť vo vysokej kvalite.
 * Zabránenie kopírovaniu textu a obrázkov: Heslom môžete zabrániť používateľom, aby kopírovali text alebo obrázky z dokumentu do iných aplikácií.
-* Zabránenie extrahovaniu stránok: Môžete zabrániť používateľom v extrahovaní jednotlivých stránok z dokumentu a ich uložení ako samostatné PDF súbory.
+* Zabránenie usporiadaniu stránok: 
+  * Pridávanie stránok: Používateľ môže vkladať nové stránky do existujúceho PDF dokumentu.
+  * Odstraňovanie stránok: Používateľ môže odstrániť niektoré stránky z PDF dokumentu.
+  * Extrahovanie stránok: Používateľ môže vybrať určité stránky a uložiť ich ako nový samostatný PDF dokument.
+  * Otočenie stránok: Používateľ môže otáčať jednotlivé stránky v dokumente.
 * Zabránenie asistenčným technológiám: Môžete obmedziť používanie asistenčných technológií, ako sú obrazovkové čítačky, ktoré by inak mohli čítať obsah dokumentu pre zrakovo postihnutých používateľov.
 * Zabránenie pridávaniu anotácií: Môžete obmedziť používateľov, aby nemohli pridávať komentáre, poznámky alebo anotácie k dokumentu.
 

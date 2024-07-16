@@ -326,7 +326,7 @@
             chkAssembly.Name = "chkAssembly";
             chkAssembly.Size = new System.Drawing.Size(165, 19);
             chkAssembly.TabIndex = 24;
-            chkAssembly.Text = "Povoliť organizovať strany";
+            chkAssembly.Text = "Povoliť usporiadanie stránok";
             chkAssembly.UseVisualStyleBackColor = true;
             // 
             // chkScreenreaders
@@ -337,7 +337,7 @@
             chkScreenreaders.Name = "chkScreenreaders";
             chkScreenreaders.Size = new System.Drawing.Size(162, 19);
             chkScreenreaders.TabIndex = 23;
-            chkScreenreaders.Text = "Povoliť čítačku obrazovky";
+            chkScreenreaders.Text = "Povoliť asistenčné technológie";
             chkScreenreaders.UseVisualStyleBackColor = true;
             // 
             // chkForms
@@ -359,7 +359,7 @@
             chkNotations.Name = "chkNotations";
             chkNotations.Size = new System.Drawing.Size(148, 19);
             chkNotations.TabIndex = 21;
-            chkNotations.Text = "Povoliť zmenu anotácií";
+            chkNotations.Text = "Povoliť anotácie";
             chkNotations.UseVisualStyleBackColor = true;
             // 
             // chkModifying
@@ -370,7 +370,7 @@
             chkModifying.Name = "chkModifying";
             chkModifying.Size = new System.Drawing.Size(130, 19);
             chkModifying.TabIndex = 20;
-            chkModifying.Text = "Povoliť modifikáciu";
+            chkModifying.Text = "Povoliť úpravy dokumentu";
             chkModifying.UseVisualStyleBackColor = true;
             // 
             // chkCopying
@@ -381,7 +381,7 @@
             chkCopying.Name = "chkCopying";
             chkCopying.Size = new System.Drawing.Size(129, 19);
             chkCopying.TabIndex = 19;
-            chkCopying.Text = "Povoliť kopírovanie";
+            chkCopying.Text = "Povoliť kopírovanie obsahu";
             chkCopying.UseVisualStyleBackColor = true;
             // 
             // label2

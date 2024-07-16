@@ -54,7 +54,7 @@ public abstract class PdfUtils
         return isOpenedWithFullPermission;
     }
 
-    public static void EncryptPdf(string inputFileName, string outputFileName, WriterProperties writerProperties)
+    public static void WriteEncryptedPdf(string inputFileName, string outputFileName, WriterProperties writerProperties)
     {
         var reader = new PdfReader(inputFileName); // Create a PdfReader with the input file.
 

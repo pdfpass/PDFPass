@@ -299,7 +299,7 @@ namespace PDFPass
                 writerProperties.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text),
                     OwnerPassword == "" ? null : Encoding.ASCII.GetBytes(OwnerPassword), documentOptions,
                     encryptionProperties); // Enable encryption
-                PdfUtils.EncryptPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties);
+                PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties);
             }
             catch (Exception ex)
             {
