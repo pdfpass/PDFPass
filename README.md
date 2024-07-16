@@ -10,6 +10,28 @@ Kontakt: **pdfpass@outlook.com**
 ## Súbor na stiahnutie 💾
 Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFPass/releases/latest
 
+## Kedy použiť "heslo na čítanie" (user password) 🔐?
+
+* Ochrana citlivých informácií: Ak PDF dokument obsahuje citlivé alebo dôverné informácie, je vhodné ho chrániť heslom, aby ste zamedzili neoprávnenému prístupu.
+
+* Distribúcia medzi obmedzený počet osôb: Ak je PDF určený na distribúciu len medzi určitých jednotlivcov alebo skupinu osôb, heslo zabezpečí, že dokument môže byť otvorený len tými, ktorí poznajú heslo.
+
+* Právne alebo regulačné požiadavky: V niektorých prípadoch môžu byť požiadavky na ochranu dokumentov heslom dané právnymi predpismi alebo internými reguláciami organizácie.
+
+## Kedy použiť "heslo vlastníka" (owner password) 🔐? 
+Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, čo môžu používatelia s dokumentom robiť. Tu sú hlavné možnosti ochrany, ktoré môžete nastaviť pomocou "hesla vlastníka":
+* Zabránenie úpravám dokumentu:
+  * Zabránenie všetkým úpravám: Môžete nastaviť heslo, aby nikto nemohol dokument upravovať.
+  * Obmedzené úpravy: Môžete povoliť len určité typy úprav, ako je napríklad vyplňovanie formulárov alebo pridávanie komentárov.
+* Zabránenie tlače dokumentu:
+  * Zabránenie všetkej tlače: Môžete nastaviť heslo, aby nikto nemohol dokument tlačiť.
+  * Zabránenie kvalitnej tlače: Môžete povoliť len tlač v nízkej kvalite, čím sa zabezpečí, že dokument nebude možné vytlačiť vo vysokej kvalite.
+* Zabránenie kopírovaniu textu a obrázkov: Heslom môžete zabrániť používateľom, aby kopírovali text alebo obrázky z dokumentu do iných aplikácií.
+* Zabránenie extrahovaniu stránok: Môžete zabrániť používateľom v extrahovaní jednotlivých stránok z dokumentu a ich uložení ako samostatné PDF súbory.
+* Zabránenie asistenčným technológiám: Môžete obmedziť používanie asistenčných technológií, ako sú obrazovkové čítačky, ktoré by inak mohli čítať obsah dokumentu pre zrakovo postihnutých používateľov.
+* Zabránenie pridávaniu anotácií: Môžete obmedziť používateľov, aby nemohli pridávať komentáre, poznámky alebo anotácie k dokumentu.
+
+Tieto možnosti ochrany zabezpečujú, že dokument zostane chránený pred neoprávnenými úpravami, tlačou, kopírovaním alebo extrahovaním obsahu, čím zvyšujú bezpečnosť a kontrolu nad distribúciou a používaním PDF dokumentov.
 
 ## Podpora projektu 💶
 Projekt môžete finančne podporiť:
