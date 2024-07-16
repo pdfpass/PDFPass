@@ -359,7 +359,7 @@
             chkNotations.Name = "chkNotations";
             chkNotations.Size = new System.Drawing.Size(148, 19);
             chkNotations.TabIndex = 21;
-            chkNotations.Text = "Povoliť anotácie";
+            chkNotations.Text = "Povoliť prídanie anotácií";
             chkNotations.UseVisualStyleBackColor = true;
             // 
             // chkModifying
