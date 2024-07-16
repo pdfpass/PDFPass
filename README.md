@@ -20,9 +20,8 @@ Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFP
 
 ## Kedy použiť "heslo vlastníka" (owner password) 🔐? 
 Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, čo môžu používatelia s dokumentom robiť. Tu sú hlavné možnosti ochrany, ktoré môžete nastaviť pomocou "hesla vlastníka" v **Nastaveniach**:
-* Zabránenie úpravám dokumentu:
-  * Zabránenie všetkým úpravám: Môžete nastaviť, aby nikto nemohol dokument upravovať.
-  * Obmedzené úpravy: Môžete povoliť len určité typy úprav, ako je napríklad vyplňovanie formulárov alebo pridávanie komentárov.
+* Zabránenie všetkým úpravám: Môžete nastaviť, aby nikto nemohol dokument upravovať.
+* Zabránenie vyplňovania formulárov
 * Zabránenie tlače dokumentu:
   * Zabránenie všetkej tlače: Môžete nastaviť heslo, aby nikto nemohol dokument tlačiť.
   * Zabránenie kvalitnej tlače: Môžete povoliť len tlač v nízkej kvalite, čím sa zabezpečí, že dokument nebude možné vytlačiť vo vysokej kvalite.
