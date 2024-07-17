@@ -1,7 +1,7 @@
 ![ref-card.jpg](screenshots%2Fref-card.jpg)
 
 # PDFPass 🇸🇰
-PDFPass je **bezplatný** offline nástroj s otvoreným zdrojovým kódom v jazyku C# (.NET 8) na rýchle a jednoduché šifrovanie/heslovanie súborov PDF ako aj odstraňovanie hesiel. 
+**PDFPass** je **bezplatný** offline nástroj s otvoreným zdrojovým kódom v jazyku C# (.NET 8) na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF ako aj **odstraňovanie** hesiel. 
 
 Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
 
@@ -12,7 +12,7 @@ Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFP
 
 ## Kedy použiť "heslo pre uzamknutie čítania" (user password) 🔐?
 
-* Ochrana citlivých informácií: Ak PDF dokument obsahuje citlivé alebo dôverné informácie, je vhodné ho chrániť heslom, aby ste zamedzili neoprávnenému prístupu.
+* Ochrana citlivých informácií: Ak PDF dokument obsahuje **citlivé** alebo **dôverné** informácie, je vhodné ho chrániť heslom, aby ste zamedzili neoprávnenému prístupu.
 
 * Distribúcia medzi obmedzený počet osôb: Ak je PDF určený na distribúciu len medzi určitých jednotlivcov alebo skupinu osôb, heslo zabezpečí, že dokument môže byť otvorený len tými, ktorí poznajú heslo.
 
@@ -34,7 +34,7 @@ Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, 
 * Zabránenie asistenčným technológiám: Môžete obmedziť používanie asistenčných technológií, ako sú obrazovkové čítačky, ktoré by inak mohli čítať obsah dokumentu pre zrakovo postihnutých používateľov.
 * Zabránenie pridávaniu anotácií: Môžete obmedziť používateľov, aby nemohli pridávať komentáre, poznámky alebo anotácie k dokumentu.
 
-Tieto možnosti ochrany zabezpečujú, že dokument zostane chránený pred neoprávnenými úpravami, tlačou, kopírovaním alebo extrahovaním obsahu, čím zvyšujú bezpečnosť a kontrolu nad distribúciou a používaním PDF dokumentov.
+Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred neoprávnenými úpravami, tlačou, kopírovaním alebo extrahovaním obsahu, čím zvyšujú bezpečnosť a kontrolu nad distribúciou a používaním PDF dokumentov.
 
 ## Podpora projektu 💶
 Projekt môžete finančne podporiť:
