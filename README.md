@@ -10,7 +10,7 @@ Kontakt: **pdfpass@outlook.com**
 ## Súbor na stiahnutie 💾
 Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Kedy použiť "heslo pre uzamknutie čítania" (user password) 🔐?
+## Kedy použiť "heslo pre uzamknutie čítania" (user password) 🔑
 
 * Ochrana citlivých informácií: Ak PDF dokument obsahuje **citlivé** alebo **dôverné** informácie, je vhodné ho chrániť heslom, aby ste zamedzili neoprávnenému prístupu.
 
@@ -18,7 +18,7 @@ Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFP
 
 * Právne alebo regulačné požiadavky: V niektorých prípadoch môžu byť požiadavky na ochranu dokumentov heslom dané právnymi predpismi alebo internými reguláciami organizácie.
 
-## Kedy použiť "heslo vlastníka" (owner password) 🔐? 
+## Kedy použiť "heslo vlastníka" (owner password) 🔑
 Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, čo môžu používatelia s dokumentom robiť. Tu sú hlavné možnosti ochrany, ktoré môžete nastaviť pomocou "hesla vlastníka" v **Nastaveniach**:
 * Zabránenie všetkým úpravám: Môžete nastaviť, aby nikto nemohol dokument upravovať.
 * Zabránenie vyplňovania formulárov
