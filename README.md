@@ -71,13 +71,13 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 --run - okamžite vykonať funkciu "Zahesluj" po spustení (nečakať, kým používateľ klikne na tlačidlo)
 ```
 
-## Hlavná obrazovka pre nastavenia hesla
+## Hlavná obrazovka pre nastavenia hesla 🔒
 ![App Screenshot](screenshots%2Fencrypt.png)
 
-## Hlavná obrazovka pre odstránenia hesla
+## Hlavná obrazovka pre odstránenia hesla 🔓
 ![App Screenshot](screenshots%2Fdecrypt.png)
 
-## Obrazovka nastavení
+## Obrazovka nastavení ⚙️
 ![Settings](screenshots%2Fsettings.png)
 
 
