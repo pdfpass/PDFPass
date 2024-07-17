@@ -81,7 +81,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 ![Settings](screenshots%2Fsettings.png)
 
 
-## Zmeny oproti pôvodnej verzii
+## Zmeny oproti pôvodnej verzii 🔄
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
@@ -89,7 +89,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 * vizuálne vylepšenia
 
 
-## Plánované zmeny
+## Plánované zmeny 📅
 * **funkcionalita odstránenia hesla z PDF ✅**
 * podpora viacerých jazykov ⏳
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
