@@ -43,7 +43,7 @@ Projekt môžete finančne podporiť:
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
 
-## "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
+## "Inštalácia" a kontextové menu (vyžaduje práva administrátora) 💽
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
@@ -54,10 +54,10 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
 
-## "Inštalácia" a odkaz na ploche (bez práv administrátora)
+## "Inštalácia" a odkaz na ploche (bez práv administrátora) 🖥️
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche postačuje spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
-## Parametre príkazového riadku
+## Parametre príkazového riadku 🛠️
 
 ```
 -i [cesta vstupného súboru] alebo --input [cesta vstupného súboru]
