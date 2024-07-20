@@ -219,8 +219,8 @@ namespace PDFPass
 
                 if (OwnerPassword != "")
                 {
-                    input.prompt = "Heslo pre editovanie bolo nastavené. Potvrdťe prosím heslo opät.";
-                    input.title = "Potvrdenie hesla pre editovanie";
+                    input.prompt = "Heslo vlastníka bolo nastavené. Potvrdťe prosím heslo opät.";
+                    input.title = "Potvrdenie hesla vlastníka";
                     input.password = true;
                     input.ShowDialog();
                     if (input.cancelled)
@@ -230,7 +230,7 @@ namespace PDFPass
 
                     if (input.result != OwnerPassword)
                     {
-                        MessageBox.Show("Heslo pre editovanie nie je rovnaké. Prosím, zopakujte.", "Chyba",
+                        MessageBox.Show("Heslo vlastníka nie je rovnaké. Prosím, zopakujte.", "Chyba",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -460,9 +460,9 @@ namespace PDFPass
         private void lnkPasswordOwner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var input = new FrmInputBox();
-            input.title = "Nastaviť heslo pre editovanie";
+            input.title = "Nastaviť heslo vlastníka";
             input.prompt =
-                "Zadajte heslo pre editovanie.\r\n(Heslo pre editovanie umožní plnú kontrolu nad obsahom súboru PDF.)\r\n\r\nStlačte Storno ak chcete anulovať heslo pre editovanie";
+                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka umožní plnú kontrolu nad obsahom súboru PDF.)\r\n\r\nStlačte Storno, ak chcete anulovať heslo vlastníka";
             input.password = true;
             input.ShowDialog();
             OwnerPassword = input.cancelled ? "" : input.result;
