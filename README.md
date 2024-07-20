@@ -10,7 +10,7 @@ Kontakt: **pdfpass@outlook.com**
 ## Súbor na stiahnutie 💾
 Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFPass/releases/latest
 
-## Kedy použiť "heslo pre uzamknutie čítania" (user password) 🔐?
+## Kedy použiť "heslo pre uzamknutie čítania" (user password) 🔑
 
 * Ochrana citlivých informácií: Ak PDF dokument obsahuje **citlivé** alebo **dôverné** informácie, je vhodné ho chrániť heslom, aby ste zamedzili neoprávnenému prístupu.
 
@@ -18,7 +18,7 @@ Aktuálny ```PDFPass-portable.zip``` najdete na: https://github.com/pdfpass/PDFP
 
 * Právne alebo regulačné požiadavky: V niektorých prípadoch môžu byť požiadavky na ochranu dokumentov heslom dané právnymi predpismi alebo internými reguláciami organizácie.
 
-## Kedy použiť "heslo vlastníka" (owner password) 🔐? 
+## Kedy použiť "heslo vlastníka" (owner password) 🔑
 Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, čo môžu používatelia s dokumentom robiť. Tu sú hlavné možnosti ochrany, ktoré môžete nastaviť pomocou "hesla vlastníka" v **Nastaveniach**:
 * Zabránenie všetkým úpravám: Môžete nastaviť, aby nikto nemohol dokument upravovať.
 * Zabránenie vyplňovania formulárov
@@ -43,7 +43,7 @@ Projekt môžete finančne podporiť:
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
 
-## "Inštalácia" a kontextové menu (vyžaduje práva administrátora)
+## "Inštalácia" a kontextové menu (vyžaduje práva administrátora) 💽
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
@@ -54,10 +54,10 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
 
-## "Inštalácia" a odkaz na ploche (bez práv administrátora)
+## "Inštalácia" a odkaz na ploche (bez práv administrátora) 🖥️
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche postačuje spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
-## Parametre príkazového riadku
+## Parametre príkazového riadku 🛠️
 
 ```
 -i [cesta vstupného súboru] alebo --input [cesta vstupného súboru]
@@ -81,7 +81,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 ![Settings](screenshots%2Fsettings.png)
 
 
-## Zmeny oproti pôvodnej verzii
+## Zmeny oproti pôvodnej verzii 🔄
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
@@ -89,7 +89,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 * vizuálne vylepšenia
 
 
-## Plánované zmeny
+## Plánované zmeny 📅
 * **funkcionalita odstránenia hesla z PDF ✅**
 * podpora viacerých jazykov ⏳
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
