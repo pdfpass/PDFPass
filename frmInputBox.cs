@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PDFPass
 {
     public partial class FrmInputBox : Form
     {
-        public string result;   // The result of the input box action.
-        public string prompt;   // Prompt to be displayed.
-        public string title;    // Title of box
-        public bool password;   // Is the input a password?
+        public string Result;   // The result of the input box action.
+        public string Prompt;   // Prompt to be displayed.
+        public string Title;    // Title of box
+        public bool Password;   // Is the input a password?
 
-        public bool cancelled;
+        public bool PwdChanged;
         public FrmInputBox()
         {
             InitializeComponent();
@@ -31,15 +24,15 @@ namespace PDFPass
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            result = txtInput.Text;
-            cancelled = false;
+            Result = txtInput.Text;
+            PwdChanged = true;
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            prompt = "";
-            cancelled = true;
+            Prompt = "";
+            PwdChanged = true;
             this.Close();
         }
 
@@ -47,9 +40,9 @@ namespace PDFPass
         {
             txtInput.Focus();
             txtInput.Text = ""; // Clear input on load.
-            lblPrompt.Text = prompt;
-            this.Text = title;
-            txtInput.PasswordChar = (password) ? '*' : (char)0;
+            lblPrompt.Text = Prompt;
+            Text = Title;
+            txtInput.PasswordChar = (Password) ? '*' : (char)0;
         }
 
         private void txtInput_TextChanged(object sender, EventArgs e)
@@ -60,6 +53,7 @@ namespace PDFPass
         private void btnClose_Click(object sender, EventArgs e)
         {
             // Close the app
+            PwdChanged = false;
             Close();
         }
     }

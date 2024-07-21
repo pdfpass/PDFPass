@@ -199,18 +199,18 @@ namespace PDFPass
             if (Settings.password_confirm)
             {
                 var input = new FrmInputBox();
-                input.prompt = "Zadajte heslo pre potvrdenie.";
-                input.title = "Potvrdenie hesla";
-                input.password = true;
+                input.Prompt = "Zadajte heslo uzamknutia čítania pre potvrdenie.";
+                input.Title = "Potvrdenie hesla uzamknutia čítania";
+                input.Password = true;
                 input.ShowDialog(); // Modal, blocking call
 
-                if (input.cancelled)
+                if (!input.PwdChanged)
                 {
                     return;
                 }
 
                 // If password doesn't match, stop.
-                if (input.result != txtPassword.Text)
+                if (input.Result != txtPassword.Text)
                 {
                     MessageBox.Show("Hesla sa nezhodujú. Zopakujte.", "Chyba", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
@@ -219,16 +219,16 @@ namespace PDFPass
 
                 if (OwnerPassword != "")
                 {
-                    input.prompt = "Heslo vlastníka bolo nastavené. Potvrdťe prosím heslo opät.";
-                    input.title = "Potvrdenie hesla vlastníka";
-                    input.password = true;
+                    input.Prompt = "Heslo vlastníka bolo nastavené. Potvrdťe prosím heslo opät.";
+                    input.Title = "Potvrdenie hesla vlastníka";
+                    input.Password = true;
                     input.ShowDialog();
-                    if (input.cancelled)
+                    if (!input.PwdChanged)
                     {
                         return;
                     }
 
-                    if (input.result != OwnerPassword)
+                    if (input.Result != OwnerPassword)
                     {
                         MessageBox.Show("Heslo vlastníka nie je rovnaké. Prosím, zopakujte.", "Chyba",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -297,13 +297,13 @@ namespace PDFPass
 
                 var writerProperties = new WriterProperties(); // Set properties of output
                 writerProperties.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text),
-                    OwnerPassword == "" ? null : Encoding.ASCII.GetBytes(OwnerPassword), documentOptions,
+                    string.IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword), documentOptions,
                     encryptionProperties); // Enable encryption
                 PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Chyba počas spracovania súboru: " + ex.Message, "Chyba", MessageBoxButtons.OK,
+                MessageBox.Show("Neznáma chyba počas spracovania súboru: " + ex.Message, "Chyba", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 Cursor.Current = Cursors.Default;
                 return;
@@ -460,13 +460,17 @@ namespace PDFPass
         private void lnkPasswordOwner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var input = new FrmInputBox();
-            input.title = "Nastaviť heslo vlastníka";
-            input.prompt =
-                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka umožní plnú kontrolu nad obsahom súboru PDF.)\r\n\r\nStlačte Storno, ak chcete anulovať heslo vlastníka";
-            input.password = true;
+            input.Title = "Nastaviť heslo vlastníka";
+            input.Prompt =
+                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka umožní plnú kontrolu nad obsahom súboru PDF.)\r\n\r\nStlačte Storno, ak chcete zrušiť heslo vlastníka";
+            input.Password = true;
             input.ShowDialog();
-            OwnerPassword = input.cancelled ? "" : input.result;
-            lblOwnerPasswordSet.Visible = (OwnerPassword != "");
+            
+            if (input.PwdChanged) {
+                OwnerPassword = input.Result;
+            }
+               
+            lblOwnerPasswordSet.Visible = !string.IsNullOrEmpty(OwnerPassword);
         }
     }
 }
