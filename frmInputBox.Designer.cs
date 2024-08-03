@@ -42,7 +42,7 @@
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(65, 32);
             btnOK.TabIndex = 0;
-            btnOK.Text = "OK";
+            btnOK.Text = "Potvrdiť";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
             // 
