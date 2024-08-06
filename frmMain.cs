@@ -476,7 +476,7 @@ namespace PDFPass
             var input = new FrmInputBox();
             input.Title = "Nastaviť heslo vlastníka";
             input.Prompt =
-                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka obmedzí plnú kontrolu nad obsahom súboru PDF.)\r\n\r\nStlačte STORNO, ak chcete ZRUŠIŤ heslo vlastníka";
+                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka obmedzí manipuláciu s obsahom PDF)\r\n\r\nStlačte STORNO, ak chcete ZRUŠIŤ heslo vlastníka";
             input.Password = true;
             input.ShowDialog();
             
