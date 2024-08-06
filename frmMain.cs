@@ -203,7 +203,7 @@ namespace PDFPass
             if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
             {
                 
-                MessageBox.Show("Nebolo zadané heslo ani jedno heslo!", "Chyba", MessageBoxButtons.OK,
+                MessageBox.Show("Nebolo zadané žiadne heslo! (potrebné minimálne 1)", "Chyba", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtPassword.Focus();
                 return;
