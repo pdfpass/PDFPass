@@ -187,6 +187,17 @@ namespace PDFPass
                 }
             }
 
+            // Verify password if at least 1 pwd
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
+            {
+                
+                MessageBox.Show("Nebolo zadané žiadne heslo! (potrebné minimálne 1)", "Chyba", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtPassword.Focus();
+                return;
+            }
+            
+            // Warning about missing reading pwd
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 var dialogResult = MessageBox.Show("Nebolo zadané heslo pre uzamknutie čitania! Pokračovať?", "Upozornenie", MessageBoxButtons.YesNo,
@@ -199,16 +210,6 @@ namespace PDFPass
             }
 
             
-            // Verify password:
-            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
-            {
-                
-                MessageBox.Show("Nebolo zadané žiadne heslo! (potrebné minimálne 1)", "Chyba", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtPassword.Focus();
-                return;
-            }
-
             // Confirm password:
             if (Settings.password_confirm)
             {
