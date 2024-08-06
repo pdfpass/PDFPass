@@ -187,10 +187,24 @@ namespace PDFPass
                 }
             }
 
-            // Verify password:
-            if (txtPassword.Text == "")
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                MessageBox.Show("Nebolo zadané heslo.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var dialogResult = MessageBox.Show("Nebolo zadané heslo pre uzamknutie čitania! Pokračovať?", "Upozornenie", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.No)
+                {
+                    txtPassword.Focus();
+                    return;    
+                }
+            }
+
+            
+            // Verify password:
+            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
+            {
+                
+                MessageBox.Show("Nebolo zadané heslo ani jedno heslo!", "Chyba", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 txtPassword.Focus();
                 return;
             }
