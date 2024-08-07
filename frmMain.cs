@@ -114,13 +114,12 @@ namespace PDFPass
         private void btnPasswordGenerate_Click(object sender, EventArgs e)
         {
             // Set password
-            txtPassword.Text = PdfUtils.GenerateRandomPassword(PwLengthMin,PwLengthMax);
+            txtPassword.Text = PdfUtils.GenerateRandomPassword(PwLengthMin, PwLengthMax);
 
             // Copy to clipboard
             btnCopy_Click(sender, e);
         }
 
-        
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
@@ -190,26 +189,26 @@ namespace PDFPass
             // Verify password if at least 1 pwd
             if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
             {
-                
                 MessageBox.Show("Nebolo zadané žiadne heslo! (potrebné minimálne 1)", "Chyba", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtPassword.Focus();
                 return;
             }
-            
+
             // Warning about missing reading pwd
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                var dialogResult = MessageBox.Show("Nebolo zadané heslo pre uzamknutie čitania! Pokračovať?", "Upozornenie", MessageBoxButtons.YesNo,
+                var dialogResult = MessageBox.Show("Nebolo zadané heslo pre uzamknutie čitania! Pokračovať?",
+                    "Upozornenie", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.No)
                 {
                     txtPassword.Focus();
-                    return;    
+                    return;
                 }
             }
 
-            
+
             // Confirm password:
             if (Settings.password_confirm)
             {
@@ -312,7 +311,8 @@ namespace PDFPass
 
                 var writerProperties = new WriterProperties(); // Set properties of output
                 writerProperties.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text),
-                    string.IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword), documentOptions,
+                    string.IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword),
+                    documentOptions,
                     encryptionProperties); // Enable encryption
                 PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties);
             }
@@ -480,11 +480,12 @@ namespace PDFPass
                 "Zadajte heslo vlastníka.\r\n(Heslo vlastníka obmedzí manipuláciu s obsahom PDF)\r\n\r\nStlačte STORNO, ak chcete ZRUŠIŤ heslo vlastníka";
             input.Password = true;
             input.ShowDialog();
-            
-            if (input.PwdChanged) {
+
+            if (input.PwdChanged)
+            {
                 OwnerPassword = input.Result;
             }
-               
+
             lblOwnerPasswordSet.Visible = !string.IsNullOrEmpty(OwnerPassword);
         }
     }
