@@ -5,7 +5,7 @@
 
 Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
 
-Kontakt: **pdfpass@outlook.com**
+Kontakt: **pdf.pass@outlook.com**
 
 ## Súbor na stiahnutie 💾
 Aktuálny ```PDFPass-portable.zip``` najdete tu: [stiahnuť](https://github.com/pdfpass/PDFPass/releases/latest)
