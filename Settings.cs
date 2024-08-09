@@ -47,7 +47,7 @@ namespace PDFPass
             Notify = []; // Add delegate functions to this list to be notified.
 
         // Constants:
-        const string RegKey = "HKEY_CURRENT_USER\\Software\\PDFEncrypt\\"; // Main registry key
+        const string RegKey = "HKEY_CURRENT_USER\\Software\\PDFPASS\\"; // Main registry key
 
         public static void Load()
         {
