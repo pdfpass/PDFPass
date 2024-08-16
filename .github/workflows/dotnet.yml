@@ -27,17 +27,24 @@ jobs:
         with:
           name: published-app
           path: bin\Release
+      - name: Set up Inno Setup
+        run: | 
+          choco install innosetup
       - name: Create Release Folder
         run: New-Item -ItemType Directory -Force -Path release-zip\pdfpass-portable
+      - name: Create Setup Folder
+        run: New-Item -ItemType Directory -Force -Path release-inno\pdfpass-installer  
       - name: Copy Files to Release Folder
         run: |
           Copy-Item "bin\Release\PDFPass.exe" release-zip\pdfpass-portable
-          Copy-Item "cmds\kontextove-menu-ako-admin-zaregistruj.cmd" release-zip\pdfpass-portable 
+          Copy-Item "cmds\kontextove-menu-ako-admin-zaregistruj.cmd" release-zip\pdfpass-portable
           Copy-Item "cmds\kontextove-menu-ako-admin-odregistruj.cmd" release-zip\pdfpass-portable
-          Copy-Item "cmds\pridaj-odkaz-na-plochu.cmd" release-zip\pdfpass-portable
-          
+          Copy-Item "cmds\pridaj-odkaz-na-plochu.cmd" release-zip\pdfpass-portable      
       - name: Zip Release Files
         run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
+      - name: Build installer with Inno Setup
+        run: |
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" pdfpasss-inno.iss      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -57,3 +64,8 @@ jobs:
           asset_path: release-zip\PDFPass-portable.zip
           asset_name: PDFPass-portable.zip # Choose a name for your release asset
           asset_content_type: application/octet-stream
+      - name: Upload installer as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: installer
+          path: release-inno\pdfpass-installer.exe
