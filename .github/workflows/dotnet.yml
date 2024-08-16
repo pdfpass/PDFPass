@@ -74,5 +74,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: release-inno\pdfpass-installer.exe
-          asset_name: pdfpass-installer.exe # Choose a name for your release asset
+          asset_name: pdfpass-instalator-nepodpisany.exe # Choose a name for your release asset
           asset_content_type: application/octet-stream
