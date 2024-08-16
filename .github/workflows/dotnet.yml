@@ -33,7 +33,7 @@ jobs:
       - name: Create Release Folder
         run: New-Item -ItemType Directory -Force -Path release-zip\pdfpass-portable
       - name: Create Setup Folder
-        run: New-Item -ItemType Directory -Force -Path release-inno\pdfpass-installer  
+        run: New-Item -ItemType Directory -Force -Path release-inno\pdfpass-installer
       - name: Copy Files to Release Folder
         run: |
           Copy-Item "bin\Release\PDFPass.exe" release-zip\pdfpass-portable
@@ -44,7 +44,10 @@ jobs:
         run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: Build installer with Inno Setup
         run: |
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" pdfpasss-inno.iss      
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" pdfpasss-inno.iss
+      - name: List Output InnoSetup Directory
+        run: |
+          dir release-inno\pdfpass-installer    
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
