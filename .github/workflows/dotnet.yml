@@ -71,4 +71,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: installer
-          path: release-inno\pdfpass-installer.exe
+          path: release-inno\pdfpass-installer\pdfpass-installer.exe
