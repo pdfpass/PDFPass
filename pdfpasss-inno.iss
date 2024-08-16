@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "PDFPass"
-#define MyAppVersion "2024.8.8"
+#define MyAppVersion "2024.8.9"
 #define MyAppPublisher "PDFPass"
 #define MyAppURL "https://github.com/pdfpass/"
 #define MyAppExeName "PDFPass.exe"
@@ -28,7 +28,7 @@ ArchitecturesAllowed=x64compatible
 ; install be done in "64-bit mode" on x64 or Windows 11 on Arm,
 ; meaning it should use the native 64-bit Program Files directory and
 ; the 64-bit view of the registry.
-LicenseFile=apgl.txt
+LicenseFile=agpl.txt
 ArchitecturesInstallIn64BitMode=x64compatible
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
