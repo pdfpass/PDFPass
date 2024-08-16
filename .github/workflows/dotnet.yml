@@ -30,10 +30,10 @@ jobs:
       - name: Set up Inno Setup
         run: | 
           choco upgrade innosetup -y
-      - name: Create Release Folder
+      - name: Create Release Folder (zip)
         run: New-Item -ItemType Directory -Force -Path release-zip\pdfpass-portable
-      - name: Create Setup Folder
-        run: New-Item -ItemType Directory -Force -Path release-inno\pdfpass-installer
+      - name: Create Setup Folder (installer)
+        run: New-Item -ItemType Directory -Force -Path release-inno
       - name: Copy Files to Release Folder
         run: |
           Copy-Item "bin\Release\PDFPass.exe" release-zip\pdfpass-portable
@@ -47,7 +47,7 @@ jobs:
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" pdfpasss-inno.iss
       - name: List Output InnoSetup Directory
         run: |
-          dir release-inno\pdfpass-installer    
+          dir release-inno
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -58,7 +58,7 @@ jobs:
           release_name: Release ${{ env.release_Version }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
+      - name: Upload Release Asset (zip)
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -66,9 +66,13 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: release-zip\PDFPass-portable.zip
           asset_name: PDFPass-portable.zip # Choose a name for your release asset
-          asset_content_type: application/octet-stream
-      - name: Upload installer as artifact
-        uses: actions/upload-artifact@v2
+          asset_content_type: application/octet-stream      
+      - name: Upload Release Asset (installer)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: installer
-          path: release-inno\pdfpass-installer\pdfpass-installer.exe
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: release-inno\pdfpass-installer.exe
+          asset_name: pdfpass-installer.exe # Choose a name for your release asset
+          asset_content_type: application/octet-stream
