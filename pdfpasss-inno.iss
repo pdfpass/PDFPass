@@ -28,6 +28,7 @@ ArchitecturesAllowed=x64compatible
 ; install be done in "64-bit mode" on x64 or Windows 11 on Arm,
 ; meaning it should use the native 64-bit Program Files directory and
 ; the 64-bit view of the registry.
+LicenseFile=agpl.txt
 ArchitecturesInstallIn64BitMode=x64compatible
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
