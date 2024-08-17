@@ -48,7 +48,7 @@ Projekt môžete finančne podporiť:
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
 
-## 1. Inštalácia pomocou ```pdfpass-install.exe```
+## 1. Inštalácia pomocou ```pdfpass-install.exe``` 🆕
 Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)
 <br>
 * umožní vybrať adresár pre PDFpass
