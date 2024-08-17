@@ -1,14 +1,14 @@
 ![ref-card.jpg](screenshots%2Fref-card.jpg)
 
 # PDFPass 🇸🇰
-**PDFPass** je **bezplatný** offline nástroj s otvoreným zdrojovým kódom v jazyku C# (.NET 8) na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF ako aj **odstraňovanie** hesiel. 
+**PDFPass** je **bezplatný** offline nástroj s otvoreným zdrojovým kódom v jazyku C# (.NET 8) na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF, ako aj **odstraňovanie** hesiel. 
 
 Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
 
 Kontakt: **pdf.pass@outlook.com**
 
 ## Súbor na stiahnutie 💾
-Aktuálny ```PDFPass-portable.zip``` alebo ```pdfpass-install.exe``` najdete tu: [stiahnuť](https://github.com/pdfpass/PDFPass/releases/latest)
+Aktuálny ```PDFPass-portable.zip``` alebo ```pdfpass-install.exe``` nájdete tu: [stiahnuť](https://github.com/pdfpass/PDFPass/releases/latest)
 <br>
 <br>
 
@@ -44,19 +44,20 @@ Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred 
 # Podpora projektu 💶
 Projekt môžete finančne podporiť:
 * platbou **prevodom** - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť. V ostatných pripadoch sa zobrazi stránka [payme.sk](https://payme.sk) s QR kódom, ktorý stačí zosnímať…
-* platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať, ostané udaje možu byť aj fiktívne)
+* platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať, ostané údaje možu byť aj fiktívne)
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
 
 # Ako nainštalovať PDFPass? ℹ️
 
 ## Inštalácia pomocou ```pdfpass-install.exe``` 🆕 (vyžaduje práva administrátora) 💽
-Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)
-<br>
-* umožní vybrať adresár pre PDFpass
-* umožní vytvoriť odkaz na Plochu
-* umožní pridanie do ponuky Štart
-* zaregistruje kontextové menu
+Inštrukcie pred spustením si môžete prečítať [tu](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)
+<br><br>
+**Inštalátor umožní:**
+* vybrať adresár pre PDFpass
+* vytvoriť odkaz na Plochu
+* pridanie odkazov do ponuky Štart
+* zaregistrovať kontextové menu
 
 ### Ukážka inštalátora
 ![installer.png](screenshots%2Finstaller.png)
