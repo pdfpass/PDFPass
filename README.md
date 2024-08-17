@@ -58,6 +58,8 @@ Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpa
 * umožní pridanie do ponuky Štart
 * zaregistruje kontextové menu
 
+### Ukážka inštalátora
+![installer.png](screenshots%2Finstaller.png)
 
 ## "Inštalácia" + kontextové menu pomocou ```PDFPass-portable.zip``` (vyžaduje práva administrátora) 💽
 
