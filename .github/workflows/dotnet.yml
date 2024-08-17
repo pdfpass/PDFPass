@@ -74,5 +74,14 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: release-inno\pdfpass-installer.exe
-          asset_name: pdfpass-instalator-nepodpisany.exe # Choose a name for your release asset
+          asset_name: pdfpass-install.exe # Choose a name for your release asset
+          asset_content_type: application/octet-stream
+      - name: Upload Release Asset (popis)
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: "Prečítať pred spustením inštalátora.pdf"
+          asset_name: "Prečítať pred spustením inštalátora.pdf" # Choose a name for your release asset
           asset_content_type: application/octet-stream
