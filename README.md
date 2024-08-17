@@ -50,7 +50,7 @@ Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj pr
 
 # Ako nainštalovať PDFPass? ℹ️
 
-## Inštalácia pomocou ```pdfpass-install.exe``` 🆕
+## Inštalácia pomocou ```pdfpass-install.exe``` 🆕 (vyžaduje práva administrátora) 💽
 Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)
 <br>
 * umožní vybrať adresár pre PDFpass
