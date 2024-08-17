@@ -12,9 +12,6 @@ Aktuálny ```PDFPass-portable.zip``` alebo ```pdfpass-install.exe``` najdete tu:
 <br>
 <br>
 
-
-
-
 # Súbor PDF podporuje *2* typy hesiel
 Oba typy je možné nastaviť/odstrániť pomocou **PDFPass**
 
@@ -51,7 +48,16 @@ Projekt môžete finančne podporiť:
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
 
-## "Inštalácia" a kontextové menu (vyžaduje práva administrátora) 💽
+## 1. Inštalácia pomocou ```pdfpass-install.exe```
+Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)
+<br>
+* umožní vybrať adresár pre PDFpass
+* umožní vytvoriť odkaz na Plochu
+* umožní pridanie do ponuky Štart
+* zaregistruje kontextové menu
+
+
+## 2.A "Inštalácia" + kontextové menu pomocou ```PDFPass-portable.zip``` (vyžaduje práva administrátora) 💽
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
@@ -62,7 +68,7 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
 
-## "Inštalácia" a odkaz na ploche (bez práv administrátora) 🖥️
+## 2.B "Inštalácia" a odkaz na ploche pomocou ```PDFPass-portable.zip``` (bez práv administrátora) 🖥️
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche postačuje spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
 ## Parametre príkazového riadku 🛠️
