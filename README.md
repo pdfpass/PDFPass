@@ -12,7 +12,7 @@ Aktuálny ```PDFPass-portable.zip``` alebo ```pdfpass-install.exe``` najdete tu:
 <br>
 <br>
 
-# Súbor PDF podporuje *2* typy hesiel
+# PDF - podporuje 2 typy hesiel
 Oba typy je možné nastaviť/odstrániť pomocou **PDFPass**
 
 ## 1. Heslo pre uzamknutie čítania (user password) 🔑
@@ -41,14 +41,16 @@ Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, 
 
 Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred neoprávnenými úpravami, tlačou, kopírovaním alebo extrahovaním obsahu, čím zvyšujú bezpečnosť a kontrolu nad distribúciou a používaním PDF dokumentov.
 
-## Podpora projektu 💶
+# Podpora projektu 💶
 Projekt môžete finančne podporiť:
 * platbou **prevodom** - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť. V ostatných pripadoch sa zobrazi stránka [payme.sk](https://payme.sk) s QR kódom, ktorý stačí zosnímať…
 * platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať)
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
 
-## 1. Inštalácia pomocou ```pdfpass-install.exe``` 🆕
+# Ako nainštalovať PDFPass? ℹ️
+
+## Inštalácia pomocou ```pdfpass-install.exe``` 🆕
 Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)
 <br>
 * umožní vybrať adresár pre PDFpass
@@ -57,7 +59,7 @@ Inštrukcie pred spustením si môžete prečitať [tu](https://github.com/pdfpa
 * zaregistruje kontextové menu
 
 
-## 2.A "Inštalácia" + kontextové menu pomocou ```PDFPass-portable.zip``` (vyžaduje práva administrátora) 💽
+## "Inštalácia" + kontextové menu pomocou ```PDFPass-portable.zip``` (vyžaduje práva administrátora) 💽
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
@@ -68,10 +70,11 @@ Ak registrácia prebehne úspešne, po kliknutí pravým tlačidlom myši na sú
 ![context-menu.png](screenshots%2Fcontext-menu.png)
 
 
-## 2.B "Inštalácia" a odkaz na ploche pomocou ```PDFPass-portable.zip``` (bez práv administrátora) 🖥️
+## "Inštalácia" a odkaz na ploche pomocou ```PDFPass-portable.zip``` (bez práv administrátora) 🖥️
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Následne pre vytvorenie odkazu na PDFPass na Ploche postačuje spustiť súbor ```pridaj-odkaz-na-plochu.cmd```
-## Parametre príkazového riadku 🛠️
+
+# Parametre príkazového riadku 🛠️
 
 ```
 -i [cesta vstupného súboru] alebo --input [cesta vstupného súboru]
@@ -85,17 +88,17 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 --run - okamžite vykonať funkciu "Zahesluj" po spustení (nečakať, kým používateľ klikne na tlačidlo)
 ```
 
-## Hlavná obrazovka pre nastavenia hesla 🔒
+# Hlavná obrazovka pre nastavenia hesla 🔒
 ![App Screenshot](screenshots%2Fencrypt.png)
 
-## Hlavná obrazovka pre odstránenia hesla 🔓
+# Hlavná obrazovka pre odstránenia hesla 🔓
 ![App Screenshot](screenshots%2Fdecrypt.png)
 
-## Obrazovka nastavení ⚙️
+# Obrazovka nastavení ⚙️
 ![Settings](screenshots%2Fsettings.png)
 
 
-## Zmeny oproti pôvodnej verzii 🔄
+# Zmeny oproti pôvodnej verzii 🔄
 
 * prechod na aktuálnu platformu z .NET 4.7 na .NET 8
 * preklad do slovenčiny 🇸🇰
@@ -103,7 +106,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 * vizuálne vylepšenia
 
 
-## Plánované zmeny 📅
+# Plánované zmeny 📅
 * **funkcionalita odstránenia hesla z PDF ✅**
 * podpora viacerých jazykov ⏳
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
