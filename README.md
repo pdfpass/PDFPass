@@ -62,7 +62,7 @@ Inštrukcie pred spustením si môžete prečítať [tu](https://github.com/pdfp
 ### Ukážka inštalátora
 ![installer.png](screenshots%2Finstaller.png)
 
-## "Inštalácia" + kontextové menu pomocou ```PDFPass-portable.zip``` (vyžaduje práva administrátora) 💽
+## "Inštalácia" + kontextové menu z ```PDFPass-portable.zip``` (vyžaduje práva administrátora) 💽
 
 Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek, nie je potrebné umiestňovať do ```c:\Program Files``` alebo ```c:\Program Files (x86)```. Aktivácia kontextového menu je jednoduchá, postačuje spustiť súbor ```kontextove-menu-ako-admin-zaregistruj.cmd``` s právami administrátora (viď screenshot)
 
