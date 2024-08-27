@@ -115,8 +115,16 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
 * vlastná web stránka ⏳
 
+# Licencia (sk)
+Aplikácia PDFPass a zdrojový kód sú licencované pod licenciou AGPL. Aplikáciu PDFPass môžete sťahovať, inštalovať, používať a šíriť voľne pod licenciou AGPL. Zdrojový kód PDFPass môžete sťahovať, upravovať, vytvárať fork a šíriť pod licenciou AGPL.
 
-# License
+Obmedzenia: Na označenie forkov tohto projektu nesmiete používať výraz "Official" alebo "Original" a pri forkoch musíte uviesť Gabriela Bossa (Java Guru) a PDFPass.net v rámci aplikácie a na akejkoľvek dokumentácii a/alebo súvisiacich webových stránkach.
+
+Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel Boss a nie je licencovaná pod AGPL. Ak chcete vydať rozvetvenú verziu PDFPass, musíte ju premenovať, aby nedošlo k zámene s oficiálnou vetvou.
+
+Logo PDFPass je ochranná známka spoločnosti PDFPass/Gabriel Boss, na ktorú sa vzťahujú autorské práva a ktorá nie je licencovaná pod AGPL. Ak tento projekt forknete, musíte si vytvoriť vlastné logo, ktoré sa podstatne líši od oficiálneho loga, aby nedošlo k zámene vášho loga s oficiálnou/pôvodnou verziou.
+
+# License (en)
 
 The PDFPass application and source code are licensed under the AGPL.  You may download, install, use, and distribute the PDFPass application freely under the AGPL.  You may download, modify, fork, and distribute the PDFPass source code under the AGPL.
 
