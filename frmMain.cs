@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
@@ -26,6 +27,8 @@ namespace PDFPass
         {
             InitializeComponent();
         }
+
+        
 
         private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
         {
@@ -97,6 +100,10 @@ namespace PDFPass
                 // Click the Encrypt button immediately.
                 BtnEncryptClick(sender, e);
             }
+            
+            // Show program version
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));;
         }
 
         private static void SettingsChanged()

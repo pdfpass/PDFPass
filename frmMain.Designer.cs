@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PDFPass
@@ -56,6 +57,7 @@ namespace PDFPass
             dlgOpen = new OpenFileDialog();
             dlgSave = new SaveFileDialog();
             btnSettings = new Button();
+            lblVersion = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -191,7 +193,7 @@ namespace PDFPass
             lnkPasswordOwner.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lnkPasswordOwner.Location = new Point(22, 107);
             lnkPasswordOwner.Name = "lnkPasswordOwner";
-            lnkPasswordOwner.Size = new Size(220, 15);
+            lnkPasswordOwner.Size = new Size(126, 15);
             lnkPasswordOwner.TabIndex = 15;
             lnkPasswordOwner.TabStop = true;
             lnkPasswordOwner.Text = "Zmeniť heslo vlastníka";
@@ -294,7 +296,7 @@ namespace PDFPass
             btnEncrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEncrypt.Image = (Image)resources.GetObject("btnEncrypt.Image");
             btnEncrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEncrypt.Location = new Point(429, 418);
+            btnEncrypt.Location = new Point(429, 410);
             btnEncrypt.Margin = new Padding(2);
             btnEncrypt.Name = "btnEncrypt";
             btnEncrypt.Size = new Size(119, 37);
@@ -310,7 +312,7 @@ namespace PDFPass
             btnClose.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClose.Location = new Point(330, 418);
+            btnClose.Location = new Point(330, 410);
             btnClose.Margin = new Padding(2);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(95, 37);
@@ -335,7 +337,7 @@ namespace PDFPass
             btnSettings.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(13, 418);
+            btnSettings.Location = new Point(13, 410);
             btnSettings.Margin = new Padding(2);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(126, 37);
@@ -345,6 +347,17 @@ namespace PDFPass
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
             // 
+            // lblVersion
+            // 
+            lblVersion.AutoSize = true;
+            lblVersion.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblVersion.Location = new Point(13, 454);
+            lblVersion.Margin = new Padding(2, 0, 2, 0);
+            lblVersion.Name = "lblVersion";
+            lblVersion.Size = new Size(51, 15);
+            lblVersion.TabIndex = 18;
+            lblVersion.Text = "Verzia: []";
+            // 
             // FrmMain
             // 
             AcceptButton = btnEncrypt;
@@ -352,7 +365,8 @@ namespace PDFPass
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             CancelButton = btnClose;
-            ClientSize = new Size(561, 472);
+            ClientSize = new Size(561, 475);
+            Controls.Add(lblVersion);
             Controls.Add(btnSettings);
             Controls.Add(btnClose);
             Controls.Add(btnEncrypt);
@@ -377,6 +391,7 @@ namespace PDFPass
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -403,6 +418,7 @@ namespace PDFPass
         public System.Windows.Forms.Button btnEncrypt;
         public System.Windows.Forms.Label lblOwnerPasswordSet;
         public Button btnDecrypt;
+        private Label lblVersion;
     }
 }
 

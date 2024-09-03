@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblVersion = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             dlgOpen = new System.Windows.Forms.OpenFileDialog();
             btnOK = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
-            lblVisitSite = new System.Windows.Forms.LinkLabel();
             groupBox1 = new System.Windows.Forms.GroupBox();
             label6 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -66,22 +64,11 @@
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // lblVersion
-            // 
-            lblVersion.AutoSize = true;
-            lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblVersion.Location = new System.Drawing.Point(10, 485);
-            lblVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            lblVersion.Name = "lblVersion";
-            lblVersion.Size = new System.Drawing.Size(51, 15);
-            lblVersion.TabIndex = 0;
-            lblVersion.Text = "Verzia: []";
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(10, 502);
+            label1.Location = new System.Drawing.Point(120, 495);
             label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(228, 15);
@@ -116,19 +103,6 @@
             btnCancel.Text = "Storno";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
-            // 
-            // lblVisitSite
-            // 
-            lblVisitSite.AutoSize = true;
-            lblVisitSite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            lblVisitSite.Location = new System.Drawing.Point(237, 501);
-            lblVisitSite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            lblVisitSite.Name = "lblVisitSite";
-            lblVisitSite.Size = new System.Drawing.Size(77, 15);
-            lblVisitSite.TabIndex = 14;
-            lblVisitSite.TabStop = true;
-            lblVisitSite.Text = "Zdrojový kód";
-            lblVisitSite.LinkClicked += lblVisitSite_LinkClicked;
             // 
             // groupBox1
             // 
@@ -324,7 +298,7 @@
             chkAssembly.Location = new System.Drawing.Point(12, 149);
             chkAssembly.Margin = new System.Windows.Forms.Padding(2);
             chkAssembly.Name = "chkAssembly";
-            chkAssembly.Size = new System.Drawing.Size(165, 19);
+            chkAssembly.Size = new System.Drawing.Size(177, 19);
             chkAssembly.TabIndex = 24;
             chkAssembly.Text = "Povoliť usporiadanie stránok";
             chkAssembly.UseVisualStyleBackColor = true;
@@ -335,7 +309,7 @@
             chkScreenreaders.Location = new System.Drawing.Point(204, 149);
             chkScreenreaders.Margin = new System.Windows.Forms.Padding(2);
             chkScreenreaders.Name = "chkScreenreaders";
-            chkScreenreaders.Size = new System.Drawing.Size(162, 19);
+            chkScreenreaders.Size = new System.Drawing.Size(188, 19);
             chkScreenreaders.TabIndex = 23;
             chkScreenreaders.Text = "Povoliť asistenčné technológie";
             chkScreenreaders.UseVisualStyleBackColor = true;
@@ -357,7 +331,7 @@
             chkNotations.Location = new System.Drawing.Point(204, 98);
             chkNotations.Margin = new System.Windows.Forms.Padding(2);
             chkNotations.Name = "chkNotations";
-            chkNotations.Size = new System.Drawing.Size(148, 19);
+            chkNotations.Size = new System.Drawing.Size(155, 19);
             chkNotations.TabIndex = 21;
             chkNotations.Text = "Povoliť pridanie anotácií";
             chkNotations.UseVisualStyleBackColor = true;
@@ -368,7 +342,7 @@
             chkModifying.Location = new System.Drawing.Point(12, 98);
             chkModifying.Margin = new System.Windows.Forms.Padding(2);
             chkModifying.Name = "chkModifying";
-            chkModifying.Size = new System.Drawing.Size(130, 19);
+            chkModifying.Size = new System.Drawing.Size(168, 19);
             chkModifying.TabIndex = 20;
             chkModifying.Text = "Povoliť úpravy dokumentu";
             chkModifying.UseVisualStyleBackColor = true;
@@ -379,7 +353,7 @@
             chkCopying.Location = new System.Drawing.Point(12, 123);
             chkCopying.Margin = new System.Windows.Forms.Padding(2);
             chkCopying.Name = "chkCopying";
-            chkCopying.Size = new System.Drawing.Size(129, 19);
+            chkCopying.Size = new System.Drawing.Size(171, 19);
             chkCopying.TabIndex = 19;
             chkCopying.Text = "Povoliť kopírovanie obsahu";
             chkCopying.UseVisualStyleBackColor = true;
@@ -471,11 +445,9 @@
             Controls.Add(linkDonate);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(lblVisitSite);
             Controls.Add(btnCancel);
             Controls.Add(btnOK);
             Controls.Add(label1);
-            Controls.Add(lblVersion);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             Margin = new System.Windows.Forms.Padding(2);
             MaximizeBox = false;
@@ -492,13 +464,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblVersion;
-		private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.OpenFileDialog dlgOpen;
 		private System.Windows.Forms.Button btnOK;
 		private System.Windows.Forms.Button btnCancel;
-		private System.Windows.Forms.LinkLabel lblVisitSite;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.CheckBox chkShowFolder;
 		private System.Windows.Forms.CheckBox chkCloseAfterCompletion;

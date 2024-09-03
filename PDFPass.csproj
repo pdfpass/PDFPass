@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-<!--    <TargetFramework>net8.0-windows</TargetFramework>-->
     <TargetFramework>net8.0-windows</TargetFramework>
     <DefineConstants>WINDOWS</DefineConstants>
     <TargetOS>windows</TargetOS>
@@ -27,7 +26,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <WarningLevel>3</WarningLevel>
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>lock.ico</ApplicationIcon>
