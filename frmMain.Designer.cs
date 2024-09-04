@@ -281,7 +281,7 @@ namespace PDFPass
             btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
             btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDecrypt.Location = new Point(429, 418);
+            btnDecrypt.Location = new Point(429, 410);
             btnDecrypt.Margin = new Padding(2);
             btnDecrypt.Name = "btnDecrypt";
             btnDecrypt.Size = new Size(111, 37);
@@ -351,7 +351,7 @@ namespace PDFPass
             // 
             lblVersion.AutoSize = true;
             lblVersion.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVersion.Location = new Point(13, 454);
+            lblVersion.Location = new Point(470, 2);
             lblVersion.Margin = new Padding(2, 0, 2, 0);
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(51, 15);
@@ -365,7 +365,7 @@ namespace PDFPass
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             CancelButton = btnClose;
-            ClientSize = new Size(561, 475);
+            ClientSize = new Size(561, 455);
             Controls.Add(lblVersion);
             Controls.Add(btnSettings);
             Controls.Add(btnClose);
