@@ -43,8 +43,8 @@ namespace PDFPass
             btnOutputBrowse = new Button();
             txtOutputFile = new TextBox();
             groupBox3 = new GroupBox();
+            btnChangePassword = new Button();
             lblOwnerPasswordSet = new Label();
-            lnkPasswordOwner = new LinkLabel();
             lblPasswordLength = new Label();
             lblCopied = new Label();
             btnCopy = new Button();
@@ -157,8 +157,8 @@ namespace PDFPass
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(btnChangePassword);
             groupBox3.Controls.Add(lblOwnerPasswordSet);
-            groupBox3.Controls.Add(lnkPasswordOwner);
             groupBox3.Controls.Add(lblPasswordLength);
             groupBox3.Controls.Add(lblCopied);
             groupBox3.Controls.Add(btnCopy);
@@ -170,34 +170,36 @@ namespace PDFPass
             groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(2);
-            groupBox3.Size = new Size(541, 143);
+            groupBox3.Size = new Size(541, 153);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
             groupBox3.Text = "Heslo";
+            // 
+            // btnChangePassword
+            // 
+            btnChangePassword.Image = (Image)resources.GetObject("btnChangePassword.Image");
+            btnChangePassword.ImageAlign = ContentAlignment.MiddleLeft;
+            btnChangePassword.Location = new Point(24, 108);
+            btnChangePassword.Margin = new Padding(2);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(71, 32);
+            btnChangePassword.TabIndex = 17;
+            btnChangePassword.Text = "Zmeniť";
+            btnChangePassword.TextAlign = ContentAlignment.MiddleRight;
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
             // 
             // lblOwnerPasswordSet
             // 
             lblOwnerPasswordSet.AutoSize = true;
             lblOwnerPasswordSet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Location = new Point(170, 108);
+            lblOwnerPasswordSet.Location = new Point(100, 117);
             lblOwnerPasswordSet.Name = "lblOwnerPasswordSet";
-            lblOwnerPasswordSet.Size = new Size(101, 15);
+            lblOwnerPasswordSet.Size = new Size(153, 15);
             lblOwnerPasswordSet.TabIndex = 16;
-            lblOwnerPasswordSet.Text = "Heslo nastavené.";
+            lblOwnerPasswordSet.Text = "Heslo vlastníka nastavené.";
             lblOwnerPasswordSet.Visible = false;
-            // 
-            // lnkPasswordOwner
-            // 
-            lnkPasswordOwner.AutoSize = true;
-            lnkPasswordOwner.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lnkPasswordOwner.Location = new Point(22, 107);
-            lnkPasswordOwner.Name = "lnkPasswordOwner";
-            lnkPasswordOwner.Size = new Size(126, 15);
-            lnkPasswordOwner.TabIndex = 15;
-            lnkPasswordOwner.TabStop = true;
-            lnkPasswordOwner.Text = "Zmeniť heslo vlastníka";
-            lnkPasswordOwner.LinkClicked += lnkPasswordOwner_LinkClicked;
             // 
             // lblPasswordLength
             // 
@@ -411,7 +413,6 @@ namespace PDFPass
 		private System.Windows.Forms.Label lblCopied;
 		private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Label lblPasswordLength;
-        private System.Windows.Forms.LinkLabel lnkPasswordOwner;
         public System.Windows.Forms.TextBox txtInputFile;
         public System.Windows.Forms.TextBox txtOutputFile;
         public System.Windows.Forms.TextBox txtPassword;
@@ -419,6 +420,7 @@ namespace PDFPass
         public System.Windows.Forms.Label lblOwnerPasswordSet;
         public Button btnDecrypt;
         private Label lblVersion;
+        private Button btnChangePassword;
     }
 }
 

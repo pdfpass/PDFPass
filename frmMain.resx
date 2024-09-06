@@ -118,6 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnChangePassword.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAVNJREFUOE+1kbtLw1AYxTMIHcTBySGC4APbIYI2qFXaBlofGGi7uLRUJFgHHzgI
+        bYeCghGqiwZEdGiHTBoQXNSAa/XfOt7v5oLRpNZBf3DIOd/jcsmV/oWhQ/TLe6gM72KLvCj/jvQR+mIV
+        XMUMjHAxTzXR7o1qYHrOQE5EaXYTeaqJ2JtMCRpJxED+Eb2IwcI6bkjkv2cxFs6GDrmcx3W5gNtQsR7N
+        iPEgO2s4M3IYEDEA9WhGxCC1LKz6MuLk91cRYfmgnkXNr+oSXrnPIMGX/Jgp2Ezb5E9TSJoaVngjhJM0
+        TGE/uVyAbSW8Ay4WoZHuXTzduSg5Lop+z+aO+ZKfVhx2S/UOaM8gydT1Bm015AaOAouJ/4PncUSYrzpT
+        aH6Rgg59HxTM8yU/bhTnj5PeK7xEobNcI5GnGvVY7v4K7xOQ30bR6IyhGSbq0YwY/ysk6QMAmNnRSQYU
+        CwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL

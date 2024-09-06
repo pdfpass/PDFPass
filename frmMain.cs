@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,6 @@ namespace PDFPass
             InitializeComponent();
         }
 
-        
 
         private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
         {
@@ -69,7 +69,7 @@ namespace PDFPass
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
             btnPasswordGenerate.Enabled = !isInputEncrypted;
-            lnkPasswordOwner.Visible = !isInputEncrypted;
+            btnChangePassword.Visible = !isInputEncrypted;
             lblOwnerPasswordSet.Visible = !isInputEncrypted && !string.IsNullOrEmpty(OwnerPassword);
         }
 
@@ -100,7 +100,7 @@ namespace PDFPass
                 // Click the Encrypt button immediately.
                 BtnEncryptClick(sender, e);
             }
-            
+
             // Show program version
             var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString();
             lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));
@@ -479,7 +479,7 @@ namespace PDFPass
             InitFormControls();
         }
 
-        private void lnkPasswordOwner_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void btnChangePassword_Click(object sender, EventArgs e)
         {
             var input = new FrmInputBox();
             input.Title = "Nastaviť heslo vlastníka";
@@ -493,7 +493,16 @@ namespace PDFPass
                 OwnerPassword = input.Result;
             }
 
-            lblOwnerPasswordSet.Visible = !string.IsNullOrEmpty(OwnerPassword);
+            if (!string.IsNullOrEmpty(OwnerPassword))
+            {
+                lblOwnerPasswordSet.Text = "Heslo vlastníka nastavené.";
+                lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
+            }
+            else
+            {
+                lblOwnerPasswordSet.Text = "Heslo vlastníka prázdné.";
+                lblOwnerPasswordSet.ForeColor = Color.FromArgb(192, 0, 0);
+            }
         }
     }
 }
