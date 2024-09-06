@@ -102,8 +102,8 @@ namespace PDFPass
             }
             
             // Show program version
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));;
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));
         }
 
         private static void SettingsChanged()
