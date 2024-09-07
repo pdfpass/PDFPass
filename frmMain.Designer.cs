@@ -179,7 +179,7 @@ namespace PDFPass
             // 
             btnChangePassword.Image = (Image)resources.GetObject("btnChangePassword.Image");
             btnChangePassword.ImageAlign = ContentAlignment.MiddleLeft;
-            btnChangePassword.Location = new Point(24, 108);
+            btnChangePassword.Location = new Point(21, 108);
             btnChangePassword.Margin = new Padding(2);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(71, 32);
@@ -272,7 +272,7 @@ namespace PDFPass
             txtPassword.Location = new Point(24, 58);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
-            txtPassword.PlaceholderText = "(zadajte heslo)";
+            txtPassword.PlaceholderText = "(zadať heslo)";
             txtPassword.Size = new Size(348, 29);
             txtPassword.TabIndex = 8;
             txtPassword.TextChanged += txtPassword_TextChanged;
