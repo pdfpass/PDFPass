@@ -501,7 +501,7 @@ namespace PDFPass
             else
             {
                 lblOwnerPasswordSet.Text = "Heslo vlastníka prázdné.";
-                lblOwnerPasswordSet.ForeColor = Color.FromArgb(192, 0, 0);
+                lblOwnerPasswordSet.ForeColor = Color.FromArgb(199, 0, 0);
             }
         }
     }
