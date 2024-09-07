@@ -353,7 +353,7 @@ namespace PDFPass
             // 
             lblVersion.AutoSize = true;
             lblVersion.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblVersion.Location = new Point(470, 2);
+            lblVersion.Location = new Point(463, 2);
             lblVersion.Margin = new Padding(2, 0, 2, 0);
             lblVersion.Name = "lblVersion";
             lblVersion.Size = new Size(51, 15);
