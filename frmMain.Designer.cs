@@ -173,7 +173,7 @@ namespace PDFPass
             groupBox3.Size = new Size(541, 153);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Heslo";
+            groupBox3.Text = "Heslá";
             // 
             // btnChangePassword
             // 
@@ -384,7 +384,7 @@ namespace PDFPass
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmMain";
-            Text = "PDFPass -  PDF šifrovací nástroj zadarmo s otvoreným kódom";
+            Text = "PDFPass -  Nástroj  s otvoreným kódom pre správu PDF hesiel";
             Load += frmMain_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
