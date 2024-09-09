@@ -45,12 +45,12 @@ namespace PDFPass
             groupBox3 = new GroupBox();
             btnChangePassword = new Button();
             lblOwnerPasswordSet = new Label();
-            lblPasswordLength = new Label();
             lblCopied = new Label();
             btnCopy = new Button();
             labelPassword = new Label();
             btnPasswordGenerate = new Button();
             txtPassword = new TextBox();
+            lblPasswordLength = new Label();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
             btnClose = new Button();
@@ -159,12 +159,12 @@ namespace PDFPass
             // 
             groupBox3.Controls.Add(btnChangePassword);
             groupBox3.Controls.Add(lblOwnerPasswordSet);
-            groupBox3.Controls.Add(lblPasswordLength);
             groupBox3.Controls.Add(lblCopied);
             groupBox3.Controls.Add(btnCopy);
             groupBox3.Controls.Add(labelPassword);
             groupBox3.Controls.Add(btnPasswordGenerate);
             groupBox3.Controls.Add(txtPassword);
+            groupBox3.Controls.Add(lblPasswordLength);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(12, 253);
             groupBox3.Margin = new Padding(2);
@@ -194,32 +194,19 @@ namespace PDFPass
             lblOwnerPasswordSet.AutoSize = true;
             lblOwnerPasswordSet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Location = new Point(100, 117);
+            lblOwnerPasswordSet.Location = new Point(97, 117);
             lblOwnerPasswordSet.Name = "lblOwnerPasswordSet";
             lblOwnerPasswordSet.Size = new Size(153, 15);
             lblOwnerPasswordSet.TabIndex = 16;
             lblOwnerPasswordSet.Text = "Heslo vlastníka nastavené.";
             lblOwnerPasswordSet.Visible = false;
             // 
-            // lblPasswordLength
-            // 
-            lblPasswordLength.AutoSize = true;
-            lblPasswordLength.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPasswordLength.ForeColor = Color.FromArgb(255, 128, 0);
-            lblPasswordLength.Location = new Point(22, 92);
-            lblPasswordLength.Margin = new Padding(2, 0, 2, 0);
-            lblPasswordLength.Name = "lblPasswordLength";
-            lblPasswordLength.Size = new Size(350, 15);
-            lblPasswordLength.TabIndex = 14;
-            lblPasswordLength.Text = "Heslá dlhšie ako 32 znakov budú skratené podľa špecifikácie PDF.";
-            lblPasswordLength.Visible = false;
-            // 
             // lblCopied
             // 
             lblCopied.AutoSize = true;
             lblCopied.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblCopied.ForeColor = Color.Green;
-            lblCopied.Location = new Point(22, 92);
+            lblCopied.Location = new Point(24, 92);
             lblCopied.Margin = new Padding(2, 0, 2, 0);
             lblCopied.Name = "lblCopied";
             lblCopied.Size = new Size(140, 13);
@@ -245,12 +232,12 @@ namespace PDFPass
             // 
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelPassword.Location = new Point(24, 32);
+            labelPassword.Location = new Point(21, 33);
             labelPassword.Margin = new Padding(2, 0, 2, 0);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(213, 21);
+            labelPassword.Size = new Size(239, 21);
             labelPassword.TabIndex = 11;
-            labelPassword.Text = "Heslo pre uzamknutie čítania:";
+            labelPassword.Text = "Heslo pre uzamknutie čítania 📖:";
             // 
             // btnPasswordGenerate
             // 
@@ -273,10 +260,23 @@ namespace PDFPass
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "(zadať heslo)";
-            txtPassword.Size = new Size(348, 29);
+            txtPassword.Size = new Size(350, 29);
             txtPassword.TabIndex = 8;
             txtPassword.TextChanged += txtPassword_TextChanged;
             txtPassword.KeyDown += txtPassword_KeyDown;
+            // 
+            // lblPasswordLength
+            // 
+            lblPasswordLength.AutoSize = true;
+            lblPasswordLength.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPasswordLength.ForeColor = Color.FromArgb(255, 128, 0);
+            lblPasswordLength.Location = new Point(24, 92);
+            lblPasswordLength.Margin = new Padding(2, 0, 2, 0);
+            lblPasswordLength.Name = "lblPasswordLength";
+            lblPasswordLength.Size = new Size(350, 15);
+            lblPasswordLength.TabIndex = 14;
+            lblPasswordLength.Text = "Heslá dlhšie ako 32 znakov budú skratené podľa špecifikácie PDF.";
+            lblPasswordLength.Visible = false;
             // 
             // btnDecrypt
             // 

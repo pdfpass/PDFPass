@@ -64,7 +64,7 @@ namespace PDFPass
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
             labelPassword.Text =
-                isInputEncrypted ? "Zadať heslo pre odomknutie PDF:" : "Zadať heslo pre uzamknutie čítania:";
+                isInputEncrypted ? "Zadať heslo pre odomknutie PDF 🔓:" : "Zadať heslo pre uzamknutie čítania 📖:";
             btnEncrypt.Visible = !isInputEncrypted;
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
