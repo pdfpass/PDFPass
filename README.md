@@ -42,8 +42,9 @@ Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, 
 Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred neoprávnenými úpravami, tlačou, kopírovaním alebo extrahovaním obsahu, čím zvyšujú bezpečnosť a kontrolu nad distribúciou a používaním PDF dokumentov.
 
 # Podpora projektu 💶
-Projekt môžete finančne podporiť:
-* platbou **prevodom** - [payme](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť. V ostatných pripadoch sa zobrazi stránka [payme.sk](https://payme.sk) s QR kódom, ktorý stačí zosnímať…
+Projekt je možné finančne podporiť:
+* zosnímaním QR kódu - tu
+* platbou [prevodom](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť (prednastavená je 5 €). V prípade, že nedojde k presmerovaniu do aplikácie, alebo nepoužívate aplikáciu zobrazi sa stranka s platobnými údajmi)
 * platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať, ostané údaje možu byť aj fiktívne)
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
