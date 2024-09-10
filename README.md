@@ -43,10 +43,7 @@ Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred 
 
 # Podpora projektu 💶
 Projekt je možné finančne podporiť:
-* zosnímaním QR kódu <br>
- ![Pay By Square](screenshots%2Fpay-by-square.png)
-<br><br>
-* platbou [prevodom](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť (prednastavená je 5 €). V prípade, že nedojde k presmerovaniu do aplikácie, alebo nepoužívate aplikáciu zobrazi sa stranka s platobnými údajmi)
+* platbou [prevodom](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť (prednastavená je 5 €). V prípade, že nedojde k presmerovaniu do aplikácie, alebo nepoužívate aplikáciu zobrazi sa stránka s platobnými údajmi ako aj QR kód pre rýchlejšiu platbu
 <br><br>
 * platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) (cenu je potrebné zadať, ostané údaje možu byť aj fiktívne)
 
