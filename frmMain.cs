@@ -463,7 +463,7 @@ namespace PDFPass
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var settings = new frmSettings();
+            var settings = new FrmSettings();
             // Calculate the center position
             var posX = this.Location.X + (this.Width - settings.Width) / 2;
             var posY = this.Location.Y + (this.Height - settings.Height) / 2;

@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace PDFPass
 {
-    public partial class frmSettings : Form
+    public partial class FrmSettings : Form
     {
-        public frmSettings()
+        public FrmSettings()
         {
             InitializeComponent();
         }
@@ -17,7 +17,7 @@ namespace PDFPass
         private void frmSettings_Load(object sender, EventArgs e)
         {
             // Load encryption types: (Thanks https://stackoverflow.com/a/11745699/1502289)
-            var encryption_types = new Dictionary<int, string>
+            var encryptionTypes = new Dictionary<int, string>
             {
                 { (int)Settings.EncryptionType.AES_256, "AES-256 (Adobe Reader 8+) [odporúčané]" },
                 { (int)Settings.EncryptionType.AES_128, "AES-128 (Adobe Reader 7+" },
@@ -26,7 +26,7 @@ namespace PDFPass
             };
 
             // Attach datasource to combo box.
-            cboEncryptionType.DataSource = new BindingSource(encryption_types, null);
+            cboEncryptionType.DataSource = new BindingSource(encryptionTypes, null);
             cboEncryptionType.DisplayMember = "Value";
             cboEncryptionType.ValueMember = "Key";
 
@@ -44,7 +44,7 @@ namespace PDFPass
 
             // Encryption options:
             cboEncryptionType.SelectedIndex =
-                cboEncryptionType.FindStringExact(encryption_types[(int)Settings.encryption_type]);
+                cboEncryptionType.FindStringExact(encryptionTypes[(int)Settings.encryption_type]);
             chkEncryptMetadata.Checked = Settings.encrypt_metadata;
             chkPrinting.Checked = Settings.allow_printing;
             chkDegradedPrinting.Checked = Settings.allow_degraded_printing;
