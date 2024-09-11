@@ -97,12 +97,13 @@
             // 
             // btnDefaultOwnerPassword
             // 
+            btnDefaultOwnerPassword.Font = new System.Drawing.Font("Segoe UI", emSize: 11F, System.Drawing.FontStyle.Bold);
             btnDefaultOwnerPassword.Location = new System.Drawing.Point(340, 98);
             btnDefaultOwnerPassword.Name = "btnDefaultOwnerPassword";
             btnDefaultOwnerPassword.Size = new System.Drawing.Size(37, 28);
             btnDefaultOwnerPassword.TabIndex = 6;
             btnDefaultOwnerPassword.Tag = "";
-            btnDefaultOwnerPassword.Text = "<-";
+            btnDefaultOwnerPassword.Text = "🢤";
             btnDefaultOwnerPassword.UseVisualStyleBackColor = true;
             btnDefaultOwnerPassword.Click += button1_Click;
             // 
