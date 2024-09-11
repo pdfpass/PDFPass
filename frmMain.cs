@@ -17,8 +17,8 @@ namespace PDFPass
 {
     public partial class FrmMain : Form
     {
-        const int PwLengthMin = 12; // Minimum generated password length
-        const int PwLengthMax = 24; // Maximum generated password length
+        private const int PwLengthMin = 12; // Minimum generated password length
+        private const int PwLengthMax = 24; // Maximum generated password length
 
         public string OwnerPassword = ""; // The owner password, if any.
         public bool EncryptOnStart = false; // Allows encryption via command line without user interaction
@@ -26,16 +26,57 @@ namespace PDFPass
 
         public FrmMain()
         {
-            InitializeComponent();
+            InitializeView();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            // Add listener for updated settings
+            Settings.Notify.Add(SettingsChanged);
+
+            // Load settings from registry
+            Settings.Load();
+            
+            if (Settings.always_default_owner_password)
+            {
+                OwnerPassword = Settings.owner_password;    
+            }   
+
+            UpdateView();
+
+            // If immediate run is enabled, click Run button (see command line options)
+            if (EncryptOnStart)
+            {
+                // Click the Encrypt button immediately.
+                BtnEncryptClick(sender, e);
+            }
+
+            // Show program version
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));
         }
 
 
-        private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
+        private void UpdateView()
         {
-            var newFileName = isInputEncrypted
-                ? $"{Path.GetFileNameWithoutExtension(fileName)}-dešifrovaný.pdf"
-                : $"{Path.GetFileNameWithoutExtension(fileName)}-zašifrovaný.pdf";
-            return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
+            if (!File.Exists(txtInputFile.Text))
+            {
+                return;
+            }
+            
+            var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
+            txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
+
+            labelPassword.Text =
+                isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 📖";
+            btnEncrypt.Visible = !isInputEncrypted;
+            btnDecrypt.Visible = isInputEncrypted;
+            btnSettings.Visible = !isInputEncrypted;
+            btnPasswordGenerate.Enabled = !isInputEncrypted;
+            btnChangePassword.Visible = !isInputEncrypted;
+            lblOwnerPasswordSet.Visible = !isInputEncrypted;
+            lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword) ? Color.FromArgb(255, 153, 0) : Color.FromArgb(0, 192, 192);
+            lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword) ? "Heslo vlastníka prázdné." : "Heslo vlastníka nastavené.";
         }
 
         private void btnInputBrowse_Click(object sender, EventArgs e)
@@ -48,30 +89,9 @@ namespace PDFPass
 
             txtInputFile.Text = dlgOpen.FileName;
 
-            InitFormControls();
+            UpdateView();
         }
 
-
-        private void InitFormControls()
-        {
-            if (!File.Exists(txtInputFile.Text))
-            {
-                return;
-            }
-
-            OwnerPassword = Settings.owner_password;
-            var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
-            txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
-
-            labelPassword.Text =
-                isInputEncrypted ? "Zadať heslo pre odomknutie PDF 🔓:" : "Zadať heslo pre uzamknutie čítania 📖:";
-            btnEncrypt.Visible = !isInputEncrypted;
-            btnDecrypt.Visible = isInputEncrypted;
-            btnSettings.Visible = !isInputEncrypted;
-            btnPasswordGenerate.Enabled = !isInputEncrypted;
-            btnChangePassword.Visible = !isInputEncrypted;
-            lblOwnerPasswordSet.Visible = !isInputEncrypted && !string.IsNullOrEmpty(OwnerPassword);
-        }
 
         private void btnOutputBrowse_Click(object sender, EventArgs e)
         {
@@ -82,28 +102,6 @@ namespace PDFPass
             }
 
             txtOutputFile.Text = dlgSave.FileName;
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            // Add listener for updated settings
-            Settings.Notify.Add(SettingsChanged);
-
-            // Load settings from registry
-            Settings.Load();
-
-            InitFormControls();
-
-            // If immediate run is enabled, click Run button (see command line options)
-            if (EncryptOnStart)
-            {
-                // Click the Encrypt button immediately.
-                BtnEncryptClick(sender, e);
-            }
-
-            // Show program version
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));
         }
 
         private static void SettingsChanged()
@@ -334,6 +332,14 @@ namespace PDFPass
             ExecuteAfterSteps();
         }
 
+        private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
+        {
+            var newFileName = isInputEncrypted
+                ? $"{Path.GetFileNameWithoutExtension(fileName)}-dešifrovaný.pdf"
+                : $"{Path.GetFileNameWithoutExtension(fileName)}-zašifrovaný.pdf";
+            return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
+        }
+
         private void ExecuteAfterSteps()
         {
             // If launching a program:
@@ -476,7 +482,7 @@ namespace PDFPass
             settings.StartPosition = FormStartPosition.Manual;
             settings.Location = new Point(posX, posY);
             settings.ShowDialog();
-            InitFormControls();
+            UpdateView();
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
@@ -488,20 +494,11 @@ namespace PDFPass
             input.Password = true;
             input.ShowDialog();
 
+
             if (input.PwdChanged)
             {
                 OwnerPassword = input.Result;
-            }
-
-            if (!string.IsNullOrEmpty(OwnerPassword))
-            {
-                lblOwnerPasswordSet.Text = "Heslo vlastníka nastavené.";
-                lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
-            }
-            else
-            {
-                lblOwnerPasswordSet.Text = "Heslo vlastníka prázdné.";
-                lblOwnerPasswordSet.ForeColor = Color.FromArgb(199, 0, 0);
+                UpdateView();
             }
         }
     }

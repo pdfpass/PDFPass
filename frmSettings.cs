@@ -55,6 +55,7 @@ namespace PDFPass
             chkAssembly.Checked = Settings.allow_assembly;
             chkScreenreaders.Checked = Settings.allow_screenreaders;
             txtOwnerPassword.Text = Settings.owner_password;
+            chkAlwaysDefaultOwnerPassword.Checked = Settings.always_default_owner_password;
         }
 
         private void btnRunBrowse_Click(object sender, EventArgs e)
@@ -106,23 +107,19 @@ namespace PDFPass
             Settings.allow_assembly = chkAssembly.Checked;
             Settings.allow_screenreaders = chkScreenreaders.Checked;
             Settings.owner_password = txtOwnerPassword.Text;
+            Settings.always_default_owner_password = chkAlwaysDefaultOwnerPassword.Checked;
 
             Settings.Save();
 
             // Close settings window
-            this.Close();
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
-
-        private void lblVisitSite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            openWebSite("https://github.com/pdfpass/PDF");
-        }
-
+      
         private void chkRun_CheckedChanged_1(object sender, EventArgs e)
         {
         }

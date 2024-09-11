@@ -38,6 +38,7 @@ namespace PDFPass
         public static bool allow_assembly; // Should end user be allowed to assemble the document?
         public static bool allow_screenreaders; // Should screenreaders be allowed to access the document?
         public static string owner_password;
+        public static bool always_default_owner_password;
 
 
         // Events to execute upon setting changes
@@ -222,6 +223,15 @@ namespace PDFPass
 
             owner_password = (string)obj;
 
+            //Set Always Deafult Owner Password:
+            obj = Registry.GetValue(RegKey, "always_default_owner_password", 1);
+            if (obj == null)
+            {
+                obj = 1;
+                Registry.SetValue(RegKey, "always_default_owner_password", (int)obj, RegistryValueKind.DWord);
+            }
+
+            always_default_owner_password = (int)obj == 1;
 
             // Notify all listeners of updates.
             CallNotify();
@@ -263,6 +273,7 @@ namespace PDFPass
             Registry.SetValue(RegKey, "allow_assembly", allow_assembly, RegistryValueKind.DWord);
             Registry.SetValue(RegKey, "allow_screenreaders", allow_screenreaders, RegistryValueKind.DWord);
             Registry.SetValue(RegKey, "owner_password", owner_password, RegistryValueKind.String);
+            Registry.SetValue(RegKey, "always_default_owner_password", always_default_owner_password, RegistryValueKind.DWord);
 
             // Notify all listeners
             CallNotify();

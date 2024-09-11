@@ -31,7 +31,7 @@ namespace PDFPass
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeView()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             groupBox1 = new GroupBox();
@@ -237,7 +237,7 @@ namespace PDFPass
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(239, 21);
             labelPassword.TabIndex = 11;
-            labelPassword.Text = "Heslo pre uzamknutie čítania 📖:";
+            labelPassword.Text = "Heslo pre uzamknutie čítania 📖";
             // 
             // btnPasswordGenerate
             // 

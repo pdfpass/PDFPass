@@ -43,6 +43,7 @@
             txtRun = new System.Windows.Forms.TextBox();
             chkRun = new System.Windows.Forms.CheckBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
+            chkAlwaysDefaultOwnerPassword = new System.Windows.Forms.CheckBox();
             txtOwnerPassword = new System.Windows.Forms.TextBox();
             lblOwnerPassword = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -68,7 +69,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label1.Location = new System.Drawing.Point(120, 495);
+            label1.Location = new System.Drawing.Point(120, 513);
             label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(228, 15);
@@ -116,7 +117,7 @@
             groupBox1.Controls.Add(txtRun);
             groupBox1.Controls.Add(chkRun);
             groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            groupBox1.Location = new System.Drawing.Point(13, 313);
+            groupBox1.Location = new System.Drawing.Point(13, 331);
             groupBox1.Margin = new System.Windows.Forms.Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -222,6 +223,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(chkAlwaysDefaultOwnerPassword);
             groupBox2.Controls.Add(txtOwnerPassword);
             groupBox2.Controls.Add(lblOwnerPassword);
             groupBox2.Controls.Add(label4);
@@ -243,10 +245,20 @@
             groupBox2.Margin = new System.Windows.Forms.Padding(2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            groupBox2.Size = new System.Drawing.Size(394, 282);
+            groupBox2.Size = new System.Drawing.Size(394, 301);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
             groupBox2.Text = " Možnosti šifrovania ";
+            // 
+            // chkAlwaysDefaultOwnerPassword
+            // 
+            chkAlwaysDefaultOwnerPassword.AutoSize = true;
+            chkAlwaysDefaultOwnerPassword.Location = new System.Drawing.Point(97, 272);
+            chkAlwaysDefaultOwnerPassword.Name = "chkAlwaysDefaultOwnerPassword";
+            chkAlwaysDefaultOwnerPassword.Size = new System.Drawing.Size(131, 19);
+            chkAlwaysDefaultOwnerPassword.TabIndex = 29;
+            chkAlwaysDefaultOwnerPassword.Text = "Nastav automaticky";
+            chkAlwaysDefaultOwnerPassword.UseVisualStyleBackColor = true;
             // 
             // txtOwnerPassword
             // 
@@ -426,22 +438,22 @@
             linkDonate.AutoSize = true;
             linkDonate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             linkDonate.LinkColor = System.Drawing.Color.MediumSlateBlue;
-            linkDonate.Location = new System.Drawing.Point(83, 526);
+            linkDonate.Location = new System.Drawing.Point(66, 533);
             linkDonate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             linkDonate.Name = "linkDonate";
-            linkDonate.Size = new System.Drawing.Size(358, 19);
+            linkDonate.Size = new System.Drawing.Size(382, 19);
             linkDonate.TabIndex = 17;
             linkDonate.TabStop = true;
-            linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou!";
+            linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou! 💳";
             linkDonate.LinkClicked += linkDonate_LinkClicked;
             // 
-            // frmSettings
+            // FrmSettings
             // 
             AcceptButton = btnOK;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(512, 555);
+            ClientSize = new System.Drawing.Size(512, 558);
             Controls.Add(linkDonate);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -496,5 +508,6 @@
         private System.Windows.Forms.LinkLabel linkDonate;
         private System.Windows.Forms.TextBox txtOwnerPassword;
         private System.Windows.Forms.Label lblOwnerPassword;
+        private System.Windows.Forms.CheckBox chkAlwaysDefaultOwnerPassword;
     }
 }
