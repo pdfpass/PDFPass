@@ -13,27 +13,28 @@ namespace PDFPass
         public bool PwdChanged;
         public FrmInputBox()
         {
-            InitializeComponent();
-        }
-
-        private void frmInputBox_Load(object sender, EventArgs e)
-        {
-
-
+            InitializeComponents();
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
             Result = txtInput.Text;
             PwdChanged = true;
-            this.Close();
+            Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Prompt = "";
+            Result = string.Empty;
             PwdChanged = true;
-            this.Close();
+            Close();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            // Close the app
+            PwdChanged = false;
+            Close();
         }
 
         private void frmInputBox_Shown(object sender, EventArgs e)
@@ -43,18 +44,6 @@ namespace PDFPass
             lblPrompt.Text = Prompt;
             Text = Title;
             txtInput.PasswordChar = (Password) ? '*' : (char)0;
-        }
-
-        private void txtInput_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            // Close the app
-            PwdChanged = false;
-            Close();
         }
     }
 }

@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponents()
         {
             btnOK = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
@@ -66,7 +66,6 @@
             txtInput.PlaceholderText = "(zadajte heslo)";
             txtInput.Size = new System.Drawing.Size(337, 23);
             txtInput.TabIndex = 3;
-            txtInput.TextChanged += txtInput_TextChanged;
             // 
             // lblPrompt
             // 
@@ -112,7 +111,6 @@
             Name = "FrmInputBox";
             StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             Text = "Title";
-            Load += frmInputBox_Load;
             Shown += frmInputBox_Shown;
             ResumeLayout(false);
             PerformLayout();
