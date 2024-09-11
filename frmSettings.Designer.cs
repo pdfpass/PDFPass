@@ -257,7 +257,7 @@
             chkAlwaysDefaultOwnerPassword.Name = "chkAlwaysDefaultOwnerPassword";
             chkAlwaysDefaultOwnerPassword.Size = new System.Drawing.Size(131, 19);
             chkAlwaysDefaultOwnerPassword.TabIndex = 29;
-            chkAlwaysDefaultOwnerPassword.Text = "Nastav automaticky";
+            chkAlwaysDefaultOwnerPassword.Text = "Nastaviť automaticky";
             chkAlwaysDefaultOwnerPassword.UseVisualStyleBackColor = true;
             // 
             // txtOwnerPassword
