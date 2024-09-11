@@ -47,7 +47,7 @@ namespace PDFPass
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Create the UI form instance
-            var form = new FrmMain();
+            var form = new frmMain();
 
             // If input filename was specified, set it in the main form
             if (opts.InputFile != null)

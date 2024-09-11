@@ -26,13 +26,16 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponents()
+        private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnOK = new System.Windows.Forms.Button();
             btnCancel = new System.Windows.Forms.Button();
             txtInput = new System.Windows.Forms.TextBox();
             lblPrompt = new System.Windows.Forms.TextBox();
             btnClose = new System.Windows.Forms.Button();
+            btnDefaultOwnerPassword = new System.Windows.Forms.Button();
+            toolTipDefaultOwnerPassword = new System.Windows.Forms.ToolTip(components);
             SuspendLayout();
             // 
             // btnOK
@@ -63,8 +66,8 @@
             txtInput.Location = new System.Drawing.Point(14, 100);
             txtInput.Margin = new System.Windows.Forms.Padding(2);
             txtInput.Name = "txtInput";
-            txtInput.PlaceholderText = "(zadajte heslo)";
-            txtInput.Size = new System.Drawing.Size(337, 23);
+            txtInput.PlaceholderText = "(zadať heslo)";
+            txtInput.Size = new System.Drawing.Size(321, 23);
             txtInput.TabIndex = 3;
             // 
             // lblPrompt
@@ -92,13 +95,25 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // btnDefaultOwnerPassword
+            // 
+            btnDefaultOwnerPassword.Location = new System.Drawing.Point(340, 98);
+            btnDefaultOwnerPassword.Name = "btnDefaultOwnerPassword";
+            btnDefaultOwnerPassword.Size = new System.Drawing.Size(37, 28);
+            btnDefaultOwnerPassword.TabIndex = 6;
+            btnDefaultOwnerPassword.Tag = "";
+            btnDefaultOwnerPassword.Text = "<-";
+            btnDefaultOwnerPassword.UseVisualStyleBackColor = true;
+            btnDefaultOwnerPassword.Click += button1_Click;
+            // 
             // FrmInputBox
             // 
             AcceptButton = btnOK;
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             CancelButton = btnCancel;
-            ClientSize = new System.Drawing.Size(471, 140);
+            ClientSize = new System.Drawing.Size(471, 130);
+            Controls.Add(btnDefaultOwnerPassword);
             Controls.Add(btnClose);
             Controls.Add(lblPrompt);
             Controls.Add(txtInput);
@@ -123,5 +138,7 @@
 		private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.TextBox lblPrompt;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnDefaultOwnerPassword;
+        private System.Windows.Forms.ToolTip toolTipDefaultOwnerPassword;
     }
 }

@@ -26,7 +26,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <WarningLevel>1</WarningLevel>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>lock.ico</ApplicationIcon>
@@ -36,6 +36,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>F6F37A4D0872D6105E6897C593D8B80F65D62538</ManifestCertificateThumbprint>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="lock.ico">

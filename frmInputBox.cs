@@ -13,7 +13,8 @@ namespace PDFPass
         public bool PwdChanged;
         public FrmInputBox()
         {
-            InitializeComponents();
+            InitializeComponent();
+            toolTipDefaultOwnerPassword.SetToolTip(btnDefaultOwnerPassword, "Vyplniť predvoleným heslom z Nastavení");
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -43,6 +44,11 @@ namespace PDFPass
             lblPrompt.Text = Prompt;
             Text = Title;
             txtInput.PasswordChar = (Password) ? '*' : (char)0;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtInput.Text = Settings.owner_password;
         }
     }
 }

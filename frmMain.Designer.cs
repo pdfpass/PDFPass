@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PDFPass
 {
-	partial class FrmMain
+	partial class frmMain
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -31,9 +31,9 @@ namespace PDFPass
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeView()
+        private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             groupBox1 = new GroupBox();
             label4 = new Label();
             btnInputBrowse = new Button();

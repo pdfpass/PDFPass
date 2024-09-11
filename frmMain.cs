@@ -15,7 +15,7 @@ using Point = System.Drawing.Point;
 
 namespace PDFPass
 {
-    public partial class FrmMain : Form
+    public partial class frmMain : Form
     {
         private const int PwLengthMin = 12; // Minimum generated password length
         private const int PwLengthMax = 24; // Maximum generated password length
@@ -24,9 +24,9 @@ namespace PDFPass
         public bool EncryptOnStart = false; // Allows encryption via command line without user interaction
 
 
-        public FrmMain()
+        public frmMain()
         {
-            InitializeView();
+            InitializeComponent();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -469,7 +469,7 @@ namespace PDFPass
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var settings = new FrmSettings();
+            var settings = new frmSettings();
             // Calculate the center position
             var posX = this.Location.X + (this.Width - settings.Width) / 2;
             var posY = this.Location.Y + (this.Height - settings.Height) / 2;
