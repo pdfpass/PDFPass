@@ -43,7 +43,7 @@ Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred 
 
 # Podpora projektu 💶
 Projekt je možné finančne podporiť:
-* platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK)  (1.cez účet a 2. kartou)
+* platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK)  (1. cez PayPal účet a 2. kartou)
   * čiastku je potrebné zadať
   * pri platbe kartou môžu byť z dôvodu anonymity osobné údaje fiktívne<br>
   ![paypal.jpg](screenshots%2Fpaypal.jpg)
