@@ -88,7 +88,7 @@
             btnOK.Name = "btnOK";
             btnOK.Size = new System.Drawing.Size(85, 37);
             btnOK.TabIndex = 8;
-            btnOK.Text = "OK";
+            btnOK.Text = "Potvrdiť";
             btnOK.UseVisualStyleBackColor = true;
             btnOK.Click += btnOK_Click;
             // 
@@ -101,7 +101,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new System.Drawing.Size(85, 37);
             btnCancel.TabIndex = 9;
-            btnCancel.Text = "Storno";
+            btnCancel.Text = "Stornovať";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 

@@ -43,7 +43,7 @@
             btnOK.Location = new System.Drawing.Point(394, 7);
             btnOK.Margin = new System.Windows.Forms.Padding(2);
             btnOK.Name = "btnOK";
-            btnOK.Size = new System.Drawing.Size(65, 32);
+            btnOK.Size = new System.Drawing.Size(68, 32);
             btnOK.TabIndex = 0;
             btnOK.Text = "Potvrdiť";
             btnOK.UseVisualStyleBackColor = true;
@@ -55,15 +55,15 @@
             btnCancel.Location = new System.Drawing.Point(394, 43);
             btnCancel.Margin = new System.Windows.Forms.Padding(2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(65, 32);
+            btnCancel.Size = new System.Drawing.Size(68, 32);
             btnCancel.TabIndex = 1;
-            btnCancel.Text = "Storno";
+            btnCancel.Text = "Stornovať";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
             // txtInput
             // 
-            txtInput.Location = new System.Drawing.Point(14, 100);
+            txtInput.Location = new System.Drawing.Point(13, 102);
             txtInput.Margin = new System.Windows.Forms.Padding(2);
             txtInput.Name = "txtInput";
             txtInput.PlaceholderText = "(zadať heslo)";
@@ -78,7 +78,6 @@
             lblPrompt.Multiline = true;
             lblPrompt.Name = "lblPrompt";
             lblPrompt.ReadOnly = true;
-            lblPrompt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             lblPrompt.Size = new System.Drawing.Size(364, 80);
             lblPrompt.TabIndex = 4;
             lblPrompt.Text = "prompt";
@@ -89,7 +88,7 @@
             btnClose.Location = new System.Drawing.Point(394, 96);
             btnClose.Margin = new System.Windows.Forms.Padding(2);
             btnClose.Name = "btnClose";
-            btnClose.Size = new System.Drawing.Size(65, 32);
+            btnClose.Size = new System.Drawing.Size(68, 32);
             btnClose.TabIndex = 5;
             btnClose.Text = "Zatvoriť";
             btnClose.UseVisualStyleBackColor = true;
@@ -97,7 +96,7 @@
             // 
             // btnDefaultOwnerPassword
             // 
-            btnDefaultOwnerPassword.Font = new System.Drawing.Font("Segoe UI", emSize: 11F, System.Drawing.FontStyle.Bold);
+            btnDefaultOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             btnDefaultOwnerPassword.Location = new System.Drawing.Point(340, 98);
             btnDefaultOwnerPassword.Name = "btnDefaultOwnerPassword";
             btnDefaultOwnerPassword.Size = new System.Drawing.Size(37, 28);

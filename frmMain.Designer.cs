@@ -82,7 +82,7 @@ namespace PDFPass
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(26, 32);
+            label4.Location = new Point(23, 32);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(219, 21);
@@ -342,9 +342,9 @@ namespace PDFPass
             btnSettings.Location = new Point(13, 410);
             btnSettings.Margin = new Padding(2);
             btnSettings.Name = "btnSettings";
-            btnSettings.Size = new Size(126, 37);
+            btnSettings.Size = new Size(118, 37);
             btnSettings.TabIndex = 16;
-            btnSettings.Text = "Nastavenia...";
+            btnSettings.Text = "Nastavenia";
             btnSettings.TextAlign = ContentAlignment.MiddleRight;
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
