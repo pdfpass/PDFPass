@@ -1,7 +1,7 @@
 ![ref-card.jpg](screenshots%2Fref-card.jpg)
 
 # PDFPass 🇸🇰
-**PDFPass** je **bezplatný** offline nástroj s otvoreným zdrojovým kódom v jazyku C# (.NET 8) na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF, ako aj **odstraňovanie** hesiel. 
+**PDFPass** je **bezplatný** offline (nepotrebuje a nevyžaduje internet) nástroj s otvoreným zdrojovým kódom v jazyku C# (.NET 8) na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF, ako aj **odstraňovanie** hesiel. 
 
 Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
 
