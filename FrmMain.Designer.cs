@@ -380,11 +380,11 @@ namespace PDFPass
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(218, 23);
+            label1.Location = new Point(164, 23);
             label1.Name = "label1";
             label1.Size = new Size(31, 15);
             label1.TabIndex = 2;
-            label1.Text = "Text:";
+            label1.Text = "Text vodotlače:";
             // 
             // cmbWatermark
             // 
@@ -403,7 +403,7 @@ namespace PDFPass
             cbWatermark.Name = "cbWatermark";
             cbWatermark.Size = new Size(126, 19);
             cbWatermark.TabIndex = 0;
-            cbWatermark.Text = "Použiťť vodotlač";
+            cbWatermark.Text = "Použiť vodotlač";
             cbWatermark.UseVisualStyleBackColor = true;
             cbWatermark.CheckedChanged += cbWatermark_CheckedChanged;
             // 

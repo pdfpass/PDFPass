@@ -143,7 +143,7 @@ public abstract class PdfUtils
         var font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
         var text = new Text(watermark);
         text.SetFont(font);
-        text.SetFontSize(100);
+        text.SetFontSize(150);
         text.SetOpacity(0.2f);
         
         return new Paragraph(text);
