@@ -73,12 +73,21 @@ namespace PDFPass
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
             btnPasswordGenerate.Enabled = !isInputEncrypted;
-            btnChangePassword.Visible = !isInputEncrypted;
+            btnChangePassword.Enabled = !isInputEncrypted;
             lblOwnerPasswordSet.Visible = !isInputEncrypted;
-            cbWatermark.Enabled = !isInputEncrypted;
-            gbWatermark.Enabled = !isInputEncrypted;
+            gbWatermark.Visible = !isInputEncrypted;
+            Height = isInputEncrypted ? 500 :  560;
             lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword) ? Color.FromArgb(255, 153, 0) : Color.FromArgb(0, 192, 192);
             lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword) ? "Heslo vlastníka prázdné." : "Heslo vlastníka nastavené.";
+            if (isInputEncrypted)
+            {
+                btnClose.Location = new Point(330, 413);
+                btnDecrypt.Location = new Point(430, 413);
+            }
+            else
+            {
+                btnClose.Location = new Point(330, 473);
+            }
         }
 
         private void btnInputBrowse_Click(object sender, EventArgs e)
