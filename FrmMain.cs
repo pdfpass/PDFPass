@@ -75,6 +75,8 @@ namespace PDFPass
             btnPasswordGenerate.Enabled = !isInputEncrypted;
             btnChangePassword.Visible = !isInputEncrypted;
             lblOwnerPasswordSet.Visible = !isInputEncrypted;
+            cbWatermark.Enabled = !isInputEncrypted;
+            gbWatermark.Enabled = !isInputEncrypted;
             lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword) ? Color.FromArgb(255, 153, 0) : Color.FromArgb(0, 192, 192);
             lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword) ? "Heslo vlastníka prázdné." : "Heslo vlastníka nastavené.";
         }
