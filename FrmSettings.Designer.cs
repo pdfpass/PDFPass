@@ -1,6 +1,6 @@
 ﻿namespace PDFPass
 {
-	partial class frmSettings
+	partial class FrmSettings
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -464,7 +464,7 @@
             Margin = new System.Windows.Forms.Padding(2);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "frmSettings";
+            Name = "FrmSettings";
             Text = "Nastavenia";
             Load += frmSettings_Load;
             groupBox1.ResumeLayout(false);

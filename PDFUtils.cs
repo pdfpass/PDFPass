@@ -1,7 +1,16 @@
 ﻿using System;
 using System.Text;
+using iText.IO.Font.Constants;
+using iText.Kernel.Colors;
 using iText.Kernel.Exceptions;
+using iText.Kernel.Font;
+using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas;
+using iText.Kernel.Pdf.Extgstate;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
 
 namespace PDFPass;
 
@@ -9,6 +18,7 @@ public abstract class PdfUtils
 {
     // List of characters to be used in random passwords
     private const string PwChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789#@&#@&#@&#@&";
+
     public static bool IsPdfReaderPasswordSet(string pdfFilePath)
     {
         try
@@ -54,14 +64,26 @@ public abstract class PdfUtils
         return isOpenedWithFullPermission;
     }
 
-    public static void WriteEncryptedPdf(string inputFileName, string outputFileName, WriterProperties writerProperties)
+    public static void WriteEncryptedPdf(string inputFileName, string outputFileName, WriterProperties writerProperties,
+        string watermarkText)
     {
         var reader = new PdfReader(inputFileName); // Create a PdfReader with the input file.
-
-        // Setting Owner Password to null generates random password.
         var writer = new PdfWriter(outputFileName, writerProperties); // Set up the output file
         var pdfDocument = new PdfDocument(reader, writer); // Create the new document
+        var document = new Document(pdfDocument);
 
+
+        if (!string.IsNullOrEmpty(watermarkText))
+        {
+            var paragraph = createWatermarkParagraph(watermarkText);
+            var transparentGraphicState = new PdfExtGState().SetFillOpacity(0.2f);
+            for (var i = 1; i <= document.GetPdfDocument().GetNumberOfPages(); i++)
+            {
+                addWatermarkToExistingPage(document, i, paragraph, transparentGraphicState, 0f);
+            }
+        }
+        
+        document.Close();
         pdfDocument.Close(); // Close the output document.
     }
 
@@ -78,7 +100,7 @@ public abstract class PdfUtils
         pdfDocument.Close();
     }
 
-  public static string GenerateRandomPassword(int pwLengthMin, int pwLengthMax)
+    public static string GenerateRandomPassword(int pwLengthMin, int pwLengthMax)
     {
         // Generate a random password
         var rnd = new Random(); // Random number generator
@@ -92,5 +114,38 @@ public abstract class PdfUtils
         }
 
         return result;
+    }
+
+    private static void addWatermarkToExistingPage(Document document, int pageIndex,
+        Paragraph paragraph, PdfExtGState graphicState, float verticalOffset)
+    {
+        var pdfDocument = document.GetPdfDocument();
+        var pdfPage = pdfDocument.GetPage(pageIndex);
+        var pageSize = (PageSize)pdfPage.GetPageSizeWithRotation();
+        var x = (pageSize.GetLeft() + pageSize.GetRight()) / 2.5f;
+        var y = (pageSize.GetTop() + pageSize.GetBottom()) / 2f;
+
+        var over = new PdfCanvas(pdfDocument.GetPage(pageIndex));
+        over.SaveState();
+        over.SetExtGState(graphicState);
+        var xOffset = 14 / 2;
+        var rotationInRadians = (float)(Double.Pi / 180 * 45f);
+
+        document.ShowTextAligned(paragraph, x - xOffset, y + verticalOffset,
+            pageIndex, TextAlignment.CENTER, VerticalAlignment.TOP, rotationInRadians);
+        document.Flush();
+        over.RestoreState();
+        over.Release();
+    }
+
+    private static Paragraph createWatermarkParagraph(String watermark) {
+    
+        var font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+        var text = new Text(watermark);
+        text.SetFont(font);
+        text.SetFontSize(100);
+        text.SetOpacity(0.2f);
+        
+        return new Paragraph(text);
     }
 }

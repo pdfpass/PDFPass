@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace PDFPass
 {
-    public partial class frmSettings : Form
+    public partial class FrmSettings : Form
     {
-        public frmSettings()
+        public FrmSettings()
         {
             InitializeComponent();
         }

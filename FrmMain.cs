@@ -15,7 +15,7 @@ using Point = System.Drawing.Point;
 
 namespace PDFPass
 {
-    public partial class frmMain : Form
+    public partial class FrmMain : Form
     {
         private const int PwLengthMin = 12; // Minimum generated password length
         private const int PwLengthMax = 24; // Maximum generated password length
@@ -24,7 +24,7 @@ namespace PDFPass
         public bool EncryptOnStart = false; // Allows encryption via command line without user interaction
 
 
-        public frmMain()
+        public FrmMain()
         {
             InitializeComponent();
         }
@@ -36,11 +36,11 @@ namespace PDFPass
 
             // Load settings from registry
             Settings.Load();
-            
+
             if (Settings.always_default_owner_password)
             {
-                OwnerPassword = Settings.owner_password;    
-            }   
+                OwnerPassword = Settings.owner_password;
+            }
 
             UpdateView();
 
@@ -63,7 +63,7 @@ namespace PDFPass
             {
                 return;
             }
-            
+
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
@@ -319,7 +319,10 @@ namespace PDFPass
                     string.IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword),
                     documentOptions,
                     encryptionProperties); // Enable encryption
-                PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties);
+
+                var waterMarkText = cbWatermark.Checked ? cmbWatermark.Text : string.Empty;
+
+                PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties, waterMarkText);
             }
             catch (Exception ex)
             {
@@ -416,7 +419,7 @@ namespace PDFPass
 
 
             // Verify password:
-            if (txtPassword.Text == "")
+            if (txtPassword.Text == string.Empty)
             {
                 MessageBox.Show("Nebolo zadané heslo.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtPassword.Focus();
@@ -469,7 +472,7 @@ namespace PDFPass
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var settings = new frmSettings();
+            var settings = new FrmSettings();
             // Calculate the center position
             var posX = this.Location.X + (this.Width - settings.Width) / 2;
             var posY = this.Location.Y + (this.Height - settings.Height) / 2;
@@ -490,7 +493,7 @@ namespace PDFPass
             var input = new FrmInputBox();
             input.Title = "Nastaviť heslo vlastníka";
             input.Prompt =
-                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka obmedzí manipuláciu s obsahom PDF)\r\n\r\nStlačte Stornovať, ak chcete ZRUŠIŤ heslo vlastníka";
+                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka obmedzí manipuláciu s obsahom PDF)\r\n\r\nStlačte \"Stornovať\", ak chcete ZRUŠIŤ heslo vlastníka";
             input.Password = true;
             input.ShowDialog();
 
@@ -500,6 +503,11 @@ namespace PDFPass
                 OwnerPassword = input.Result;
                 UpdateView();
             }
+        }
+
+        private void cbWatermark_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbWatermark.Enabled = cbWatermark.Checked;
         }
     }
 }

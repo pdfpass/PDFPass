@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PDFPass
 {
-	partial class frmMain
+	partial class FrmMain
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -33,7 +33,7 @@ namespace PDFPass
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             groupBox1 = new GroupBox();
             label4 = new Label();
             btnInputBrowse = new Button();
@@ -58,9 +58,14 @@ namespace PDFPass
             dlgSave = new SaveFileDialog();
             btnSettings = new Button();
             lblVersion = new Label();
+            gbWatermark = new GroupBox();
+            label1 = new Label();
+            cmbWatermark = new ComboBox();
+            cbWatermark = new CheckBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
+            gbWatermark.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -73,7 +78,7 @@ namespace PDFPass
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(2);
-            groupBox1.Size = new Size(542, 115);
+            groupBox1.Size = new Size(542, 109);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Vstupný súbor";
@@ -82,7 +87,7 @@ namespace PDFPass
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(23, 32);
+            label4.Location = new Point(23, 26);
             label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
             label4.Size = new Size(219, 21);
@@ -91,7 +96,7 @@ namespace PDFPass
             // 
             // btnInputBrowse
             // 
-            btnInputBrowse.Location = new Point(488, 58);
+            btnInputBrowse.Location = new Point(488, 54);
             btnInputBrowse.Margin = new Padding(2);
             btnInputBrowse.Name = "btnInputBrowse";
             btnInputBrowse.Size = new Size(42, 24);
@@ -103,7 +108,7 @@ namespace PDFPass
             // txtInputFile
             // 
             txtInputFile.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtInputFile.Location = new Point(24, 58);
+            txtInputFile.Location = new Point(24, 52);
             txtInputFile.Margin = new Padding(2);
             txtInputFile.Name = "txtInputFile";
             txtInputFile.Size = new Size(448, 27);
@@ -115,11 +120,11 @@ namespace PDFPass
             groupBox2.Controls.Add(btnOutputBrowse);
             groupBox2.Controls.Add(txtOutputFile);
             groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(10, 133);
+            groupBox2.Location = new Point(10, 127);
             groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(2);
-            groupBox2.Size = new Size(542, 115);
+            groupBox2.Size = new Size(542, 109);
             groupBox2.TabIndex = 12;
             groupBox2.TabStop = false;
             groupBox2.Text = "Výstupný súbor";
@@ -128,7 +133,7 @@ namespace PDFPass
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(23, 32);
+            label2.Location = new Point(23, 28);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(255, 21);
@@ -137,7 +142,7 @@ namespace PDFPass
             // 
             // btnOutputBrowse
             // 
-            btnOutputBrowse.Location = new Point(488, 58);
+            btnOutputBrowse.Location = new Point(488, 56);
             btnOutputBrowse.Margin = new Padding(2);
             btnOutputBrowse.Name = "btnOutputBrowse";
             btnOutputBrowse.Size = new Size(42, 24);
@@ -149,7 +154,7 @@ namespace PDFPass
             // txtOutputFile
             // 
             txtOutputFile.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtOutputFile.Location = new Point(24, 58);
+            txtOutputFile.Location = new Point(24, 54);
             txtOutputFile.Margin = new Padding(2);
             txtOutputFile.Name = "txtOutputFile";
             txtOutputFile.Size = new Size(448, 27);
@@ -166,11 +171,11 @@ namespace PDFPass
             groupBox3.Controls.Add(txtPassword);
             groupBox3.Controls.Add(lblPasswordLength);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(12, 253);
+            groupBox3.Location = new Point(12, 247);
             groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(2);
-            groupBox3.Size = new Size(541, 153);
+            groupBox3.Size = new Size(541, 147);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
             groupBox3.Text = "Heslá";
@@ -179,7 +184,7 @@ namespace PDFPass
             // 
             btnChangePassword.Image = (Image)resources.GetObject("btnChangePassword.Image");
             btnChangePassword.ImageAlign = ContentAlignment.MiddleLeft;
-            btnChangePassword.Location = new Point(21, 108);
+            btnChangePassword.Location = new Point(21, 102);
             btnChangePassword.Margin = new Padding(2);
             btnChangePassword.Name = "btnChangePassword";
             btnChangePassword.Size = new Size(71, 32);
@@ -194,7 +199,7 @@ namespace PDFPass
             lblOwnerPasswordSet.AutoSize = true;
             lblOwnerPasswordSet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOwnerPasswordSet.ForeColor = Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Location = new Point(97, 117);
+            lblOwnerPasswordSet.Location = new Point(97, 111);
             lblOwnerPasswordSet.Name = "lblOwnerPasswordSet";
             lblOwnerPasswordSet.Size = new Size(153, 15);
             lblOwnerPasswordSet.TabIndex = 16;
@@ -206,7 +211,7 @@ namespace PDFPass
             lblCopied.AutoSize = true;
             lblCopied.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblCopied.ForeColor = Color.Green;
-            lblCopied.Location = new Point(24, 92);
+            lblCopied.Location = new Point(24, 86);
             lblCopied.Margin = new Padding(2, 0, 2, 0);
             lblCopied.Name = "lblCopied";
             lblCopied.Size = new Size(140, 13);
@@ -218,7 +223,7 @@ namespace PDFPass
             // 
             btnCopy.Image = (Image)resources.GetObject("btnCopy.Image");
             btnCopy.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCopy.Location = new Point(458, 58);
+            btnCopy.Location = new Point(458, 52);
             btnCopy.Margin = new Padding(2);
             btnCopy.Name = "btnCopy";
             btnCopy.Size = new Size(78, 32);
@@ -232,10 +237,10 @@ namespace PDFPass
             // 
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            labelPassword.Location = new Point(21, 33);
+            labelPassword.Location = new Point(21, 27);
             labelPassword.Margin = new Padding(2, 0, 2, 0);
             labelPassword.Name = "labelPassword";
-            labelPassword.Size = new Size(239, 21);
+            labelPassword.Size = new Size(236, 21);
             labelPassword.TabIndex = 11;
             labelPassword.Text = "Heslo pre uzamknutie čítania 📖";
             // 
@@ -243,7 +248,7 @@ namespace PDFPass
             // 
             btnPasswordGenerate.Image = (Image)resources.GetObject("btnPasswordGenerate.Image");
             btnPasswordGenerate.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPasswordGenerate.Location = new Point(380, 58);
+            btnPasswordGenerate.Location = new Point(380, 52);
             btnPasswordGenerate.Margin = new Padding(2);
             btnPasswordGenerate.Name = "btnPasswordGenerate";
             btnPasswordGenerate.Size = new Size(74, 32);
@@ -256,7 +261,7 @@ namespace PDFPass
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPassword.Location = new Point(24, 58);
+            txtPassword.Location = new Point(24, 52);
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "(zadať heslo)";
@@ -270,7 +275,7 @@ namespace PDFPass
             lblPasswordLength.AutoSize = true;
             lblPasswordLength.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPasswordLength.ForeColor = Color.FromArgb(255, 128, 0);
-            lblPasswordLength.Location = new Point(24, 92);
+            lblPasswordLength.Location = new Point(24, 86);
             lblPasswordLength.Margin = new Padding(2, 0, 2, 0);
             lblPasswordLength.Name = "lblPasswordLength";
             lblPasswordLength.Size = new Size(350, 15);
@@ -283,7 +288,7 @@ namespace PDFPass
             btnDecrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDecrypt.Image = (Image)resources.GetObject("btnDecrypt.Image");
             btnDecrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDecrypt.Location = new Point(429, 410);
+            btnDecrypt.Location = new Point(429, 472);
             btnDecrypt.Margin = new Padding(2);
             btnDecrypt.Name = "btnDecrypt";
             btnDecrypt.Size = new Size(111, 37);
@@ -298,7 +303,7 @@ namespace PDFPass
             btnEncrypt.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEncrypt.Image = (Image)resources.GetObject("btnEncrypt.Image");
             btnEncrypt.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEncrypt.Location = new Point(429, 410);
+            btnEncrypt.Location = new Point(429, 473);
             btnEncrypt.Margin = new Padding(2);
             btnEncrypt.Name = "btnEncrypt";
             btnEncrypt.Size = new Size(119, 37);
@@ -314,7 +319,7 @@ namespace PDFPass
             btnClose.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClose.Image = (Image)resources.GetObject("btnClose.Image");
             btnClose.ImageAlign = ContentAlignment.MiddleLeft;
-            btnClose.Location = new Point(330, 410);
+            btnClose.Location = new Point(330, 473);
             btnClose.Margin = new Padding(2);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(95, 37);
@@ -339,7 +344,7 @@ namespace PDFPass
             btnSettings.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSettings.Image = (Image)resources.GetObject("btnSettings.Image");
             btnSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSettings.Location = new Point(13, 410);
+            btnSettings.Location = new Point(13, 473);
             btnSettings.Margin = new Padding(2);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(118, 37);
@@ -360,6 +365,48 @@ namespace PDFPass
             lblVersion.TabIndex = 18;
             lblVersion.Text = "Verzia: []";
             // 
+            // gbWatermark
+            // 
+            gbWatermark.Controls.Add(label1);
+            gbWatermark.Controls.Add(cmbWatermark);
+            gbWatermark.Controls.Add(cbWatermark);
+            gbWatermark.Location = new Point(10, 411);
+            gbWatermark.Name = "gbWatermark";
+            gbWatermark.Size = new Size(542, 51);
+            gbWatermark.TabIndex = 19;
+            gbWatermark.TabStop = false;
+            gbWatermark.Text = "Vodotlač";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(218, 23);
+            label1.Name = "label1";
+            label1.Size = new Size(31, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Text:";
+            // 
+            // cmbWatermark
+            // 
+            cmbWatermark.Enabled = false;
+            cmbWatermark.FormattingEnabled = true;
+            cmbWatermark.Items.AddRange(new object[] { "Vzor", "Kópia", "Dôverné", "Návrh" });
+            cmbWatermark.Location = new Point(255, 19);
+            cmbWatermark.Name = "cmbWatermark";
+            cmbWatermark.Size = new Size(275, 23);
+            cmbWatermark.TabIndex = 1;
+            // 
+            // cbWatermark
+            // 
+            cbWatermark.AutoSize = true;
+            cbWatermark.Location = new Point(24, 22);
+            cbWatermark.Name = "cbWatermark";
+            cbWatermark.Size = new Size(126, 19);
+            cbWatermark.TabIndex = 0;
+            cbWatermark.Text = "Použiťť vodotlač";
+            cbWatermark.UseVisualStyleBackColor = true;
+            cbWatermark.CheckedChanged += cbWatermark_CheckedChanged;
+            // 
             // FrmMain
             // 
             AcceptButton = btnEncrypt;
@@ -367,7 +414,8 @@ namespace PDFPass
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             CancelButton = btnClose;
-            ClientSize = new Size(561, 455);
+            ClientSize = new Size(561, 517);
+            Controls.Add(gbWatermark);
             Controls.Add(lblVersion);
             Controls.Add(btnSettings);
             Controls.Add(btnClose);
@@ -392,6 +440,8 @@ namespace PDFPass
             groupBox2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
+            gbWatermark.ResumeLayout(false);
+            gbWatermark.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -421,6 +471,10 @@ namespace PDFPass
         public Button btnDecrypt;
         private Label lblVersion;
         private Button btnChangePassword;
+        private GroupBox gbWatermark;
+        private Label label1;
+        private ComboBox cmbWatermark;
+        private CheckBox cbWatermark;
     }
 }
 

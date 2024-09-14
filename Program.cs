@@ -6,7 +6,7 @@ using CommandLine;
 
 namespace PDFPass
 {
-    static class Program
+    internal static class Program
     {
         // Command line options (CommandLineParser plugin) https://github.com/commandlineparser/commandline
         private class Options
@@ -47,7 +47,7 @@ namespace PDFPass
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Create the UI form instance
-            var form = new frmMain();
+            var form = new FrmMain();
 
             // If input filename was specified, set it in the main form
             if (opts.InputFile != null)
