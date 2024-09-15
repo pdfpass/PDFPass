@@ -116,6 +116,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 
 # Plánované zmeny 📅
 * **funkcionalita odstránenia hesla z PDF ✅**
+* **funkcionalita vodotlače ✅**
 * podpora viacerých jazykov ⏳
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
 * vlastná web stránka ⏳
@@ -123,7 +124,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 # Licencia (sk)
 Aplikácia PDFPass a zdrojový kód sú licencované pod licenciou AGPL. Aplikáciu PDFPass môžete sťahovať, inštalovať, používať a šíriť voľne pod licenciou AGPL. Zdrojový kód PDFPass môžete sťahovať, upravovať, vytvárať fork a šíriť pod licenciou AGPL.
 
-Obmedzenia: Na označenie forkov tohto projektu nesmiete používať výraz "Official" alebo "Original" a pri forkoch musíte uviesť Gabriela Bossa (Java Guru) a PDFPass.net v rámci aplikácie a na akejkoľvek dokumentácii a/alebo súvisiacich webových stránkach.
+Obmedzenia: Na označenie forkov tohto projektu nesmiete používať výraz "Official" alebo "Original" a pri forkoch musíte uviesť Gabriela Bossa (a.k.a. Java Guru) a PDFPass.net v rámci aplikácie a na akejkoľvek dokumentácii a/alebo súvisiacich webových stránkach.
 
 Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel Boss a nie je licencovaná pod AGPL. Ak chcete vydať rozvetvenú verziu PDFPass, musíte ju premenovať, aby nedošlo k zámene s oficiálnou vetvou.
 
