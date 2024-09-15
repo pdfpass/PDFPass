@@ -63,7 +63,7 @@ namespace PDFPass
             {
                 return;
             }
-
+            
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
@@ -76,7 +76,10 @@ namespace PDFPass
             btnChangePassword.Enabled = !isInputEncrypted;
             lblOwnerPasswordSet.Visible = !isInputEncrypted;
             gbWatermark.Visible = !isInputEncrypted;
-            Height = isInputEncrypted ? 500 :  560;
+            btnPaste.Visible = string.IsNullOrEmpty(txtPassword.Text);
+            btnCopy.Visible = !btnPaste.Visible;
+            btnPaste.Enabled = !string.IsNullOrWhiteSpace(Clipboard.GetText());
+            Height = isInputEncrypted ? 500 : 560;
             lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword) ? Color.FromArgb(255, 153, 0) : Color.FromArgb(0, 192, 192);
             lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword) ? "Heslo vlastníka prázdné." : "Heslo vlastníka nastavené.";
             if (isInputEncrypted)
@@ -157,12 +160,14 @@ namespace PDFPass
 
             // Show Password Length warning if exceeding 32 chars.
             lblPasswordLength.Visible = txtPassword.Text.Length > 32;
+            UpdateView();
         }
 
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {
             // Hide Copied label
             lblCopied.Visible = false;
+            UpdateView();
         }
 
         private void BtnEncryptClick(object sender, EventArgs e)
@@ -519,6 +524,11 @@ namespace PDFPass
         private void cbWatermark_CheckedChanged(object sender, EventArgs e)
         {
             cmbWatermark.Enabled = cbWatermark.Checked;
+        }
+
+        private void btnPaste_Click(object sender, EventArgs e)
+        {
+            txtPassword.Text = Clipboard.GetText();
         }
     }
 }

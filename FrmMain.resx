@@ -130,16 +130,6 @@
         CwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAQNJREFUOE+1ijEvQ1EYhs/vkFSkhstgklZMRGOohDtg0TRuDZUyGcSk+RbJTUyW
-        hkFEB4suxrI2/ArhnzzuJ58bctoeA0/y5HzveV/3rxQOiAuHbFj8HVGT9b2Uq81TurNNWqreW22uo32m
-        bDacUoPLcoNULSXcLeyyrOr99V9O6Njcp1JDKjs8ZG+6UqPzXf2zTmzuE28jqkWPUO/qMaJa9Aj1rlVF
-        VIseod6drCKqRY9Q786WENWiR6h3F4uIavEHxwMmxvWf3MwjqsWc2ycmu4+8jupz7ucQ1WLOW4/kvUd7
-        VJ/Tn+E886gfkQ5Vu2xjc59BkbXnadJxvhSp2vwvcO4DFTnFNY5h92MAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnPasswordGenerate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -150,6 +140,26 @@
         TGE/uVyAbSW8Ay4WoZHuXTzduSg5Lop+z+aO+ZKfVhx2S/UOaM8gydT1Bm015AaOAouJ/4PncUSYrzpT
         aH6Rgg59HxTM8yU/bhTnj5PeK7xEobNcI5GnGvVY7v4K7xOQ30bR6IyhGSbq0YwY/ysk6QMAmNnRSQYU
         CwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnCopy.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAQNJREFUOE+1ijEvQ1EYhs/vkFSkhstgklZMRGOohDtg0TRuDZUyGcSk+RbJTUyW
+        hkFEB4suxrI2/ArhnzzuJ58bctoeA0/y5HzveV/3rxQOiAuHbFj8HVGT9b2Uq81TurNNWqreW22uo32m
+        bDacUoPLcoNULSXcLeyyrOr99V9O6Njcp1JDKjs8ZG+6UqPzXf2zTmzuE28jqkWPUO/qMaJa9Aj1rlVF
+        VIseod6drCKqRY9Q786WENWiR6h3F4uIavEHxwMmxvWf3MwjqsWc2ycmu4+8jupz7ucQ1WLOW4/kvUd7
+        VJ/Tn+E886gfkQ5Vu2xjc59BkbXnadJxvhSp2vwvcO4DFTnFNY5h92MAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="btnPaste.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAQNJREFUOE+1ijEvQ1EYhs/vkFSkhstgklZMRGOohDtg0TRuDZUyGcSk+RbJTUyW
+        hkFEB4suxrI2/ArhnzzuJ58bctoeA0/y5HzveV/3rxQOiAuHbFj8HVGT9b2Uq81TurNNWqreW22uo32m
+        bDacUoPLcoNULSXcLeyyrOr99V9O6Njcp1JDKjs8ZG+6UqPzXf2zTmzuE28jqkWPUO/qMaJa9Aj1rlVF
+        VIseod6drCKqRY9Q786WENWiR6h3F4uIavEHxwMmxvWf3MwjqsWc2ycmu4+8jupz7ucQ1WLOW4/kvUd7
+        VJ/Tn+E886gfkQ5Vu2xjc59BkbXnadJxvhSp2vwvcO4DFTnFNY5h92MAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="btnDecrypt.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

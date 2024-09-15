@@ -46,11 +46,12 @@ namespace PDFPass
             btnChangePassword = new Button();
             lblOwnerPasswordSet = new Label();
             lblCopied = new Label();
-            btnCopy = new Button();
             labelPassword = new Label();
             btnPasswordGenerate = new Button();
             txtPassword = new TextBox();
             lblPasswordLength = new Label();
+            btnPaste = new Button();
+            btnCopy = new Button();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
             btnClose = new Button();
@@ -73,7 +74,7 @@ namespace PDFPass
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnInputBrowse);
             groupBox1.Controls.Add(txtInputFile);
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(10, 12);
             groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
@@ -119,7 +120,7 @@ namespace PDFPass
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(btnOutputBrowse);
             groupBox2.Controls.Add(txtOutputFile);
-            groupBox2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(10, 127);
             groupBox2.Margin = new Padding(2);
             groupBox2.Name = "groupBox2";
@@ -165,12 +166,13 @@ namespace PDFPass
             groupBox3.Controls.Add(btnChangePassword);
             groupBox3.Controls.Add(lblOwnerPasswordSet);
             groupBox3.Controls.Add(lblCopied);
-            groupBox3.Controls.Add(btnCopy);
             groupBox3.Controls.Add(labelPassword);
             groupBox3.Controls.Add(btnPasswordGenerate);
             groupBox3.Controls.Add(txtPassword);
             groupBox3.Controls.Add(lblPasswordLength);
-            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox3.Controls.Add(btnCopy);
+            groupBox3.Controls.Add(btnPaste);
+            groupBox3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(12, 247);
             groupBox3.Margin = new Padding(2);
             groupBox3.Name = "groupBox3";
@@ -182,6 +184,7 @@ namespace PDFPass
             // 
             // btnChangePassword
             // 
+            btnChangePassword.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnChangePassword.Image = (Image)resources.GetObject("btnChangePassword.Image");
             btnChangePassword.ImageAlign = ContentAlignment.MiddleLeft;
             btnChangePassword.Location = new Point(21, 102);
@@ -219,20 +222,6 @@ namespace PDFPass
             lblCopied.Text = "Skopírované do schránky.";
             lblCopied.Visible = false;
             // 
-            // btnCopy
-            // 
-            btnCopy.Image = (Image)resources.GetObject("btnCopy.Image");
-            btnCopy.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCopy.Location = new Point(458, 52);
-            btnCopy.Margin = new Padding(2);
-            btnCopy.Name = "btnCopy";
-            btnCopy.Size = new Size(78, 32);
-            btnCopy.TabIndex = 12;
-            btnCopy.Text = "Skopíruj";
-            btnCopy.TextAlign = ContentAlignment.MiddleRight;
-            btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
-            // 
             // labelPassword
             // 
             labelPassword.AutoSize = true;
@@ -246,9 +235,10 @@ namespace PDFPass
             // 
             // btnPasswordGenerate
             // 
+            btnPasswordGenerate.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPasswordGenerate.Image = (Image)resources.GetObject("btnPasswordGenerate.Image");
             btnPasswordGenerate.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPasswordGenerate.Location = new Point(380, 52);
+            btnPasswordGenerate.Location = new Point(370, 52);
             btnPasswordGenerate.Margin = new Padding(2);
             btnPasswordGenerate.Name = "btnPasswordGenerate";
             btnPasswordGenerate.Size = new Size(74, 32);
@@ -265,7 +255,7 @@ namespace PDFPass
             txtPassword.Margin = new Padding(2);
             txtPassword.Name = "txtPassword";
             txtPassword.PlaceholderText = "(zadať heslo)";
-            txtPassword.Size = new Size(350, 29);
+            txtPassword.Size = new Size(342, 29);
             txtPassword.TabIndex = 8;
             txtPassword.TextChanged += txtPassword_TextChanged;
             txtPassword.KeyDown += txtPassword_KeyDown;
@@ -282,6 +272,36 @@ namespace PDFPass
             lblPasswordLength.TabIndex = 14;
             lblPasswordLength.Text = "Heslá dlhšie ako 32 znakov budú skratené podľa špecifikácie PDF.";
             lblPasswordLength.Visible = false;
+            // 
+            // btnPaste
+            // 
+            btnPaste.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPaste.Image = (Image)resources.GetObject("btnPaste.Image");
+            btnPaste.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPaste.Location = new Point(449, 52);
+            btnPaste.Margin = new Padding(2);
+            btnPaste.Name = "btnPaste";
+            btnPaste.Size = new Size(76, 32);
+            btnPaste.TabIndex = 18;
+            btnPaste.Text = "Prilepiť";
+            btnPaste.TextAlign = ContentAlignment.MiddleRight;
+            btnPaste.UseVisualStyleBackColor = true;
+            btnPaste.Click += btnPaste_Click;
+            // 
+            // btnCopy
+            // 
+            btnCopy.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCopy.Image = (Image)resources.GetObject("btnCopy.Image");
+            btnCopy.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCopy.Location = new Point(448, 52);
+            btnCopy.Margin = new Padding(2);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new Size(88, 32);
+            btnCopy.TabIndex = 12;
+            btnCopy.Text = "Kopírovať";
+            btnCopy.TextAlign = ContentAlignment.MiddleRight;
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += btnCopy_Click;
             // 
             // btnDecrypt
             // 
@@ -370,9 +390,10 @@ namespace PDFPass
             gbWatermark.Controls.Add(label1);
             gbWatermark.Controls.Add(cmbWatermark);
             gbWatermark.Controls.Add(cbWatermark);
+            gbWatermark.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gbWatermark.Location = new Point(10, 411);
             gbWatermark.Name = "gbWatermark";
-            gbWatermark.Size = new Size(542, 51);
+            gbWatermark.Size = new Size(542, 54);
             gbWatermark.TabIndex = 19;
             gbWatermark.TabStop = false;
             gbWatermark.Text = "Vodotlač";
@@ -380,30 +401,33 @@ namespace PDFPass
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(164, 23);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(235, 19);
             label1.Name = "label1";
-            label1.Size = new Size(31, 15);
+            label1.Size = new Size(39, 21);
             label1.TabIndex = 2;
-            label1.Text = "Text vodotlače:";
+            label1.Text = "Text:";
             // 
             // cmbWatermark
             // 
             cmbWatermark.Enabled = false;
+            cmbWatermark.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbWatermark.FormattingEnabled = true;
             cmbWatermark.Items.AddRange(new object[] { "Vzor", "Kópia", "Dôverné", "Návrh" });
-            cmbWatermark.Location = new Point(255, 19);
+            cmbWatermark.Location = new Point(280, 17);
             cmbWatermark.Name = "cmbWatermark";
-            cmbWatermark.Size = new Size(275, 23);
+            cmbWatermark.Size = new Size(250, 29);
             cmbWatermark.TabIndex = 1;
             // 
             // cbWatermark
             // 
             cbWatermark.AutoSize = true;
-            cbWatermark.Location = new Point(24, 22);
+            cbWatermark.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbWatermark.Location = new Point(24, 19);
             cbWatermark.Name = "cbWatermark";
-            cbWatermark.Size = new Size(126, 19);
+            cbWatermark.Size = new Size(162, 25);
             cbWatermark.TabIndex = 0;
-            cbWatermark.Text = "Použiť vodotlač";
+            cbWatermark.Text = "Použiť vodotlač 💧";
             cbWatermark.UseVisualStyleBackColor = true;
             cbWatermark.CheckedChanged += cbWatermark_CheckedChanged;
             // 
@@ -475,6 +499,7 @@ namespace PDFPass
         private Label label1;
         private ComboBox cmbWatermark;
         private CheckBox cbWatermark;
+        private Button btnPaste;
     }
 }
 

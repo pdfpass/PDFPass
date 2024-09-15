@@ -1,5 +1,5 @@
 using System.Reflection;
 
-[assembly: AssemblyVersion("2024.12.3")]
+[assembly: AssemblyVersion("2024.12.4")]
 [assembly: AssemblyDescription("Free PDF Encryption Utility in Slovak")]
 [assembly: AssemblyProduct("PDFPass")]
