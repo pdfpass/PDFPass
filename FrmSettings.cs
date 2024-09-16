@@ -22,7 +22,7 @@ namespace PDFPass
                 { (int)Settings.EncryptionType.AES_256, "AES-256 (Adobe Reader 8+) [odporúčané]" },
                 { (int)Settings.EncryptionType.AES_128, "AES-128 (Adobe Reader 7+" },
                 { (int)Settings.EncryptionType.RC4_128, "RC4-128 (Adobe Reader 6+)" },
-                { (int)Settings.EncryptionType.RC4_40, "RC4-40 (Adobe Reader 3+) [neodporúčané]" }
+                // { (int)Settings.EncryptionType.RC4_40, "RC4-40 (Adobe Reader 3+) [neodporúčané]" }
             };
 
             // Attach datasource to combo box.

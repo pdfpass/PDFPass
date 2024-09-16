@@ -298,7 +298,7 @@
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             label4.ForeColor = System.Drawing.Color.FromArgb(255, 128, 0);
-            label4.Location = new System.Drawing.Point(27, 173);
+            label4.Location = new System.Drawing.Point(55, 170);
             label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(280, 15);
@@ -312,9 +312,9 @@
             chkDegradedPrinting.Location = new System.Drawing.Point(204, 73);
             chkDegradedPrinting.Margin = new System.Windows.Forms.Padding(2);
             chkDegradedPrinting.Name = "chkDegradedPrinting";
-            chkDegradedPrinting.Size = new System.Drawing.Size(157, 19);
+            chkDegradedPrinting.Size = new System.Drawing.Size(176, 19);
             chkDegradedPrinting.TabIndex = 25;
-            chkDegradedPrinting.Text = "Povoliť tlač (nízke rozlíš.)";
+            chkDegradedPrinting.Text = "Povoliť tlač (nízke rozlíšenie)";
             chkDegradedPrinting.UseVisualStyleBackColor = true;
             // 
             // chkAssembly
@@ -407,9 +407,9 @@
             chkPrinting.Location = new System.Drawing.Point(12, 73);
             chkPrinting.Margin = new System.Windows.Forms.Padding(2);
             chkPrinting.Name = "chkPrinting";
-            chkPrinting.Size = new System.Drawing.Size(166, 19);
+            chkPrinting.Size = new System.Drawing.Size(185, 19);
             chkPrinting.TabIndex = 17;
-            chkPrinting.Text = "Povoliť tlač (vysoké rozlíš.)";
+            chkPrinting.Text = "Povoliť tlač (vysoké rozlíšenie)";
             chkPrinting.UseVisualStyleBackColor = true;
             // 
             // chkEncryptMetadata
