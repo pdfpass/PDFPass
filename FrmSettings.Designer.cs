@@ -83,10 +83,10 @@
             // btnOK
             // 
             btnOK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnOK.Location = new System.Drawing.Point(421, 13);
+            btnOK.Location = new System.Drawing.Point(421, 21);
             btnOK.Margin = new System.Windows.Forms.Padding(2);
             btnOK.Name = "btnOK";
-            btnOK.Size = new System.Drawing.Size(85, 37);
+            btnOK.Size = new System.Drawing.Size(85, 32);
             btnOK.TabIndex = 8;
             btnOK.Text = "Potvrdiť";
             btnOK.UseVisualStyleBackColor = true;
@@ -96,10 +96,10 @@
             // 
             btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnCancel.Location = new System.Drawing.Point(421, 54);
+            btnCancel.Location = new System.Drawing.Point(421, 63);
             btnCancel.Margin = new System.Windows.Forms.Padding(2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new System.Drawing.Size(85, 37);
+            btnCancel.Size = new System.Drawing.Size(85, 32);
             btnCancel.TabIndex = 9;
             btnCancel.Text = "Stornovať";
             btnCancel.UseVisualStyleBackColor = true;
@@ -116,7 +116,7 @@
             groupBox1.Controls.Add(btnRunBrowse);
             groupBox1.Controls.Add(txtRun);
             groupBox1.Controls.Add(chkRun);
-            groupBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             groupBox1.Location = new System.Drawing.Point(13, 331);
             groupBox1.Margin = new System.Windows.Forms.Padding(2);
             groupBox1.Name = "groupBox1";
@@ -129,6 +129,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             label6.ForeColor = System.Drawing.Color.FromArgb(255, 128, 0);
             label6.Location = new System.Drawing.Point(49, 144);
             label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -140,15 +141,17 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             label5.Location = new System.Drawing.Point(69, 110);
             label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(64, 15);
+            label5.Size = new System.Drawing.Size(71, 17);
             label5.TabIndex = 21;
             label5.Text = "Parametre:";
             // 
             // txtArguments
             // 
+            txtArguments.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtArguments.Location = new System.Drawing.Point(137, 107);
             txtArguments.Margin = new System.Windows.Forms.Padding(2);
             txtArguments.Name = "txtArguments";
@@ -159,6 +162,7 @@
             // chkOpen
             // 
             chkOpen.AutoSize = true;
+            chkOpen.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkOpen.Location = new System.Drawing.Point(238, 28);
             chkOpen.Margin = new System.Windows.Forms.Padding(2);
             chkOpen.Name = "chkOpen";
@@ -170,6 +174,7 @@
             // chkShowFolder
             // 
             chkShowFolder.AutoSize = true;
+            chkShowFolder.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkShowFolder.Location = new System.Drawing.Point(18, 28);
             chkShowFolder.Margin = new System.Windows.Forms.Padding(2);
             chkShowFolder.Name = "chkShowFolder";
@@ -181,6 +186,7 @@
             // chkCloseAfterCompletion
             // 
             chkCloseAfterCompletion.AutoSize = true;
+            chkCloseAfterCompletion.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkCloseAfterCompletion.Location = new System.Drawing.Point(18, 53);
             chkCloseAfterCompletion.Margin = new System.Windows.Forms.Padding(2);
             chkCloseAfterCompletion.Name = "chkCloseAfterCompletion";
@@ -191,6 +197,7 @@
             // 
             // btnRunBrowse
             // 
+            btnRunBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnRunBrowse.Location = new System.Drawing.Point(398, 76);
             btnRunBrowse.Margin = new System.Windows.Forms.Padding(2);
             btnRunBrowse.Name = "btnRunBrowse";
@@ -202,6 +209,7 @@
             // 
             // txtRun
             // 
+            txtRun.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtRun.Location = new System.Drawing.Point(137, 75);
             txtRun.Margin = new System.Windows.Forms.Padding(2);
             txtRun.Name = "txtRun";
@@ -212,6 +220,7 @@
             // chkRun
             // 
             chkRun.AutoSize = true;
+            chkRun.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkRun.Location = new System.Drawing.Point(18, 78);
             chkRun.Margin = new System.Windows.Forms.Padding(2);
             chkRun.Name = "chkRun";
@@ -240,7 +249,7 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Controls.Add(cboEncryptionType);
             groupBox2.Controls.Add(chkPasswordConfirmation);
-            groupBox2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            groupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             groupBox2.Location = new System.Drawing.Point(13, 12);
             groupBox2.Margin = new System.Windows.Forms.Padding(2);
             groupBox2.Name = "groupBox2";
@@ -253,15 +262,17 @@
             // chkAlwaysDefaultOwnerPassword
             // 
             chkAlwaysDefaultOwnerPassword.AutoSize = true;
+            chkAlwaysDefaultOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             chkAlwaysDefaultOwnerPassword.Location = new System.Drawing.Point(97, 272);
             chkAlwaysDefaultOwnerPassword.Name = "chkAlwaysDefaultOwnerPassword";
-            chkAlwaysDefaultOwnerPassword.Size = new System.Drawing.Size(131, 19);
+            chkAlwaysDefaultOwnerPassword.Size = new System.Drawing.Size(139, 19);
             chkAlwaysDefaultOwnerPassword.TabIndex = 29;
             chkAlwaysDefaultOwnerPassword.Text = "Nastaviť automaticky";
             chkAlwaysDefaultOwnerPassword.UseVisualStyleBackColor = true;
             // 
             // txtOwnerPassword
             // 
+            txtOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             txtOwnerPassword.Location = new System.Drawing.Point(96, 242);
             txtOwnerPassword.Margin = new System.Windows.Forms.Padding(2);
             txtOwnerPassword.MaxLength = 32;
@@ -274,6 +285,7 @@
             // lblOwnerPassword
             // 
             lblOwnerPassword.AutoSize = true;
+            lblOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
             lblOwnerPassword.Location = new System.Drawing.Point(3, 246);
             lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             lblOwnerPassword.Name = "lblOwnerPassword";
@@ -296,6 +308,7 @@
             // chkDegradedPrinting
             // 
             chkDegradedPrinting.AutoSize = true;
+            chkDegradedPrinting.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkDegradedPrinting.Location = new System.Drawing.Point(204, 73);
             chkDegradedPrinting.Margin = new System.Windows.Forms.Padding(2);
             chkDegradedPrinting.Name = "chkDegradedPrinting";
@@ -307,6 +320,7 @@
             // chkAssembly
             // 
             chkAssembly.AutoSize = true;
+            chkAssembly.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkAssembly.Location = new System.Drawing.Point(12, 149);
             chkAssembly.Margin = new System.Windows.Forms.Padding(2);
             chkAssembly.Name = "chkAssembly";
@@ -318,6 +332,7 @@
             // chkScreenreaders
             // 
             chkScreenreaders.AutoSize = true;
+            chkScreenreaders.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkScreenreaders.Location = new System.Drawing.Point(204, 149);
             chkScreenreaders.Margin = new System.Windows.Forms.Padding(2);
             chkScreenreaders.Name = "chkScreenreaders";
@@ -329,6 +344,7 @@
             // chkForms
             // 
             chkForms.AutoSize = true;
+            chkForms.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkForms.Location = new System.Drawing.Point(204, 123);
             chkForms.Margin = new System.Windows.Forms.Padding(2);
             chkForms.Name = "chkForms";
@@ -340,6 +356,7 @@
             // chkNotations
             // 
             chkNotations.AutoSize = true;
+            chkNotations.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkNotations.Location = new System.Drawing.Point(204, 98);
             chkNotations.Margin = new System.Windows.Forms.Padding(2);
             chkNotations.Name = "chkNotations";
@@ -351,6 +368,7 @@
             // chkModifying
             // 
             chkModifying.AutoSize = true;
+            chkModifying.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkModifying.Location = new System.Drawing.Point(12, 98);
             chkModifying.Margin = new System.Windows.Forms.Padding(2);
             chkModifying.Name = "chkModifying";
@@ -362,6 +380,7 @@
             // chkCopying
             // 
             chkCopying.AutoSize = true;
+            chkCopying.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkCopying.Location = new System.Drawing.Point(12, 123);
             chkCopying.Margin = new System.Windows.Forms.Padding(2);
             chkCopying.Name = "chkCopying";
@@ -373,16 +392,18 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(6, 54);
+            label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(6, 53);
             label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(172, 15);
+            label2.Size = new System.Drawing.Size(180, 15);
             label2.TabIndex = 18;
             label2.Text = "Oprávnenia pre výstupný súbor";
             // 
             // chkPrinting
             // 
             chkPrinting.AutoSize = true;
+            chkPrinting.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkPrinting.Location = new System.Drawing.Point(12, 73);
             chkPrinting.Margin = new System.Windows.Forms.Padding(2);
             chkPrinting.Name = "chkPrinting";
@@ -394,6 +415,7 @@
             // chkEncryptMetadata
             // 
             chkEncryptMetadata.AutoSize = true;
+            chkEncryptMetadata.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkEncryptMetadata.Location = new System.Drawing.Point(203, 28);
             chkEncryptMetadata.Margin = new System.Windows.Forms.Padding(2);
             chkEncryptMetadata.Name = "chkEncryptMetadata";
@@ -405,6 +427,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Segoe UI", 9F);
             label3.Location = new System.Drawing.Point(23, 210);
             label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             label3.Name = "label3";
@@ -415,6 +438,7 @@
             // cboEncryptionType
             // 
             cboEncryptionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            cboEncryptionType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             cboEncryptionType.FormattingEnabled = true;
             cboEncryptionType.Location = new System.Drawing.Point(96, 206);
             cboEncryptionType.Margin = new System.Windows.Forms.Padding(2);
@@ -425,6 +449,7 @@
             // chkPasswordConfirmation
             // 
             chkPasswordConfirmation.AutoSize = true;
+            chkPasswordConfirmation.Font = new System.Drawing.Font("Segoe UI", 9F);
             chkPasswordConfirmation.Location = new System.Drawing.Point(12, 28);
             chkPasswordConfirmation.Margin = new System.Windows.Forms.Padding(2);
             chkPasswordConfirmation.Name = "chkPasswordConfirmation";
