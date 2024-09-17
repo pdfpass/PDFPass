@@ -50,8 +50,8 @@ namespace PDFPass
             btnPasswordGenerate = new Button();
             txtPassword = new TextBox();
             lblPasswordLength = new Label();
-            btnPaste = new Button();
             btnCopy = new Button();
+            btnPaste = new Button();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
             btnClose = new Button();
@@ -97,12 +97,12 @@ namespace PDFPass
             // 
             // btnInputBrowse
             // 
-            btnInputBrowse.Location = new Point(488, 54);
+            btnInputBrowse.Image = (Image)resources.GetObject("btnInputBrowse.Image");
+            btnInputBrowse.Location = new Point(485, 47);
             btnInputBrowse.Margin = new Padding(2);
             btnInputBrowse.Name = "btnInputBrowse";
-            btnInputBrowse.Size = new Size(42, 24);
+            btnInputBrowse.Size = new Size(38, 38);
             btnInputBrowse.TabIndex = 10;
-            btnInputBrowse.Text = "...";
             btnInputBrowse.UseVisualStyleBackColor = true;
             btnInputBrowse.Click += btnInputBrowse_Click;
             // 
@@ -143,12 +143,12 @@ namespace PDFPass
             // 
             // btnOutputBrowse
             // 
-            btnOutputBrowse.Location = new Point(488, 56);
+            btnOutputBrowse.Image = (Image)resources.GetObject("btnOutputBrowse.Image");
+            btnOutputBrowse.Location = new Point(485, 48);
             btnOutputBrowse.Margin = new Padding(2);
             btnOutputBrowse.Name = "btnOutputBrowse";
-            btnOutputBrowse.Size = new Size(42, 24);
+            btnOutputBrowse.Size = new Size(38, 38);
             btnOutputBrowse.TabIndex = 10;
-            btnOutputBrowse.Text = "...";
             btnOutputBrowse.UseVisualStyleBackColor = true;
             btnOutputBrowse.Click += btnOutputBrowse_Click;
             // 
@@ -273,21 +273,6 @@ namespace PDFPass
             lblPasswordLength.Text = "Heslá dlhšie ako 32 znakov budú skratené podľa špecifikácie PDF.";
             lblPasswordLength.Visible = false;
             // 
-            // btnPaste
-            // 
-            btnPaste.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPaste.Image = (Image)resources.GetObject("btnPaste.Image");
-            btnPaste.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPaste.Location = new Point(449, 52);
-            btnPaste.Margin = new Padding(2);
-            btnPaste.Name = "btnPaste";
-            btnPaste.Size = new Size(76, 32);
-            btnPaste.TabIndex = 18;
-            btnPaste.Text = "Prilepiť";
-            btnPaste.TextAlign = ContentAlignment.MiddleRight;
-            btnPaste.UseVisualStyleBackColor = true;
-            btnPaste.Click += btnPaste_Click;
-            // 
             // btnCopy
             // 
             btnCopy.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -302,6 +287,21 @@ namespace PDFPass
             btnCopy.TextAlign = ContentAlignment.MiddleRight;
             btnCopy.UseVisualStyleBackColor = true;
             btnCopy.Click += btnCopy_Click;
+            // 
+            // btnPaste
+            // 
+            btnPaste.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPaste.Image = (Image)resources.GetObject("btnPaste.Image");
+            btnPaste.ImageAlign = ContentAlignment.MiddleLeft;
+            btnPaste.Location = new Point(449, 52);
+            btnPaste.Margin = new Padding(2);
+            btnPaste.Name = "btnPaste";
+            btnPaste.Size = new Size(76, 32);
+            btnPaste.TabIndex = 18;
+            btnPaste.Text = "Prilepiť";
+            btnPaste.TextAlign = ContentAlignment.MiddleRight;
+            btnPaste.UseVisualStyleBackColor = true;
+            btnPaste.Click += btnPaste_Click;
             // 
             // btnDecrypt
             // 
