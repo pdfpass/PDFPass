@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
             label1 = new System.Windows.Forms.Label();
             dlgOpen = new System.Windows.Forms.OpenFileDialog();
             btnOK = new System.Windows.Forms.Button();
@@ -198,10 +199,11 @@
             // btnRunBrowse
             // 
             btnRunBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            btnRunBrowse.Location = new System.Drawing.Point(398, 76);
+            btnRunBrowse.Image = (System.Drawing.Image)resources.GetObject("btnRunBrowse.Image");
+            btnRunBrowse.Location = new System.Drawing.Point(394, 67);
             btnRunBrowse.Margin = new System.Windows.Forms.Padding(2);
             btnRunBrowse.Name = "btnRunBrowse";
-            btnRunBrowse.Size = new System.Drawing.Size(43, 22);
+            btnRunBrowse.Size = new System.Drawing.Size(36, 36);
             btnRunBrowse.TabIndex = 16;
             btnRunBrowse.Text = "...";
             btnRunBrowse.UseVisualStyleBackColor = true;
