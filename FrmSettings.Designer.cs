@@ -200,10 +200,10 @@
             // 
             btnRunBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             btnRunBrowse.Image = (System.Drawing.Image)resources.GetObject("btnRunBrowse.Image");
-            btnRunBrowse.Location = new System.Drawing.Point(394, 67);
+            btnRunBrowse.Location = new System.Drawing.Point(394, 69);
             btnRunBrowse.Margin = new System.Windows.Forms.Padding(2);
             btnRunBrowse.Name = "btnRunBrowse";
-            btnRunBrowse.Size = new System.Drawing.Size(36, 36);
+            btnRunBrowse.Size = new System.Drawing.Size(32, 32);
             btnRunBrowse.TabIndex = 16;
             btnRunBrowse.Text = "...";
             btnRunBrowse.UseVisualStyleBackColor = true;
