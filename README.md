@@ -117,7 +117,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 # Plánované zmeny 📅
 * **funkcionalita odstránenia hesla z PDF ✅**
 * **funkcionalita vodotlače ✅**
-* **Drag&drop podpora pre vstupný súbor✅**
+* **Drag&drop podpora pre vstupný súbor ✅**
 * podpora viacerých jazykov ⏳
 * možnosť inštalácie aplikácie z Microsoft Store ⏳
 * vlastná web stránka ⏳
