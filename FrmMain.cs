@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
@@ -52,7 +53,7 @@ namespace PDFPass
             }
 
             // Show program version
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+            var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
             lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));
         }
 
@@ -63,7 +64,7 @@ namespace PDFPass
             {
                 return;
             }
-            
+
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
 
@@ -490,8 +491,8 @@ namespace PDFPass
         {
             var settings = new FrmSettings();
             // Calculate the center position
-            var posX = this.Location.X + (this.Width - settings.Width) / 2;
-            var posY = this.Location.Y + (this.Height - settings.Height) / 2;
+            var posX = Location.X + (Width - settings.Width) / 2;
+            var posY = Location.Y + (Height - settings.Height) / 2;
 
             // Ensure the position is not negative
             posX = Math.Max(0, posX);
@@ -514,11 +515,10 @@ namespace PDFPass
             input.ShowDialog();
 
 
-            if (input.PwdChanged)
-            {
-                OwnerPassword = input.Result;
-                UpdateView();
-            }
+            if (!input.PwdChanged) return;
+            
+            OwnerPassword = input.Result;
+            UpdateView();
         }
 
         private void cbWatermark_CheckedChanged(object sender, EventArgs e)
@@ -529,6 +529,41 @@ namespace PDFPass
         private void btnPaste_Click(object sender, EventArgs e)
         {
             txtPassword.Text = Clipboard.GetText();
+        }
+
+        private void txtInputFile_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data != null && !e.Data.GetDataPresent(DataFormats.FileDrop)) return;
+            var files = (string[])e.Data?.GetData(DataFormats.FileDrop);
+            var filename = files?[0];
+
+            if (filename == null) return;
+            
+            txtInputFile.Text = filename;
+            UpdateView();
+        }
+
+        private void txtInputFile_DragEnter(object sender, DragEventArgs e)
+        {
+            // Check if the dropped data contains a file
+            if (e.Data == null) return;
+            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // Check if the dropped file is a PDF
+                if (files is { Length: 1 } && Path.GetExtension(files[0])!.Equals(".pdf", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    e.Effect = DragDropEffects.Copy; // Allow dropping the file
+                }
+                else
+                {
+                    e.Effect = DragDropEffects.None; // Don't allow dropping other files or multiple files
+                }
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
         }
     }
 }
