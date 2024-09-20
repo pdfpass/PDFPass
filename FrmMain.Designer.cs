@@ -108,15 +108,12 @@ namespace PDFPass
             // 
             // txtInputFile
             // 
-            txtInputFile.AllowDrop = true;
             txtInputFile.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtInputFile.Location = new Point(24, 52);
             txtInputFile.Margin = new Padding(2);
             txtInputFile.Name = "txtInputFile";
             txtInputFile.Size = new Size(448, 27);
             txtInputFile.TabIndex = 8;
-            txtInputFile.DragDrop += txtInputFile_DragDrop;
-            txtInputFile.DragEnter += txtInputFile_DragEnter;
             // 
             // groupBox2
             // 
@@ -437,6 +434,7 @@ namespace PDFPass
             // FrmMain
             // 
             AcceptButton = btnEncrypt;
+            AllowDrop = true;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
@@ -461,6 +459,8 @@ namespace PDFPass
             Name = "FrmMain";
             Text = "PDFPass -  Nástroj  s otvoreným kódom pre správu PDF hesiel";
             Load += frmMain_Load;
+            DragDrop += FrmMain_DragDrop;
+            DragEnter += FrmMain_DragEnter;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);

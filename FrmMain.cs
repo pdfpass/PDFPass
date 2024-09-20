@@ -81,8 +81,12 @@ namespace PDFPass
             btnCopy.Visible = !btnPaste.Visible;
             btnPaste.Enabled = !string.IsNullOrWhiteSpace(Clipboard.GetText());
             Height = isInputEncrypted ? 500 : 560;
-            lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword) ? Color.FromArgb(255, 153, 0) : Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword) ? "Heslo vlastníka prázdné." : "Heslo vlastníka nastavené.";
+            lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword)
+                ? Color.FromArgb(255, 153, 0)
+                : Color.FromArgb(0, 192, 192);
+            lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword)
+                ? "Heslo vlastníka prázdné."
+                : "Heslo vlastníka nastavené.";
             if (isInputEncrypted)
             {
                 btnClose.Location = new Point(330, 413);
@@ -516,7 +520,7 @@ namespace PDFPass
 
 
             if (!input.PwdChanged) return;
-            
+
             OwnerPassword = input.Result;
             UpdateView();
         }
@@ -531,19 +535,20 @@ namespace PDFPass
             txtPassword.Text = Clipboard.GetText();
         }
 
-        private void txtInputFile_DragDrop(object sender, DragEventArgs e)
+        private void FrmMain_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data != null && !e.Data.GetDataPresent(DataFormats.FileDrop)) return;
             var files = (string[])e.Data?.GetData(DataFormats.FileDrop);
             var filename = files?[0];
 
             if (filename == null) return;
-            
+
             txtInputFile.Text = filename;
             UpdateView();
+
         }
 
-        private void txtInputFile_DragEnter(object sender, DragEventArgs e)
+        private void FrmMain_DragEnter(object sender, DragEventArgs e)
         {
             // Check if the dropped data contains a file
             if (e.Data == null) return;
@@ -551,7 +556,8 @@ namespace PDFPass
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 // Check if the dropped file is a PDF
-                if (files is { Length: 1 } && Path.GetExtension(files[0])!.Equals(".pdf", StringComparison.CurrentCultureIgnoreCase))
+                if (files is { Length: 1 } &&
+                    Path.GetExtension(files[0])!.Equals(".pdf", StringComparison.CurrentCultureIgnoreCase))
                 {
                     e.Effect = DragDropEffects.Copy; // Allow dropping the file
                 }
