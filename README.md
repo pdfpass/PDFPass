@@ -12,6 +12,16 @@ Aktuálny ```PDFPass-portable.zip``` alebo ```PDFPass-install.exe``` nájdete tu
 <br>
 <br>
 
+# Hlavná obrazovka pre nastavenia hesla 🔒
+![App Screenshot](screenshots%2Fencrypt.png)
+
+# Hlavná obrazovka pre odstránenia hesla 🔓
+![App Screenshot](screenshots%2Fdecrypt.png)
+
+# Obrazovka nastavení ⚙️
+![Settings](screenshots%2Fsettings.png)
+
+
 # PDF - podporuje 2 typy hesiel
 Oba typy je možné nastaviť/odstrániť pomocou **PDFPass**
 
@@ -96,14 +106,6 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 --run - okamžite vykonať funkciu "Zahesluj" po spustení (nečakať, kým používateľ klikne na tlačidlo)
 ```
 
-# Hlavná obrazovka pre nastavenia hesla 🔒
-![App Screenshot](screenshots%2Fencrypt.png)
-
-# Hlavná obrazovka pre odstránenia hesla 🔓
-![App Screenshot](screenshots%2Fdecrypt.png)
-
-# Obrazovka nastavení ⚙️
-![Settings](screenshots%2Fsettings.png)
 
 
 # Zmeny oproti pôvodnej verzii 🔄
