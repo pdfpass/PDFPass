@@ -119,10 +119,6 @@ namespace PDFPass
             Close();
         }
       
-        private void chkRun_CheckedChanged_1(object sender, EventArgs e)
-        {
-        }
-
         private void linkDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             openWebSite("https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ");
@@ -136,10 +132,6 @@ namespace PDFPass
                 UseShellExecute = true // Essential for opening in default browser
             };
             Process.Start(startInfo);
-        }
-
-        private void txtOwnerPassword_TextChanged(object sender, EventArgs e)
-        {
         }
     }
 }
