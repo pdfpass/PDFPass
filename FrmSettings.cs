@@ -121,10 +121,10 @@ namespace PDFPass
       
         private void linkDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            openWebSite("https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ");
+            OpenWebSite("https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ");
         }
 
-        private static void openWebSite(string urlToOpen)
+        private static void OpenWebSite(string urlToOpen)
         {
             // Method 1: Process.Start (All .NET platforms)
             var startInfo = new ProcessStartInfo(urlToOpen)

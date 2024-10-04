@@ -230,7 +230,6 @@
             chkRun.TabIndex = 14;
             chkRun.Text = "Spustiť program:";
             chkRun.UseVisualStyleBackColor = true;
-            chkRun.CheckedChanged += chkRun_CheckedChanged_1;
             // 
             // groupBox2
             // 
@@ -282,7 +281,6 @@
             txtOwnerPassword.PlaceholderText = "(trvalé heslo vlastníka)";
             txtOwnerPassword.Size = new System.Drawing.Size(285, 23);
             txtOwnerPassword.TabIndex = 28;
-            txtOwnerPassword.TextChanged += txtOwnerPassword_TextChanged;
             // 
             // lblOwnerPassword
             // 

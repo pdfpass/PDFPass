@@ -359,11 +359,11 @@ namespace PDFPass
         private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
         {
             var newFileName = isInputEncrypted
-                ? $"{Path.GetFileNameWithoutExtension(fileName)}-dešifrovaný.pdf"
+                ? $"{Path.GetFileNameWithoutExtension(fileName).Replace("zašifrovaný", "")}dešifrovaný.pdf"
                 : $"{Path.GetFileNameWithoutExtension(fileName)}-zašifrovaný.pdf";
             return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
         }
-
+        
         private void ExecuteAfterSteps()
         {
             // If launching a program:
