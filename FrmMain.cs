@@ -114,14 +114,13 @@ namespace PDFPass
             {
                 return;
             }
-
+            txtInputFile.Text = dlgOpen.FileName;
             RegenerateFileNames();
             UpdateView();
         }
 
         private void RegenerateFileNames()
         {
-            txtInputFile.Text = dlgOpen.FileName;
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, IsInputEncrypted());
         }
 
