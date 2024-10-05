@@ -73,7 +73,7 @@ namespace PDFPass
             }
 
             labelPassword.Text =
-                isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 📖";
+                isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 🔐";
             btnEncrypt.Visible = !isInputEncrypted;
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
