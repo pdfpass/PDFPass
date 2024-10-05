@@ -66,14 +66,14 @@ namespace PDFPass
             }
 
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
-            
+
             if (string.IsNullOrEmpty(txtOutputFile.Text))
             {
                 txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
             }
 
             labelPassword.Text =
-                isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 🔐";
+                isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 🔒";
             btnEncrypt.Visible = !isInputEncrypted;
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
@@ -115,10 +115,14 @@ namespace PDFPass
                 return;
             }
 
+            RegenerateFileNames();
+            UpdateView();
+        }
+
+        private void RegenerateFileNames()
+        {
             txtInputFile.Text = dlgOpen.FileName;
             txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, IsInputEncrypted());
-            
-            UpdateView();
         }
 
 
@@ -373,7 +377,7 @@ namespace PDFPass
                 : $"{Path.GetFileNameWithoutExtension(fileName)}-zašifrovaný.pdf";
             return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
         }
-        
+
         private void ExecuteAfterSteps()
         {
             // If launching a program:
@@ -554,8 +558,9 @@ namespace PDFPass
             if (filename == null) return;
 
             txtInputFile.Text = filename;
-            UpdateView();
 
+            RegenerateFileNames();
+            UpdateView();
         }
 
         private void FrmMain_DragEnter(object sender, DragEventArgs e)

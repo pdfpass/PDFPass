@@ -18,7 +18,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Set release version
-        run: echo "release_Version=2024.13.4" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
+        run: echo "release_Version=2024.13.5" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
         shell: pwsh      
       - name: Build
         run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\Release\"
