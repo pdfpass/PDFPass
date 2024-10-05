@@ -66,7 +66,11 @@ namespace PDFPass
             }
 
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
-            txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
+            
+            if (string.IsNullOrEmpty(txtOutputFile.Text))
+            {
+                txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
+            }
 
             labelPassword.Text =
                 isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 📖";
@@ -98,6 +102,11 @@ namespace PDFPass
             }
         }
 
+        private bool IsInputEncrypted()
+        {
+            return PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
+        }
+
         private void btnInputBrowse_Click(object sender, EventArgs e)
         {
             var result = dlgOpen.ShowDialog();
@@ -107,7 +116,8 @@ namespace PDFPass
             }
 
             txtInputFile.Text = dlgOpen.FileName;
-
+            txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, IsInputEncrypted());
+            
             UpdateView();
         }
 
