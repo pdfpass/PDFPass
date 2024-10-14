@@ -57,8 +57,6 @@ Projekt je možné finančne podporiť:
   * čiastku je potrebné zadať
   * pri platbe kartou môžu byť z dôvodu anonymity osobné údaje fiktívne<br>
   ![paypal.jpg](screenshots%2Fpaypal.jpg)
-* platbou [prevodom](https://payme.sk/?V=1&IBAN=SK1611000000002615114396&AM=5.00&CC=EUR&DT=&PI=&MSG=PDFPass&CN=) (po kliknutí na link by malo nastať automatické presmerovanie do bankovej Android/iOS aplikácie (ČSOB, Tatra banka, SLSP, VÚB) - údaje budú predvyplnené, cenu je možné upraviť (prednastavená je 5 €). V prípade, že nedojde k presmerovaniu do aplikácie, alebo nepoužívate aplikáciu zobrazi sa stránka s platobnými údajmi ako aj QR kód pre rýchlejšiu platbu
-
 
 
 Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj programu, ktorý zostane navždy **zadarmo**. 
