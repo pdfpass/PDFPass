@@ -52,10 +52,12 @@ Toto heslo poskytuje rôzne možnosti ochrany, ktoré umožňujú kontrolovať, 
 Tieto možnosti ochrany zabezpečujú, že dokument zostane **chránený** pred neoprávnenými úpravami, tlačou, kopírovaním alebo extrahovaním obsahu, čím zvyšujú bezpečnosť a kontrolu nad distribúciou a používaním PDF dokumentov.
 
 # Podpora projektu 💶
-Projekt je možné finančne podporiť:
-* platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK)  (1. cez PayPal účet a 2. kartou)
-  * čiastku je potrebné zadať
-  * pri platbe kartou môžu byť z dôvodu anonymity osobné údaje fiktívne<br>
+Projekt je možné finančne podporiť platbou cez systém [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK)
+1. priamo pomocou platby z účtu PayPal 🎯
+2. platobnou kartou 💳
+     
+
+  * _pri platbe kartou môžu byť z dôvodu anonymity osobné údaje fiktívne_<br>
   ![paypal.jpg](screenshots%2Fpaypal.jpg)
 
 
