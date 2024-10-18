@@ -60,6 +60,10 @@ namespace PDFPass
 
         private void UpdateView()
         {
+            btnPaste.Visible = string.IsNullOrEmpty(txtPassword.Text);
+            btnCopy.Visible = !btnPaste.Visible;
+            btnPaste.Enabled = !string.IsNullOrWhiteSpace(Clipboard.GetText());
+
             if (!File.Exists(txtInputFile.Text))
             {
                 return;
@@ -81,9 +85,6 @@ namespace PDFPass
             btnChangePassword.Enabled = !isInputEncrypted;
             lblOwnerPasswordSet.Visible = !isInputEncrypted;
             gbWatermark.Visible = !isInputEncrypted;
-            btnPaste.Visible = string.IsNullOrEmpty(txtPassword.Text);
-            btnCopy.Visible = !btnPaste.Visible;
-            btnPaste.Enabled = !string.IsNullOrWhiteSpace(Clipboard.GetText());
             Height = isInputEncrypted ? 500 : 560;
             lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword)
                 ? Color.FromArgb(255, 153, 0)
@@ -114,6 +115,7 @@ namespace PDFPass
             {
                 return;
             }
+
             txtInputFile.Text = dlgOpen.FileName;
             RegenerateFileNames();
             UpdateView();

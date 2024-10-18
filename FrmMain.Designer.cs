@@ -231,7 +231,7 @@ namespace PDFPass
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(236, 21);
             labelPassword.TabIndex = 11;
-            labelPassword.Text = "Heslo pre uzamknutie čítania 📖";
+            labelPassword.Text = "Heslo pre uzamknutie čítania 🔒";
             // 
             // btnPasswordGenerate
             // 
