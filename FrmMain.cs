@@ -587,5 +587,11 @@ namespace PDFPass
                 e.Effect = DragDropEffects.None;
             }
         }
+
+        private void btnPaste_MouseHover(object sender, EventArgs e)
+        {
+            btnPasteTooltip.SetToolTip(btnPaste,
+                btnPaste.Enabled ? "Hodnota: '" + Clipboard.GetText() + "'" : string.Empty);
+        }
     }
 }

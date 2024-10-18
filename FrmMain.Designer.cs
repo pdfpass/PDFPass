@@ -33,6 +33,7 @@ namespace PDFPass
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             groupBox1 = new GroupBox();
             label4 = new Label();
@@ -63,6 +64,7 @@ namespace PDFPass
             label1 = new Label();
             cmbWatermark = new ComboBox();
             cbWatermark = new CheckBox();
+            btnPasteTooltip = new ToolTip(components);
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -170,8 +172,8 @@ namespace PDFPass
             groupBox3.Controls.Add(btnPasswordGenerate);
             groupBox3.Controls.Add(txtPassword);
             groupBox3.Controls.Add(lblPasswordLength);
-            groupBox3.Controls.Add(btnCopy);
             groupBox3.Controls.Add(btnPaste);
+            groupBox3.Controls.Add(btnCopy);
             groupBox3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.Location = new Point(12, 247);
             groupBox3.Margin = new Padding(2);
@@ -302,6 +304,7 @@ namespace PDFPass
             btnPaste.TextAlign = ContentAlignment.MiddleRight;
             btnPaste.UseVisualStyleBackColor = true;
             btnPaste.Click += btnPaste_Click;
+            btnPaste.MouseHover += btnPaste_MouseHover;
             // 
             // btnDecrypt
             // 
@@ -503,6 +506,7 @@ namespace PDFPass
         private ComboBox cmbWatermark;
         private CheckBox cbWatermark;
         private Button btnPaste;
+        private ToolTip btnPasteTooltip;
     }
 }
 
