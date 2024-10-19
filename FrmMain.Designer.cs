@@ -51,8 +51,8 @@ namespace PDFPass
             btnPasswordGenerate = new Button();
             txtPassword = new TextBox();
             lblPasswordLength = new Label();
-            btnCopy = new Button();
             btnPaste = new Button();
+            btnCopy = new Button();
             btnDecrypt = new Button();
             btnEncrypt = new Button();
             btnClose = new Button();
@@ -275,21 +275,6 @@ namespace PDFPass
             lblPasswordLength.Text = "Heslá dlhšie ako 32 znakov budú skratené podľa špecifikácie PDF.";
             lblPasswordLength.Visible = false;
             // 
-            // btnCopy
-            // 
-            btnCopy.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCopy.Image = (Image)resources.GetObject("btnCopy.Image");
-            btnCopy.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCopy.Location = new Point(448, 52);
-            btnCopy.Margin = new Padding(2);
-            btnCopy.Name = "btnCopy";
-            btnCopy.Size = new Size(88, 32);
-            btnCopy.TabIndex = 12;
-            btnCopy.Text = "Kopírovať";
-            btnCopy.TextAlign = ContentAlignment.MiddleRight;
-            btnCopy.UseVisualStyleBackColor = true;
-            btnCopy.Click += btnCopy_Click;
-            // 
             // btnPaste
             // 
             btnPaste.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -305,6 +290,21 @@ namespace PDFPass
             btnPaste.UseVisualStyleBackColor = true;
             btnPaste.Click += btnPaste_Click;
             btnPaste.MouseHover += btnPaste_MouseHover;
+            // 
+            // btnCopy
+            // 
+            btnCopy.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCopy.Image = (Image)resources.GetObject("btnCopy.Image");
+            btnCopy.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCopy.Location = new Point(448, 52);
+            btnCopy.Margin = new Padding(2);
+            btnCopy.Name = "btnCopy";
+            btnCopy.Size = new Size(88, 32);
+            btnCopy.TabIndex = 12;
+            btnCopy.Text = "Kopírovať";
+            btnCopy.TextAlign = ContentAlignment.MiddleRight;
+            btnCopy.UseVisualStyleBackColor = true;
+            btnCopy.Click += btnCopy_Click;
             // 
             // btnDecrypt
             // 
@@ -442,7 +442,7 @@ namespace PDFPass
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             CancelButton = btnClose;
-            ClientSize = new Size(561, 517);
+            ClientSize = new Size(561, 521);
             Controls.Add(gbWatermark);
             Controls.Add(lblVersion);
             Controls.Add(btnSettings);
