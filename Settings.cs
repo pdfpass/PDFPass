@@ -14,8 +14,7 @@ namespace PDFPass
         {
             AES_256 = EncryptionConstants.ENCRYPTION_AES_256,
             AES_128 = EncryptionConstants.ENCRYPTION_AES_128,
-            RC4_128 = EncryptionConstants.STANDARD_ENCRYPTION_128,
-            RC4_40 = EncryptionConstants.STANDARD_ENCRYPTION_40
+            RC4_128 = EncryptionConstants.STANDARD_ENCRYPTION_128
         }
 
         public static bool run_after; // Run program after encrypting?
@@ -273,7 +272,8 @@ namespace PDFPass
             Registry.SetValue(RegKey, "allow_assembly", allow_assembly, RegistryValueKind.DWord);
             Registry.SetValue(RegKey, "allow_screenreaders", allow_screenreaders, RegistryValueKind.DWord);
             Registry.SetValue(RegKey, "owner_password", owner_password, RegistryValueKind.String);
-            Registry.SetValue(RegKey, "always_default_owner_password", always_default_owner_password, RegistryValueKind.DWord);
+            Registry.SetValue(RegKey, "always_default_owner_password", always_default_owner_password,
+                RegistryValueKind.DWord);
 
             // Notify all listeners
             CallNotify();

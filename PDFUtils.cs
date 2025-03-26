@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using iText.IO.Font.Constants;
-using iText.Kernel.Colors;
 using iText.Kernel.Exceptions;
 using iText.Kernel.Font;
 using iText.Kernel.Geom;
@@ -33,6 +32,22 @@ public abstract class PdfUtils
             return true;
         }
     }
+
+    public static bool IsPdfFile(string pdfFilePath)
+    {
+        try
+        {
+            var pdfReader = new PdfReader(pdfFilePath, new ReaderProperties().SetPassword(null));
+            var pdfDocument = new PdfDocument(pdfReader);
+            pdfDocument.Close();
+            return false;
+        }
+        catch (BadPasswordException)
+        {
+            return true;
+        }
+    }
+
 
     public static bool IsPasswordCorrect(string pdfFilePath, string password)
     {
@@ -82,7 +97,7 @@ public abstract class PdfUtils
                 addWatermarkToExistingPage(document, i, paragraph, transparentGraphicState, 0f);
             }
         }
-        
+
         document.Close();
         pdfDocument.Close(); // Close the output document.
     }
@@ -138,14 +153,14 @@ public abstract class PdfUtils
         over.Release();
     }
 
-    private static Paragraph createWatermarkParagraph(String watermark) {
-    
+    private static Paragraph createWatermarkParagraph(String watermark)
+    {
         var font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
         var text = new Text(watermark);
         text.SetFont(font);
         text.SetFontSize(150);
         text.SetOpacity(0.2f);
-        
+
         return new Paragraph(text);
     }
 }

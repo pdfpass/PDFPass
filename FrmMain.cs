@@ -64,16 +64,30 @@ namespace PDFPass
             btnCopy.Visible = !btnPaste.Visible;
             btnPaste.Enabled = !string.IsNullOrWhiteSpace(Clipboard.GetText());
 
-            if (!File.Exists(txtInputFile.Text))
+            var fileName = txtInputFile.Text;
+            if (!File.Exists(fileName))
             {
                 return;
             }
 
-            var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
+            try
+            {
+                PdfUtils.IsPdfFile(fileName);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Súbor nie je typu PDF alebo je poškodený!", "Chyba",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtInputFile.Text = string.Empty;
+                return;
+            }
+
+
+            var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(fileName);
 
             if (string.IsNullOrEmpty(txtOutputFile.Text))
             {
-                txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, isInputEncrypted);
+                txtOutputFile.Text = GetFilenameWithSuffix(fileName, isInputEncrypted);
             }
 
             labelPassword.Text =
