@@ -152,7 +152,7 @@
     <data name="Sample" xml:space="preserve">
     <value>Vzor</value>
   </data>
-    <data name="Copy" xml:space="preserve">
+    <data name="WCopy" xml:space="preserve">
     <value>Kópia</value>
   </data>
     <data name="Confidential" xml:space="preserve">
@@ -271,8 +271,8 @@
     <value>(cesta k programu)</value>
   </data>
     <data name="EncryptionOptions" xml:space="preserve">
-    <value> Možnosti šifrovania </value>
-  </data>
+      <value>Možnosti šifrovania </value>
+    </data>
     <data name="SetAutomatically" xml:space="preserve">
     <value>Nastaviť automaticky</value>
   </data>

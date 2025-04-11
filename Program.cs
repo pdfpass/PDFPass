@@ -10,7 +10,7 @@ namespace PDFPass
     internal static class Program
     {
         // Command line options (CommandLineParser plugin) https://github.com/commandlineparser/commandline
-        private class Options
+        public class Options
         {
             [Option("owner_pass", Required = false, HelpText = "OwnerPassOption")]
             public string OwnerPass { get; set; }
@@ -96,7 +96,7 @@ namespace PDFPass
             // This function is called if the CommandLine.Parser fails to parse some command line options
             // It should output error messages to CLI and/or desktop.
         {
-            string errorMessage = $"{Strings.CommandLineError}{errors}";
+            var errorMessage = $"{Strings.CommandLineError}{errors}";
             Console.WriteLine(errorMessage);
             MessageBox.Show(errorMessage, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

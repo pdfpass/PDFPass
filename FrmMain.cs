@@ -29,13 +29,13 @@ namespace PDFPass
             InitializeComponent();
 
             // Update UI with localized text
-            UpdateUIText();
+            UpdateUiText();
 
             // Subscribe to language change events
-            LocalizationManager.LanguageChanged += (sender, e) => UpdateUIText();
+            LocalizationManager.LanguageChanged += (sender, e) => UpdateUiText();
         }
 
-        private void UpdateUIText()
+        private void UpdateUiText()
         {
             // Update form title
             this.Text = Strings.ApplicationTitle;
@@ -76,11 +76,11 @@ namespace PDFPass
             txtPassword.PlaceholderText = Strings.EnterPassword;
 
             // Update combobox items - only if not already populated
-            if (cmbWatermark.Items.Count == 0 || cmbWatermark.Items[0].ToString() != Strings.Sample)
+            if (cmbWatermark.Items.Count == 0 || cmbWatermark.Items[0]?.ToString() != Strings.Sample)
             {
                 cmbWatermark.Items.Clear();
                 cmbWatermark.Items.Add(Strings.Sample);
-                cmbWatermark.Items.Add(Strings.Copy);
+                cmbWatermark.Items.Add(Strings.WCopy);
                 cmbWatermark.Items.Add(Strings.Confidential);
                 cmbWatermark.Items.Add(Strings.Draft);
                 if (cmbWatermark.SelectedIndex < 0 && cmbWatermark.Items.Count > 0)
@@ -90,7 +90,7 @@ namespace PDFPass
             }
 
             // Update file dialogs
-            string fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
+            var fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
             dlgOpen.Filter = fileFilter;
             dlgSave.Filter = fileFilter;
         }
@@ -172,12 +172,12 @@ namespace PDFPass
                 : Strings.OwnerPasswordSet;
             if (isInputEncrypted)
             {
-                btnClose.Location = new Point(330, 413);
-                btnDecrypt.Location = new Point(430, 413);
+                btnClose.Location = new Point(291, 413);
+                btnDecrypt.Location = new Point(409, 413);
             }
             else
             {
-                btnClose.Location = new Point(330, 473);
+                btnClose.Location = new Point(291, 473);
             }
         }
 
@@ -445,7 +445,7 @@ namespace PDFPass
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{Strings.UnknownError}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
+                MessageBox.Show($@"{Strings.UnknownError}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 Cursor.Current = Cursors.Default;
                 return;
@@ -474,7 +474,8 @@ namespace PDFPass
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"{Strings.CannotRunCommand}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
+                    MessageBox.Show($@"{Strings.CannotRunCommand}{ex.Message}", Strings.ErrorTitle,
+                        MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
@@ -677,6 +678,11 @@ namespace PDFPass
         {
             btnPasteTooltip.SetToolTip(btnPaste,
                 btnPaste.Enabled ? $"{Strings.ClipboardValuePrefix}{Clipboard.GetText()}'" : string.Empty);
+        }
+
+        private void btnEncrypt2_Click(object sender, EventArgs e)
+        {
+            BtnEncryptClick(sender, e);
         }
     }
 }

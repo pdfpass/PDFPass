@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using PDFPass.Resources;
@@ -10,55 +9,21 @@ namespace PDFPass
 {
     public partial class FrmSettings : Form
     {
-        // Language selection UI elements - move these to designer.cs if you use the designer
-        private GroupBox groupBoxLanguage;
-        private ComboBox comboBoxLanguage;
-
         public FrmSettings()
         {
             InitializeComponent();
 
-            // Create language selection UI
-            CreateLanguageUI();
-
             // Update UI text from resources
-            UpdateUIText();
+            UpdateUiText();
 
             // Initialize language selection
             LanguageHelper.InitializeLanguageComboBox(comboBoxLanguage, Settings.language);
 
             // Subscribe to language change events
-            LocalizationManager.LanguageChanged += (sender, e) => UpdateUIText();
+            LocalizationManager.LanguageChanged += (sender, e) => UpdateUiText();
         }
 
-        private void CreateLanguageUI()
-        {
-            // Create language selection UI elements
-            groupBoxLanguage = new GroupBox();
-            comboBoxLanguage = new ComboBox();
-
-            // Configure groupBoxLanguage
-            groupBoxLanguage.Controls.Add(comboBoxLanguage);
-            groupBoxLanguage.Location = new Point(13, 410); // Adjust as needed for your form
-            groupBoxLanguage.Name = "groupBoxLanguage";
-            groupBoxLanguage.Size = new Size(200, 60);
-            groupBoxLanguage.TabIndex = 20;
-            groupBoxLanguage.TabStop = false;
-            groupBoxLanguage.Text = "Jazyk / Language / Jazyk"; // Will be updated in UpdateUIText
-
-            // Configure comboBoxLanguage
-            comboBoxLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxLanguage.FormattingEnabled = true;
-            comboBoxLanguage.Location = new Point(20, 22);
-            comboBoxLanguage.Name = "comboBoxLanguage";
-            comboBoxLanguage.Size = new Size(160, 25);
-            comboBoxLanguage.TabIndex = 0;
-
-            // Add to Controls collection
-            this.Controls.Add(groupBoxLanguage);
-        }
-
-        private void UpdateUIText()
+        private void UpdateUiText()
         {
             // Update form title
             this.Text = Strings.SettingsTitle;

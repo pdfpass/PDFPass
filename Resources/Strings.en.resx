@@ -120,11 +120,11 @@
     <value>Copy</value>
   </data>
     <data name="Decrypt" xml:space="preserve">
-    <value>Remove Password</value>
-  </data>
+      <value>Decrypt</value>
+    </data>
     <data name="Encrypt" xml:space="preserve">
-    <value>Add Password</value>
-  </data>
+      <value>Encrtypt</value>
+    </data>
     <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -152,7 +152,7 @@
     <data name="Sample" xml:space="preserve">
     <value>Sample</value>
   </data>
-    <data name="Copy" xml:space="preserve">
+  <data name="WCopy" xml:space="preserve">
     <value>Copy</value>
   </data>
     <data name="Confidential" xml:space="preserve">

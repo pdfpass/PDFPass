@@ -120,11 +120,11 @@
     <value>Kopírovat</value>
   </data>
     <data name="Decrypt" xml:space="preserve">
-    <value>Odstranit heslo</value>
-  </data>
+      <value>Odhesli</value>
+    </data>
     <data name="Encrypt" xml:space="preserve">
-    <value>Zabezpečit heslem</value>
-  </data>
+      <value>Zahesli</value>
+    </data>
     <data name="Close" xml:space="preserve">
     <value>Zavřít</value>
   </data>
@@ -152,7 +152,7 @@
     <data name="Sample" xml:space="preserve">
     <value>Vzor</value>
   </data>
-    <data name="Copy" xml:space="preserve">
+  <data name="WCopy" xml:space="preserve">
     <value>Kopie</value>
   </data>
     <data name="Confidential" xml:space="preserve">

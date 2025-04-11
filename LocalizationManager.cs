@@ -23,18 +23,18 @@ namespace PDFPass
         {
             ResourceManager = new ResourceManager("PDFPass.Resources.Strings", typeof(LocalizationManager).Assembly);
             // Default to Slovak
-            SetLanguage("sk-SK");
+            SetLanguage("en-EN");
         }
 
 
         // Method to raise the event when language changes
-        public static void OnLanguageChanged()
+        private static void OnLanguageChanged()
         {
             // Safely invoke the event (checking for null to avoid null reference exceptions)
             LanguageChanged?.Invoke(null, EventArgs.Empty);
         }
 
-        /// <summary>
+        //// <summary>
         /// Sets the language for the application
         /// </summary>
         /// <param name="cultureName">Culture name (e.g., "sk-SK", "en-US")</param>
@@ -43,6 +43,9 @@ namespace PDFPass
             _currentCulture = new CultureInfo(cultureName);
             Thread.CurrentThread.CurrentUICulture = _currentCulture;
             Thread.CurrentThread.CurrentCulture = _currentCulture;
+
+            // Notify subscribers that language has changed
+            OnLanguageChanged();
         }
 
         /// <summary>
@@ -57,7 +60,7 @@ namespace PDFPass
                 var value = ResourceManager.GetString(key, _currentCulture);
                 if (!string.IsNullOrEmpty(value)) return value;
                 // If the resource is missing, return the key in a format that makes it obvious
-                Console.WriteLine($"WARNING: Missing resource key: {key}");
+                Console.WriteLine($@"WARNING: Missing resource key: {key}");
                 return $"[{key}]";
             }
             catch (Exception ex)

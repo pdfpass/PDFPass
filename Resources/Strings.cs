@@ -37,6 +37,7 @@ namespace PDFPass.Resources
         public static string Text => LocalizationManager.GetString(nameof(Text));
         public static string UseWatermark => LocalizationManager.GetString(nameof(UseWatermark));
         public static string Sample => LocalizationManager.GetString(nameof(Sample));
+        public static string WCopy => LocalizationManager.GetString(nameof(WCopy));
         public static string Confidential => LocalizationManager.GetString(nameof(Confidential));
         public static string Draft => LocalizationManager.GetString(nameof(Draft));
         public static string ClipboardValuePrefix => LocalizationManager.GetString(nameof(ClipboardValuePrefix));
