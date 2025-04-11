@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "PDFPass
-#define MyAppVersion "2024.14.0"
+#define MyAppVersion "2025.1.0"
 #define MyAppPublisher "PDFPass"
 #define MyAppURL "https://github.com/pdfpass/"
 #define MyAppExeName "PDFPass.exe"

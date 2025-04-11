@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -7,12 +7,11 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
+using PDFPass.Resources;
 using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Forms.Clipboard;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
-
-// LOL
 
 namespace PDFPass
 {
@@ -28,6 +27,72 @@ namespace PDFPass
         public FrmMain()
         {
             InitializeComponent();
+
+            // Update UI with localized text
+            UpdateUIText();
+
+            // Subscribe to language change events
+            LocalizationManager.LanguageChanged += (sender, e) => UpdateUIText();
+        }
+
+        private void UpdateUIText()
+        {
+            // Update form title
+            this.Text = Strings.ApplicationTitle;
+
+            // Update group boxes
+            groupBox1.Text = Strings.InputFile;
+            groupBox2.Text = Strings.OutputFile;
+            groupBox3.Text = Strings.Passwords;
+            gbWatermark.Text = Strings.Watermark;
+
+            // Update labels
+            label1.Text = Strings.Text;
+            label2.Text = Strings.SelectPathForEncryptedFile;
+            label4.Text = Strings.SelectFileForEncryption;
+            labelPassword.Text = IsInputEncrypted() ? Strings.PasswordForUnlocking : Strings.PasswordForLocking;
+            lblCopied.Text = Strings.CopiedToClipboard;
+            lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword)
+                ? Strings.OwnerPasswordEmpty
+                : Strings.OwnerPasswordSet;
+            lblPasswordLength.Text = Strings.PasswordLengthWarning;
+
+            // Version text is set in frmMain_Load
+
+            // Update buttons
+            btnChangePassword.Text = Strings.Change;
+            btnClose.Text = Strings.Close;
+            btnCopy.Text = Strings.Copy;
+            btnDecrypt.Text = Strings.Decrypt;
+            btnEncrypt.Text = Strings.Encrypt;
+            btnPasswordGenerate.Text = Strings.Generate;
+            btnPaste.Text = Strings.Paste;
+            btnSettings.Text = Strings.Settings;
+
+            // Update checkbox
+            cbWatermark.Text = Strings.UseWatermark;
+
+            // Update placeholders
+            txtPassword.PlaceholderText = Strings.EnterPassword;
+
+            // Update combobox items - only if not already populated
+            if (cmbWatermark.Items.Count == 0 || cmbWatermark.Items[0].ToString() != Strings.Sample)
+            {
+                cmbWatermark.Items.Clear();
+                cmbWatermark.Items.Add(Strings.Sample);
+                cmbWatermark.Items.Add(Strings.Copy);
+                cmbWatermark.Items.Add(Strings.Confidential);
+                cmbWatermark.Items.Add(Strings.Draft);
+                if (cmbWatermark.SelectedIndex < 0 && cmbWatermark.Items.Count > 0)
+                {
+                    cmbWatermark.SelectedIndex = 0;
+                }
+            }
+
+            // Update file dialogs
+            string fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
+            dlgOpen.Filter = fileFilter;
+            dlgSave.Filter = fileFilter;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -54,7 +119,7 @@ namespace PDFPass
 
             // Show program version
             var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            lblVersion.Text = "Verzia: " + string.Join(".", version.Split('.').Take(3));
+            lblVersion.Text = $"{Strings.Version}{string.Join(".", version.Split('.').Take(3))}";
         }
 
 
@@ -76,12 +141,11 @@ namespace PDFPass
             }
             catch (Exception e)
             {
-                MessageBox.Show("Súbor nie je typu PDF alebo je poškodený!", "Chyba",
+                MessageBox.Show(Strings.FileNotPdfOrDamaged, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtInputFile.Text = string.Empty;
                 return;
             }
-
 
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(fileName);
 
@@ -90,8 +154,8 @@ namespace PDFPass
                 txtOutputFile.Text = GetFilenameWithSuffix(fileName, isInputEncrypted);
             }
 
-            labelPassword.Text =
-                isInputEncrypted ? "Heslo pre odomknutie PDF 🔓" : "Heslo pre uzamknutie čítania 🔒";
+            labelPassword.Text = isInputEncrypted ? Strings.PasswordForUnlocking : Strings.PasswordForLocking;
+
             btnEncrypt.Visible = !isInputEncrypted;
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
@@ -104,8 +168,8 @@ namespace PDFPass
                 ? Color.FromArgb(255, 153, 0)
                 : Color.FromArgb(0, 192, 192);
             lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword)
-                ? "Heslo vlastníka prázdné."
-                : "Heslo vlastníka nastavené.";
+                ? Strings.OwnerPasswordEmpty
+                : Strings.OwnerPasswordSet;
             if (isInputEncrypted)
             {
                 btnClose.Location = new Point(330, 413);
@@ -119,6 +183,9 @@ namespace PDFPass
 
         private bool IsInputEncrypted()
         {
+            if (string.IsNullOrEmpty(txtInputFile.Text) || !File.Exists(txtInputFile.Text))
+                return false;
+
             return PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
         }
 
@@ -213,7 +280,7 @@ namespace PDFPass
             // Ensure input and output are not the same.
             if (string.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
             {
-                MessageBox.Show("Zdrojový a výstupný súbor nemožu byt rovnaké alebo prázdne.", "Chybný zdroj/výstup",
+                MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtOutputFile.Focus();
                 txtOutputFile.SelectAll();
@@ -223,7 +290,8 @@ namespace PDFPass
             // Ensure input file exists.
             if (!File.Exists(txtInputFile.Text))
             {
-                MessageBox.Show("Zdrojový súbor neexistuje.");
+                MessageBox.Show(Strings.SourceFileDoesNotExist, Strings.ErrorTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtInputFile.Focus();
                 txtInputFile.SelectAll();
                 return;
@@ -232,7 +300,7 @@ namespace PDFPass
             // If output file exists, prompt to overwrite.
             if (File.Exists(txtOutputFile.Text))
             {
-                if (MessageBox.Show(this, "Výstupny súbor už existuje. Želate si prepísať súbor?", "Prepísať súbor?",
+                if (MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
                         MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
                     txtOutputFile.Focus();
@@ -244,7 +312,7 @@ namespace PDFPass
             // Verify password if at least 1 pwd
             if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
             {
-                MessageBox.Show("Nebolo zadané žiadne heslo! (potrebné minimálne 1)", "Chyba", MessageBoxButtons.OK,
+                MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 txtPassword.Focus();
                 return;
@@ -253,9 +321,10 @@ namespace PDFPass
             // Warning about missing reading pwd
             if (string.IsNullOrWhiteSpace(txtPassword.Text))
             {
-                var dialogResult = MessageBox.Show("Nebolo zadané heslo pre uzamknutie čitania! Pokračovať?",
-                    "Upozornenie", MessageBoxButtons.YesNo,
+                var dialogResult = MessageBox.Show(Strings.NoReadingPasswordWarning,
+                    Strings.Warning, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
+
                 if (dialogResult == DialogResult.No)
                 {
                     txtPassword.Focus();
@@ -268,8 +337,8 @@ namespace PDFPass
             if (Settings.password_confirm)
             {
                 var input = new FrmInputBox();
-                input.Prompt = "Zadajte heslo uzamknutia čítania pre potvrdenie.";
-                input.Title = "Potvrdenie hesla uzamknutia čítania";
+                input.Prompt = Strings.ConfirmReadingPassword;
+                input.Title = Strings.ConfirmReadingPasswordTitle;
                 input.Password = true;
                 input.ShowDialog(); // Modal, blocking call
 
@@ -281,15 +350,15 @@ namespace PDFPass
                 // If password doesn't match, stop.
                 if (input.Result != txtPassword.Text)
                 {
-                    MessageBox.Show("Hesla sa nezhodujú. Zopakujte.", "Chyba", MessageBoxButtons.OK,
+                    MessageBox.Show(Strings.PasswordsMismatch, Strings.ErrorTitle, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     return;
                 }
 
                 if (OwnerPassword != "")
                 {
-                    input.Prompt = "Heslo vlastníka bolo nastavené. Potvrdťe prosím heslo opät.";
-                    input.Title = "Potvrdenie hesla vlastníka";
+                    input.Prompt = Strings.OwnerPasswordSetConfirm;
+                    input.Title = Strings.ConfirmOwnerPasswordTitle;
                     input.Password = true;
                     input.ShowDialog();
                     if (!input.PwdChanged)
@@ -299,7 +368,7 @@ namespace PDFPass
 
                     if (input.Result != OwnerPassword)
                     {
-                        MessageBox.Show("Heslo vlastníka nie je rovnaké. Prosím, zopakujte.", "Chyba",
+                        MessageBox.Show(Strings.OwnerPasswordMismatch, Strings.ErrorTitle,
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -376,7 +445,7 @@ namespace PDFPass
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Neznáma chyba počas spracovania súboru: " + ex.Message, "Chyba", MessageBoxButtons.OK,
+                MessageBox.Show($"{Strings.UnknownError}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 Cursor.Current = Cursors.Default;
                 return;
@@ -388,8 +457,8 @@ namespace PDFPass
         private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
         {
             var newFileName = isInputEncrypted
-                ? $"{Path.GetFileNameWithoutExtension(fileName).Replace("zašifrovaný", "")}dešifrovaný.pdf"
-                : $"{Path.GetFileNameWithoutExtension(fileName)}-zašifrovaný.pdf";
+                ? $"{Path.GetFileNameWithoutExtension(fileName).Replace(Strings.Encrypted, "")}{Strings.Decrypted}.pdf"
+                : $"{Path.GetFileNameWithoutExtension(fileName)}-{Strings.Encrypted}.pdf";
             return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
         }
 
@@ -405,7 +474,7 @@ namespace PDFPass
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Nie je možné spustiť príkaz. Chyba: " + ex.Message, "Chyba", MessageBoxButtons.OK,
+                    MessageBox.Show($"{Strings.CannotRunCommand}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
@@ -451,7 +520,7 @@ namespace PDFPass
             // Ensure input and output are not the same.
             if (string.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
             {
-                MessageBox.Show("Zdrojový a výstupný súbor nemôžu byť rovnaké alebo prázdne.", "Chybný zdroj/výstup",
+                MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtOutputFile.Focus();
                 txtOutputFile.SelectAll();
@@ -461,7 +530,8 @@ namespace PDFPass
             // Ensure input file exists.
             if (!File.Exists(txtInputFile.Text))
             {
-                MessageBox.Show("Zdrojový súbor neexistuje.");
+                MessageBox.Show(Strings.SourceFileDoesNotExist, Strings.ErrorTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtInputFile.Focus();
                 txtInputFile.SelectAll();
                 return;
@@ -471,14 +541,16 @@ namespace PDFPass
             // Verify password:
             if (txtPassword.Text == string.Empty)
             {
-                MessageBox.Show("Nebolo zadané heslo.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 txtPassword.Focus();
                 return;
             }
 
             if (!PdfUtils.IsPasswordCorrect(txtInputFile.Text, txtPassword.Text))
             {
-                MessageBox.Show("Nesprávné heslo. Skúste opäť.", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Strings.IncorrectPassword, Strings.ErrorTitle, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return;
             }
 
@@ -487,8 +559,7 @@ namespace PDFPass
                 // If output file exists, prompt to overwrite.
                 if (File.Exists(txtOutputFile.Text))
                 {
-                    if (MessageBox.Show(this, "Výstupny súbor už existuje. Želáte si prepísať súbor?",
-                            "Prepísať súbor?",
+                    if (MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
                             MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         txtOutputFile.Focus();
@@ -505,12 +576,13 @@ namespace PDFPass
                 catch (Exception exception)
                 {
                     Console.WriteLine(exception.ToString());
-                    MessageBox.Show("Neznáma chyba!", "Chyba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(Strings.UnknownErrorShort, Strings.ErrorTitle, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("PDF je chránené aj heslom vlastníka. Potrebné zadať toto heslo.", "Informácia",
+                MessageBox.Show(Strings.OwnerPasswordRequired, Strings.Information,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
@@ -541,9 +613,8 @@ namespace PDFPass
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             var input = new FrmInputBox();
-            input.Title = "Nastaviť heslo vlastníka";
-            input.Prompt =
-                "Zadajte heslo vlastníka.\r\n(Heslo vlastníka obmedzí manipuláciu s obsahom PDF)\r\n\r\nStlačte \"Stornovať\", ak chcete ZRUŠIŤ heslo vlastníka";
+            input.Title = Strings.SetOwnerPassword;
+            input.Prompt = Strings.EnterOwnerPasswordPrompt;
             input.Password = true;
             input.ShowDialog();
 
@@ -605,7 +676,7 @@ namespace PDFPass
         private void btnPaste_MouseHover(object sender, EventArgs e)
         {
             btnPasteTooltip.SetToolTip(btnPaste,
-                btnPaste.Enabled ? "Hodnota: '" + Clipboard.GetText() + "'" : string.Empty);
+                btnPaste.Enabled ? $"{Strings.ClipboardValuePrefix}{Clipboard.GetText()}'" : string.Empty);
         }
     }
 }

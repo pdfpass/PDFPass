@@ -1,27 +1,124 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
+using PDFPass.Resources;
 
 namespace PDFPass
 {
     public partial class FrmSettings : Form
     {
+        // Language selection UI elements - move these to designer.cs if you use the designer
+        private GroupBox groupBoxLanguage;
+        private ComboBox comboBoxLanguage;
+
         public FrmSettings()
         {
             InitializeComponent();
+
+            // Create language selection UI
+            CreateLanguageUI();
+
+            // Update UI text from resources
+            UpdateUIText();
+
+            // Initialize language selection
+            LanguageHelper.InitializeLanguageComboBox(comboBoxLanguage, Settings.language);
+
+            // Subscribe to language change events
+            LocalizationManager.LanguageChanged += (sender, e) => UpdateUIText();
+        }
+
+        private void CreateLanguageUI()
+        {
+            // Create language selection UI elements
+            groupBoxLanguage = new GroupBox();
+            comboBoxLanguage = new ComboBox();
+
+            // Configure groupBoxLanguage
+            groupBoxLanguage.Controls.Add(comboBoxLanguage);
+            groupBoxLanguage.Location = new Point(13, 410); // Adjust as needed for your form
+            groupBoxLanguage.Name = "groupBoxLanguage";
+            groupBoxLanguage.Size = new Size(200, 60);
+            groupBoxLanguage.TabIndex = 20;
+            groupBoxLanguage.TabStop = false;
+            groupBoxLanguage.Text = "Jazyk / Language / Jazyk"; // Will be updated in UpdateUIText
+
+            // Configure comboBoxLanguage
+            comboBoxLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxLanguage.FormattingEnabled = true;
+            comboBoxLanguage.Location = new Point(20, 22);
+            comboBoxLanguage.Name = "comboBoxLanguage";
+            comboBoxLanguage.Size = new Size(160, 25);
+            comboBoxLanguage.TabIndex = 0;
+
+            // Add to Controls collection
+            this.Controls.Add(groupBoxLanguage);
+        }
+
+        private void UpdateUIText()
+        {
+            // Update form title
+            this.Text = Strings.SettingsTitle;
+
+            // Update labels
+            label1.Text = Strings.Copyright;
+            label2.Text = Strings.PermissionsForOutputFile;
+            label3.Text = Strings.Algorithm;
+            label4.Text = Strings.PermissionsIgnoredWarning;
+            label5.Text = Strings.Parameters;
+            label6.Text = Strings.OutputFilePathAdded;
+            lblOwnerPassword.Text = Strings.OwnerPassword;
+
+            // Update buttons
+            btnOK.Text = Strings.Confirm;
+            btnCancel.Text = Strings.Cancel;
+            btnRunBrowse.Text = "..."; // This is not a text to localize
+
+            // Update group boxes
+            groupBox1.Text = Strings.AfterSuccessfulEncryption;
+            groupBox2.Text = Strings.EncryptionOptions;
+            groupBoxLanguage.Text = Strings.LanguageTitle;
+
+            // Update checkboxes
+            chkOpen.Text = Strings.OpenOutputFile;
+            chkShowFolder.Text = Strings.OpenFileInExplorer;
+            chkCloseAfterCompletion.Text = Strings.ClosePDFPass;
+            chkRun.Text = Strings.RunProgram;
+            chkAlwaysDefaultOwnerPassword.Text = Strings.SetAutomatically;
+            chkDegradedPrinting.Text = Strings.AllowPrintingLowRes;
+            chkAssembly.Text = Strings.AllowPageArrangement;
+            chkScreenreaders.Text = Strings.AllowAccessTechnologies;
+            chkForms.Text = Strings.AllowFillForm;
+            chkNotations.Text = Strings.AllowAddAnnotations;
+            chkModifying.Text = Strings.AllowDocumentModification;
+            chkCopying.Text = Strings.AllowContentCopy;
+            chkPrinting.Text = Strings.AllowPrintingHighRes;
+            chkEncryptMetadata.Text = Strings.EncryptMetadata;
+            chkPasswordConfirmation.Text = Strings.ConfirmPassword;
+
+            // Update placeholders and tooltips
+            txtArguments.PlaceholderText = Strings.ParametersPlaceholder;
+            txtRun.PlaceholderText = Strings.ProgramPathPlaceholder;
+            txtOwnerPassword.PlaceholderText = Strings.PermanentOwnerPassword;
+
+            // Update link label
+            linkDonate.Text = Strings.SupportDeveloper;
+
+            // Update dialog filter
+            dlgOpen.Filter = $"{Strings.ExecutableFiles}|*.exe;*.bat;*.com|{Strings.AllFiles}|*.*";
         }
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-            // Load encryption types: (Thanks https://stackoverflow.com/a/11745699/1502289)
+            // Load encryption types with localized descriptions
             var encryptionTypes = new Dictionary<int, string>
             {
-                { (int)Settings.EncryptionType.AES_256, "AES-256 (Adobe Reader 8+) [odporúčané]" },
-                { (int)Settings.EncryptionType.AES_128, "AES-128 (Adobe Reader 7+)" },
-                { (int)Settings.EncryptionType.RC4_128, "RC4-128 (Adobe Reader 6+)" }
+                { (int)Settings.EncryptionType.AES_256, Strings.AES256Recommended },
+                { (int)Settings.EncryptionType.AES_128, Strings.AES128 },
+                { (int)Settings.EncryptionType.RC4_128, Strings.RC4128 }
             };
 
             // Attach datasource to combo box.
@@ -29,8 +126,8 @@ namespace PDFPass
             cboEncryptionType.DisplayMember = "Value";
             cboEncryptionType.ValueMember = "Key";
 
-            // Load settings:
-            Settings.Load(); // Load settings from registry.
+            // Load settings from registry.
+            Settings.Load();
 
             // Populate settings to form controls
             chkRun.Checked = Settings.run_after;
@@ -70,14 +167,13 @@ namespace PDFPass
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            // Save settings
-
             // Validate RUN file
             if (chkRun.Checked)
             {
                 if (!File.Exists(txtRun.Text))
                 {
-                    MessageBox.Show("Súbor pre spustenie neexistuje.");
+                    MessageBox.Show(Strings.RunFileNotExists, Strings.ErrorTitle,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     txtRun.Focus();
                     txtRun.SelectAll();
                     return;
@@ -108,6 +204,22 @@ namespace PDFPass
             Settings.owner_password = txtOwnerPassword.Text;
             Settings.always_default_owner_password = chkAlwaysDefaultOwnerPassword.Checked;
 
+            // Save language setting
+            var selectedLanguage = LanguageHelper.GetSelectedLanguage(comboBoxLanguage);
+            if (selectedLanguage != Settings.language)
+            {
+                // Language changed, apply it
+                Settings.language = selectedLanguage;
+                LanguageHelper.ApplyLanguageChange(selectedLanguage);
+
+                // Show a message that changes will fully apply after restart
+                MessageBox.Show(
+                    Strings.LanguageChangeRestartRequired,
+                    Strings.Information,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+
             Settings.Save();
 
             // Close settings window
@@ -118,7 +230,7 @@ namespace PDFPass
         {
             Close();
         }
-      
+
         private void linkDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             OpenWebSite("https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ");
@@ -126,7 +238,6 @@ namespace PDFPass
 
         private static void OpenWebSite(string urlToOpen)
         {
-            // Method 1: Process.Start (All .NET platforms)
             var startInfo = new ProcessStartInfo(urlToOpen)
             {
                 UseShellExecute = true // Essential for opening in default browser

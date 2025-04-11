@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+
+    <!-- Main form resources -->
+    <data name="ClipboardValuePrefix" xml:space="preserve">
+  <value>Value: '</value>
+</data>
+    <data name="ApplicationTitle" xml:space="preserve">
+    <value>PDFPass - Open Source PDF Password Manager</value>
+  </data>
+    <data name="InputFile" xml:space="preserve">
+    <value>Source File</value>
+  </data>
+    <data name="SelectFileForEncryption" xml:space="preserve">
+    <value>Select a file to encrypt:</value>
+  </data>
+    <data name="OutputFile" xml:space="preserve">
+    <value>Destination File</value>
+  </data>
+    <data name="SelectPathForEncryptedFile" xml:space="preserve">
+    <value>Select destination for encrypted file:</value>
+  </data>
+    <data name="Passwords" xml:space="preserve">
+    <value>Passwords</value>
+  </data>
+    <data name="Change" xml:space="preserve">
+    <value>Change</value>
+  </data>
+    <data name="OwnerPasswordSet" xml:space="preserve">
+    <value>Owner password has been set.</value>
+  </data>
+    <data name="OwnerPasswordEmpty" xml:space="preserve">
+    <value>No owner password set.</value>
+  </data>
+    <data name="CopiedToClipboard" xml:space="preserve">
+    <value>Copied to clipboard.</value>
+  </data>
+    <data name="PasswordForLocking" xml:space="preserve">
+    <value>Password to protect PDF 🔒</value>
+  </data>
+    <data name="PasswordForUnlocking" xml:space="preserve">
+    <value>Password to unlock PDF 🔓</value>
+  </data>
+    <data name="Generate" xml:space="preserve">
+    <value>Generate</value>
+  </data>
+    <data name="EnterPassword" xml:space="preserve">
+    <value>(enter password)</value>
+  </data>
+    <data name="PasswordLengthWarning" xml:space="preserve">
+    <value>Passwords longer than 32 characters will be truncated per PDF specification.</value>
+  </data>
+    <data name="Paste" xml:space="preserve">
+    <value>Paste</value>
+  </data>
+    <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+    <data name="Decrypt" xml:space="preserve">
+    <value>Remove Password</value>
+  </data>
+    <data name="Encrypt" xml:space="preserve">
+    <value>Add Password</value>
+  </data>
+    <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+    <data name="PDFFiles" xml:space="preserve">
+    <value>PDF files</value>
+  </data>
+    <data name="AllFiles" xml:space="preserve">
+    <value>All files</value>
+  </data>
+    <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+    <data name="Version" xml:space="preserve">
+    <value>Version: </value>
+  </data>
+    <data name="Watermark" xml:space="preserve">
+    <value>Watermark</value>
+  </data>
+    <data name="Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+    <data name="UseWatermark" xml:space="preserve">
+    <value>Apply watermark 💧</value>
+  </data>
+    <data name="Sample" xml:space="preserve">
+    <value>Sample</value>
+  </data>
+    <data name="Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+    <data name="Confidential" xml:space="preserve">
+    <value>Confidential</value>
+  </data>
+    <data name="Draft" xml:space="preserve">
+    <value>Draft</value>
+  </data>
+
+    <!-- Error messages -->
+    <data name="FileNotPdfOrDamaged" xml:space="preserve">
+    <value>The file is not a PDF or is corrupted!</value>
+  </data>
+    <data name="ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+    <data name="SourceAndDestinationSame" xml:space="preserve">
+    <value>Source and destination files cannot be the same or empty.</value>
+  </data>
+    <data name="SourceDestinationError" xml:space="preserve">
+    <value>Invalid source/destination</value>
+  </data>
+    <data name="SourceFileDoesNotExist" xml:space="preserve">
+    <value>Source file does not exist.</value>
+  </data>
+    <data name="ConfirmOverwriteFile" xml:space="preserve">
+    <value>The destination file already exists. Do you want to overwrite it?</value>
+  </data>
+    <data name="OverwriteFile" xml:space="preserve">
+    <value>Overwrite file?</value>
+  </data>
+    <data name="NoPasswordEntered" xml:space="preserve">
+    <value>No password entered! (at least one password is required)</value>
+  </data>
+    <data name="NoReadingPasswordWarning" xml:space="preserve">
+    <value>No document password entered! Continue anyway?</value>
+  </data>
+    <data name="Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+    <data name="ConfirmReadingPassword" xml:space="preserve">
+    <value>Please confirm the document password.</value>
+  </data>
+    <data name="ConfirmReadingPasswordTitle" xml:space="preserve">
+    <value>Confirm Document Password</value>
+  </data>
+    <data name="PasswordsMismatch" xml:space="preserve">
+    <value>Passwords do not match. Please try again.</value>
+  </data>
+    <data name="OwnerPasswordSetConfirm" xml:space="preserve">
+    <value>An owner password has been set. Please confirm it now.</value>
+  </data>
+    <data name="ConfirmOwnerPasswordTitle" xml:space="preserve">
+    <value>Confirm Owner Password</value>
+  </data>
+    <data name="OwnerPasswordMismatch" xml:space="preserve">
+    <value>Owner password does not match. Please try again.</value>
+  </data>
+    <data name="UnknownError" xml:space="preserve">
+    <value>An unexpected error occurred while processing the file: </value>
+  </data>
+    <data name="IncorrectPassword" xml:space="preserve">
+    <value>Incorrect password. Please try again.</value>
+  </data>
+    <data name="OwnerPasswordRequired" xml:space="preserve">
+    <value>This PDF is also protected with an owner password. You need to enter that password.</value>
+  </data>
+    <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+    <data name="UnknownErrorShort" xml:space="preserve">
+    <value>An unexpected error occurred!</value>
+  </data>
+    <data name="CannotRunCommand" xml:space="preserve">
+    <value>Cannot execute command. Error: </value>
+  </data>
+
+    <!-- Settings form resources -->
+    <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+    <data name="Copyright" xml:space="preserve">
+    <value>Copyright 2024. Licensed under AGPL.</value>
+  </data>
+    <data name="Confirm" xml:space="preserve">
+    <value>Save</value>
+  </data>
+    <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+    <data name="AfterSuccessfulEncryption" xml:space="preserve">
+    <value>After Successful Encryption</value>
+  </data>
+    <data name="OutputFilePathAdded" xml:space="preserve">
+    <value>(Output file path will be added as the last parameter)</value>
+  </data>
+    <data name="Parameters" xml:space="preserve">
+    <value>Parameters:</value>
+  </data>
+    <data name="ParametersPlaceholder" xml:space="preserve">
+    <value>(program parameters)</value>
+  </data>
+    <data name="OpenOutputFile" xml:space="preserve">
+    <value>Open output file</value>
+  </data>
+    <data name="OpenFileInExplorer" xml:space="preserve">
+    <value>Show in File Explorer</value>
+  </data>
+    <data name="ClosePDFPass" xml:space="preserve">
+    <value>Close PDFPass when done</value>
+  </data>
+    <data name="RunProgram" xml:space="preserve">
+    <value>Run program:</value>
+  </data>
+    <data name="ProgramPathPlaceholder" xml:space="preserve">
+    <value>(path to program)</value>
+  </data>
+    <data name="EncryptionOptions" xml:space="preserve">
+    <value>Encryption Options</value>
+  </data>
+    <data name="SetAutomatically" xml:space="preserve">
+    <value>Set automatically</value>
+  </data>
+    <data name="OwnerPassword" xml:space="preserve">
+    <value>Owner password:</value>
+  </data>
+    <data name="PermanentOwnerPassword" xml:space="preserve">
+    <value>(permanent owner password)</value>
+  </data>
+    <data name="PermissionsIgnoredWarning" xml:space="preserve">
+    <value>Some PDF viewers may ignore these permission settings.</value>
+  </data>
+    <data name="AllowPrintingLowRes" xml:space="preserve">
+    <value>Allow printing (low resolution)</value>
+  </data>
+    <data name="AllowPageArrangement" xml:space="preserve">
+    <value>Allow page arrangement</value>
+  </data>
+    <data name="AllowAccessTechnologies" xml:space="preserve">
+    <value>Allow accessibility technologies</value>
+  </data>
+    <data name="AllowFillForm" xml:space="preserve">
+    <value>Allow form filling</value>
+  </data>
+    <data name="AllowAddAnnotations" xml:space="preserve">
+    <value>Allow adding annotations</value>
+  </data>
+    <data name="AllowDocumentModification" xml:space="preserve">
+    <value>Allow document editing</value>
+  </data>
+    <data name="AllowContentCopy" xml:space="preserve">
+    <value>Allow content copying</value>
+  </data>
+    <data name="PermissionsForOutputFile" xml:space="preserve">
+    <value>Permissions for Output File</value>
+  </data>
+    <data name="AllowPrintingHighRes" xml:space="preserve">
+    <value>Allow printing (high resolution)</value>
+  </data>
+    <data name="EncryptMetadata" xml:space="preserve">
+    <value>Encrypt metadata</value>
+  </data>
+    <data name="Algorithm" xml:space="preserve">
+    <value>Algorithm:</value>
+  </data>
+    <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm passwords</value>
+  </data>
+    <data name="ExecutableFiles" xml:space="preserve">
+    <value>Executable files (*.exe, *.bat, *.com)</value>
+  </data>
+    <data name="SupportDeveloper" xml:space="preserve">
+    <value>Support the developer with a small donation! 💳</value>
+  </data>
+    <data name="AES256Recommended" xml:space="preserve">
+    <value>AES-256 (Adobe Reader 8+) [recommended]</value>
+  </data>
+    <data name="AES128" xml:space="preserve">
+    <value>AES-128 (Adobe Reader 7+)</value>
+  </data>
+    <data name="RC4128" xml:space="preserve">
+    <value>RC4-128 (Adobe Reader 6+)</value>
+  </data>
+    <data name="RunFileNotExists" xml:space="preserve">
+    <value>The program file to run does not exist.</value>
+  </data>
+    <data name="LanguageTitle" xml:space="preserve">
+  <value>Jazyk / Language / Jazyk</value>
+</data>
+    <data name="LanguageChangeRestartRequired" xml:space="preserve">
+  <value>The language change will fully apply after restarting the application.</value>
+</data>
+
+    <!-- Input box resources -->
+    <data name="SetOwnerPassword" xml:space="preserve">
+    <value>Set Owner Password</value>
+  </data>
+    <data name="EnterOwnerPasswordPrompt" xml:space="preserve">
+    <value>Enter the owner password.\r\n(Owner password restricts modifications to the PDF)\r\n\r\nPress \"Cancel\" to REMOVE the owner password</value>
+  </data>
+    <data name="FillWithDefaultPassword" xml:space="preserve">
+    <value>Use default password from Settings</value>
+  </data>
+
+    <!-- Command-line options -->
+    <data name="OwnerPassOption" xml:space="preserve">
+    <value>Specify the owner password</value>
+  </data>
+    <data name="UserPassOption" xml:space="preserve">
+    <value>Specify the user password</value>
+  </data>
+    <data name="InputFileOption" xml:space="preserve">
+    <value>Specify the PDF file to encrypt</value>
+  </data>
+    <data name="OutputFileOption" xml:space="preserve">
+    <value>Specify the encrypted output file</value>
+  </data>
+    <data name="RunImmediatelyOption" xml:space="preserve">
+    <value>Start encryption immediately (without clicking the Add Password button)</value>
+  </data>
+    <data name="CommandLineError" xml:space="preserve">
+    <value>Command line parameter error: </value>
+  </data>
+
+    <!-- File handling -->
+    <data name="Encrypted" xml:space="preserve">
+    <value>encrypted</value>
+  </data>
+    <data name="Decrypted" xml:space="preserve">
+    <value>decrypted</value>
+  </data>
+</root>

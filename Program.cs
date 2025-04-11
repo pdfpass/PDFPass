@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using CommandLine;
+using PDFPass.Resources;
 
 namespace PDFPass
 {
@@ -11,20 +12,19 @@ namespace PDFPass
         // Command line options (CommandLineParser plugin) https://github.com/commandlineparser/commandline
         private class Options
         {
-            [Option("owner_pass", Required = false, HelpText = "Zadajte heslo vlastníka")]
+            [Option("owner_pass", Required = false, HelpText = "OwnerPassOption")]
             public string OwnerPass { get; set; }
 
-            [Option("user_pass", Required = false, HelpText = "Zadajte heslo používateľa")]
+            [Option("user_pass", Required = false, HelpText = "UserPassOption")]
             public string UserPass { get; set; }
 
-            [Option('i', "input", Required = false, HelpText = "Uveďte vstupný PDF súbor k zašifrovaniu")]
+            [Option('i', "input", Required = false, HelpText = "InputFileOption")]
             public string InputFile { get; set; }
 
-            [Option('o', "output", Required = false, HelpText = "Uveďte výstupný zašifrovaný súbor")]
+            [Option('o', "output", Required = false, HelpText = "OutputFileOption")]
             public string OutputFile { get; set; }
 
-            [Option("run",
-                HelpText = "Spustiť šifrovanie okamžite po štarte (nevyžaduje stlačenie tlačidla Zahesluj)")]
+            [Option("run", HelpText = "RunImmediatelyOption")]
             public bool Immediate { get; set; }
         }
 
@@ -35,6 +35,12 @@ namespace PDFPass
         [STAThread]
         static void Main(string[] args)
         {
+            // Initialize localization
+            LocalizationManager.SetLanguage("sk-SK");
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             // Parse command line:
             Parser.Default.ParseArguments<Options>(args)
                 .WithParsed(HandleParsed)
@@ -44,8 +50,6 @@ namespace PDFPass
         static void HandleParsed(Options opts)
             // This function is called if the CommandLine.Parser succeeds in parsing all command line options.
         {
-            Application.SetCompatibleTextRenderingDefault(false);
-
             // Create the UI form instance
             var form = new FrmMain();
 
@@ -85,7 +89,6 @@ namespace PDFPass
             // If executing immediately, set the Run flag.
             form.EncryptOnStart = (opts.Immediate);
 
-            Application.EnableVisualStyles();
             Application.Run(form);
         }
 
@@ -93,9 +96,9 @@ namespace PDFPass
             // This function is called if the CommandLine.Parser fails to parse some command line options
             // It should output error messages to CLI and/or desktop.
         {
-            Console.WriteLine("Chybné parametre príkazového riadku: " + errors);
-            MessageBox.Show("Chybné parametre príkazového riadku: " + errors, "Chyba!", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+            string errorMessage = $"{Strings.CommandLineError}{errors}";
+            Console.WriteLine(errorMessage);
+            MessageBox.Show(errorMessage, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

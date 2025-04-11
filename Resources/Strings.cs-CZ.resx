@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string"/>
+                            <xsd:attribute name="type" type="xsd:string"/>
+                            <xsd:attribute name="mimetype" type="xsd:string"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string"/>
+                            <xsd:attribute name="name" type="xsd:string"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+                            <xsd:attribute ref="xml:space"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+
+    <!-- Main form resources -->
+    <data name="ClipboardValuePrefix" xml:space="preserve">
+  <value>Hodnota: '</value>
+</data>
+    <data name="ApplicationTitle" xml:space="preserve">
+    <value>PDFPass - Open Source nástroj pro správu hesel PDF</value>
+  </data>
+    <data name="InputFile" xml:space="preserve">
+    <value>Zdrojový soubor</value>
+  </data>
+    <data name="SelectFileForEncryption" xml:space="preserve">
+    <value>Vybrat soubor pro zašifrování:</value>
+  </data>
+    <data name="OutputFile" xml:space="preserve">
+    <value>Výstupní soubor</value>
+  </data>
+    <data name="SelectPathForEncryptedFile" xml:space="preserve">
+    <value>Vybrat cestu pro zašifrovaný soubor:</value>
+  </data>
+    <data name="Passwords" xml:space="preserve">
+    <value>Hesla</value>
+  </data>
+    <data name="Change" xml:space="preserve">
+    <value>Změnit</value>
+  </data>
+    <data name="OwnerPasswordSet" xml:space="preserve">
+    <value>Heslo vlastníka nastaveno.</value>
+  </data>
+    <data name="OwnerPasswordEmpty" xml:space="preserve">
+    <value>Heslo vlastníka není nastaveno.</value>
+  </data>
+    <data name="CopiedToClipboard" xml:space="preserve">
+    <value>Zkopírováno do schránky.</value>
+  </data>
+    <data name="PasswordForLocking" xml:space="preserve">
+    <value>Heslo pro zabezpečení PDF 🔒</value>
+  </data>
+    <data name="PasswordForUnlocking" xml:space="preserve">
+    <value>Heslo pro odemknutí PDF 🔓</value>
+  </data>
+    <data name="Generate" xml:space="preserve">
+    <value>Generovat</value>
+  </data>
+    <data name="EnterPassword" xml:space="preserve">
+    <value>(zadejte heslo)</value>
+  </data>
+    <data name="PasswordLengthWarning" xml:space="preserve">
+    <value>Hesla delší než 32 znaků budou zkrácena podle specifikace PDF.</value>
+  </data>
+    <data name="Paste" xml:space="preserve">
+    <value>Vložit</value>
+  </data>
+    <data name="Copy" xml:space="preserve">
+    <value>Kopírovat</value>
+  </data>
+    <data name="Decrypt" xml:space="preserve">
+    <value>Odstranit heslo</value>
+  </data>
+    <data name="Encrypt" xml:space="preserve">
+    <value>Zabezpečit heslem</value>
+  </data>
+    <data name="Close" xml:space="preserve">
+    <value>Zavřít</value>
+  </data>
+    <data name="PDFFiles" xml:space="preserve">
+    <value>PDF soubory</value>
+  </data>
+    <data name="AllFiles" xml:space="preserve">
+    <value>Všechny soubory</value>
+  </data>
+    <data name="Settings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+    <data name="Version" xml:space="preserve">
+    <value>Verze: </value>
+  </data>
+    <data name="Watermark" xml:space="preserve">
+    <value>Vodoznak</value>
+  </data>
+    <data name="Text" xml:space="preserve">
+    <value>Text:</value>
+  </data>
+    <data name="UseWatermark" xml:space="preserve">
+    <value>Použít vodoznak 💧</value>
+  </data>
+    <data name="Sample" xml:space="preserve">
+    <value>Vzor</value>
+  </data>
+    <data name="Copy" xml:space="preserve">
+    <value>Kopie</value>
+  </data>
+    <data name="Confidential" xml:space="preserve">
+    <value>Důvěrné</value>
+  </data>
+    <data name="Draft" xml:space="preserve">
+    <value>Návrh</value>
+  </data>
+
+    <!-- Error messages -->
+    <data name="FileNotPdfOrDamaged" xml:space="preserve">
+    <value>Soubor není ve formátu PDF nebo je poškozen!</value>
+  </data>
+    <data name="ErrorTitle" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+    <data name="SourceAndDestinationSame" xml:space="preserve">
+    <value>Zdrojový a výstupní soubor nemohou být stejné nebo prázdné.</value>
+  </data>
+    <data name="SourceDestinationError" xml:space="preserve">
+    <value>Neplatný zdroj/cíl</value>
+  </data>
+    <data name="SourceFileDoesNotExist" xml:space="preserve">
+    <value>Zdrojový soubor neexistuje.</value>
+  </data>
+    <data name="ConfirmOverwriteFile" xml:space="preserve">
+    <value>Výstupní soubor již existuje. Chcete ho přepsat?</value>
+  </data>
+    <data name="OverwriteFile" xml:space="preserve">
+    <value>Přepsat soubor?</value>
+  </data>
+    <data name="NoPasswordEntered" xml:space="preserve">
+    <value>Nebylo zadáno žádné heslo! (je vyžadováno alespoň jedno)</value>
+  </data>
+    <data name="NoReadingPasswordWarning" xml:space="preserve">
+    <value>Nebylo zadáno heslo pro čtení dokumentu! Pokračovat?</value>
+  </data>
+    <data name="Warning" xml:space="preserve">
+    <value>Upozornění</value>
+  </data>
+    <data name="ConfirmReadingPassword" xml:space="preserve">
+    <value>Potvrďte prosím heslo pro čtení dokumentu.</value>
+  </data>
+    <data name="ConfirmReadingPasswordTitle" xml:space="preserve">
+    <value>Potvrzení hesla pro čtení</value>
+  </data>
+    <data name="PasswordsMismatch" xml:space="preserve">
+    <value>Hesla se neshodují. Zkuste to znovu.</value>
+  </data>
+    <data name="OwnerPasswordSetConfirm" xml:space="preserve">
+    <value>Heslo vlastníka bylo nastaveno. Potvrďte ho prosím.</value>
+  </data>
+    <data name="ConfirmOwnerPasswordTitle" xml:space="preserve">
+    <value>Potvrzení hesla vlastníka</value>
+  </data>
+    <data name="OwnerPasswordMismatch" xml:space="preserve">
+    <value>Heslo vlastníka se neshoduje. Zkuste to znovu.</value>
+  </data>
+    <data name="UnknownError" xml:space="preserve">
+    <value>Při zpracování souboru došlo k neočekávané chybě: </value>
+  </data>
+    <data name="IncorrectPassword" xml:space="preserve">
+    <value>Nesprávné heslo. Zkuste to znovu.</value>
+  </data>
+    <data name="OwnerPasswordRequired" xml:space="preserve">
+    <value>Tento PDF je chráněn také heslem vlastníka. Musíte zadat toto heslo.</value>
+  </data>
+    <data name="Information" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+    <data name="UnknownErrorShort" xml:space="preserve">
+    <value>Došlo k neočekávané chybě!</value>
+  </data>
+    <data name="CannotRunCommand" xml:space="preserve">
+    <value>Nelze spustit příkaz. Chyba: </value>
+  </data>
+
+    <!-- Settings form resources -->
+    <data name="SettingsTitle" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+    <data name="Copyright" xml:space="preserve">
+    <value>Copyright 2024. Licencováno pod AGPL.</value>
+  </data>
+    <data name="Confirm" xml:space="preserve">
+    <value>Uložit</value>
+  </data>
+    <data name="Cancel" xml:space="preserve">
+    <value>Zrušit</value>
+  </data>
+    <data name="AfterSuccessfulEncryption" xml:space="preserve">
+    <value>Po úspěšném šifrování</value>
+  </data>
+    <data name="OutputFilePathAdded" xml:space="preserve">
+    <value>(Cesta k výstupnímu souboru bude přidána jako poslední parametr)</value>
+  </data>
+    <data name="Parameters" xml:space="preserve">
+    <value>Parametry:</value>
+  </data>
+    <data name="ParametersPlaceholder" xml:space="preserve">
+    <value>(parametry programu)</value>
+  </data>
+    <data name="OpenOutputFile" xml:space="preserve">
+    <value>Otevřít výstupní soubor</value>
+  </data>
+    <data name="OpenFileInExplorer" xml:space="preserve">
+    <value>Zobrazit v Průzkumníku souborů</value>
+  </data>
+    <data name="ClosePDFPass" xml:space="preserve">
+    <value>Zavřít PDFPass po dokončení</value>
+  </data>
+    <data name="RunProgram" xml:space="preserve">
+    <value>Spustit program:</value>
+  </data>
+    <data name="ProgramPathPlaceholder" xml:space="preserve">
+    <value>(cesta k programu)</value>
+  </data>
+    <data name="EncryptionOptions" xml:space="preserve">
+    <value>Možnosti šifrování</value>
+  </data>
+    <data name="SetAutomatically" xml:space="preserve">
+    <value>Nastavit automaticky</value>
+  </data>
+    <data name="OwnerPassword" xml:space="preserve">
+    <value>Heslo vlastníka:</value>
+  </data>
+    <data name="PermanentOwnerPassword" xml:space="preserve">
+    <value>(trvalé heslo vlastníka)</value>
+  </data>
+    <data name="PermissionsIgnoredWarning" xml:space="preserve">
+    <value>Některé PDF prohlížeče mohou tato oprávnění ignorovat.</value>
+  </data>
+    <data name="AllowPrintingLowRes" xml:space="preserve">
+    <value>Povolit tisk (nízké rozlišení)</value>
+  </data>
+    <data name="AllowPageArrangement" xml:space="preserve">
+    <value>Povolit úpravu stránek</value>
+  </data>
+    <data name="AllowAccessTechnologies" xml:space="preserve">
+    <value>Povolit asistenční technologie</value>
+  </data>
+    <data name="AllowFillForm" xml:space="preserve">
+    <value>Povolit vyplňování formulářů</value>
+  </data>
+    <data name="AllowAddAnnotations" xml:space="preserve">
+    <value>Povolit přidávání poznámek</value>
+  </data>
+    <data name="AllowDocumentModification" xml:space="preserve">
+    <value>Povolit úpravy dokumentu</value>
+  </data>
+    <data name="AllowContentCopy" xml:space="preserve">
+    <value>Povolit kopírování obsahu</value>
+  </data>
+    <data name="PermissionsForOutputFile" xml:space="preserve">
+    <value>Oprávnění pro výstupní soubor</value>
+  </data>
+    <data name="AllowPrintingHighRes" xml:space="preserve">
+    <value>Povolit tisk (vysoké rozlišení)</value>
+  </data>
+    <data name="EncryptMetadata" xml:space="preserve">
+    <value>Šifrovat metadata</value>
+  </data>
+    <data name="Algorithm" xml:space="preserve">
+    <value>Algoritmus:</value>
+  </data>
+    <data name="ConfirmPassword" xml:space="preserve">
+    <value>Potvrzovat hesla</value>
+  </data>
+    <data name="ExecutableFiles" xml:space="preserve">
+    <value>Spustitelné soubory (*.exe, *.bat, *.com)</value>
+  </data>
+    <data name="SupportDeveloper" xml:space="preserve">
+    <value>Podpořte vývojáře malým příspěvkem! 💳</value>
+  </data>
+    <data name="AES256Recommended" xml:space="preserve">
+    <value>AES-256 (Adobe Reader 8+) [doporučeno]</value>
+  </data>
+    <data name="AES128" xml:space="preserve">
+    <value>AES-128 (Adobe Reader 7+)</value>
+  </data>
+    <data name="RC4128" xml:space="preserve">
+    <value>RC4-128 (Adobe Reader 6+)</value>
+  </data>
+    <data name="RunFileNotExists" xml:space="preserve">
+    <value>Soubor programu ke spuštění neexistuje.</value>
+  </data>
+    <data name="LanguageTitle" xml:space="preserve">
+  <value>Jazyk / Language / Jazyk</value>
+</data>
+    <data name="LanguageChangeRestartRequired" xml:space="preserve">
+  <value>Změna jazyka se plně projeví po restartu aplikace.</value>
+</data>
+
+    <!-- Input box resources -->
+    <data name="SetOwnerPassword" xml:space="preserve">
+    <value>Nastavit heslo vlastníka</value>
+  </data>
+    <data name="EnterOwnerPasswordPrompt" xml:space="preserve">
+    <value>Zadejte heslo vlastníka.\r\n(Heslo vlastníka omezuje úpravy PDF)\r\n\r\nStiskněte \"Zrušit\" pro ODSTRANĚNÍ hesla vlastníka</value>
+  </data>
+    <data name="FillWithDefaultPassword" xml:space="preserve">
+    <value>Použít výchozí heslo z nastavení</value>
+  </data>
+
+    <!-- Command-line options -->
+    <data name="OwnerPassOption" xml:space="preserve">
+    <value>Zadejte heslo vlastníka</value>
+  </data>
+    <data name="UserPassOption" xml:space="preserve">
+    <value>Zadejte uživatelské heslo</value>
+  </data>
+    <data name="InputFileOption" xml:space="preserve">
+    <value>Zadejte PDF soubor k zašifrování</value>
+  </data>
+    <data name="OutputFileOption" xml:space="preserve">
+    <value>Zadejte výstupní zašifrovaný soubor</value>
+  </data>
+    <data name="RunImmediatelyOption" xml:space="preserve">
+    <value>Spustit šifrování okamžitě (bez kliknutí na tlačítko Zabezpečit heslem)</value>
+  </data>
+    <data name="CommandLineError" xml:space="preserve">
+    <value>Chyba parametrů příkazového řádku: </value>
+  </data>
+
+    <!-- File handling -->
+    <data name="Encrypted" xml:space="preserve">
+    <value>zašifrovaný</value>
+  </data>
+    <data name="Decrypted" xml:space="preserve">
+    <value>dešifrovaný</value>
+  </data>
+</root>

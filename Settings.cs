@@ -39,6 +39,9 @@ namespace PDFPass
         public static string owner_password;
         public static bool always_default_owner_password;
 
+        // i18n
+        public static string language; // The selected language code (e.g., "sk-SK", "en", "cs-CZ")
+
 
         // Events to execute upon setting changes
         public delegate void SettingChangedNotification();
@@ -232,6 +235,15 @@ namespace PDFPass
 
             always_default_owner_password = (int)obj == 1;
 
+            // Selected language
+            obj = Registry.GetValue(RegKey, "language", null);
+            if (obj == null)
+            {
+                obj = "sk-SK"; // Default to Slovak
+            }
+
+            language = (string)obj;
+
             // Notify all listeners of updates.
             CallNotify();
         }
@@ -274,7 +286,7 @@ namespace PDFPass
             Registry.SetValue(RegKey, "owner_password", owner_password, RegistryValueKind.String);
             Registry.SetValue(RegKey, "always_default_owner_password", always_default_owner_password,
                 RegistryValueKind.DWord);
-
+            Registry.SetValue(RegKey, "language", language, RegistryValueKind.String);
             // Notify all listeners
             CallNotify();
         }
