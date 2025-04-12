@@ -389,9 +389,9 @@ namespace PDFPass
 	        // 
 	        // gbWatermark
 	        // 
-	        gbWatermark.Controls.Add(label1);
 	        gbWatermark.Controls.Add(cmbWatermark);
 	        gbWatermark.Controls.Add(cbWatermark);
+	        gbWatermark.Controls.Add(label1);
 	        gbWatermark.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        gbWatermark.Location = new System.Drawing.Point(10, 411);
 	        gbWatermark.Name = "gbWatermark";
@@ -402,11 +402,10 @@ namespace PDFPass
 	        // 
 	        // label1
 	        // 
-	        label1.AutoSize = true;
 	        label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label1.Location = new System.Drawing.Point(228, 21);
+	        label1.Location = new System.Drawing.Point(198, 21);
 	        label1.Name = "label1";
-	        label1.Size = new System.Drawing.Size(39, 21);
+	        label1.Size = new System.Drawing.Size(82, 21);
 	        label1.TabIndex = 2;
 	        label1.Text = "Text:";
 	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

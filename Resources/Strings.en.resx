@@ -351,8 +351,12 @@
     <value>Set Owner Password</value>
   </data>
     <data name="EnterOwnerPasswordPrompt" xml:space="preserve">
-    <value>Enter the owner password.\r\n(Owner password restricts modifications to the PDF)\r\n\r\nPress \"Cancel\" to REMOVE the owner password</value>
-  </data>
+      <value>Enter the owner password.
+(Owner password restricts modifications to the PDF)
+
+
+Press "Cancel" to REMOVE the owner password</value>
+    </data>
     <data name="FillWithDefaultPassword" xml:space="preserve">
     <value>Use default password from Settings</value>
   </data>

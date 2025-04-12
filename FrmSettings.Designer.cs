@@ -73,15 +73,15 @@
 	        // 
 	        // label1
 	        // 
-	        label1.AutoSize = true;
+	        label1.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label1.Location = new System.Drawing.Point(120, 597);
+	        label1.Location = new System.Drawing.Point(52, 597);
 	        label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        label1.Name = "label1";
-	        label1.Size = new System.Drawing.Size(228, 15);
+	        label1.Size = new System.Drawing.Size(373, 15);
 	        label1.TabIndex = 1;
 	        label1.Text = "Copyright 2025. Licencované podľa AGPL.";
-	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // dlgOpen
 	        // 
@@ -135,25 +135,26 @@
 	        // 
 	        // label6
 	        // 
-	        label6.AutoSize = true;
+	        label6.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        label6.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)128)), ((int)((byte)0)));
-	        label6.Location = new System.Drawing.Point(49, 144);
+	        label6.Location = new System.Drawing.Point(18, 137);
 	        label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 	        label6.Name = "label6";
-	        label6.Size = new System.Drawing.Size(334, 15);
+	        label6.Size = new System.Drawing.Size(408, 24);
 	        label6.TabIndex = 27;
 	        label6.Text = "(Cesta výstupneho súboru je pridaná ako posledný parameter)";
+	        label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // label5
 	        // 
-	        label5.AutoSize = true;
+	        label5.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
 	        label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-	        label5.Location = new System.Drawing.Point(61, 110);
+	        label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        label5.Location = new System.Drawing.Point(18, 110);
 	        label5.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
 	        label5.Name = "label5";
-	        label5.Size = new System.Drawing.Size(71, 17);
+	        label5.Size = new System.Drawing.Size(114, 17);
 	        label5.TabIndex = 21;
 	        label5.Text = "Parametre:";
 	        label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -304,15 +305,16 @@
 	        // 
 	        // label4
 	        // 
-	        label4.AutoSize = true;
+	        label4.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        label4.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)128)), ((int)((byte)0)));
-	        label4.Location = new System.Drawing.Point(55, 170);
+	        label4.Location = new System.Drawing.Point(12, 170);
 	        label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 	        label4.Name = "label4";
-	        label4.Size = new System.Drawing.Size(281, 15);
+	        label4.Size = new System.Drawing.Size(374, 15);
 	        label4.TabIndex = 26;
 	        label4.Text = "Tieto oprávnenia niektoré PDF prehliadače ignorujú.";
+	        label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // chkDegradedPrinting
 	        // 
@@ -472,17 +474,17 @@
 	        // 
 	        // linkDonate
 	        // 
-	        linkDonate.AutoSize = true;
+	        linkDonate.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        linkDonate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        linkDonate.LinkColor = System.Drawing.Color.MediumSlateBlue;
-	        linkDonate.Location = new System.Drawing.Point(62, 612);
+	        linkDonate.Location = new System.Drawing.Point(13, 612);
 	        linkDonate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        linkDonate.Name = "linkDonate";
-	        linkDonate.Size = new System.Drawing.Size(382, 19);
+	        linkDonate.Size = new System.Drawing.Size(457, 19);
 	        linkDonate.TabIndex = 17;
 	        linkDonate.TabStop = true;
 	        linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou! 💳";
-	        linkDonate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        linkDonate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        linkDonate.LinkClicked += linkDonate_LinkClicked;
 	        // 
 	        // groupBoxLanguage
@@ -549,7 +551,6 @@
 	        groupBoxLanguage.ResumeLayout(false);
 	        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 	        ResumeLayout(false);
-	        PerformLayout();
         }
 
         private System.Windows.Forms.PictureBox pictureBox1;

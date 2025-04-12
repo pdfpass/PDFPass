@@ -351,8 +351,11 @@
     <value>Nastavit heslo vlastníka</value>
   </data>
     <data name="EnterOwnerPasswordPrompt" xml:space="preserve">
-    <value>Zadejte heslo vlastníka.\r\n(Heslo vlastníka omezuje úpravy PDF)\r\n\r\nStiskněte \"Zrušit\" pro ODSTRANĚNÍ hesla vlastníka</value>
-  </data>
+      <value>Zadejte heslo vlastníka.
+(Heslo vlastníka omezuje úpravy PDF)
+
+Stiskněte "Zrušit" pro ODSTRANĚNÍ hesla vlastníka</value>
+    </data>
     <data name="FillWithDefaultPassword" xml:space="preserve">
     <value>Použít výchozí heslo z nastavení</value>
   </data>
