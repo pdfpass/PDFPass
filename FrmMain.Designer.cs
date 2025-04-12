@@ -188,7 +188,6 @@ namespace PDFPass
 	        // 
 	        btnChangePassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnChangePassword.Image = ((System.Drawing.Image)resources.GetObject("btnChangePassword.Image"));
-	        btnChangePassword.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 	        btnChangePassword.Location = new System.Drawing.Point(21, 102);
 	        btnChangePassword.Margin = new System.Windows.Forms.Padding(2);
 	        btnChangePassword.Name = "btnChangePassword";

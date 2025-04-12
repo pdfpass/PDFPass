@@ -123,7 +123,7 @@
       <value>Odhesli</value>
     </data>
     <data name="Encrypt" xml:space="preserve">
-      <value>Zahesli</value>
+      <value>Zaheslit</value>
     </data>
     <data name="Close" xml:space="preserve">
     <value>Zavřít</value>
@@ -235,8 +235,8 @@
     <value>Nastavení</value>
   </data>
     <data name="Copyright" xml:space="preserve">
-    <value>Copyright 2024. Licencováno pod AGPL.</value>
-  </data>
+      <value>Copyright 2025. Licencováno pod AGPL.</value>
+    </data>
     <data name="Confirm" xml:space="preserve">
     <value>Uložit</value>
   </data>

@@ -79,6 +79,7 @@
 	        label1.Size = new System.Drawing.Size(228, 15);
 	        label1.TabIndex = 1;
 	        label1.Text = "Copyright 2025. Licencované podľa AGPL.";
+	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // dlgOpen
 	        // 
@@ -146,12 +147,15 @@
 	        // 
 	        label5.AutoSize = true;
 	        label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label5.Location = new System.Drawing.Point(69, 110);
-	        label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+	        label5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+	        label5.Location = new System.Drawing.Point(61, 110);
+	        label5.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
 	        label5.Name = "label5";
 	        label5.Size = new System.Drawing.Size(71, 17);
 	        label5.TabIndex = 21;
 	        label5.Text = "Parametre:";
+	        label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        label5.Click += label5_Click;
 	        // 
 	        // txtArguments
 	        // 
@@ -289,12 +293,14 @@
 	        // 
 	        lblOwnerPassword.AutoSize = true;
 	        lblOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        lblOwnerPassword.Location = new System.Drawing.Point(3, 246);
+	        lblOwnerPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        lblOwnerPassword.Location = new System.Drawing.Point(4, 246);
 	        lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        lblOwnerPassword.Name = "lblOwnerPassword";
 	        lblOwnerPassword.Size = new System.Drawing.Size(89, 15);
 	        lblOwnerPassword.TabIndex = 27;
 	        lblOwnerPassword.Text = "Heslo vlastníka:";
+	        lblOwnerPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
 	        // label4
 	        // 
@@ -431,12 +437,14 @@
 	        // 
 	        label3.AutoSize = true;
 	        label3.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        label3.Location = new System.Drawing.Point(23, 210);
+	        label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+	        label3.Location = new System.Drawing.Point(24, 210);
 	        label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        label3.Name = "label3";
 	        label3.Size = new System.Drawing.Size(69, 15);
 	        label3.TabIndex = 15;
 	        label3.Text = "Algoritmus:";
+	        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
 	        // cboEncryptionType
 	        // 
@@ -474,6 +482,7 @@
 	        linkDonate.TabIndex = 17;
 	        linkDonate.TabStop = true;
 	        linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou! 💳";
+	        linkDonate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        linkDonate.LinkClicked += linkDonate_LinkClicked;
 	        // 
 	        // groupBoxLanguage
