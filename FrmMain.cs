@@ -496,8 +496,11 @@ namespace PDFPass
                 }
 
                 var writerProperties = new WriterProperties(); // Set properties of output
-                writerProperties.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text),
-                    IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword),
+                var userPassword = Encoding.UTF8.GetBytes(txtPassword.Text);
+                var ownerPassword = Encoding.UTF8.GetBytes(OwnerPassword);
+
+                writerProperties.SetStandardEncryption(userPassword,
+                    IsNullOrEmpty(OwnerPassword) ? userPassword : ownerPassword,
                     documentOptions,
                     encryptionProperties); // Enable encryption
 
