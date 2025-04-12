@@ -155,7 +155,6 @@
 	        label5.TabIndex = 21;
 	        label5.Text = "Parametre:";
 	        label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-	        label5.Click += label5_Click;
 	        // 
 	        // txtArguments
 	        // 
