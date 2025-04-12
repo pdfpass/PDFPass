@@ -175,22 +175,6 @@ namespace PDFPass
             Settings.owner_password = txtOwnerPassword.Text;
             Settings.always_default_owner_password = chkAlwaysDefaultOwnerPassword.Checked;
 
-            // Save language setting
-            var selectedLanguage = LanguageHelper.GetSelectedLanguage(comboBoxLanguage);
-            if (selectedLanguage != Settings.language)
-            {
-                // Language changed, apply it
-                Settings.language = selectedLanguage;
-                LanguageHelper.ApplyLanguageChange(selectedLanguage);
-
-                // Show a message that changes will fully apply after restart
-                MessageBox.Show(
-                    Strings.LanguageChangeRestartRequired,
-                    Strings.Information,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-
             Settings.Save();
 
             // Close settings window
@@ -214,6 +198,27 @@ namespace PDFPass
                 UseShellExecute = true // Essential for opening in default browser
             };
             Process.Start(startInfo);
+        }
+
+        private void comboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Save language setting
+            var selectedLanguage = LanguageHelper.GetSelectedLanguage(comboBoxLanguage);
+            if (selectedLanguage != Settings.language)
+            {
+                // Language changed, apply it
+                Settings.language = selectedLanguage;
+                LanguageHelper.ApplyLanguageChange(selectedLanguage);
+
+                // // Show a message that changes will fully apply after restart
+                // MessageBox.Show(
+                //     Strings.LanguageChangeRestartRequired,
+                //     Strings.Information,
+                //     MessageBoxButtons.OK,
+                //     MessageBoxIcon.Information);
+            }
+
+            Settings.Save();
         }
     }
 }

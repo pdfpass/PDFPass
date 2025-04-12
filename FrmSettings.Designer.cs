@@ -63,10 +63,12 @@
 	        chkPasswordConfirmation = new System.Windows.Forms.CheckBox();
 	        linkDonate = new System.Windows.Forms.LinkLabel();
 	        groupBoxLanguage = new System.Windows.Forms.GroupBox();
+	        pictureBox1 = new System.Windows.Forms.PictureBox();
 	        comboBoxLanguage = new System.Windows.Forms.ComboBox();
 	        groupBox1.SuspendLayout();
 	        groupBox2.SuspendLayout();
 	        groupBoxLanguage.SuspendLayout();
+	        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 	        SuspendLayout();
 	        // 
 	        // label1
@@ -79,7 +81,7 @@
 	        label1.Size = new System.Drawing.Size(228, 15);
 	        label1.TabIndex = 1;
 	        label1.Text = "Copyright 2025. Licencované podľa AGPL.";
-	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 	        // 
 	        // dlgOpen
 	        // 
@@ -205,7 +207,6 @@
 	        // btnRunBrowse
 	        // 
 	        btnRunBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        btnRunBrowse.Image = ((System.Drawing.Image)resources.GetObject("btnRunBrowse.Image"));
 	        btnRunBrowse.Location = new System.Drawing.Point(394, 69);
 	        btnRunBrowse.Margin = new System.Windows.Forms.Padding(2);
 	        btnRunBrowse.Name = "btnRunBrowse";
@@ -481,29 +482,45 @@
 	        linkDonate.TabIndex = 17;
 	        linkDonate.TabStop = true;
 	        linkDonate.Text = "Autora môžete dobrovoľne podporiť malou sumou! 💳";
-	        linkDonate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+	        linkDonate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        linkDonate.LinkClicked += linkDonate_LinkClicked;
 	        // 
 	        // groupBoxLanguage
 	        // 
+	        groupBoxLanguage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+	        groupBoxLanguage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+	        groupBoxLanguage.Controls.Add(pictureBox1);
 	        groupBoxLanguage.Controls.Add(comboBoxLanguage);
+	        groupBoxLanguage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 	        groupBoxLanguage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
 	        groupBoxLanguage.Location = new System.Drawing.Point(13, 519);
 	        groupBoxLanguage.Name = "groupBoxLanguage";
-	        groupBoxLanguage.Size = new System.Drawing.Size(457, 63);
+	        groupBoxLanguage.Size = new System.Drawing.Size(457, 65);
 	        groupBoxLanguage.TabIndex = 18;
 	        groupBoxLanguage.TabStop = false;
 	        groupBoxLanguage.Text = "Jazyk / Language / Jazyk";
+	        // 
+	        // pictureBox1
+	        // 
+	        pictureBox1.Image = ((System.Drawing.Image)resources.GetObject("pictureBox1.Image"));
+	        pictureBox1.InitialImage = ((System.Drawing.Image)resources.GetObject("pictureBox1.InitialImage"));
+	        pictureBox1.Location = new System.Drawing.Point(12, 27);
+	        pictureBox1.Name = "pictureBox1";
+	        pictureBox1.Size = new System.Drawing.Size(123, 25);
+	        pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+	        pictureBox1.TabIndex = 1;
+	        pictureBox1.TabStop = false;
 	        // 
 	        // comboBoxLanguage
 	        // 
 	        comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 	        comboBoxLanguage.Font = new System.Drawing.Font("Segoe UI", 9.75F);
 	        comboBoxLanguage.FormattingEnabled = true;
-	        comboBoxLanguage.Location = new System.Drawing.Point(118, 26);
+	        comboBoxLanguage.Location = new System.Drawing.Point(154, 27);
 	        comboBoxLanguage.Name = "comboBoxLanguage";
 	        comboBoxLanguage.Size = new System.Drawing.Size(236, 25);
 	        comboBoxLanguage.TabIndex = 0;
+	        comboBoxLanguage.SelectedIndexChanged += comboBoxLanguage_SelectedIndexChanged;
 	        // 
 	        // FrmSettings
 	        // 
@@ -530,9 +547,12 @@
 	        groupBox2.ResumeLayout(false);
 	        groupBox2.PerformLayout();
 	        groupBoxLanguage.ResumeLayout(false);
+	        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 	        ResumeLayout(false);
 	        PerformLayout();
         }
+
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         private System.Windows.Forms.ComboBox comboBoxLanguage;
 

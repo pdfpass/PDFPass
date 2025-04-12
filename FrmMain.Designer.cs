@@ -65,10 +65,12 @@ namespace PDFPass
 	        cmbWatermark = new System.Windows.Forms.ComboBox();
 	        cbWatermark = new System.Windows.Forms.CheckBox();
 	        btnPasteTooltip = new System.Windows.Forms.ToolTip(components);
+	        pictureBox1 = new System.Windows.Forms.PictureBox();
 	        groupBox1.SuspendLayout();
 	        groupBox2.SuspendLayout();
 	        groupBox3.SuspendLayout();
 	        gbWatermark.SuspendLayout();
+	        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 	        SuspendLayout();
 	        // 
 	        // groupBox1
@@ -77,11 +79,11 @@ namespace PDFPass
 	        groupBox1.Controls.Add(btnInputBrowse);
 	        groupBox1.Controls.Add(txtInputFile);
 	        groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        groupBox1.Location = new System.Drawing.Point(10, 12);
+	        groupBox1.Location = new System.Drawing.Point(10, 19);
 	        groupBox1.Margin = new System.Windows.Forms.Padding(2);
 	        groupBox1.Name = "groupBox1";
 	        groupBox1.Padding = new System.Windows.Forms.Padding(2);
-	        groupBox1.Size = new System.Drawing.Size(542, 109);
+	        groupBox1.Size = new System.Drawing.Size(542, 102);
 	        groupBox1.TabIndex = 8;
 	        groupBox1.TabStop = false;
 	        groupBox1.Text = "Vstupný súbor";
@@ -96,6 +98,7 @@ namespace PDFPass
 	        label4.Size = new System.Drawing.Size(219, 21);
 	        label4.TabIndex = 11;
 	        label4.Text = "Vybrať súbor pre zašifrovanie:";
+	        label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // btnInputBrowse
 	        // 
@@ -142,6 +145,7 @@ namespace PDFPass
 	        label2.Size = new System.Drawing.Size(255, 21);
 	        label2.TabIndex = 11;
 	        label2.Text = "Vybrať cestu pre zašifrovaný súbor:";
+	        label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // btnOutputBrowse
 	        // 
@@ -375,12 +379,13 @@ namespace PDFPass
 	        // 
 	        lblVersion.AutoSize = true;
 	        lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        lblVersion.Location = new System.Drawing.Point(463, 2);
+	        lblVersion.Location = new System.Drawing.Point(463, 5);
 	        lblVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        lblVersion.Name = "lblVersion";
 	        lblVersion.Size = new System.Drawing.Size(51, 15);
 	        lblVersion.TabIndex = 18;
 	        lblVersion.Text = "Verzia: []";
+	        lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // gbWatermark
 	        // 
@@ -399,11 +404,12 @@ namespace PDFPass
 	        // 
 	        label1.AutoSize = true;
 	        label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label1.Location = new System.Drawing.Point(235, 21);
+	        label1.Location = new System.Drawing.Point(228, 21);
 	        label1.Name = "label1";
 	        label1.Size = new System.Drawing.Size(39, 21);
 	        label1.TabIndex = 2;
 	        label1.Text = "Text:";
+	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
 	        // cmbWatermark
 	        // 
@@ -429,6 +435,18 @@ namespace PDFPass
 	        cbWatermark.UseVisualStyleBackColor = true;
 	        cbWatermark.CheckedChanged += cbWatermark_CheckedChanged;
 	        // 
+	        // pictureBox1
+	        // 
+	        pictureBox1.Image = ((System.Drawing.Image)resources.GetObject("pictureBox1.Image"));
+	        pictureBox1.InitialImage = ((System.Drawing.Image)resources.GetObject("pictureBox1.InitialImage"));
+	        pictureBox1.Location = new System.Drawing.Point(322, 4);
+	        pictureBox1.Name = "pictureBox1";
+	        pictureBox1.Size = new System.Drawing.Size(136, 18);
+	        pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+	        pictureBox1.TabIndex = 20;
+	        pictureBox1.TabStop = false;
+	        pictureBox1.Click += pictureBox1_Click;
+	        // 
 	        // FrmMain
 	        // 
 	        AcceptButton = btnEncrypt;
@@ -438,6 +456,7 @@ namespace PDFPass
 	        BackColor = System.Drawing.SystemColors.Control;
 	        CancelButton = btnClose;
 	        ClientSize = new System.Drawing.Size(561, 521);
+	        Controls.Add(pictureBox1);
 	        Controls.Add(gbWatermark);
 	        Controls.Add(lblVersion);
 	        Controls.Add(btnSettings);
@@ -466,9 +485,12 @@ namespace PDFPass
 	        groupBox3.PerformLayout();
 	        gbWatermark.ResumeLayout(false);
 	        gbWatermark.PerformLayout();
+	        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 	        ResumeLayout(false);
 	        PerformLayout();
         }
+
+        private System.Windows.Forms.PictureBox pictureBox1;
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
@@ -493,7 +515,7 @@ namespace PDFPass
         private System.Windows.Forms.Button btnEncrypt;
         public System.Windows.Forms.Label lblOwnerPasswordSet;
         private System.Windows.Forms.Button btnDecrypt;
-        private Label lblVersion;
+        private System.Windows.Forms.Label lblVersion;
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.GroupBox gbWatermark;
         private System.Windows.Forms.Label label1;

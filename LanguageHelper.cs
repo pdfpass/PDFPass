@@ -11,7 +11,8 @@ namespace PDFPass
         {
             { DefaultLanguage, "Slovenčina" },
             { "en", "English" },
-            { "cs-CZ", "Čeština" }
+            { "cs-CZ", "Čeština" },
+            { "fi-FI", "Suomi" }
         };
 
         /// <summary>
@@ -38,12 +39,10 @@ namespace PDFPass
         /// </summary>
         public static string GetSelectedLanguage(ComboBox comboBox)
         {
-            if (comboBox.SelectedItem != null)
-            {
-                return ((KeyValuePair<string, string>)comboBox.SelectedItem).Key;
-            }
-
-            return "sk-SK"; // Default to Slovak
+            return comboBox.SelectedItem == null
+                ? "sk-SK"
+                : // Default to Slovak
+                ((KeyValuePair<string, string>)comboBox.SelectedItem).Key;
         }
 
         /// <summary>

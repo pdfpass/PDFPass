@@ -144,6 +144,7 @@ namespace PDFPass.Resources
         public static string OutputFileOption => LocalizationManager.GetString(nameof(OutputFileOption));
         public static string RunImmediatelyOption => LocalizationManager.GetString(nameof(RunImmediatelyOption));
         public static string CommandLineError => LocalizationManager.GetString(nameof(CommandLineError));
+        public static string SettingsChanged => LocalizationManager.GetString(nameof(SettingsChanged));
 
         // Language settings
         public static string LanguageTitle => LocalizationManager.GetString(nameof(LanguageTitle));

@@ -340,8 +340,8 @@
     <value>The program file to run does not exist.</value>
   </data>
     <data name="LanguageTitle" xml:space="preserve">
-  <value>Jazyk / Language / Jazyk</value>
-</data>
+      <value>Jazyk / Language / Kieli</value>
+    </data>
     <data name="LanguageChangeRestartRequired" xml:space="preserve">
   <value>The language change will fully apply after restarting the application.</value>
 </data>
@@ -376,6 +376,9 @@
     <data name="CommandLineError" xml:space="preserve">
     <value>Command line parameter error: </value>
   </data>
+  <data name="SettingsChanged" xml:space="preserve">
+        <value>Notification of setting changes.</value>
+    </data>
 
     <!-- File handling -->
     <data name="Encrypted" xml:space="preserve">

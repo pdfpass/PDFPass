@@ -109,8 +109,12 @@ namespace PDFPass
                 OwnerPassword = Settings.owner_password;
             }
 
-            isInputFileCorrect(txtInputFile.Text);
-            UpdateView();
+            var fileStatus = getFileStatus(txtInputFile.Text);
+            if (fileStatus is FileStatus.Ok or FileStatus.Empty)
+            {
+                UpdateView();
+            }
+            else if (fileStatus == FileStatus.NotPdf) processInputFileStatus(fileStatus);
 
             // If immediate run is enabled, click Run button (see command line options)
             if (EncryptOnStart)
@@ -182,14 +186,16 @@ namespace PDFPass
             }
         }
 
-        private bool isInputFileCorrect(string fileName)
+        private static FileStatus getFileStatus(string fileName)
         {
+            if (IsNullOrWhiteSpace(fileName))
+            {
+                return FileStatus.Empty;
+            }
+
             if (!File.Exists(fileName))
             {
-                MessageBox.Show(Strings.FileNotExist, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Text = Empty;
-                return false;
+                return FileStatus.Notexists;
             }
 
             try
@@ -198,13 +204,35 @@ namespace PDFPass
             }
             catch (Exception e)
             {
-                MessageBox.Show(Strings.FileNotPdfOrDamaged, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Text = Empty;
-                return false;
+                return FileStatus.NotPdf;
             }
 
-            return true;
+            return FileStatus.Ok;
+        }
+
+        private void processInputFileStatus(FileStatus fileStatus)
+        {
+            var messageText = Empty;
+            switch (fileStatus)
+            {
+                case FileStatus.NotPdf:
+                    messageText = Strings.FileNotPdfOrDamaged;
+                    txtInputFile.Text = Empty;
+                    break;
+                case FileStatus.Notexists:
+                    messageText = Strings.FileNotExist;
+                    txtInputFile.Text = Empty;
+                    break;
+                case FileStatus.Ok:
+                    break;
+                default:
+                    messageText = Strings.Warning;
+                    break;
+            }
+
+            UpdateView();
+            MessageBox.Show(messageText, Strings.ErrorTitle,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool IsInputEncrypted()
@@ -223,10 +251,17 @@ namespace PDFPass
                 return;
             }
 
-            if (!isInputFileCorrect(dlgOpen.FileName)) return;
-            txtInputFile.Text = dlgOpen.FileName;
-            setOutputFilename(txtInputFile.Text, IsInputEncrypted());
-            UpdateView();
+            var fileStatus = getFileStatus(dlgOpen.FileName);
+            if (fileStatus == FileStatus.Ok)
+            {
+                txtInputFile.Text = dlgOpen.FileName;
+                setOutputFilename(txtInputFile.Text, IsInputEncrypted());
+                UpdateView();
+            }
+            else
+            {
+                processInputFileStatus(fileStatus);
+            }
         }
 
         private void setOutputFilename(string inputFileName, bool isInputEncrypted)
@@ -249,7 +284,7 @@ namespace PDFPass
         private static void SettingsChanged()
         {
             // This function is executed when settings change.
-            Console.WriteLine("Notifikácia zmeny nastavenia.");
+            Console.WriteLine();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -711,5 +746,17 @@ namespace PDFPass
         // {
         //     BtnEncryptClick(sender, e);
         // }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            btnSettings_Click(null, null);
+        }
+    }
+
+    internal enum FileStatus
+    {
+        Notexists,
+        NotPdf,
+        Empty,
+        Ok
     }
 }

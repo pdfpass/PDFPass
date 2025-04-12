@@ -117,4 +117,7 @@
   <data name="lock-ico" xml:space="preserve">
     <value />
   </data>
+    <data name="notification_of_setting_change" xml:space="preserve">
+    <value>Notifikácia zmeny nastavenia.</value>
+  </data>
 </root>
