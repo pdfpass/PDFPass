@@ -78,7 +78,7 @@
 	        label1.Name = "label1";
 	        label1.Size = new System.Drawing.Size(228, 15);
 	        label1.TabIndex = 1;
-	        label1.Text = "Copyright 2024. Licencované podľa AGPL.";
+	        label1.Text = "Copyright 2025. Licencované podľa AGPL.";
 	        // 
 	        // dlgOpen
 	        // 

@@ -239,7 +239,6 @@ namespace PDFPass
 	        // 
 	        btnPasswordGenerate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnPasswordGenerate.Image = ((System.Drawing.Image)resources.GetObject("btnPasswordGenerate.Image"));
-	        btnPasswordGenerate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 	        btnPasswordGenerate.Location = new System.Drawing.Point(344, 52);
 	        btnPasswordGenerate.Margin = new System.Windows.Forms.Padding(2);
 	        btnPasswordGenerate.Name = "btnPasswordGenerate";
@@ -279,7 +278,6 @@ namespace PDFPass
 	        // 
 	        btnPaste.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnPaste.Image = ((System.Drawing.Image)resources.GetObject("btnPaste.Image"));
-	        btnPaste.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 	        btnPaste.Location = new System.Drawing.Point(440, 52);
 	        btnPaste.Margin = new System.Windows.Forms.Padding(2);
 	        btnPaste.Name = "btnPaste";
@@ -296,7 +294,6 @@ namespace PDFPass
 	        // 
 	        btnCopy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnCopy.Image = ((System.Drawing.Image)resources.GetObject("btnCopy.Image"));
-	        btnCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 	        btnCopy.Location = new System.Drawing.Point(440, 52);
 	        btnCopy.Margin = new System.Windows.Forms.Padding(2);
 	        btnCopy.Name = "btnCopy";
@@ -365,7 +362,6 @@ namespace PDFPass
 	        btnSettings.AutoEllipsis = true;
 	        btnSettings.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnSettings.Image = ((System.Drawing.Image)resources.GetObject("btnSettings.Image"));
-	        btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
 	        btnSettings.Location = new System.Drawing.Point(12, 473);
 	        btnSettings.Margin = new System.Windows.Forms.Padding(2);
 	        btnSettings.Name = "btnSettings";
