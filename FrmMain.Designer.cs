@@ -61,9 +61,9 @@ namespace PDFPass
 	        btnSettings = new System.Windows.Forms.Button();
 	        lblVersion = new System.Windows.Forms.Label();
 	        gbWatermark = new System.Windows.Forms.GroupBox();
-	        label1 = new System.Windows.Forms.Label();
 	        cmbWatermark = new System.Windows.Forms.ComboBox();
 	        cbWatermark = new System.Windows.Forms.CheckBox();
+	        label1 = new System.Windows.Forms.Label();
 	        btnPasteTooltip = new System.Windows.Forms.ToolTip(components);
 	        pictureBox1 = new System.Windows.Forms.PictureBox();
 	        groupBox1.SuspendLayout();
@@ -379,7 +379,7 @@ namespace PDFPass
 	        // 
 	        lblVersion.AutoSize = true;
 	        lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        lblVersion.Location = new System.Drawing.Point(463, 5);
+	        lblVersion.Location = new System.Drawing.Point(460, 4);
 	        lblVersion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        lblVersion.Name = "lblVersion";
 	        lblVersion.Size = new System.Drawing.Size(51, 15);
@@ -399,16 +399,6 @@ namespace PDFPass
 	        gbWatermark.TabIndex = 19;
 	        gbWatermark.TabStop = false;
 	        gbWatermark.Text = "Vodotlač";
-	        // 
-	        // label1
-	        // 
-	        label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label1.Location = new System.Drawing.Point(198, 21);
-	        label1.Name = "label1";
-	        label1.Size = new System.Drawing.Size(82, 21);
-	        label1.TabIndex = 2;
-	        label1.Text = "Text:";
-	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
 	        // cmbWatermark
 	        // 
@@ -433,6 +423,16 @@ namespace PDFPass
 	        cbWatermark.Text = "Použiť vodotlač 💧";
 	        cbWatermark.UseVisualStyleBackColor = true;
 	        cbWatermark.CheckedChanged += cbWatermark_CheckedChanged;
+	        // 
+	        // label1
+	        // 
+	        label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+	        label1.Location = new System.Drawing.Point(198, 21);
+	        label1.Name = "label1";
+	        label1.Size = new System.Drawing.Size(82, 21);
+	        label1.TabIndex = 2;
+	        label1.Text = "Text:";
+	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
 	        // pictureBox1
 	        // 

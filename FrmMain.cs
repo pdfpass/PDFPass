@@ -57,8 +57,10 @@ namespace PDFPass
                 ? Strings.OwnerPasswordEmpty
                 : Strings.OwnerPasswordSet;
             lblPasswordLength.Text = Strings.PasswordLengthWarning;
+            // Show program version
+            var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+            lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
 
-            // Version text is set in frmMain_Load
 
             // Update buttons
             btnChangePassword.Text = Strings.Change;
@@ -122,10 +124,6 @@ namespace PDFPass
                 // Click the Encrypt button immediately.
                 BtnEncryptClick(sender, e);
             }
-
-            // Show program version
-            var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
         }
 
 

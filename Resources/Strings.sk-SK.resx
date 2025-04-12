@@ -93,8 +93,8 @@
     <value>Heslo vlastníka nastavené.</value>
   </data>
     <data name="OwnerPasswordEmpty" xml:space="preserve">
-    <value>Heslo vlastníka prázdné.</value>
-  </data>
+      <value>Heslo vlastníka je prázdné.</value>
+    </data>
     <data name="CopiedToClipboard" xml:space="preserve">
     <value>Skopírované do schránky.</value>
   </data>
