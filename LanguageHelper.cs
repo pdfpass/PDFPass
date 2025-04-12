@@ -5,9 +5,11 @@ namespace PDFPass
 {
     public static class LanguageHelper
     {
-        public static Dictionary<string, string> AvailableLanguages => new Dictionary<string, string>
+        public const string DefaultLanguage = "sk-SK";
+
+        public static Dictionary<string, string> AvailableLanguages => new()
         {
-            { "sk-SK", "Slovenčina" },
+            { DefaultLanguage, "Slovenčina" },
             { "en", "English" },
             { "cs-CZ", "Čeština" }
         };
@@ -22,14 +24,12 @@ namespace PDFPass
             comboBox.DataSource = new BindingSource(AvailableLanguages, null);
 
             // Set current language
-            for (int i = 0; i < comboBox.Items.Count; i++)
+            for (var i = 0; i < comboBox.Items.Count; i++)
             {
                 var item = (KeyValuePair<string, string>)comboBox.Items[i];
-                if (item.Key == currentLanguage)
-                {
-                    comboBox.SelectedIndex = i;
-                    break;
-                }
+                if (item.Key != currentLanguage) continue;
+                comboBox.SelectedIndex = i;
+                break;
             }
         }
 

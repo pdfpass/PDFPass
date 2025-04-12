@@ -384,4 +384,7 @@
     <data name="Decrypted" xml:space="preserve">
     <value>dešifrovaný</value>
   </data>
+    <data name="FileNotExist" xml:space="preserve">
+      <value>Súbor neexistuje!</value>
+    </data>
 </root>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using PDFPass.Resources;
 
@@ -40,6 +41,7 @@ namespace PDFPass
             // Update buttons
             btnOK.Text = Strings.Confirm;
             btnCancel.Text = Strings.Cancel;
+            // ReSharper disable once LocalizableElement
             btnRunBrowse.Text = "..."; // This is not a text to localize
 
             // Update group boxes
@@ -73,7 +75,11 @@ namespace PDFPass
             linkDonate.Text = Strings.SupportDeveloper;
 
             // Update dialog filter
-            dlgOpen.Filter = $"{Strings.ExecutableFiles}|*.exe;*.bat;*.com|{Strings.AllFiles}|*.*";
+            dlgOpen.Filter = new StringBuilder().Append(Strings.ExecutableFiles)
+                .Append("|*.exe;*.bat;*.com|")
+                .Append(Strings.AllFiles)
+                .Append("|*.*")
+                .ToString();
         }
 
         private void frmSettings_Load(object sender, EventArgs e)

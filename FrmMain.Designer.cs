@@ -35,7 +35,7 @@ namespace PDFPass
         {
 	        components = new System.ComponentModel.Container();
 	        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-	        groupBox1 = new GroupBox();
+	        groupBox1 = new System.Windows.Forms.GroupBox();
 	        label4 = new System.Windows.Forms.Label();
 	        btnInputBrowse = new System.Windows.Forms.Button();
 	        txtInputFile = new System.Windows.Forms.TextBox();
@@ -192,7 +192,7 @@ namespace PDFPass
 	        btnChangePassword.Location = new System.Drawing.Point(21, 102);
 	        btnChangePassword.Margin = new System.Windows.Forms.Padding(2);
 	        btnChangePassword.Name = "btnChangePassword";
-	        btnChangePassword.Size = new System.Drawing.Size(93, 32);
+	        btnChangePassword.Size = new System.Drawing.Size(79, 32);
 	        btnChangePassword.TabIndex = 17;
 	        btnChangePassword.Text = "Zmeniť";
 	        btnChangePassword.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -204,7 +204,7 @@ namespace PDFPass
 	        lblOwnerPasswordSet.AutoSize = true;
 	        lblOwnerPasswordSet.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        lblOwnerPasswordSet.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)0)), ((int)((byte)192)), ((int)((byte)192)));
-	        lblOwnerPasswordSet.Location = new System.Drawing.Point(119, 112);
+	        lblOwnerPasswordSet.Location = new System.Drawing.Point(112, 112);
 	        lblOwnerPasswordSet.Name = "lblOwnerPasswordSet";
 	        lblOwnerPasswordSet.Size = new System.Drawing.Size(153, 15);
 	        lblOwnerPasswordSet.TabIndex = 16;
@@ -283,9 +283,10 @@ namespace PDFPass
 	        btnPaste.Location = new System.Drawing.Point(440, 52);
 	        btnPaste.Margin = new System.Windows.Forms.Padding(2);
 	        btnPaste.Name = "btnPaste";
-	        btnPaste.Size = new System.Drawing.Size(95, 32);
+	        btnPaste.Size = new System.Drawing.Size(81, 32);
 	        btnPaste.TabIndex = 18;
 	        btnPaste.Text = "Prilepiť";
+	        btnPaste.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        btnPaste.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 	        btnPaste.UseVisualStyleBackColor = true;
 	        btnPaste.Click += btnPaste_Click;
@@ -296,10 +297,10 @@ namespace PDFPass
 	        btnCopy.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnCopy.Image = ((System.Drawing.Image)resources.GetObject("btnCopy.Image"));
 	        btnCopy.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-	        btnCopy.Location = new System.Drawing.Point(441, 52);
+	        btnCopy.Location = new System.Drawing.Point(440, 52);
 	        btnCopy.Margin = new System.Windows.Forms.Padding(2);
 	        btnCopy.Name = "btnCopy";
-	        btnCopy.Size = new System.Drawing.Size(95, 32);
+	        btnCopy.Size = new System.Drawing.Size(91, 32);
 	        btnCopy.TabIndex = 12;
 	        btnCopy.Text = "Kopírovať";
 	        btnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -311,10 +312,10 @@ namespace PDFPass
 	        btnDecrypt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnDecrypt.Image = ((System.Drawing.Image)resources.GetObject("btnDecrypt.Image"));
 	        btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-	        btnDecrypt.Location = new System.Drawing.Point(409, 473);
+	        btnDecrypt.Location = new System.Drawing.Point(429, 473);
 	        btnDecrypt.Margin = new System.Windows.Forms.Padding(2);
 	        btnDecrypt.Name = "btnDecrypt";
-	        btnDecrypt.Size = new System.Drawing.Size(138, 37);
+	        btnDecrypt.Size = new System.Drawing.Size(118, 37);
 	        btnDecrypt.TabIndex = 17;
 	        btnDecrypt.Text = "Odhesluj";
 	        btnDecrypt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -325,10 +326,10 @@ namespace PDFPass
 	        // 
 	        btnEncrypt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnEncrypt.Image = ((System.Drawing.Image)resources.GetObject("btnEncrypt.Image"));
-	        btnEncrypt.Location = new System.Drawing.Point(409, 473);
+	        btnEncrypt.Location = new System.Drawing.Point(429, 473);
 	        btnEncrypt.Margin = new System.Windows.Forms.Padding(2);
 	        btnEncrypt.Name = "btnEncrypt";
-	        btnEncrypt.Size = new System.Drawing.Size(138, 37);
+	        btnEncrypt.Size = new System.Drawing.Size(118, 37);
 	        btnEncrypt.TabIndex = 14;
 	        btnEncrypt.Text = "Zahesluj";
 	        btnEncrypt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -340,10 +341,10 @@ namespace PDFPass
 	        btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 	        btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnClose.Image = ((System.Drawing.Image)resources.GetObject("btnClose.Image"));
-	        btnClose.Location = new System.Drawing.Point(291, 472);
+	        btnClose.Location = new System.Drawing.Point(322, 473);
 	        btnClose.Margin = new System.Windows.Forms.Padding(2);
 	        btnClose.Name = "btnClose";
-	        btnClose.Size = new System.Drawing.Size(112, 37);
+	        btnClose.Size = new System.Drawing.Size(103, 37);
 	        btnClose.TabIndex = 15;
 	        btnClose.Text = "Zatvoriť";
 	        btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -368,7 +369,7 @@ namespace PDFPass
 	        btnSettings.Location = new System.Drawing.Point(12, 473);
 	        btnSettings.Margin = new System.Windows.Forms.Padding(2);
 	        btnSettings.Name = "btnSettings";
-	        btnSettings.Size = new System.Drawing.Size(130, 37);
+	        btnSettings.Size = new System.Drawing.Size(124, 37);
 	        btnSettings.TabIndex = 16;
 	        btnSettings.Text = "Nastavenia";
 	        btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -412,6 +413,7 @@ namespace PDFPass
 	        // cmbWatermark
 	        // 
 	        cmbWatermark.Enabled = false;
+	        cmbWatermark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 	        cmbWatermark.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        cmbWatermark.FormattingEnabled = true;
 	        cmbWatermark.Items.AddRange(new object[] { "Vzor", "Kópia", "Dôverné", "Návrh" });
@@ -431,7 +433,7 @@ namespace PDFPass
 	        cbWatermark.Text = "Použiť vodotlač 💧";
 	        cbWatermark.UseVisualStyleBackColor = true;
 	        cbWatermark.CheckedChanged += cbWatermark_CheckedChanged;
-			// 
+	        // 
 	        // FrmMain
 	        // 
 	        AcceptButton = btnEncrypt;
@@ -457,7 +459,6 @@ namespace PDFPass
 	        Margin = new System.Windows.Forms.Padding(2);
 	        MaximizeBox = false;
 	        MinimizeBox = false;
-	        Name = "FrmMain";
 	        Text = "PDFPass -  Nástroj  s otvoreným kódom pre správu PDF hesiel";
 	        Load += frmMain_Load;
 	        DragDrop += FrmMain_DragDrop;
@@ -501,7 +502,7 @@ namespace PDFPass
         private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.GroupBox gbWatermark;
         private System.Windows.Forms.Label label1;
-        private ComboBox cmbWatermark;
+        private System.Windows.Forms.ComboBox cmbWatermark;
         private System.Windows.Forms.CheckBox cbWatermark;
         private System.Windows.Forms.Button btnPaste;
         private ToolTip btnPasteTooltip;

@@ -34,13 +34,13 @@ namespace PDFPass
             LanguageChanged?.Invoke(null, EventArgs.Empty);
         }
 
-        //// <summary>
+        /// <summary>
         /// Sets the language for the application
         /// </summary>
-        /// <param name="cultureName">Culture name (e.g., "sk-SK", "en-US")</param>
-        public static void SetLanguage(string cultureName)
+        /// <param name="language">Culture name (e.g., "sk-SK", "en-US")</param>
+        public static void SetLanguage(string language)
         {
-            _currentCulture = new CultureInfo(cultureName);
+            _currentCulture = new CultureInfo(language);
             Thread.CurrentThread.CurrentUICulture = _currentCulture;
             Thread.CurrentThread.CurrentCulture = _currentCulture;
 
@@ -80,7 +80,7 @@ namespace PDFPass
         {
             try
             {
-                string format = GetString(key);
+                var format = GetString(key);
                 return string.Format(format, args);
             }
             catch (Exception ex)

@@ -44,6 +44,7 @@ namespace PDFPass.Resources
 
         // Error messages
         public static string FileNotPdfOrDamaged => LocalizationManager.GetString(nameof(FileNotPdfOrDamaged));
+        public static string FileNotExist => LocalizationManager.GetString(nameof(FileNotExist));
         public static string ErrorTitle => LocalizationManager.GetString(nameof(ErrorTitle));
 
         public static string SourceAndDestinationSame =>

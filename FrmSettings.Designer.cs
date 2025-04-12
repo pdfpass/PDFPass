@@ -440,6 +440,7 @@
 	        // 
 	        // cboEncryptionType
 	        // 
+	        cboEncryptionType.Cursor = System.Windows.Forms.Cursors.Default;
 	        cboEncryptionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 	        cboEncryptionType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        cboEncryptionType.FormattingEnabled = true;
@@ -488,6 +489,8 @@
 	        // 
 	        // comboBoxLanguage
 	        // 
+	        comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+	        comboBoxLanguage.Font = new System.Drawing.Font("Segoe UI", 9.75F);
 	        comboBoxLanguage.FormattingEnabled = true;
 	        comboBoxLanguage.Location = new System.Drawing.Point(118, 26);
 	        comboBoxLanguage.Name = "comboBoxLanguage";

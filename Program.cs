@@ -10,7 +10,7 @@ namespace PDFPass
     internal static class Program
     {
         // Command line options (CommandLineParser plugin) https://github.com/commandlineparser/commandline
-        public class Options
+        private class Options
         {
             [Option("owner_pass", Required = false, HelpText = "OwnerPassOption")]
             public string OwnerPass { get; set; }
@@ -33,11 +33,15 @@ namespace PDFPass
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            // Initialize localization
-            LocalizationManager.SetLanguage("sk-SK");
+            // Initialize localization (i18n)
+            Settings.Load();
+            var language = Settings.language;
+            language ??= LanguageHelper.DefaultLanguage;
+            LocalizationManager.SetLanguage(language);
 
+            // Application settings
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
 using PDFPass.Resources;
+using static System.String;
 using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Forms.Clipboard;
 using MessageBox = System.Windows.Forms.MessageBox;
@@ -52,7 +53,7 @@ namespace PDFPass
             label4.Text = Strings.SelectFileForEncryption;
             labelPassword.Text = IsInputEncrypted() ? Strings.PasswordForUnlocking : Strings.PasswordForLocking;
             lblCopied.Text = Strings.CopiedToClipboard;
-            lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword)
+            lblOwnerPasswordSet.Text = IsNullOrEmpty(OwnerPassword)
                 ? Strings.OwnerPasswordEmpty
                 : Strings.OwnerPasswordSet;
             lblPasswordLength.Text = Strings.PasswordLengthWarning;
@@ -108,6 +109,7 @@ namespace PDFPass
                 OwnerPassword = Settings.owner_password;
             }
 
+            isInputFileCorrect(txtInputFile.Text);
             UpdateView();
 
             // If immediate run is enabled, click Run button (see command line options)
@@ -119,15 +121,15 @@ namespace PDFPass
 
             // Show program version
             var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            lblVersion.Text = $"{Strings.Version}{string.Join(".", version.Split('.').Take(3))}";
+            lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
         }
 
 
         private void UpdateView()
         {
-            btnPaste.Visible = string.IsNullOrEmpty(txtPassword.Text);
+            btnPaste.Visible = IsNullOrEmpty(txtPassword.Text);
             btnCopy.Visible = !btnPaste.Visible;
-            btnPaste.Enabled = !string.IsNullOrWhiteSpace(Clipboard.GetText());
+            btnPaste.Enabled = !IsNullOrWhiteSpace(Clipboard.GetText());
 
             var fileName = txtInputFile.Text;
             if (!File.Exists(fileName))
@@ -143,19 +145,18 @@ namespace PDFPass
             {
                 MessageBox.Show(Strings.FileNotPdfOrDamaged, Strings.ErrorTitle,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Text = string.Empty;
+                txtInputFile.Text = Empty;
                 return;
             }
 
             var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(fileName);
 
-            if (string.IsNullOrEmpty(txtOutputFile.Text))
+            if (IsNullOrEmpty(txtOutputFile.Text))
             {
                 txtOutputFile.Text = GetFilenameWithSuffix(fileName, isInputEncrypted);
             }
 
             labelPassword.Text = isInputEncrypted ? Strings.PasswordForUnlocking : Strings.PasswordForLocking;
-
             btnEncrypt.Visible = !isInputEncrypted;
             btnDecrypt.Visible = isInputEncrypted;
             btnSettings.Visible = !isInputEncrypted;
@@ -164,10 +165,10 @@ namespace PDFPass
             lblOwnerPasswordSet.Visible = !isInputEncrypted;
             gbWatermark.Visible = !isInputEncrypted;
             Height = isInputEncrypted ? 500 : 560;
-            lblOwnerPasswordSet.ForeColor = string.IsNullOrEmpty(OwnerPassword)
+            lblOwnerPasswordSet.ForeColor = IsNullOrEmpty(OwnerPassword)
                 ? Color.FromArgb(255, 153, 0)
                 : Color.FromArgb(0, 192, 192);
-            lblOwnerPasswordSet.Text = string.IsNullOrEmpty(OwnerPassword)
+            lblOwnerPasswordSet.Text = IsNullOrEmpty(OwnerPassword)
                 ? Strings.OwnerPasswordEmpty
                 : Strings.OwnerPasswordSet;
             if (isInputEncrypted)
@@ -181,9 +182,34 @@ namespace PDFPass
             }
         }
 
+        private bool isInputFileCorrect(string fileName)
+        {
+            if (!File.Exists(fileName))
+            {
+                MessageBox.Show(Strings.FileNotExist, Strings.ErrorTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtInputFile.Text = Empty;
+                return false;
+            }
+
+            try
+            {
+                PdfUtils.IsPdfFile(fileName);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(Strings.FileNotPdfOrDamaged, Strings.ErrorTitle,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtInputFile.Text = Empty;
+                return false;
+            }
+
+            return true;
+        }
+
         private bool IsInputEncrypted()
         {
-            if (string.IsNullOrEmpty(txtInputFile.Text) || !File.Exists(txtInputFile.Text))
+            if (IsNullOrEmpty(txtInputFile.Text) || !File.Exists(txtInputFile.Text))
                 return false;
 
             return PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
@@ -197,14 +223,15 @@ namespace PDFPass
                 return;
             }
 
+            if (!isInputFileCorrect(dlgOpen.FileName)) return;
             txtInputFile.Text = dlgOpen.FileName;
-            RegenerateFileNames();
+            setOutputFilename(txtInputFile.Text, IsInputEncrypted());
             UpdateView();
         }
 
-        private void RegenerateFileNames()
+        private void setOutputFilename(string inputFileName, bool isInputEncrypted)
         {
-            txtOutputFile.Text = GetFilenameWithSuffix(txtInputFile.Text, IsInputEncrypted());
+            txtOutputFile.Text = GetFilenameWithSuffix(inputFileName, isInputEncrypted);
         }
 
 
@@ -247,7 +274,7 @@ namespace PDFPass
             txtPassword.Focus();
             txtPassword.SelectAll();
 
-            if (string.IsNullOrEmpty(txtPassword.Text)) return;
+            if (IsNullOrEmpty(txtPassword.Text)) return;
 
             Clipboard.SetText(txtPassword.Text);
             // Show Copied label
@@ -310,7 +337,7 @@ namespace PDFPass
             }
 
             // Verify password if at least 1 pwd
-            if (string.IsNullOrWhiteSpace(txtPassword.Text) && string.IsNullOrWhiteSpace(OwnerPassword))
+            if (IsNullOrWhiteSpace(txtPassword.Text) && IsNullOrWhiteSpace(OwnerPassword))
             {
                 MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -319,13 +346,13 @@ namespace PDFPass
             }
 
             // Warning about missing reading pwd
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (IsNullOrWhiteSpace(txtPassword.Text))
             {
                 var dialogResult = MessageBox.Show(Strings.NoReadingPasswordWarning,
                     Strings.Warning, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
-                if (dialogResult == DialogResult.No)
+                if (dialogResult == DialogResult.Yes)
                 {
                     txtPassword.Focus();
                     return;
@@ -435,11 +462,11 @@ namespace PDFPass
 
                 var writerProperties = new WriterProperties(); // Set properties of output
                 writerProperties.SetStandardEncryption(Encoding.ASCII.GetBytes(txtPassword.Text),
-                    string.IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword),
+                    IsNullOrEmpty(OwnerPassword) ? null : Encoding.ASCII.GetBytes(OwnerPassword),
                     documentOptions,
                     encryptionProperties); // Enable encryption
 
-                var waterMarkText = cbWatermark.Checked ? cmbWatermark.Text : string.Empty;
+                var waterMarkText = cbWatermark.Checked ? cmbWatermark.Text : Empty;
 
                 PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties, waterMarkText);
             }
@@ -519,7 +546,7 @@ namespace PDFPass
             txtOutputFile.Text = txtOutputFile.Text.Trim();
 
             // Ensure input and output are not the same.
-            if (string.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
+            if (String.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
             {
                 MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -540,7 +567,7 @@ namespace PDFPass
 
 
             // Verify password:
-            if (txtPassword.Text == string.Empty)
+            if (txtPassword.Text == Empty)
             {
                 MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -646,7 +673,7 @@ namespace PDFPass
 
             txtInputFile.Text = filename;
 
-            RegenerateFileNames();
+            setOutputFilename(txtInputFile.Text, IsInputEncrypted());
             UpdateView();
         }
 
@@ -677,12 +704,12 @@ namespace PDFPass
         private void btnPaste_MouseHover(object sender, EventArgs e)
         {
             btnPasteTooltip.SetToolTip(btnPaste,
-                btnPaste.Enabled ? $"{Strings.ClipboardValuePrefix}{Clipboard.GetText()}'" : string.Empty);
+                btnPaste.Enabled ? $"{Strings.ClipboardValuePrefix}{Clipboard.GetText()}'" : Empty);
         }
 
-        private void btnEncrypt2_Click(object sender, EventArgs e)
-        {
-            BtnEncryptClick(sender, e);
-        }
+        // private void btnEncrypt2_Click(object sender, EventArgs e)
+        // {
+        //     BtnEncryptClick(sender, e);
+        // }
     }
 }

@@ -72,7 +72,7 @@
           mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAYlJREFUSEvtjD9LW1EYh48fQXEuaUqCJHoJtqQQgkIIToU6laqICvEqGYpKRahU
+        DQAACw0B7QfALAAAAYlJREFUSEvtjD9LW1EYh48fQXEuaUqCJHoJtqQQgkIIToU6laqICvEqGYpKRahU
         EITq0NqhtWN1EOWm9R9XsZh4adOlg4NLHTIUujh18Qs85QRS8OUI994uDnngWX7vOY9STW4NUZs7qRl+
         pJ5T++csNWuGdaVoke8Dk3nG8eJneHd63dG3XKWLbHYVsH04btk8lO06+SIXpS9gcuUjvHzvz6F5/uQm
         mZJ99djmwtuDg63/s7wD/Tbnsq8Gx/g5NMavkQKHowXcMOq/uqFbsq+ePqE6MEC73P2yUGVi4RurE3NE
@@ -82,4 +82,12 @@
         RU5ErkJggg==
 </value>
   </data>
+    <metadata name="cboEncryptionType.Locked"
+              type="System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+        <value>True</value>
+    </metadata>
+    <metadata name="comboBoxLanguage.Locked"
+              type="System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+        <value>True</value>
+    </metadata>
 </root>
