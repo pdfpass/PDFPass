@@ -150,13 +150,13 @@ You can find the current ```PDFPass-portable.zip``` or ```PDFPass-install.exe```
 <br>
 
 # Main screen for setting passwords 🔒
-![App Screenshot](screenshots%2Fencrypt.png)
+![App Screenshot](screenshots%2Fencrypt-en.png)
 
 # Main screen for removing passwords 🔓
-![App Screenshot](screenshots%2Fdecrypt.png)
+![App Screenshot](screenshots%2Fdecrypt-en.png)
 
 # Settings screen ⚙️
-![Settings](screenshots%2Fsettings.png)
+![Settings](screenshots%2Fsettings-en.png)
 
 
 # PDF - supports 2 types of passwords
@@ -219,11 +219,11 @@ Your contribution will help pay for **security updates** and the development of 
 
 You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere; it does not need to be placed in ```c:\Program Files``` or ```c:\Program Files (x86)```. Activating the context menu is simple; just run the ```kontextove-menu-ako-admin-zaregistruj.cmd``` file with administrator privileges (see screenshot).
 
-![register-menu.png](screenshots%2Fregister-menu.png)
+![register-menu.png](screenshots%2Fregister-menu-en.png)
 
 If the registration is successful, after right-clicking on a PDF file, the context menu **Open in PDFPass** will appear (see screenshot).
 
-![context-menu.png](screenshots%2Fcontext-menu.png)
+![context-menu.png](screenshots%2Fcontext-menu-en.png)
 
 ## C) "Installation" and desktop shortcut using ```PDFPass-portable.zip``` (without administrator privileges) 🖥️
 
@@ -256,7 +256,7 @@ You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere
 * **Watermark functionality ✅**
 * **"Drag & Drop" support for input file ✅**
 * **Support for multiple languages ✅**
-    ![drag-and-drop.gif](screenshots%2Fdrag-and-drop.gif)
+    ![drag-and-drop.gif](screenshots%2Fdrag-and-drop-en.gif)
 * Option to install the application from the Microsoft Store ⏳
 * Dedicated website ⏳
 
