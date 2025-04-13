@@ -134,6 +134,141 @@ Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel Boss a nie j
 
 Logo PDFPass je ochranná známka spoločnosti PDFPass/Gabriel Boss, na ktorú sa vzťahujú autorské práva a ktorá nie je licencovaná pod AGPL. Ak tento projekt forknete, musíte si vytvoriť vlastné logo, ktoré sa podstatne líši od oficiálneho loga, aby nedošlo k zámene vášho loga s oficiálnou/pôvodnou verziou.
 
+
+<br><br><br><br><br><br>
+
+# PDFPass EN
+**PDFPass** is a **free**, offline (does not need or require an internet connection), open-source tool written in C# for quickly and easily **encrypting/password-protecting** PDF files, as well as **removing** passwords and adding watermarks.
+
+This is the official version of PDFPass based on the _PDFEncrypt.net/Ryan Griggs_ project. Please note that all other versions are clones and may not respect or adhere to the fundamental principles of privacy and freedom upheld by the project's author.
+
+Contact: **pdf.pass@outlook.com**
+
+## Download 💾
+You can find the current ```PDFPass-portable.zip``` or ```PDFPass-install.exe``` here: [download](https://github.com/pdfpass/PDFPass/releases/latest)
+<br>
+<br>
+
+# Main screen for setting passwords 🔒
+![App Screenshot](screenshots%2Fencrypt.png)
+
+# Main screen for removing passwords 🔓
+![App Screenshot](screenshots%2Fdecrypt.png)
+
+# Settings screen ⚙️
+![Settings](screenshots%2Fsettings.png)
+
+
+# PDF - supports 2 types of passwords
+Both types can be set/removed using **PDFPass**
+
+## 1. Password to lock reading (user password) 🔑
+
+* Protection of sensitive information: If a PDF document contains **sensitive** or **confidential** information, it is advisable to protect it with a password to prevent unauthorized access.
+
+* Distribution among a limited number of people: If the PDF is intended for distribution only among certain individuals or a group of people, a password ensures that the document can only be opened by those who know the password.
+
+* Legal or regulatory requirements: In some cases, the requirement to protect documents with a password may be dictated by legal regulations or internal organizational rules.
+
+## 2. Owner password 🔑
+This password provides various protection options that allow you to control what users can do with the document. Here are the main protection options you can set using the "owner password" in **Settings**:
+
+* Preventing all editing: You can set it so that no one can edit the document.
+* Preventing form filling
+* Preventing document printing:
+    * Preventing all printing: You can set a password so that no one can print the document.
+    * Preventing high-quality printing: You can allow only low-quality printing, ensuring that the document cannot be printed in high resolution.
+* Preventing copying of text and images: You can use a password to prevent users from copying text or images from the document to other applications.
+* Preventing page arrangement:
+    * Adding pages: The user can insert new pages into an existing PDF document.
+    * Deleting pages: The user can delete some pages from the PDF document.
+    * Extracting pages: The user can select specific pages and save them as a new, separate PDF document.
+    * Rotating pages: The user can rotate individual pages in the document.
+* Preventing assistive technologies: You can restrict the use of assistive technologies, such as screen readers, which could otherwise read the document's content for visually impaired users.
+* Preventing adding annotations: You can restrict users from adding comments, notes, or annotations to the document.
+
+These protection options ensure that the document remains **protected** from unauthorized modifications, printing, copying, or extraction of content, thereby increasing the security and control over the distribution and use of PDF documents.
+
+# Project Support 💶
+You can financially support the project with a payment through the [PayPal](https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ&locale.x=sk_SK) system:
+
+1.  Directly using a PayPal account payment 🎯
+2.  By credit card 💳
+
+    * _For credit card payments, personal data can be fictitious for anonymity reasons_<br>
+    ![paypal.jpg](screenshots%2Fpaypal.jpg)
+
+Your contribution will help pay for **security updates** and the development of the program, which will remain **free forever**.
+
+# How to install PDFPass? ℹ️
+
+## A) Installation using ```PDFPass-install.exe``` 🆕 (requires administrator privileges) 💽
+**‼️ It is important to read: [instructions before running](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)**
+<br><br>
+**The installer will allow you to:**
+
+* Select a directory for PDFPass
+* Create a desktop shortcut
+* Add shortcuts to the Start Menu
+* Register the context menu
+
+### Installer preview
+![installer.png](screenshots%2Finstaller.png)
+
+## B) "Installation" + context menu from ```PDFPass-portable.zip``` (requires administrator privileges) 💽
+
+You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere; it does not need to be placed in ```c:\Program Files``` or ```c:\Program Files (x86)```. Activating the context menu is simple; just run the ```kontextove-menu-ako-admin-zaregistruj.cmd``` file with administrator privileges (see screenshot).
+
+![register-menu.png](screenshots%2Fregister-menu.png)
+
+If the registration is successful, after right-clicking on a PDF file, the context menu **Open in PDFPass** will appear (see screenshot).
+
+![context-menu.png](screenshots%2Fcontext-menu.png)
+
+## C) "Installation" and desktop shortcut using ```PDFPass-portable.zip``` (without administrator privileges) 🖥️
+
+You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere. Then, to create a PDFPass shortcut on the desktop, simply run the ```pridaj-odkaz-na-plochu.cmd``` file.
+
+# Command Line Parameters 🛠️
+
+```
+-i [path to input file] or --input [path to input file]
+
+-o [path to output file] or --output [path to output file]
+
+--user_pass [reading lock password]
+
+--owner_pass [owner password]
+
+--run - immediately execute the "Encrypt" function after startup (do not wait for the user to click the button)
+```
+
+# Changes from the original version 🔄
+
+* Transition to the current platform from .NET 4.7 ➔ .NET 8
+* Translation to Slovak 🇸🇰
+* Upgrade of the PDF processing library (iText7 v8.x). The original version (iText7 v7.x) contained a vulnerability. More at: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
+* Visual improvements
+
+# Planned Changes 📅
+
+* **PDF password removal functionality ✅**
+* **Watermark functionality ✅**
+* **"Drag & Drop" support for input file ✅**
+* **Support for multiple languages ✅**
+    ![drag-and-drop.gif](screenshots%2Fdrag-and-drop.gif)
+* Option to install the application from the Microsoft Store ⏳
+* Dedicated website ⏳
+
+# License (sk)
+The PDFPass application and source code are licensed under the AGPL license. You can download, install, use, and distribute the PDFPass application freely under the AGPL. You can download, modify, fork, and distribute the PDFPass source code under the AGPL.
+
+Restrictions: You may not use the term "Official" or "Original" to designate forks of this project, and forks must credit Gabriel Boss (a.k.a. Java Guru) and PDFPass.net within the application and on any documentation and/or related websites.
+
+The "PDFPass" brand is a trademark of PDFPass/Gabriel Boss and is not licensed under the AGPL. If you wish to release a forked version of PDFPass, you must rename it to avoid confusion with the official branch.
+
+The PDFPass Logo is a trademark of PDFPass/Gabriel Boss, is copyright protected, and is not licensed under the AGPL. If you fork this project, you must create your own logo that is materially different from the official logo to avoid confusion between your logo and the official/original version.
+
 # License (en)
 
 The PDFPass application and source code are licensed under the AGPL.  You may download, install, use, and distribute the PDFPass application freely under the AGPL.  You may download, modify, fork, and distribute the PDFPass source code under the AGPL.
@@ -143,6 +278,7 @@ Restrictions: you may not use the term "Official" or "Original" to designate for
 **The "PDFPass" brand is a trademark of PDFPass/Gabriel Boss and is not licensed under the AGPL.  If you wish to release a forked version of PDFPass, you must rename it to avoid confusion with the official branch.**
 
 **The PDFPass Logo is a trademark of, and copyrighted by, PDFPass/Gabriel Boss and is not licensed under the AGPL. If you fork this project, you must create your own logo which is materially different from the official logo, to avoid confusion between yours and the official/original version.**
+```
 
 
 
