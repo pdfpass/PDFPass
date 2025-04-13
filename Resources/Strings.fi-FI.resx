@@ -393,4 +393,7 @@ Paina "Peruuta" jos haluat PERUAA omistajan salasanan</value>
     <data name="FileNotExist" xml:space="preserve">
     <value>Tiedostoa ei ole olemassa!</value>
   </data>
+    <data name="SetLanguage" xml:space="preserve">
+      <value>Aseta kieli</value>
+    </data>
 </root>

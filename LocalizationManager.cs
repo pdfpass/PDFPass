@@ -10,7 +10,7 @@ namespace PDFPass
     /// </summary>
     public static class LocalizationManager
     {
-        private static readonly ResourceManager ResourceManager;
+        public static readonly ResourceManager ResourceManager;
         private static CultureInfo _currentCulture;
 
         // Define the event using EventHandler
@@ -22,7 +22,7 @@ namespace PDFPass
         static LocalizationManager()
         {
             ResourceManager = new ResourceManager("PDFPass.Resources.Strings", typeof(LocalizationManager).Assembly);
-            // Default to Slovak
+            // Default to English
             SetLanguage("en-EN");
         }
 

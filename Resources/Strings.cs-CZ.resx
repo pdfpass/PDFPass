@@ -393,4 +393,7 @@ Stiskněte "Zrušit" pro ODSTRANĚNÍ hesla vlastníka</value>
     <data name="FileNotExist" xml:space="preserve">
       <value>Soubor neexistuje!</value>
     </data>
+    <data name="SetLanguage" xml:space="preserve">
+      <value>Nastavení jazyka</value>
+    </data>
 </root>

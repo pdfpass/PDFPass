@@ -5,12 +5,12 @@ namespace PDFPass
 {
     public static class LanguageHelper
     {
-        public const string DefaultLanguage = "sk-SK";
+        public const string DefaultLanguage = "en-EN";
 
         public static Dictionary<string, string> AvailableLanguages => new()
         {
-            { DefaultLanguage, "Slovenčina" },
-            { "en", "English" },
+            { DefaultLanguage, "English" },
+            { "sk-SK", "Slovenčina" },
             { "cs-CZ", "Čeština" },
             { "fi-FI", "Suomi" }
         };

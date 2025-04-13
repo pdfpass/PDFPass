@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using iText.Kernel.Pdf;
 using PDFPass.Resources;
+using static System.Environment;
 using static System.String;
 using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Forms.Clipboard;
@@ -116,7 +118,10 @@ namespace PDFPass
             {
                 UpdateView();
             }
-            else if (fileStatus == FileStatus.NotPdf) processInputFileStatus(fileStatus);
+            else
+            {
+                if (fileStatus == FileStatus.NotPdf) processInputFileStatus(fileStatus);
+            }
 
             // If immediate run is enabled, click Run button (see command line options)
             if (EncryptOnStart)
@@ -282,7 +287,7 @@ namespace PDFPass
         private static void SettingsChanged()
         {
             // This function is executed when settings change.
-            Console.WriteLine();
+            Console.WriteLine(Strings.SettingsChanged);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -743,13 +748,24 @@ namespace PDFPass
                 btnPaste.Enabled ? $"{Strings.ClipboardValuePrefix}{Clipboard.GetText()}'" : Empty);
         }
 
-        // private void btnEncrypt2_Click(object sender, EventArgs e)
-        // {
-        //     BtnEncryptClick(sender, e);
-        // }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             btnSettings_Click(null, null);
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            var tooltip = Empty;
+            var availableLanguages = LanguageHelper.AvailableLanguages;
+
+            foreach (var key in availableLanguages.Keys)
+            {
+                var value = LocalizationManager.ResourceManager.GetString("SetLanguage", new CultureInfo(key));
+                tooltip = tooltip + value + NewLine;
+            }
+
+            languageToolTip.SetToolTip(pbLanguage, tooltip);
         }
     }
 

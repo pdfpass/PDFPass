@@ -393,4 +393,7 @@ Stlačte "Stornovať", ak chcete ZRUŠIŤ heslo vlastníka</value>
     <data name="FileNotExist" xml:space="preserve">
       <value>Súbor neexistuje!</value>
     </data>
+    <data name="SetLanguage" xml:space="preserve">
+      <value>Nastaviť jazyk</value>
+    </data>
 </root>

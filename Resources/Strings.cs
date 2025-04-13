@@ -148,6 +148,7 @@ namespace PDFPass.Resources
 
         // Language settings
         public static string LanguageTitle => LocalizationManager.GetString(nameof(LanguageTitle));
+        public static string SetLanguage => LocalizationManager.GetString(nameof(SetLanguage));
 
         public static string LanguageChangeRestartRequired =>
             LocalizationManager.GetString(nameof(LanguageChangeRestartRequired));

@@ -236,7 +236,7 @@
               type="System.Drawing.Point, System.Drawing.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
         <value>279, 17</value>
     </metadata>
-    <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing.Common"
+    <data name="pbLanguage.Image" type="System.Drawing.Bitmap, System.Drawing.Common"
           mimetype="application/x-microsoft.net.object.bytearray.base64">
         <value>
             /9j/4AAQSkZJRgABAQEASABIAAD/4QC+RXhpZgAATU0AKgAAAAgABgESAAMAAAABAAEAAAEaAAUAAAAB
@@ -323,7 +323,7 @@
             Xz1ap7STnV1Z61KMYR5YrQ//2Q==
         </value>
     </data>
-    <data name="pictureBox1.InitialImage" type="System.Drawing.Bitmap, System.Drawing.Common"
+    <data name="pbLanguage.InitialImage" type="System.Drawing.Bitmap, System.Drawing.Common"
           mimetype="application/x-microsoft.net.object.bytearray.base64">
         <value>
             iVBORw0KGgoAAAANSUhEUgAAAX8AAAA9CAIAAADKwf7jAAABaWlDQ1BJQ0MgUHJvZmlsZQAAKM99kLFL
@@ -940,6 +940,10 @@
             RK5CYII=
         </value>
     </data>
+    <metadata name="languageToolTip.TrayLocation"
+              type="System.Drawing.Point, System.Drawing.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+        <value>416, 17</value>
+    </metadata>
     <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common"
           mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

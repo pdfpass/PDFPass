@@ -65,12 +65,13 @@ namespace PDFPass
 	        cbWatermark = new System.Windows.Forms.CheckBox();
 	        label1 = new System.Windows.Forms.Label();
 	        btnPasteTooltip = new System.Windows.Forms.ToolTip(components);
-	        pictureBox1 = new System.Windows.Forms.PictureBox();
+	        pbLanguage = new System.Windows.Forms.PictureBox();
+	        languageToolTip = new System.Windows.Forms.ToolTip(components);
 	        groupBox1.SuspendLayout();
 	        groupBox2.SuspendLayout();
 	        groupBox3.SuspendLayout();
 	        gbWatermark.SuspendLayout();
-	        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+	        ((System.ComponentModel.ISupportInitialize)pbLanguage).BeginInit();
 	        SuspendLayout();
 	        // 
 	        // groupBox1
@@ -434,17 +435,18 @@ namespace PDFPass
 	        label1.Text = "Text:";
 	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
-	        // pictureBox1
+	        // pbLanguage
 	        // 
-	        pictureBox1.Image = ((System.Drawing.Image)resources.GetObject("pictureBox1.Image"));
-	        pictureBox1.InitialImage = ((System.Drawing.Image)resources.GetObject("pictureBox1.InitialImage"));
-	        pictureBox1.Location = new System.Drawing.Point(322, 4);
-	        pictureBox1.Name = "pictureBox1";
-	        pictureBox1.Size = new System.Drawing.Size(136, 18);
-	        pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-	        pictureBox1.TabIndex = 20;
-	        pictureBox1.TabStop = false;
-	        pictureBox1.Click += pictureBox1_Click;
+	        pbLanguage.Image = ((System.Drawing.Image)resources.GetObject("pbLanguage.Image"));
+	        pbLanguage.InitialImage = ((System.Drawing.Image)resources.GetObject("pbLanguage.InitialImage"));
+	        pbLanguage.Location = new System.Drawing.Point(322, 4);
+	        pbLanguage.Name = "pbLanguage";
+	        pbLanguage.Size = new System.Drawing.Size(136, 18);
+	        pbLanguage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+	        pbLanguage.TabIndex = 20;
+	        pbLanguage.TabStop = false;
+	        pbLanguage.Click += pictureBox1_Click;
+	        pbLanguage.MouseHover += pictureBox1_MouseHover;
 	        // 
 	        // FrmMain
 	        // 
@@ -455,7 +457,7 @@ namespace PDFPass
 	        BackColor = System.Drawing.SystemColors.Control;
 	        CancelButton = btnClose;
 	        ClientSize = new System.Drawing.Size(561, 521);
-	        Controls.Add(pictureBox1);
+	        Controls.Add(pbLanguage);
 	        Controls.Add(gbWatermark);
 	        Controls.Add(lblVersion);
 	        Controls.Add(btnSettings);
@@ -484,12 +486,14 @@ namespace PDFPass
 	        groupBox3.PerformLayout();
 	        gbWatermark.ResumeLayout(false);
 	        gbWatermark.PerformLayout();
-	        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+	        ((System.ComponentModel.ISupportInitialize)pbLanguage).EndInit();
 	        ResumeLayout(false);
 	        PerformLayout();
         }
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip languageToolTip;
+
+        private System.Windows.Forms.PictureBox pbLanguage;
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
