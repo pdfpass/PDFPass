@@ -1,6 +1,6 @@
 ![ref-card.jpg](screenshots%2Fref-card.jpg)
 
-# PDFPass 🇸🇰
+# PDFPass (SK)    [English Version](#PDFPass-EN)
 **PDFPass** je **bezplatný** offline (nepotrebuje a nevyžaduje internetové pripojenie) nástroj s otvoreným zdrojovým kódom v jazyku C# na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF, ako aj **odstraňovanie** hesiel a pridanie vodoznaku. 
 
 Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
@@ -134,8 +134,8 @@ Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel Boss a nie j
 
 Logo PDFPass je ochranná známka spoločnosti PDFPass/Gabriel Boss, na ktorú sa vzťahujú autorské práva a ktorá nie je licencovaná pod AGPL. Ak tento projekt forknete, musíte si vytvoriť vlastné logo, ktoré sa podstatne líši od oficiálneho loga, aby nedošlo k zámene vášho loga s oficiálnou/pôvodnou verziou.
 
-
-<br><br><br><br><br><br>
+<br><br><br>
+![us-flag.jpg](screenshots/us-flag.jpg)
 
 # PDFPass EN
 **PDFPass** is a **free**, offline (does not need or require an internet connection), open-source tool written in C# for quickly and easily **encrypting/password-protecting** PDF files, as well as **removing** passwords and adding watermarks.
