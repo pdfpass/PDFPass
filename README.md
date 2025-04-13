@@ -135,9 +135,10 @@ Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel Boss a nie j
 Logo PDFPass je ochranná známka spoločnosti PDFPass/Gabriel Boss, na ktorú sa vzťahujú autorské práva a ktorá nie je licencovaná pod AGPL. Ak tento projekt forknete, musíte si vytvoriť vlastné logo, ktoré sa podstatne líši od oficiálneho loga, aby nedošlo k zámene vášho loga s oficiálnou/pôvodnou verziou.
 
 <br><br><br>
-![us-flag.jpg](screenshots/us-flag.jpg)
 
 # PDFPass EN
+![us-flag.jpg](screenshots/us-flag.jpg)
+
 **PDFPass** is a **free**, offline (does not need or require an internet connection), open-source tool written in C# for quickly and easily **encrypting/password-protecting** PDF files, as well as **removing** passwords and adding watermarks.
 
 This is the official version of PDFPass based on the _PDFEncrypt.net/Ryan Griggs_ project. Please note that all other versions are clones and may not respect or adhere to the fundamental principles of privacy and freedom upheld by the project's author.
