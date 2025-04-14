@@ -80,10 +80,7 @@ namespace PDFPass
                 .Append(Strings.AllFiles)
                 .Append("|*.*")
                 .ToString();
-        }
 
-        private void frmSettings_Load(object sender, EventArgs e)
-        {
             // Load encryption types with localized descriptions
             var encryptionTypes = new Dictionary<int, string>
             {
@@ -97,6 +94,13 @@ namespace PDFPass
             cboEncryptionType.DisplayMember = "Value";
             cboEncryptionType.ValueMember = "Key";
 
+            //Set combo to value from Settings (Registry)
+            cboEncryptionType.SelectedIndex =
+                cboEncryptionType.FindStringExact(encryptionTypes[(int)Settings.encryption_type]);
+        }
+
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
             // Load settings from registry.
             Settings.Load();
 
@@ -110,8 +114,6 @@ namespace PDFPass
             chkOpen.Checked = Settings.open_after;
 
             // Encryption options:
-            cboEncryptionType.SelectedIndex =
-                cboEncryptionType.FindStringExact(encryptionTypes[(int)Settings.encryption_type]);
             chkEncryptMetadata.Checked = Settings.encrypt_metadata;
             chkPrinting.Checked = Settings.allow_printing;
             chkDegradedPrinting.Checked = Settings.allow_degraded_printing;
