@@ -1,6 +1,6 @@
 ![ref-card.jpg](screenshots%2Fref-card.jpg)
 
-# PDFPass (SK)    [English Version](#PDFPass-EN)
+# PDFPass (SK)  [PDFPass (EN)⇩ ](#PDFPass-EN)
 **PDFPass** je **bezplatný** offline (nepotrebuje a nevyžaduje internetové pripojenie) nástroj s otvoreným zdrojovým kódom v jazyku C# na rýchle a jednoduché **šifrovanie/heslovanie** súborov PDF, ako aj **odstraňovanie** hesiel a pridanie vodoznaku. 
 
 Toto je oficiálna verzia PDFPass založená na projekte _PDFEncrypt.net/Ryan Griggs_. Upozorňujeme, že všetky ostatné verzie sú klony a nemusia rešpektovať alebo dodržiavať základné zásady ochrany súkromia a slobody, ktoré zastáva autor projektu.
@@ -66,7 +66,9 @@ Váš príspevok pomôže zaplatiť **bezpečnostné aktualizácie** a rozvoj pr
 # Ako nainštalovať PDFPass? ℹ️
 
 ## A) Inštalácia pomocou ```PDFPass-install.exe``` 🆕 (vyžaduje práva administrátora) 💽
-**‼️Dôležité je prečítať si: [inštrukcie pred spustením](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)**
+
+**‼️Dôležité je prečítať
+si:  [inštrukcie pred spustením](others/Pre%C4%8D%C3%ADta%C5%A5%20pred%20spusten%C3%ADm%20in%C5%A1tal%C3%A1tora.pdf)**
 <br><br>
 **Inštalátor umožní:**
 * vybrať adresár pre PDFpass
@@ -204,7 +206,8 @@ Your contribution will help pay for **security updates** and the development of 
 # How to install PDFPass? ℹ️
 
 ## A) Installation using ```PDFPass-install.exe``` 🆕 (requires administrator privileges) 💽
-**‼️ It is important to read: [instructions before running](https://github.com/pdfpass/PDFPass/releases/download/2024.8.10/Precitat.pred.spustenim.instalatora.pdf)**
+
+**‼️ It is important to read: [Instructions before running](others/Read%20before%20running%20Installer.pdf)**
 <br><br>
 **The installer will allow you to:**
 
