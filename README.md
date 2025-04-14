@@ -261,14 +261,6 @@ You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere
 * Option to install the application from the Microsoft Store ⏳
 * Dedicated website ⏳
 
-# License (sk)
-The PDFPass application and source code are licensed under the AGPL license. You can download, install, use, and distribute the PDFPass application freely under the AGPL. You can download, modify, fork, and distribute the PDFPass source code under the AGPL.
-
-Restrictions: You may not use the term "Official" or "Original" to designate forks of this project, and forks must credit Gabriel Boss (a.k.a. Java Guru) and PDFPass.net within the application and on any documentation and/or related websites.
-
-The "PDFPass" brand is a trademark of PDFPass/Gabriel Boss and is not licensed under the AGPL. If you wish to release a forked version of PDFPass, you must rename it to avoid confusion with the official branch.
-
-The PDFPass Logo is a trademark of PDFPass/Gabriel Boss, is copyright protected, and is not licensed under the AGPL. If you fork this project, you must create your own logo that is materially different from the official logo to avoid confusion between your logo and the official/original version.
 
 # License (en)
 
