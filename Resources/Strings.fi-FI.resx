@@ -78,8 +78,8 @@
     <value>Valitse tiedosto salaukseen:</value>
   </data>
     <data name="OutputFile" xml:space="preserve">
-    <value>Tulostiedosto</value>
-  </data>
+      <value>Määränpään tiedosto</value>
+    </data>
     <data name="SelectPathForEncryptedFile" xml:space="preserve">
     <value>Valitse polku salatulle tiedostolle:</value>
   </data>
@@ -99,8 +99,8 @@
     <value>Kopioitu leikepöydälle.</value>
   </data>
     <data name="PasswordForLocking" xml:space="preserve">
-    <value>Lukitussalasana 🔒</value>
-  </data>
+      <value>Salasana PDF:n salaukseen 🔒</value>
+    </data>
     <data name="PasswordForUnlocking" xml:space="preserve">
     <value>Avaussalasana PDF:lle 🔓</value>
   </data>
@@ -120,11 +120,11 @@
     <value>Kopioi</value>
   </data>
     <data name="Decrypt" xml:space="preserve">
-    <value>Purkaa salaus</value>
-  </data>
+      <value>Purkaa</value>
+    </data>
     <data name="Encrypt" xml:space="preserve">
-    <value>Salaa</value>
-  </data>
+      <value>Salata</value>
+    </data>
     <data name="Close" xml:space="preserve">
     <value>Sulje</value>
   </data>
@@ -244,11 +244,11 @@
     <value>Peruuta</value>
   </data>
     <data name="AfterSuccessfulEncryption" xml:space="preserve">
-    <value> Salauksen onnistuttua </value>
-  </data>
+      <value>Salauksen valmistuttua </value>
+    </data>
     <data name="OutputFilePathAdded" xml:space="preserve">
-    <value>(Tulostiedoston polku lisätty viimeisenä parametrina)</value>
-  </data>
+      <value>(Salatun PDF:n polku lisätty viimeisenä parametrinä)</value>
+    </data>
     <data name="Parameters" xml:space="preserve">
     <value>Parametrit:</value>
   </data>
@@ -259,8 +259,8 @@
     <value>Avaa tulostiedosto</value>
   </data>
     <data name="OpenFileInExplorer" xml:space="preserve">
-    <value>Avaa tiedosto Tutkassa</value>
-  </data>
+      <value>Näytä File Explorerissa</value>
+    </data>
     <data name="ClosePDFPass" xml:space="preserve">
     <value>Sulje PDFPass</value>
   </data>
@@ -271,8 +271,8 @@
     <value>(polku ohjelmaan)</value>
   </data>
     <data name="EncryptionOptions" xml:space="preserve">
-    <value>Salausvaihtoehdot</value>
-  </data>
+      <value>Salausasetukset</value>
+    </data>
     <data name="SetAutomatically" xml:space="preserve">
     <value>Aseta automaattisesti</value>
   </data>
@@ -283,17 +283,17 @@
     <value>(pysyvä omistajan salasana)</value>
   </data>
     <data name="PermissionsIgnoredWarning" xml:space="preserve">
-    <value>Jotkin PDF-katseluohjelmat eivät huomioi näitä oikeuksia.</value>
-  </data>
+      <value>Jotkin, PDF-sovellukset eivät huomioi näitä asetuksia.</value>
+    </data>
     <data name="AllowPrintingLowRes" xml:space="preserve">
-    <value>Salli tulostus (matalaresoluutio)</value>
-  </data>
+      <value>Salli tulostus (Matala resoluutio)</value>
+    </data>
     <data name="AllowPageArrangement" xml:space="preserve">
     <value>Salli sivujen järjestäminen</value>
   </data>
     <data name="AllowAccessTechnologies" xml:space="preserve">
-    <value>Salli apuvälineet</value>
-  </data>
+      <value>Salli esteettömyysvälineet</value>
+    </data>
     <data name="AllowFillForm" xml:space="preserve">
     <value>Salli lomakkeen täyttö</value>
   </data>
@@ -319,8 +319,8 @@
     <value>Algoritmi:</value>
   </data>
     <data name="ConfirmPassword" xml:space="preserve">
-    <value>Vahvista salasana</value>
-  </data>
+      <value>Vahvista salasanat</value>
+    </data>
     <data name="ExecutableFiles" xml:space="preserve">
     <value>Suoritettavat tiedostot (*.exe, *.bat, *.com)</value>
   </data>
@@ -351,11 +351,11 @@
     <value>Aseta omistajan salasana</value>
   </data>
     <data name="EnterOwnerPasswordPrompt" xml:space="preserve">
-    <value>Anna omistajan salasana.
+      <value>Anna omistajan salasana.
 (Omistajan salasana rajoittaa PDF:n sisällön muokkausta)
 
-Paina "Peruuta" jos haluat PERUAA omistajan salasanan</value>
-  </data>
+Paina ”Peruuta”, jos haluat PERUA omistajan salasanan.</value>
+    </data>
     <data name="FillWithDefaultPassword" xml:space="preserve">
     <value>Täytä oletussalasanalla Asetuksista</value>
   </data>

@@ -35,7 +35,6 @@
 	        btnCancel = new System.Windows.Forms.Button();
 	        groupBox1 = new System.Windows.Forms.GroupBox();
 	        label6 = new System.Windows.Forms.Label();
-	        label5 = new System.Windows.Forms.Label();
 	        txtArguments = new System.Windows.Forms.TextBox();
 	        chkOpen = new System.Windows.Forms.CheckBox();
 	        chkShowFolder = new System.Windows.Forms.CheckBox();
@@ -43,10 +42,10 @@
 	        btnRunBrowse = new System.Windows.Forms.Button();
 	        txtRun = new System.Windows.Forms.TextBox();
 	        chkRun = new System.Windows.Forms.CheckBox();
+	        label5 = new System.Windows.Forms.Label();
 	        groupBox2 = new System.Windows.Forms.GroupBox();
 	        chkAlwaysDefaultOwnerPassword = new System.Windows.Forms.CheckBox();
 	        txtOwnerPassword = new System.Windows.Forms.TextBox();
-	        lblOwnerPassword = new System.Windows.Forms.Label();
 	        label4 = new System.Windows.Forms.Label();
 	        chkDegradedPrinting = new System.Windows.Forms.CheckBox();
 	        chkAssembly = new System.Windows.Forms.CheckBox();
@@ -58,9 +57,10 @@
 	        label2 = new System.Windows.Forms.Label();
 	        chkPrinting = new System.Windows.Forms.CheckBox();
 	        chkEncryptMetadata = new System.Windows.Forms.CheckBox();
-	        label3 = new System.Windows.Forms.Label();
 	        cboEncryptionType = new System.Windows.Forms.ComboBox();
 	        chkPasswordConfirmation = new System.Windows.Forms.CheckBox();
+	        lblOwnerPassword = new System.Windows.Forms.Label();
+	        label3 = new System.Windows.Forms.Label();
 	        linkDonate = new System.Windows.Forms.LinkLabel();
 	        groupBoxLanguage = new System.Windows.Forms.GroupBox();
 	        pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -75,7 +75,7 @@
 	        // 
 	        label1.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label1.Location = new System.Drawing.Point(52, 597);
+	        label1.Location = new System.Drawing.Point(56, 597);
 	        label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        label1.Name = "label1";
 	        label1.Size = new System.Drawing.Size(373, 15);
@@ -90,7 +90,7 @@
 	        // btnOK
 	        // 
 	        btnOK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        btnOK.Location = new System.Drawing.Point(421, 21);
+	        btnOK.Location = new System.Drawing.Point(428, 21);
 	        btnOK.Margin = new System.Windows.Forms.Padding(2);
 	        btnOK.Name = "btnOK";
 	        btnOK.Size = new System.Drawing.Size(85, 32);
@@ -103,7 +103,7 @@
 	        // 
 	        btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 	        btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        btnCancel.Location = new System.Drawing.Point(421, 63);
+	        btnCancel.Location = new System.Drawing.Point(428, 65);
 	        btnCancel.Margin = new System.Windows.Forms.Padding(2);
 	        btnCancel.Name = "btnCancel";
 	        btnCancel.Size = new System.Drawing.Size(85, 32);
@@ -115,7 +115,6 @@
 	        // groupBox1
 	        // 
 	        groupBox1.Controls.Add(label6);
-	        groupBox1.Controls.Add(label5);
 	        groupBox1.Controls.Add(txtArguments);
 	        groupBox1.Controls.Add(chkOpen);
 	        groupBox1.Controls.Add(chkShowFolder);
@@ -123,6 +122,7 @@
 	        groupBox1.Controls.Add(btnRunBrowse);
 	        groupBox1.Controls.Add(txtRun);
 	        groupBox1.Controls.Add(chkRun);
+	        groupBox1.Controls.Add(label5);
 	        groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        groupBox1.Location = new System.Drawing.Point(13, 331);
 	        groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -146,23 +146,10 @@
 	        label6.Text = "(Cesta výstupneho súboru je pridaná ako posledný parameter)";
 	        label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
-	        // label5
-	        // 
-	        label5.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
-	        label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-	        label5.Location = new System.Drawing.Point(18, 110);
-	        label5.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
-	        label5.Name = "label5";
-	        label5.Size = new System.Drawing.Size(114, 17);
-	        label5.TabIndex = 21;
-	        label5.Text = "Parametre:";
-	        label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-	        // 
 	        // txtArguments
 	        // 
 	        txtArguments.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        txtArguments.Location = new System.Drawing.Point(137, 107);
+	        txtArguments.Location = new System.Drawing.Point(132, 107);
 	        txtArguments.Margin = new System.Windows.Forms.Padding(2);
 	        txtArguments.Name = "txtArguments";
 	        txtArguments.PlaceholderText = "(parametre programu)";
@@ -220,7 +207,7 @@
 	        // txtRun
 	        // 
 	        txtRun.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        txtRun.Location = new System.Drawing.Point(137, 75);
+	        txtRun.Location = new System.Drawing.Point(132, 75);
 	        txtRun.Margin = new System.Windows.Forms.Padding(2);
 	        txtRun.Name = "txtRun";
 	        txtRun.PlaceholderText = "(cesta k programu)";
@@ -239,11 +226,23 @@
 	        chkRun.Text = "Spustiť program:";
 	        chkRun.UseVisualStyleBackColor = true;
 	        // 
+	        // label5
+	        // 
+	        label5.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
+	        label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+	        label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        label5.Location = new System.Drawing.Point(17, 110);
+	        label5.Margin = new System.Windows.Forms.Padding(2, 0, 0, 0);
+	        label5.Name = "label5";
+	        label5.Size = new System.Drawing.Size(114, 17);
+	        label5.TabIndex = 21;
+	        label5.Text = "Parametre:";
+	        label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        // 
 	        // groupBox2
 	        // 
 	        groupBox2.Controls.Add(chkAlwaysDefaultOwnerPassword);
 	        groupBox2.Controls.Add(txtOwnerPassword);
-	        groupBox2.Controls.Add(lblOwnerPassword);
 	        groupBox2.Controls.Add(label4);
 	        groupBox2.Controls.Add(chkDegradedPrinting);
 	        groupBox2.Controls.Add(chkAssembly);
@@ -255,15 +254,16 @@
 	        groupBox2.Controls.Add(label2);
 	        groupBox2.Controls.Add(chkPrinting);
 	        groupBox2.Controls.Add(chkEncryptMetadata);
-	        groupBox2.Controls.Add(label3);
 	        groupBox2.Controls.Add(cboEncryptionType);
 	        groupBox2.Controls.Add(chkPasswordConfirmation);
+	        groupBox2.Controls.Add(lblOwnerPassword);
+	        groupBox2.Controls.Add(label3);
 	        groupBox2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        groupBox2.Location = new System.Drawing.Point(13, 12);
 	        groupBox2.Margin = new System.Windows.Forms.Padding(2);
 	        groupBox2.Name = "groupBox2";
 	        groupBox2.Padding = new System.Windows.Forms.Padding(2);
-	        groupBox2.Size = new System.Drawing.Size(394, 301);
+	        groupBox2.Size = new System.Drawing.Size(401, 301);
 	        groupBox2.TabIndex = 16;
 	        groupBox2.TabStop = false;
 	        groupBox2.Text = " Možnosti šifrovania ";
@@ -272,7 +272,7 @@
 	        // 
 	        chkAlwaysDefaultOwnerPassword.AutoSize = true;
 	        chkAlwaysDefaultOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        chkAlwaysDefaultOwnerPassword.Location = new System.Drawing.Point(97, 272);
+	        chkAlwaysDefaultOwnerPassword.Location = new System.Drawing.Point(117, 270);
 	        chkAlwaysDefaultOwnerPassword.Name = "chkAlwaysDefaultOwnerPassword";
 	        chkAlwaysDefaultOwnerPassword.Size = new System.Drawing.Size(139, 19);
 	        chkAlwaysDefaultOwnerPassword.TabIndex = 29;
@@ -282,33 +282,20 @@
 	        // txtOwnerPassword
 	        // 
 	        txtOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        txtOwnerPassword.Location = new System.Drawing.Point(96, 242);
+	        txtOwnerPassword.Location = new System.Drawing.Point(128, 242);
 	        txtOwnerPassword.Margin = new System.Windows.Forms.Padding(2);
 	        txtOwnerPassword.MaxLength = 32;
 	        txtOwnerPassword.Name = "txtOwnerPassword";
 	        txtOwnerPassword.PlaceholderText = "(trvalé heslo vlastníka)";
-	        txtOwnerPassword.Size = new System.Drawing.Size(285, 23);
+	        txtOwnerPassword.Size = new System.Drawing.Size(263, 23);
 	        txtOwnerPassword.TabIndex = 28;
-	        // 
-	        // lblOwnerPassword
-	        // 
-	        lblOwnerPassword.AutoSize = true;
-	        lblOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        lblOwnerPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-	        lblOwnerPassword.Location = new System.Drawing.Point(4, 246);
-	        lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-	        lblOwnerPassword.Name = "lblOwnerPassword";
-	        lblOwnerPassword.Size = new System.Drawing.Size(89, 15);
-	        lblOwnerPassword.TabIndex = 27;
-	        lblOwnerPassword.Text = "Heslo vlastníka:";
-	        lblOwnerPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 	        // 
 	        // label4
 	        // 
 	        label4.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        label4.ForeColor = System.Drawing.Color.FromArgb(((int)((byte)255)), ((int)((byte)128)), ((int)((byte)0)));
-	        label4.Location = new System.Drawing.Point(12, 170);
+	        label4.Location = new System.Drawing.Point(15, 170);
 	        label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 	        label4.Name = "label4";
 	        label4.Size = new System.Drawing.Size(374, 15);
@@ -435,29 +422,16 @@
 	        chkEncryptMetadata.Text = "Zašifrovať metadata";
 	        chkEncryptMetadata.UseVisualStyleBackColor = true;
 	        // 
-	        // label3
-	        // 
-	        label3.AutoSize = true;
-	        label3.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-	        label3.Location = new System.Drawing.Point(24, 210);
-	        label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-	        label3.Name = "label3";
-	        label3.Size = new System.Drawing.Size(69, 15);
-	        label3.TabIndex = 15;
-	        label3.Text = "Algoritmus:";
-	        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-	        // 
 	        // cboEncryptionType
 	        // 
 	        cboEncryptionType.Cursor = System.Windows.Forms.Cursors.Default;
 	        cboEncryptionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 	        cboEncryptionType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        cboEncryptionType.FormattingEnabled = true;
-	        cboEncryptionType.Location = new System.Drawing.Point(96, 206);
+	        cboEncryptionType.Location = new System.Drawing.Point(127, 206);
 	        cboEncryptionType.Margin = new System.Windows.Forms.Padding(2);
 	        cboEncryptionType.Name = "cboEncryptionType";
-	        cboEncryptionType.Size = new System.Drawing.Size(285, 23);
+	        cboEncryptionType.Size = new System.Drawing.Size(264, 23);
 	        cboEncryptionType.TabIndex = 14;
 	        // 
 	        // chkPasswordConfirmation
@@ -472,12 +446,38 @@
 	        chkPasswordConfirmation.Text = "Potvrdiť heslo";
 	        chkPasswordConfirmation.UseVisualStyleBackColor = true;
 	        // 
+	        // lblOwnerPassword
+	        // 
+	        lblOwnerPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
+	        lblOwnerPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+	        lblOwnerPassword.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        lblOwnerPassword.Location = new System.Drawing.Point(12, 243);
+	        lblOwnerPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+	        lblOwnerPassword.Name = "lblOwnerPassword";
+	        lblOwnerPassword.Size = new System.Drawing.Size(115, 20);
+	        lblOwnerPassword.TabIndex = 27;
+	        lblOwnerPassword.Text = "Heslo vlastníka:";
+	        lblOwnerPassword.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        // 
+	        // label3
+	        // 
+	        label3.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
+	        label3.Font = new System.Drawing.Font("Segoe UI", 9F);
+	        label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+	        label3.Location = new System.Drawing.Point(15, 209);
+	        label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+	        label3.Name = "label3";
+	        label3.Size = new System.Drawing.Size(113, 15);
+	        label3.TabIndex = 15;
+	        label3.Text = "Algoritmus:";
+	        label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+	        // 
 	        // linkDonate
 	        // 
 	        linkDonate.Anchor = System.Windows.Forms.AnchorStyles.None;
 	        linkDonate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        linkDonate.LinkColor = System.Drawing.Color.MediumSlateBlue;
-	        linkDonate.Location = new System.Drawing.Point(13, 612);
+	        linkDonate.Location = new System.Drawing.Point(17, 612);
 	        linkDonate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
 	        linkDonate.Name = "linkDonate";
 	        linkDonate.Size = new System.Drawing.Size(457, 19);
@@ -518,7 +518,7 @@
 	        comboBoxLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 	        comboBoxLanguage.Font = new System.Drawing.Font("Segoe UI", 9.75F);
 	        comboBoxLanguage.FormattingEnabled = true;
-	        comboBoxLanguage.Location = new System.Drawing.Point(154, 27);
+	        comboBoxLanguage.Location = new System.Drawing.Point(149, 27);
 	        comboBoxLanguage.Name = "comboBoxLanguage";
 	        comboBoxLanguage.Size = new System.Drawing.Size(236, 25);
 	        comboBoxLanguage.TabIndex = 0;
@@ -530,7 +530,7 @@
 	        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 	        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 	        CancelButton = btnCancel;
-	        ClientSize = new System.Drawing.Size(512, 651);
+	        ClientSize = new System.Drawing.Size(520, 651);
 	        Controls.Add(groupBoxLanguage);
 	        Controls.Add(linkDonate);
 	        Controls.Add(groupBox2);

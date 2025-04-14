@@ -244,8 +244,8 @@
     <value>Stornovať</value>
   </data>
     <data name="AfterSuccessfulEncryption" xml:space="preserve">
-    <value> Po úspešnom zašifrovaní </value>
-  </data>
+      <value>Po úspešnom zašifrovaní </value>
+    </data>
     <data name="OutputFilePathAdded" xml:space="preserve">
     <value>(Cesta výstupneho súboru je pridaná ako posledný parameter)</value>
   </data>
