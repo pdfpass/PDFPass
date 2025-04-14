@@ -205,7 +205,7 @@ Your contribution will help pay for **security updates** and the development of 
 
 # How to install PDFPass? ℹ️
 
-## A) Installation using ```PDFPass-install.exe``` 🆕 (requires administrator privileges) 💽
+## A) Installation with ```PDFPass-install.exe``` 🆕 (requires administrator privileges) 💽
 
 **‼️ It is important to read: [Instructions before running](others/Read%20before%20running%20Installer.pdf)**
 <br><br>
