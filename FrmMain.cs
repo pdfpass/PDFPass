@@ -338,30 +338,6 @@ namespace PDFPass
 
         private void BtnEncryptClick(object sender, EventArgs e)
         {
-            // Clean up text
-            txtInputFile.Text = txtInputFile.Text.Trim();
-            txtOutputFile.Text = txtOutputFile.Text.Trim();
-
-            // Ensure input and output are not the same.
-            if (string.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
-            {
-                MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOutputFile.Focus();
-                txtOutputFile.SelectAll();
-                return;
-            }
-
-            // Ensure input file exists.
-            if (!File.Exists(txtInputFile.Text))
-            {
-                MessageBox.Show(Strings.SourceFileDoesNotExist, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Focus();
-                txtInputFile.SelectAll();
-                return;
-            }
-
             // If output file exists, prompt to overwrite.
             if (File.Exists(txtOutputFile.Text))
             {
@@ -372,15 +348,6 @@ namespace PDFPass
                     txtOutputFile.SelectAll();
                     return;
                 }
-            }
-
-            // Verify password if at least 1 pwd
-            if (IsNullOrWhiteSpace(txtPassword.Text) && IsNullOrWhiteSpace(OwnerPassword))
-            {
-                MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtPassword.Focus();
-                return;
             }
 
             // Warning about missing reading pwd
@@ -396,7 +363,6 @@ namespace PDFPass
                     return;
                 }
             }
-
 
             // Confirm password:
             if (Settings.password_confirm)
@@ -440,86 +406,22 @@ namespace PDFPass
                 }
             }
 
-            // See https://itextpdf.com/en/resources/faq/technical-support/itext-7/how-protect-already-existing-pdf-password
-            try
+            Cursor.Current = Cursors.WaitCursor;
+            Application.DoEvents();
+
+            var processor = new PdfFileProcessor();
+            var result = processor.Encrypt(txtInputFile.Text, txtOutputFile.Text, txtPassword.Text, OwnerPassword, cbWatermark.Checked, cmbWatermark.Text);
+
+            Cursor.Current = Cursors.Default;
+
+            if (result.Success)
             {
-                // Set mouse cursor to wait.
-                Cursor.Current = Cursors.WaitCursor;
-                Application.DoEvents();
-
-                // Encryption properties:
-                var encryptionProperties = (int)Settings.encryption_type;
-
-                // If specified, disable encrypting metadata.
-                if (!Settings.encrypt_metadata)
-                {
-                    encryptionProperties |= EncryptionConstants.DO_NOT_ENCRYPT_METADATA;
-                }
-
-                // Set document options
-                var documentOptions = 0;
-                if (Settings.allow_printing)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_PRINTING;
-                }
-
-                if (Settings.allow_degraded_printing)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_DEGRADED_PRINTING;
-                }
-
-                if (Settings.allow_modifying)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_MODIFY_CONTENTS;
-                }
-
-                if (Settings.allow_modifying_annotations)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_MODIFY_ANNOTATIONS;
-                }
-
-                if (Settings.allow_copying)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_COPY;
-                }
-
-                if (Settings.allow_form_fill)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_FILL_IN;
-                }
-
-                if (Settings.allow_assembly)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_ASSEMBLY;
-                }
-
-                if (Settings.allow_screenreaders)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_SCREENREADERS;
-                }
-
-                var writerProperties = new WriterProperties(); // Set properties of output
-                var userPassword = Encoding.UTF8.GetBytes(txtPassword.Text);
-                var ownerPassword = Encoding.UTF8.GetBytes(OwnerPassword);
-
-                writerProperties.SetStandardEncryption(userPassword,
-                    IsNullOrEmpty(OwnerPassword) ? userPassword : ownerPassword,
-                    documentOptions,
-                    encryptionProperties); // Enable encryption
-
-                var waterMarkText = cbWatermark.Checked ? cmbWatermark.Text : Empty;
-
-                PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties, waterMarkText);
+                ExecuteAfterSteps();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show($@"{Strings.UnknownError}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                Cursor.Current = Cursors.Default;
-                return;
+                MessageBox.Show(result.Message, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            ExecuteAfterSteps();
         }
 
         private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
@@ -582,82 +484,30 @@ namespace PDFPass
 
         private void BtnDecryptClick(object sender, EventArgs e)
         {
-            // Clean up text
-            txtInputFile.Text = txtInputFile.Text.Trim();
-            txtOutputFile.Text = txtOutputFile.Text.Trim();
-
-            // Ensure input and output are not the same.
-            if (String.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
+            // If output file exists, prompt to overwrite.
+            if (File.Exists(txtOutputFile.Text))
             {
-                MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOutputFile.Focus();
-                txtOutputFile.SelectAll();
-                return;
-            }
-
-            // Ensure input file exists.
-            if (!File.Exists(txtInputFile.Text))
-            {
-                MessageBox.Show(Strings.SourceFileDoesNotExist, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Focus();
-                txtInputFile.SelectAll();
-                return;
-            }
-
-
-            // Verify password:
-            if (txtPassword.Text == Empty)
-            {
-                MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtPassword.Focus();
-                return;
-            }
-
-            if (!PdfUtils.IsPasswordCorrect(txtInputFile.Text, txtPassword.Text))
-            {
-                MessageBox.Show(Strings.IncorrectPassword, Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
-
-            if (PdfUtils.IsPasswordWithFullPermissions(txtInputFile.Text, txtPassword.Text))
-            {
-                // If output file exists, prompt to overwrite.
-                if (File.Exists(txtOutputFile.Text))
+                if (MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
+                        MessageBoxButtons.YesNo) != DialogResult.Yes)
                 {
-                    if (MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
-                            MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    {
-                        txtOutputFile.Focus();
-                        txtOutputFile.SelectAll();
-                        return;
-                    }
+                    txtOutputFile.Focus();
+                    txtOutputFile.SelectAll();
+                    return;
                 }
+            }
 
-                // Write the un-protected PDF
-                try
-                {
-                    PdfUtils.WriteDecryptedPdf(txtInputFile.Text, txtOutputFile.Text, txtPassword.Text);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.ToString());
-                    MessageBox.Show(Strings.UnknownErrorShort, Strings.ErrorTitle, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+            var processor = new PdfFileProcessor();
+            var result = processor.Decrypt(txtInputFile.Text, txtOutputFile.Text, txtPassword.Text);
+
+            if (result.Success)
+            {
+                ExecuteAfterSteps();
             }
             else
             {
-                MessageBox.Show(Strings.OwnerPasswordRequired, Strings.Information,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
+                var icon = result.Message == Strings.OwnerPasswordRequired ? MessageBoxIcon.Warning : MessageBoxIcon.Error;
+                MessageBox.Show(result.Message, Strings.ErrorTitle, MessageBoxButtons.OK, icon);
             }
-
-            ExecuteAfterSteps();
         }
 
 
