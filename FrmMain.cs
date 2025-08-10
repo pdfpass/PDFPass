@@ -357,7 +357,7 @@ namespace PDFPass
                     Strings.Warning, MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning);
 
-                if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.No)
                 {
                     txtPassword.Focus();
                     return;
