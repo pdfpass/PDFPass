@@ -15,153 +15,95 @@ using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Forms.Clipboard;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
+using PDFPass.MVP;
 
 namespace PDFPass
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : Form, IMainView
     {
-        private const int PwLengthMin = 12; // Minimum generated password length
-        private const int PwLengthMax = 24; // Maximum generated password length
-
-        public string OwnerPassword = ""; // The owner password, if any.
-        public bool EncryptOnStart = false; // Allows encryption via command line without user interaction
-
+        private MainPresenter _presenter;
 
         public FrmMain()
         {
             InitializeComponent();
-
-            // Update UI with localized text
+            new MainPresenter(this, new MainModel());
             UpdateUiText();
-
-            // Subscribe to language change events
             LocalizationManager.LanguageChanged += (sender, e) => UpdateUiText();
         }
 
-        private void UpdateUiText()
+        public void SetPresenter(MainPresenter presenter)
         {
-            // Update form title
-            this.Text = Strings.ApplicationTitle;
-
-            // Update group boxes
-            groupBox1.Text = Strings.InputFile;
-            groupBox2.Text = Strings.OutputFile;
-            groupBox3.Text = Strings.Passwords;
-            gbWatermark.Text = Strings.Watermark;
-
-            // Update labels
-            label1.Text = Strings.Text;
-            label2.Text = Strings.SelectPathForEncryptedFile;
-            label4.Text = Strings.SelectFileForEncryption;
-            labelPassword.Text = IsInputEncrypted() ? Strings.PasswordForUnlocking : Strings.PasswordForLocking;
-            lblCopied.Text = Strings.CopiedToClipboard;
-            lblOwnerPasswordSet.Text = IsNullOrEmpty(OwnerPassword)
-                ? Strings.OwnerPasswordEmpty
-                : Strings.OwnerPasswordSet;
-            lblPasswordLength.Text = Strings.PasswordLengthWarning;
-            // Show program version
-            var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
-
-
-            // Update buttons
-            btnChangePassword.Text = Strings.Change;
-            btnClose.Text = Strings.Close;
-            btnCopy.Text = Strings.Copy;
-            btnDecrypt.Text = Strings.Decrypt;
-            btnEncrypt.Text = Strings.Encrypt;
-            btnPasswordGenerate.Text = Strings.Generate;
-            btnPaste.Text = Strings.Paste;
-            btnSettings.Text = Strings.Settings;
-
-            // Update checkbox
-            cbWatermark.Text = Strings.UseWatermark;
-
-            // Update placeholders
-            txtPassword.PlaceholderText = Strings.EnterPassword;
-
-            // Update combobox items - only if not already populated
-            if (cmbWatermark.Items.Count == 0 || cmbWatermark.Items[0]?.ToString() != Strings.Sample)
-            {
-                cmbWatermark.Items.Clear();
-                cmbWatermark.Items.Add(Strings.Sample);
-                cmbWatermark.Items.Add(Strings.WCopy);
-                cmbWatermark.Items.Add(Strings.Confidential);
-                cmbWatermark.Items.Add(Strings.Draft);
-                if (cmbWatermark.SelectedIndex < 0 && cmbWatermark.Items.Count > 0)
-                {
-                    cmbWatermark.SelectedIndex = 0;
-                }
-            }
-
-            // Update file dialogs
-            var fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
-            dlgOpen.Filter = fileFilter;
-            dlgSave.Filter = fileFilter;
+            _presenter = presenter;
         }
 
-        private void frmMain_Load(object sender, EventArgs e)
+        #region Properties
+        public string InputFile
         {
-            // Add listener for updated settings
-            Settings.Notify.Add(SettingsChanged);
-
-            // Load settings from registry
-            Settings.Load();
-
-            if (Settings.always_default_owner_password)
-            {
-                OwnerPassword = Settings.owner_password;
-            }
-
-            var fileStatus = getFileStatus(txtInputFile.Text);
-            if (fileStatus is FileStatus.Ok or FileStatus.Empty)
-            {
-                UpdateView();
-            }
-            else
-            {
-                if (fileStatus == FileStatus.NotPdf) processInputFileStatus(fileStatus);
-            }
-
-            // If immediate run is enabled, click Run button (see command line options)
-            if (EncryptOnStart)
-            {
-                // Click the Encrypt button immediately.
-                BtnEncryptClick(sender, e);
-            }
+            get => txtInputFile.Text;
+            set => txtInputFile.Text = value;
         }
 
+        public string OutputFile
+        {
+            get => txtOutputFile.Text;
+            set => txtOutputFile.Text = value;
+        }
 
-        private void UpdateView()
+        public string UserPassword
+        {
+            get => txtPassword.Text;
+            set => txtPassword.Text = value;
+        }
+
+        public string OwnerPassword { get; set; }
+
+        public bool WatermarkEnabled
+        {
+            get => cbWatermark.Checked;
+            set => cbWatermark.Checked = value;
+        }
+
+        public string WatermarkText
+        {
+            get => cmbWatermark.Text;
+            set => cmbWatermark.Text = value;
+        }
+
+        public bool EncryptOnStart { get; set; }
+        #endregion
+
+        #region Events
+        public event EventHandler EncryptClick;
+        public event EventHandler DecryptClick;
+        public event EventHandler SettingsClick;
+        public event EventHandler ChangeOwnerPasswordClick;
+        public event EventHandler GeneratePasswordClick;
+        public event EventHandler InputFileChanged;
+        public event EventHandler OutputFileChanged;
+        public event EventHandler CloseClick;
+        #endregion
+
+        #region Methods
+        public void ShowError(string message)
+        {
+            MessageBox.Show(message, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public bool ShowWarning(string message)
+        {
+            return MessageBox.Show(message, Strings.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
+        }
+
+        public void ShowInfo(string message)
+        {
+            MessageBox.Show(message, Strings.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void UpdateView(bool isInputEncrypted)
         {
             btnPaste.Visible = IsNullOrEmpty(txtPassword.Text);
             btnCopy.Visible = !btnPaste.Visible;
             btnPaste.Enabled = !IsNullOrWhiteSpace(Clipboard.GetText());
-
-            var fileName = txtInputFile.Text;
-            if (!File.Exists(fileName))
-            {
-                return;
-            }
-
-            try
-            {
-                PdfUtils.IsPdfFile(fileName);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(Strings.FileNotPdfOrDamaged, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Text = Empty;
-                return;
-            }
-
-            var isInputEncrypted = PdfUtils.IsPdfReaderPasswordSet(fileName);
-
-            if (IsNullOrEmpty(txtOutputFile.Text))
-            {
-                txtOutputFile.Text = GetFilenameWithSuffix(fileName, isInputEncrypted);
-            }
 
             labelPassword.Text = isInputEncrypted ? Strings.PasswordForUnlocking : Strings.PasswordForLocking;
             btnEncrypt.Visible = !isInputEncrypted;
@@ -189,509 +131,137 @@ namespace PDFPass
             }
         }
 
-        private static FileStatus getFileStatus(string fileName)
+        public void CloseForm()
         {
-            if (IsNullOrWhiteSpace(fileName))
-            {
-                return FileStatus.Empty;
-            }
-
-            if (!File.Exists(fileName))
-            {
-                return FileStatus.Notexists;
-            }
-
-            try
-            {
-                PdfUtils.IsPdfFile(fileName);
-            }
-            catch (Exception e)
-            {
-                return FileStatus.NotPdf;
-            }
-
-            return FileStatus.Ok;
+            Close();
         }
 
-        private void processInputFileStatus(FileStatus fileStatus)
+        public bool ConfirmOverwrite()
         {
-            var messageText = Empty;
-            switch (fileStatus)
-            {
-                case FileStatus.NotPdf:
-                    messageText = Strings.FileNotPdfOrDamaged;
-                    txtInputFile.Text = Empty;
-                    break;
-                case FileStatus.Notexists:
-                    messageText = Strings.FileNotExist;
-                    txtInputFile.Text = Empty;
-                    break;
-                case FileStatus.Ok:
-                    break;
-                default:
-                    messageText = Strings.Warning;
-                    break;
-            }
-
-            UpdateView();
-            MessageBox.Show(messageText, Strings.ErrorTitle,
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
+                MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
-        private bool IsInputEncrypted()
+        public string PromptForPassword(string title, string prompt)
         {
-            if (IsNullOrEmpty(txtInputFile.Text) || !File.Exists(txtInputFile.Text))
-                return false;
+            var input = new FrmInputBox
+            {
+                Title = title,
+                Prompt = prompt,
+                Password = true
+            };
+            input.ShowDialog();
+            return input.PwdChanged ? input.Result : null;
+        }
+        #endregion
 
-            return PdfUtils.IsPdfReaderPasswordSet(txtInputFile.Text);
+        private void UpdateUiText()
+        {
+            this.Text = Strings.ApplicationTitle;
+            groupBox1.Text = Strings.InputFile;
+            groupBox2.Text = Strings.OutputFile;
+            groupBox3.Text = Strings.Passwords;
+            gbWatermark.Text = Strings.Watermark;
+            label1.Text = Strings.Text;
+            label2.Text = Strings.SelectPathForEncryptedFile;
+            label4.Text = Strings.SelectFileForEncryption;
+            lblCopied.Text = Strings.CopiedToClipboard;
+            lblPasswordLength.Text = Strings.PasswordLengthWarning;
+            var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+            lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
+            btnChangePassword.Text = Strings.Change;
+            btnClose.Text = Strings.Close;
+            btnCopy.Text = Strings.Copy;
+            btnDecrypt.Text = Strings.Decrypt;
+            btnEncrypt.Text = Strings.Encrypt;
+            btnPasswordGenerate.Text = Strings.Generate;
+            btnPaste.Text = Strings.Paste;
+            btnSettings.Text = Strings.Settings;
+            cbWatermark.Text = Strings.UseWatermark;
+            txtPassword.PlaceholderText = Strings.EnterPassword;
+            if (cmbWatermark.Items.Count == 0 || cmbWatermark.Items[0]?.ToString() != Strings.Sample)
+            {
+                cmbWatermark.Items.Clear();
+                cmbWatermark.Items.Add(Strings.Sample);
+                cmbWatermark.Items.Add(Strings.WCopy);
+                cmbWatermark.Items.Add(Strings.Confidential);
+                cmbWatermark.Items.Add(Strings.Draft);
+                if (cmbWatermark.SelectedIndex < 0 && cmbWatermark.Items.Count > 0)
+                {
+                    cmbWatermark.SelectedIndex = 0;
+                }
+            }
+            var fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
+            dlgOpen.Filter = fileFilter;
+            dlgSave.Filter = fileFilter;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            _presenter.OnFormLoad();
         }
 
         private void btnInputBrowse_Click(object sender, EventArgs e)
         {
-            var result = dlgOpen.ShowDialog();
-            if (result == DialogResult.Cancel)
+            if (dlgOpen.ShowDialog() == DialogResult.OK)
             {
-                return;
-            }
-
-            var fileStatus = getFileStatus(dlgOpen.FileName);
-            if (fileStatus == FileStatus.Ok)
-            {
-                txtInputFile.Text = dlgOpen.FileName;
-                setOutputFilename(txtInputFile.Text, IsInputEncrypted());
-                UpdateView();
-            }
-            else
-            {
-                processInputFileStatus(fileStatus);
+                InputFile = dlgOpen.FileName;
+                InputFileChanged?.Invoke(this, EventArgs.Empty);
             }
         }
-
-        private void setOutputFilename(string inputFileName, bool isInputEncrypted)
-        {
-            txtOutputFile.Text = GetFilenameWithSuffix(inputFileName, isInputEncrypted);
-        }
-
 
         private void btnOutputBrowse_Click(object sender, EventArgs e)
         {
-            var result = dlgSave.ShowDialog();
-            if (result == DialogResult.Cancel)
+            if (dlgSave.ShowDialog() == DialogResult.OK)
             {
-                return;
+                OutputFile = dlgSave.FileName;
             }
-
-            txtOutputFile.Text = dlgSave.FileName;
-        }
-
-        private static void SettingsChanged()
-        {
-            // This function is executed when settings change.
-            Console.WriteLine(Strings.SettingsChanged);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            // Close the app
-            Close();
+            CloseClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnPasswordGenerate_Click(object sender, EventArgs e)
         {
-            // Set password
-            txtPassword.Text = PdfUtils.GenerateRandomPassword(PwLengthMin, PwLengthMax);
-
-            // Copy to clipboard
-            btnCopy_Click(sender, e);
+            GeneratePasswordClick?.Invoke(this, EventArgs.Empty);
         }
-
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            // Copy password to clipboard.
-            txtPassword.Focus();
-            txtPassword.SelectAll();
-
-            if (IsNullOrEmpty(txtPassword.Text)) return;
-
-            Clipboard.SetText(txtPassword.Text);
-            // Show Copied label
-            lblCopied.Visible = true;
+            if (!IsNullOrEmpty(txtPassword.Text))
+            {
+                Clipboard.SetText(txtPassword.Text);
+                lblCopied.Visible = true;
+            }
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            // Hide Copied label
             lblCopied.Visible = false;
-
-            // Show Password Length warning if exceeding 32 chars.
             lblPasswordLength.Visible = txtPassword.Text.Length > 32;
-            UpdateView();
-        }
-
-        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Hide Copied label
-            lblCopied.Visible = false;
-            UpdateView();
+            InputFileChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void BtnEncryptClick(object sender, EventArgs e)
         {
-            // Clean up text
-            txtInputFile.Text = txtInputFile.Text.Trim();
-            txtOutputFile.Text = txtOutputFile.Text.Trim();
-
-            // Ensure input and output are not the same.
-            if (string.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
-            {
-                MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOutputFile.Focus();
-                txtOutputFile.SelectAll();
-                return;
-            }
-
-            // Ensure input file exists.
-            if (!File.Exists(txtInputFile.Text))
-            {
-                MessageBox.Show(Strings.SourceFileDoesNotExist, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Focus();
-                txtInputFile.SelectAll();
-                return;
-            }
-
-            // If output file exists, prompt to overwrite.
-            if (File.Exists(txtOutputFile.Text))
-            {
-                if (MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
-                        MessageBoxButtons.YesNo) != DialogResult.Yes)
-                {
-                    txtOutputFile.Focus();
-                    txtOutputFile.SelectAll();
-                    return;
-                }
-            }
-
-            // Verify password if at least 1 pwd
-            if (IsNullOrWhiteSpace(txtPassword.Text) && IsNullOrWhiteSpace(OwnerPassword))
-            {
-                MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtPassword.Focus();
-                return;
-            }
-
-            // Warning about missing reading pwd
-            if (IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                var dialogResult = MessageBox.Show(Strings.NoReadingPasswordWarning,
-                    Strings.Warning, MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (dialogResult == DialogResult.Yes)
-                {
-                    txtPassword.Focus();
-                    return;
-                }
-            }
-
-
-            // Confirm password:
-            if (Settings.password_confirm)
-            {
-                var input = new FrmInputBox();
-                input.Prompt = Strings.ConfirmReadingPassword;
-                input.Title = Strings.ConfirmReadingPasswordTitle;
-                input.Password = true;
-                input.ShowDialog(); // Modal, blocking call
-
-                if (!input.PwdChanged)
-                {
-                    return;
-                }
-
-                // If password doesn't match, stop.
-                if (input.Result != txtPassword.Text)
-                {
-                    MessageBox.Show(Strings.PasswordsMismatch, Strings.ErrorTitle, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (OwnerPassword != "")
-                {
-                    input.Prompt = Strings.OwnerPasswordSetConfirm;
-                    input.Title = Strings.ConfirmOwnerPasswordTitle;
-                    input.Password = true;
-                    input.ShowDialog();
-                    if (!input.PwdChanged)
-                    {
-                        return;
-                    }
-
-                    if (input.Result != OwnerPassword)
-                    {
-                        MessageBox.Show(Strings.OwnerPasswordMismatch, Strings.ErrorTitle,
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-            }
-
-            // See https://itextpdf.com/en/resources/faq/technical-support/itext-7/how-protect-already-existing-pdf-password
-            try
-            {
-                // Set mouse cursor to wait.
-                Cursor.Current = Cursors.WaitCursor;
-                Application.DoEvents();
-
-                // Encryption properties:
-                var encryptionProperties = (int)Settings.encryption_type;
-
-                // If specified, disable encrypting metadata.
-                if (!Settings.encrypt_metadata)
-                {
-                    encryptionProperties |= EncryptionConstants.DO_NOT_ENCRYPT_METADATA;
-                }
-
-                // Set document options
-                var documentOptions = 0;
-                if (Settings.allow_printing)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_PRINTING;
-                }
-
-                if (Settings.allow_degraded_printing)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_DEGRADED_PRINTING;
-                }
-
-                if (Settings.allow_modifying)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_MODIFY_CONTENTS;
-                }
-
-                if (Settings.allow_modifying_annotations)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_MODIFY_ANNOTATIONS;
-                }
-
-                if (Settings.allow_copying)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_COPY;
-                }
-
-                if (Settings.allow_form_fill)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_FILL_IN;
-                }
-
-                if (Settings.allow_assembly)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_ASSEMBLY;
-                }
-
-                if (Settings.allow_screenreaders)
-                {
-                    documentOptions |= EncryptionConstants.ALLOW_SCREENREADERS;
-                }
-
-                var writerProperties = new WriterProperties(); // Set properties of output
-                var userPassword = Encoding.UTF8.GetBytes(txtPassword.Text);
-                var ownerPassword = Encoding.UTF8.GetBytes(OwnerPassword);
-
-                writerProperties.SetStandardEncryption(userPassword,
-                    IsNullOrEmpty(OwnerPassword) ? userPassword : ownerPassword,
-                    documentOptions,
-                    encryptionProperties); // Enable encryption
-
-                var waterMarkText = cbWatermark.Checked ? cmbWatermark.Text : Empty;
-
-                PdfUtils.WriteEncryptedPdf(txtInputFile.Text, txtOutputFile.Text, writerProperties, waterMarkText);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($@"{Strings.UnknownError}{ex.Message}", Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                Cursor.Current = Cursors.Default;
-                return;
-            }
-
-            ExecuteAfterSteps();
+            EncryptClick?.Invoke(this, EventArgs.Empty);
         }
-
-        private static string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
-        {
-            var newFileName = isInputEncrypted
-                ? $"{Path.GetFileNameWithoutExtension(fileName).Replace(Strings.Encrypted, "")}{Strings.Decrypted}.pdf"
-                : $"{Path.GetFileNameWithoutExtension(fileName)}-{Strings.Encrypted}.pdf";
-            return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
-        }
-
-        private void ExecuteAfterSteps()
-        {
-            // If launching a program:
-            if (Settings.run_after)
-            {
-                // Attempt to run the program, passing the newly encrypted filename.
-                try
-                {
-                    Process.Start(Settings.run_after_file, Settings.run_after_arguments + " " + txtOutputFile.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($@"{Strings.CannotRunCommand}{ex.Message}", Strings.ErrorTitle,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-
-            // If opening the output file:
-            if (Settings.open_after)
-            {
-                // Attempt to launch the default app for the file.
-                var psi = new ProcessStartInfo
-                {
-                    FileName = txtOutputFile.Text,
-                    UseShellExecute = true
-                };
-
-                Process.Start(psi);
-            }
-
-            // If launching Explorer:
-            if (Settings.show_folder_after)
-            {
-                // Attempt to launch the folder with the file highlighted.
-                var argument = "/select, \"" + txtOutputFile.Text + "\"";
-
-                Process.Start("explorer.exe", argument);
-            }
-
-            // If closing after encryption
-            if (Settings.close_after)
-            {
-                Close();
-            }
-
-            Cursor.Current = Cursors.Default; // Return to default cursor.
-        }
-
 
         private void BtnDecryptClick(object sender, EventArgs e)
         {
-            // Clean up text
-            txtInputFile.Text = txtInputFile.Text.Trim();
-            txtOutputFile.Text = txtOutputFile.Text.Trim();
-
-            // Ensure input and output are not the same.
-            if (String.Equals(txtInputFile.Text, txtOutputFile.Text, StringComparison.CurrentCultureIgnoreCase))
-            {
-                MessageBox.Show(Strings.SourceAndDestinationSame, Strings.SourceDestinationError,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtOutputFile.Focus();
-                txtOutputFile.SelectAll();
-                return;
-            }
-
-            // Ensure input file exists.
-            if (!File.Exists(txtInputFile.Text))
-            {
-                MessageBox.Show(Strings.SourceFileDoesNotExist, Strings.ErrorTitle,
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInputFile.Focus();
-                txtInputFile.SelectAll();
-                return;
-            }
-
-
-            // Verify password:
-            if (txtPassword.Text == Empty)
-            {
-                MessageBox.Show(Strings.NoPasswordEntered, Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                txtPassword.Focus();
-                return;
-            }
-
-            if (!PdfUtils.IsPasswordCorrect(txtInputFile.Text, txtPassword.Text))
-            {
-                MessageBox.Show(Strings.IncorrectPassword, Strings.ErrorTitle, MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
-
-            if (PdfUtils.IsPasswordWithFullPermissions(txtInputFile.Text, txtPassword.Text))
-            {
-                // If output file exists, prompt to overwrite.
-                if (File.Exists(txtOutputFile.Text))
-                {
-                    if (MessageBox.Show(this, Strings.ConfirmOverwriteFile, Strings.OverwriteFile,
-                            MessageBoxButtons.YesNo) != DialogResult.Yes)
-                    {
-                        txtOutputFile.Focus();
-                        txtOutputFile.SelectAll();
-                        return;
-                    }
-                }
-
-                // Write the un-protected PDF
-                try
-                {
-                    PdfUtils.WriteDecryptedPdf(txtInputFile.Text, txtOutputFile.Text, txtPassword.Text);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.ToString());
-                    MessageBox.Show(Strings.UnknownErrorShort, Strings.ErrorTitle, MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show(Strings.OwnerPasswordRequired, Strings.Information,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            ExecuteAfterSteps();
+            DecryptClick?.Invoke(this, EventArgs.Empty);
         }
-
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            var settings = new FrmSettings();
-            // Calculate the center position
-            var posX = Location.X + (Width - settings.Width) / 2;
-            var posY = Location.Y + (Height - settings.Height) / 2;
-
-            // Ensure the position is not negative
-            posX = Math.Max(0, posX);
-            posY = Math.Max(0, posY);
-
-            // Set the start position manually and set the location to the calculated position
-            settings.StartPosition = FormStartPosition.Manual;
-            settings.Location = new Point(posX, posY);
-            settings.ShowDialog();
-            UpdateView();
+            SettingsClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            var input = new FrmInputBox();
-            input.Title = Strings.SetOwnerPassword;
-            input.Prompt = Strings.EnterOwnerPasswordPrompt;
-            input.Password = true;
-            input.ShowDialog();
-
-
-            if (!input.PwdChanged) return;
-
-            OwnerPassword = input.Result;
-            UpdateView();
+            ChangeOwnerPasswordClick?.Invoke(this, EventArgs.Empty);
         }
 
         private void cbWatermark_CheckedChanged(object sender, EventArgs e)
@@ -706,34 +276,29 @@ namespace PDFPass
 
         private void FrmMain_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data != null && !e.Data.GetDataPresent(DataFormats.FileDrop)) return;
-            var files = (string[])e.Data?.GetData(DataFormats.FileDrop);
-            var filename = files?[0];
-
-            if (filename == null) return;
-
-            txtInputFile.Text = filename;
-
-            setOutputFilename(txtInputFile.Text, IsInputEncrypted());
-            UpdateView();
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files != null && files.Length > 0)
+                {
+                    InputFile = files[0];
+                    InputFileChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
 
         private void FrmMain_DragEnter(object sender, DragEventArgs e)
         {
-            // Check if the dropped data contains a file
-            if (e.Data == null) return;
-            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                // Check if the dropped file is a PDF
-                if (files is { Length: 1 } &&
-                    Path.GetExtension(files[0])!.Equals(".pdf", StringComparison.CurrentCultureIgnoreCase))
+                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files.Length == 1 && Path.GetExtension(files[0]).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
-                    e.Effect = DragDropEffects.Copy; // Allow dropping the file
+                    e.Effect = DragDropEffects.Copy;
                 }
                 else
                 {
-                    e.Effect = DragDropEffects.None; // Don't allow dropping other files or multiple files
+                    e.Effect = DragDropEffects.None;
                 }
             }
             else
@@ -742,38 +307,9 @@ namespace PDFPass
             }
         }
 
-        private void btnPaste_MouseHover(object sender, EventArgs e)
+        private void txtInputFile_TextChanged(object sender, EventArgs e)
         {
-            btnPasteTooltip.SetToolTip(btnPaste,
-                btnPaste.Enabled ? $"{Strings.ClipboardValuePrefix}{Clipboard.GetText()}'" : Empty);
+            InputFileChanged?.Invoke(this, EventArgs.Empty);
         }
-
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            btnSettings_Click(null, null);
-        }
-
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
-        {
-            var tooltip = Empty;
-            var availableLanguages = LanguageHelper.AvailableLanguages;
-
-            foreach (var key in availableLanguages.Keys)
-            {
-                var value = LocalizationManager.ResourceManager.GetString("SetLanguage", new CultureInfo(key));
-                tooltip = tooltip + value + NewLine;
-            }
-
-            languageToolTip.SetToolTip(pbLanguage, tooltip);
-        }
-    }
-
-    internal enum FileStatus
-    {
-        Notexists,
-        NotPdf,
-        Empty,
-        Ok
     }
 }
