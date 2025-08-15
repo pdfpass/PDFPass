@@ -52,46 +52,30 @@ namespace PDFPass
         }
 
         static void HandleParsed(Options opts)
-            // This function is called if the CommandLine.Parser succeeds in parsing all command line options.
         {
-            // Create the UI form instance
             var form = new FrmMain();
 
-            // If input filename was specified, set it in the main form
             if (opts.InputFile != null)
             {
-                form.txtInputFile.Text = opts.InputFile;
+                form.InputFile = opts.InputFile;
             }
 
-            // If output filename was specified, set it in the main form
             if (opts.OutputFile != null)
             {
-                form.txtOutputFile.Text = opts.OutputFile;
-            }
-            else if (opts.InputFile != null)
-            {
-                var outputFile = opts.InputFile;
-                var extension = Path.GetExtension(opts.InputFile);
-                {
-                    var result = outputFile.Substring(0, outputFile.Length - extension.Length);
-                }
+                form.OutputFile = opts.OutputFile;
             }
 
-            // If user password was specified, set it in the main form
             if (opts.UserPass != null)
             {
-                form.txtPassword.Text = opts.UserPass;
+                form.UserPassword = opts.UserPass;
             }
 
-            // If owner password was specified, set it in the main form and show message.
             if (opts.OwnerPass != null)
             {
                 form.OwnerPassword = opts.OwnerPass;
-                form.lblOwnerPasswordSet.Visible = true;
             }
 
-            // If executing immediately, set the Run flag.
-            form.EncryptOnStart = (opts.Immediate);
+            form.EncryptOnStart = opts.Immediate;
 
             Application.Run(form);
         }
