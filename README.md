@@ -199,7 +199,7 @@ You can financially support the project with a payment through the [PayPal](http
 2.  By credit card 💳
 
     * _For credit card payments, personal data can be fictitious for anonymity reasons_<br>
-    ![paypal.jpg](screenshots%2Fpaypal.jpg)
+      ![paypal-en.png](screenshots%2Fpaypal-en.png)
 
 Your contribution will help pay for **security updates** and the development of the program, which will remain **free forever**.
 
