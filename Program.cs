@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using CommandLine;
+using PDFPass.MVP;
 using PDFPass.Resources;
 
 namespace PDFPass
@@ -51,33 +52,42 @@ namespace PDFPass
                 .WithNotParsed(HandleParseError);
         }
 
-        static void HandleParsed(Options opts)
+        private static void HandleParsed(Options opts)
         {
-            var form = new FrmMain();
-
+         
+            
+            // 1. Create an instance of the View (your form).
+            var view = new FrmMain();
+ 
+            // 2. Create an instance of the Presenter, passing the View to its constructor.
+            //    (Note: You may need to replace 'MainPresenter' with your actual presenter class name).
+            var presenter = new MainPresenter(view, new MainModel());
+ 
+            
+        
             if (opts.InputFile != null)
             {
-                form.InputFile = opts.InputFile;
+                view.InputFile = opts.InputFile;
             }
 
             if (opts.OutputFile != null)
             {
-                form.OutputFile = opts.OutputFile;
+                view.OutputFile = opts.OutputFile;
             }
 
             if (opts.UserPass != null)
             {
-                form.UserPassword = opts.UserPass;
+                view.UserPassword = opts.UserPass;
             }
 
             if (opts.OwnerPass != null)
             {
-                form.OwnerPassword = opts.OwnerPass;
+                view.OwnerPassword = opts.OwnerPass;
             }
 
-            form.EncryptOnStart = opts.Immediate;
+            view.EncryptOnStart = opts.Immediate;
 
-            Application.Run(form);
+            Application.Run(view);
         }
 
         static void HandleParseError(IEnumerable<Error> errors)
