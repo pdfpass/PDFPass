@@ -1,15 +1,21 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
-using PDFPass.MVP;
+using iText.Kernel.Pdf;
 using PDFPass.Resources;
+using static System.Environment;
 using static System.String;
+using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Forms.Clipboard;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
+using PDFPass.MVP;
 
 namespace PDFPass
 {
@@ -20,8 +26,11 @@ namespace PDFPass
         public FrmMain()
         {
             InitializeComponent();
-            new MainPresenter(this, new MainModel());
+
+            // Update UI with localized text
             UpdateUiText();
+
+            // Subscribe to language change events
             LocalizationManager.LanguageChanged += (sender, e) => UpdateUiText();
         }
 
@@ -31,7 +40,6 @@ namespace PDFPass
         }
 
         #region Properties
-
         public string InputFile
         {
             get => txtInputFile.Text;
@@ -65,11 +73,9 @@ namespace PDFPass
         }
 
         public bool EncryptOnStart { get; set; }
-
         #endregion
 
         #region Events
-
         public event EventHandler EncryptClick;
         public event EventHandler DecryptClick;
         public event EventHandler SettingsClick;
@@ -78,11 +84,9 @@ namespace PDFPass
         public event EventHandler InputFileChanged;
         public event EventHandler OutputFileChanged;
         public event EventHandler CloseClick;
-
         #endregion
 
         #region Methods
-
         public void ShowError(string message)
         {
             MessageBox.Show(message, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -90,8 +94,7 @@ namespace PDFPass
 
         public bool ShowWarning(string message)
         {
-            return MessageBox.Show(message, Strings.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
-                   DialogResult.Yes;
+            return MessageBox.Show(message, Strings.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
         }
 
         public void ShowInfo(string message)
@@ -153,23 +156,31 @@ namespace PDFPass
             input.ShowDialog();
             return input.PwdChanged ? input.Result : null;
         }
-
         #endregion
 
         private void UpdateUiText()
         {
+            // Update form title
             this.Text = Strings.ApplicationTitle;
+
+            // Update group boxes
             groupBox1.Text = Strings.InputFile;
             groupBox2.Text = Strings.OutputFile;
             groupBox3.Text = Strings.Passwords;
             gbWatermark.Text = Strings.Watermark;
+
+            // Update labels
             label1.Text = Strings.Text;
             label2.Text = Strings.SelectPathForEncryptedFile;
             label4.Text = Strings.SelectFileForEncryption;
             lblCopied.Text = Strings.CopiedToClipboard;
             lblPasswordLength.Text = Strings.PasswordLengthWarning;
+            // Show program version
             var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
             lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
+
+
+            // Update buttons
             btnChangePassword.Text = Strings.Change;
             btnClose.Text = Strings.Close;
             btnCopy.Text = Strings.Copy;
@@ -178,8 +189,14 @@ namespace PDFPass
             btnPasswordGenerate.Text = Strings.Generate;
             btnPaste.Text = Strings.Paste;
             btnSettings.Text = Strings.Settings;
+
+            // Update checkbox
             cbWatermark.Text = Strings.UseWatermark;
+
+            // Update placeholders
             txtPassword.PlaceholderText = Strings.EnterPassword;
+
+            // Update combobox items - only if not already populated
             if (cmbWatermark.Items.Count == 0 || cmbWatermark.Items[0]?.ToString() != Strings.Sample)
             {
                 cmbWatermark.Items.Clear();
@@ -192,7 +209,6 @@ namespace PDFPass
                     cmbWatermark.SelectedIndex = 0;
                 }
             }
-
             var fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
             dlgOpen.Filter = fileFilter;
             dlgSave.Filter = fileFilter;
@@ -200,16 +216,17 @@ namespace PDFPass
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            _presenter.OnFormLoad();
+            if (_presenter == null)
+            {
+                throw new InvalidOperationException("Presenter is not set.");
+            }
         }
 
         private void btnInputBrowse_Click(object sender, EventArgs e)
         {
-            if (dlgOpen.ShowDialog() == DialogResult.OK)
-            {
-                InputFile = dlgOpen.FileName;
-                InputFileChanged?.Invoke(this, EventArgs.Empty);
-            }
+            if (dlgOpen.ShowDialog() != DialogResult.OK) return;
+            InputFile = dlgOpen.FileName;
+            InputFileChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void btnOutputBrowse_Click(object sender, EventArgs e)
@@ -276,6 +293,14 @@ namespace PDFPass
             txtPassword.Text = Clipboard.GetText();
         }
 
+        private void btnPaste_MouseHover(object sender, EventArgs e)
+        {
+            // Keep the Paste button state in sync with the clipboard content when hovering.
+            btnPaste.Enabled = !IsNullOrWhiteSpace(Clipboard.GetText());
+            // Provide a simple tooltip hint.
+            btnPasteTooltip.SetToolTip(btnPaste, btnPaste.Enabled ? btnPaste.Text : "Clipboard is empty");
+        }
+
         private void FrmMain_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
@@ -296,11 +321,11 @@ namespace PDFPass
                 var files = (string[])e.Data.GetData(DataFormats.FileDrop);
                 if (files.Length == 1 && Path.GetExtension(files[0]).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
-                    e.Effect = DragDropEffects.Copy;
+                    e.Effect = DragDropEffects.Copy; // Allow dropping the file
                 }
                 else
                 {
-                    e.Effect = DragDropEffects.None;
+                    e.Effect = DragDropEffects.None; // Don't allow dropping other files or multiple files
                 }
             }
             else
@@ -313,5 +338,50 @@ namespace PDFPass
         {
             InputFileChanged?.Invoke(this, EventArgs.Empty);
         }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Trigger the visible primary action and suppress the default beep.
+                if (btnEncrypt.Visible && btnEncrypt.Enabled)
+                {
+                    BtnEncryptClick(btnEncrypt, EventArgs.Empty);
+                }
+                else if (btnDecrypt.Visible && btnDecrypt.Enabled)
+                {
+                    BtnDecryptClick(btnDecrypt, EventArgs.Empty);
+                }
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            btnSettings_Click(null, null);
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            var tooltip = Empty;
+            var availableLanguages = LanguageHelper.AvailableLanguages;
+
+            foreach (var key in availableLanguages.Keys)
+            {
+                var value = LocalizationManager.ResourceManager.GetString("SetLanguage", new CultureInfo(key));
+                tooltip = tooltip + value + NewLine;
+            }
+
+            languageToolTip.SetToolTip(pbLanguage, tooltip);
+        }
+    }
+
+    internal enum FileStatus
+    {
+        Notexists,
+        NotPdf,
+        Empty,
+        Ok
     }
 }
