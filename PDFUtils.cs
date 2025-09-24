@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using iText.IO.Font.Constants;
 using iText.Kernel.Exceptions;
@@ -22,9 +23,8 @@ public abstract class PdfUtils
     {
         try
         {
-            var pdfReader = new PdfReader(pdfFilePath, new ReaderProperties().SetPassword(null));
-            var pdfDocument = new PdfDocument(pdfReader);
-            pdfDocument.Close();
+            using var pdfReader = new PdfReader(pdfFilePath, new ReaderProperties().SetPassword(null));
+            using var pdfDocument = new PdfDocument(pdfReader);
             return false;
         }
         catch (BadPasswordException)
@@ -35,16 +35,28 @@ public abstract class PdfUtils
 
     public static bool IsPdfFile(string pdfFilePath)
     {
-        try
+        if (!File.Exists(pdfFilePath))
         {
-            var pdfReader = new PdfReader(pdfFilePath, new ReaderProperties().SetPassword(null));
-            var pdfDocument = new PdfDocument(pdfReader);
-            pdfDocument.Close();
             return false;
         }
-        catch (BadPasswordException)
+
+        try
         {
-            return true;
+            using var fileStream = File.OpenRead(pdfFilePath);
+            // PDF files begin with "%PDF-"
+            Span<byte> header = stackalloc byte[5];
+            var read = fileStream.Read(header);
+            if (read < 5)
+            {
+                return false;
+            }
+
+            return header[0] == (byte)'%' && header[1] == (byte)'P' && header[2] == (byte)'D' &&
+                   header[3] == (byte)'F' && header[4] == (byte)'-';
+        }
+        catch
+        {
+            return false;
         }
     }
 
@@ -53,10 +65,9 @@ public abstract class PdfUtils
     {
         try
         {
-            var pwdBytes = Encoding.ASCII.GetBytes(password);
-            var pdfReader = new PdfReader(pdfFilePath, new ReaderProperties().SetPassword(pwdBytes));
-            var pdfDocument = new PdfDocument(pdfReader);
-            pdfDocument.Close();
+            var pwdBytes = Encoding.UTF8.GetBytes(password);
+            using var pdfReader = new PdfReader(pdfFilePath, new ReaderProperties().SetPassword(pwdBytes));
+            using var pdfDocument = new PdfDocument(pdfReader);
             return true;
         }
         catch (BadPasswordException)
@@ -68,24 +79,22 @@ public abstract class PdfUtils
 
     public static bool IsPasswordWithFullPermissions(string pdfFilePath, string password)
     {
-        var passwordBytes = Encoding.ASCII.GetBytes(password); // Convert to bytes
+        var passwordBytes = Encoding.UTF8.GetBytes(password);
         var readerProps = new ReaderProperties();
         readerProps.SetPassword(passwordBytes);
 
-        var pdfReader = new PdfReader(pdfFilePath, readerProps);
-        var pdfDocument = new PdfDocument(pdfReader);
-        var isOpenedWithFullPermission = pdfReader.IsOpenedWithFullPermission();
-        pdfDocument.Close();
-        return isOpenedWithFullPermission;
+        using var pdfReader = new PdfReader(pdfFilePath, readerProps);
+        using var pdfDocument = new PdfDocument(pdfReader);
+        return pdfReader.IsOpenedWithFullPermission();
     }
 
     public static void WriteEncryptedPdf(string inputFileName, string outputFileName, WriterProperties writerProperties,
         string watermarkText)
     {
-        var reader = new PdfReader(inputFileName); // Create a PdfReader with the input file.
-        var writer = new PdfWriter(outputFileName, writerProperties); // Set up the output file
-        var pdfDocument = new PdfDocument(reader, writer); // Create the new document
-        var document = new Document(pdfDocument);
+        using var reader = new PdfReader(inputFileName);
+        using var writer = new PdfWriter(outputFileName, writerProperties);
+        using var pdfDocument = new PdfDocument(reader, writer);
+        using var document = new Document(pdfDocument);
 
 
         if (!string.IsNullOrEmpty(watermarkText))
@@ -98,21 +107,17 @@ public abstract class PdfUtils
             }
         }
 
-        document.Close();
-        pdfDocument.Close(); // Close the output document.
+        // using statements ensure proper disposal/close
     }
 
     public static void WriteDecryptedPdf(string inputFileName, string outputFileName, string readPassword)
     {
         var readerProps = new ReaderProperties();
-        var passwordBytes = Encoding.ASCII.GetBytes(readPassword); // Convert to bytes
+        var passwordBytes = Encoding.UTF8.GetBytes(readPassword);
         readerProps.SetPassword(passwordBytes);
 
-
-        var pdfReader = new PdfReader(inputFileName, readerProps);
-        var pdfDocument = new PdfDocument(pdfReader, new PdfWriter(outputFileName));
-        // Close the PDF documents
-        pdfDocument.Close();
+        using var pdfReader = new PdfReader(inputFileName, readerProps);
+        using var pdfDocument = new PdfDocument(pdfReader, new PdfWriter(outputFileName));
     }
 
     public static string GenerateRandomPassword(int pwLengthMin, int pwLengthMax)

@@ -27,7 +27,11 @@ namespace PDFPass
             // Set current language
             for (var i = 0; i < comboBox.Items.Count; i++)
             {
-                var item = (KeyValuePair<string, string>)comboBox.Items[i];
+                if (comboBox.Items[i] is not KeyValuePair<string, string> item)
+                {
+                    continue;
+                }
+
                 if (item.Key != currentLanguage) continue;
                 comboBox.SelectedIndex = i;
                 break;
@@ -39,10 +43,12 @@ namespace PDFPass
         /// </summary>
         public static string GetSelectedLanguage(ComboBox comboBox)
         {
-            return comboBox.SelectedItem == null
-                ? "sk-SK"
-                : // Default to Slovak
-                ((KeyValuePair<string, string>)comboBox.SelectedItem).Key;
+            if (comboBox.SelectedItem is KeyValuePair<string, string> kv)
+            {
+                return kv.Key;
+            }
+
+            return "sk-SK";
         }
 
         /// <summary>

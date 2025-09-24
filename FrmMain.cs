@@ -1,27 +1,23 @@
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
-using iText.Kernel.Pdf;
+using PDFPass.MVP;
 using PDFPass.Resources;
 using static System.Environment;
 using static System.String;
-using Application = System.Windows.Forms.Application;
 using Clipboard = System.Windows.Forms.Clipboard;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
-using PDFPass.MVP;
 
 namespace PDFPass
 {
     public partial class FrmMain : Form, IMainView
     {
-        private MainPresenter _presenter;
+        private MainPresenter? _presenter;
 
         public FrmMain()
         {
@@ -40,6 +36,7 @@ namespace PDFPass
         }
 
         #region Properties
+
         public string InputFile
         {
             get => txtInputFile.Text;
@@ -58,7 +55,7 @@ namespace PDFPass
             set => txtPassword.Text = value;
         }
 
-        public string OwnerPassword { get; set; }
+        public string? OwnerPassword { get; set; }
 
         public bool WatermarkEnabled
         {
@@ -73,20 +70,23 @@ namespace PDFPass
         }
 
         public bool EncryptOnStart { get; set; }
+
         #endregion
 
         #region Events
-        public event EventHandler EncryptClick;
-        public event EventHandler DecryptClick;
-        public event EventHandler SettingsClick;
-        public event EventHandler ChangeOwnerPasswordClick;
-        public event EventHandler GeneratePasswordClick;
-        public event EventHandler InputFileChanged;
-        public event EventHandler OutputFileChanged;
-        public event EventHandler CloseClick;
+
+        public event EventHandler? EncryptClick;
+        public event EventHandler? DecryptClick;
+        public event EventHandler? SettingsClick;
+        public event EventHandler? ChangeOwnerPasswordClick;
+        public event EventHandler? GeneratePasswordClick;
+        public event EventHandler? InputFileChanged;
+        public event EventHandler? CloseClick;
+
         #endregion
 
         #region Methods
+
         public void ShowError(string message)
         {
             MessageBox.Show(message, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -94,7 +94,8 @@ namespace PDFPass
 
         public bool ShowWarning(string message)
         {
-            return MessageBox.Show(message, Strings.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes;
+            return MessageBox.Show(message, Strings.Warning, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
+                   DialogResult.Yes;
         }
 
         public void ShowInfo(string message)
@@ -145,7 +146,7 @@ namespace PDFPass
                 MessageBoxButtons.YesNo) == DialogResult.Yes;
         }
 
-        public string PromptForPassword(string title, string prompt)
+        public string? PromptForPassword(string title, string prompt)
         {
             var input = new FrmInputBox
             {
@@ -156,6 +157,7 @@ namespace PDFPass
             input.ShowDialog();
             return input.PwdChanged ? input.Result : null;
         }
+
         #endregion
 
         private void UpdateUiText()
@@ -177,7 +179,7 @@ namespace PDFPass
             lblPasswordLength.Text = Strings.PasswordLengthWarning;
             // Show program version
             var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString();
-            lblVersion.Text = $"{Strings.Version}{Join(".", version.Split('.').Take(3))}";
+            lblVersion.Text = $"{Strings.Version}{Join(".", (version ?? "1.0.0").Split('.').Take(3))}";
 
 
             // Update buttons
@@ -209,6 +211,7 @@ namespace PDFPass
                     cmbWatermark.SelectedIndex = 0;
                 }
             }
+
             var fileFilter = $"{Strings.PDFFiles}|*.pdf|{Strings.AllFiles}|*.*";
             dlgOpen.Filter = fileFilter;
             dlgSave.Filter = fileFilter;
@@ -301,11 +304,12 @@ namespace PDFPass
             btnPasteTooltip.SetToolTip(btnPaste, btnPaste.Enabled ? btnPaste.Text : "Clipboard is empty");
         }
 
-        private void FrmMain_DragDrop(object sender, DragEventArgs e)
+        private void FrmMain_DragDrop(object? sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                var data = e.Data.GetData(DataFormats.FileDrop);
+                var files = data as string[];
                 if (files != null && files.Length > 0)
                 {
                     InputFile = files[0];
@@ -314,11 +318,12 @@ namespace PDFPass
             }
         }
 
-        private void FrmMain_DragEnter(object sender, DragEventArgs e)
+        private void FrmMain_DragEnter(object? sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                var data = e.Data.GetData(DataFormats.FileDrop);
+                var files = data as string[] ?? Array.Empty<string>();
                 if (files.Length == 1 && Path.GetExtension(files[0]).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
                     e.Effect = DragDropEffects.Copy; // Allow dropping the file
@@ -357,9 +362,10 @@ namespace PDFPass
                 e.SuppressKeyPress = true;
             }
         }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            btnSettings_Click(null, null);
+            btnSettings_Click(null!, EventArgs.Empty);
         }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)

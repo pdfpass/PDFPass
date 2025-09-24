@@ -8,20 +8,19 @@ namespace PDFPass.MVP
         string InputFile { get; set; }
         string OutputFile { get; set; }
         string UserPassword { get; set; }
-        string OwnerPassword { get; set; }
+        string? OwnerPassword { get; set; }
         bool WatermarkEnabled { get; set; }
         string WatermarkText { get; set; }
         bool EncryptOnStart { get; set; }
 
         // Events
-        event EventHandler EncryptClick;
-        event EventHandler DecryptClick;
-        event EventHandler SettingsClick;
-        event EventHandler ChangeOwnerPasswordClick;
-        event EventHandler GeneratePasswordClick;
-        event EventHandler InputFileChanged;
-        event EventHandler OutputFileChanged;
-        event EventHandler CloseClick;
+        event EventHandler? EncryptClick;
+        event EventHandler? DecryptClick;
+        event EventHandler? SettingsClick;
+        event EventHandler? ChangeOwnerPasswordClick;
+        event EventHandler? GeneratePasswordClick;
+        event EventHandler? InputFileChanged;
+        event EventHandler? CloseClick;
 
 
         // Methods
@@ -32,6 +31,6 @@ namespace PDFPass.MVP
         void CloseForm();
         void SetPresenter(MainPresenter presenter);
         bool ConfirmOverwrite();
-        string PromptForPassword(string title, string prompt);
+        string? PromptForPassword(string title, string prompt);
     }
 }

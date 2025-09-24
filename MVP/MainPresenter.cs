@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 using iText.Kernel.Pdf;
 using PDFPass.Resources;
 using static System.String;
@@ -38,6 +37,7 @@ namespace PDFPass.MVP
             {
                 _model.OwnerPassword = Settings.owner_password;
             }
+
             UpdateView();
 
             if (_view.EncryptOnStart)
@@ -46,15 +46,15 @@ namespace PDFPass.MVP
             }
         }
 
-        private void OnCloseClick(object sender, EventArgs e)
+        private void OnCloseClick(object? sender, EventArgs e)
         {
             _view.CloseForm();
         }
 
-        private void OnInputFileChanged(object sender, EventArgs e)
+        private void OnInputFileChanged(object? sender, EventArgs e)
         {
             _model.InputFile = _view.InputFile;
-            if (string.IsNullOrEmpty(_model.InputFile) || !File.Exists(_model.InputFile))
+            if (IsNullOrEmpty(_model.InputFile) || !File.Exists(_model.InputFile))
             {
                 return;
             }
@@ -75,15 +75,16 @@ namespace PDFPass.MVP
             {
                 _view.OutputFile = GetFilenameWithSuffix(_model.InputFile, isEncrypted);
             }
+
             _view.UpdateView(isEncrypted);
         }
 
-        private void OnGeneratePasswordClick(object sender, EventArgs e)
+        private void OnGeneratePasswordClick(object? sender, EventArgs e)
         {
             _view.UserPassword = PdfUtils.GenerateRandomPassword(PwLengthMin, PwLengthMax);
         }
 
-        private void OnChangeOwnerPasswordClick(object sender, EventArgs e)
+        private void OnChangeOwnerPasswordClick(object? sender, EventArgs e)
         {
             var ownerPassword = _view.PromptForPassword(Strings.SetOwnerPassword, Strings.EnterOwnerPasswordPrompt);
             if (ownerPassword != null)
@@ -93,18 +94,18 @@ namespace PDFPass.MVP
             }
         }
 
-        private void OnSettingsClick(object sender, EventArgs e)
+        private void OnSettingsClick(object? sender, EventArgs e)
         {
             var settings = new FrmSettings();
             settings.ShowDialog();
             UpdateView();
         }
 
-        private void OnDecryptClick(object sender, EventArgs e)
+        private void OnDecryptClick(object? sender, EventArgs e)
         {
             if (!ValidateInput()) return;
 
-            if (string.IsNullOrEmpty(_view.UserPassword))
+            if (IsNullOrEmpty(_view.UserPassword))
             {
                 _view.ShowError(Strings.NoPasswordEntered);
                 return;
@@ -132,6 +133,7 @@ namespace PDFPass.MVP
                     _view.ShowError($"{Strings.UnknownErrorShort} {ex.Message}");
                     return;
                 }
+
                 ExecuteAfterSteps();
             }
             else
@@ -140,7 +142,7 @@ namespace PDFPass.MVP
             }
         }
 
-        private void OnEncryptClick(object sender, EventArgs e)
+        private void OnEncryptClick(object? sender, EventArgs e)
         {
             if (!ValidateInput()) return;
 
@@ -160,24 +162,28 @@ namespace PDFPass.MVP
 
             if (Settings.password_confirm)
             {
-                var confirmedPassword = _view.PromptForPassword(Strings.ConfirmReadingPasswordTitle, Strings.ConfirmReadingPassword);
+                var confirmedPassword =
+                    _view.PromptForPassword(Strings.ConfirmReadingPasswordTitle, Strings.ConfirmReadingPassword);
                 if (confirmedPassword == null)
                 {
                     return; // User cancelled
                 }
+
                 if (confirmedPassword != _view.UserPassword)
                 {
                     _view.ShowError(Strings.PasswordsMismatch);
                     return;
                 }
 
-                if (!string.IsNullOrEmpty(_view.OwnerPassword))
+                if (!IsNullOrEmpty(_view.OwnerPassword))
                 {
-                    var confirmedOwnerPassword = _view.PromptForPassword(Strings.ConfirmOwnerPasswordTitle, Strings.OwnerPasswordSetConfirm);
+                    var confirmedOwnerPassword = _view.PromptForPassword(Strings.ConfirmOwnerPasswordTitle,
+                        Strings.OwnerPasswordSetConfirm);
                     if (confirmedOwnerPassword == null)
                     {
                         return; // User cancelled
                     }
+
                     if (confirmedOwnerPassword != _view.OwnerPassword)
                     {
                         _view.ShowError(Strings.OwnerPasswordMismatch);
@@ -246,7 +252,7 @@ namespace PDFPass.MVP
 
             var writerProperties = new WriterProperties();
             var userPassword = Encoding.UTF8.GetBytes(_view.UserPassword);
-            var ownerPassword = Encoding.UTF8.GetBytes(_view.OwnerPassword);
+            var ownerPassword = Encoding.UTF8.GetBytes(_view.OwnerPassword ?? Empty);
 
             writerProperties.SetStandardEncryption(userPassword,
                 IsNullOrEmpty(_view.OwnerPassword) ? userPassword : ownerPassword,
@@ -301,11 +307,12 @@ namespace PDFPass.MVP
 
         private void UpdateView()
         {
-            if (string.IsNullOrEmpty(_view.InputFile) || !File.Exists(_view.InputFile))
+            if (IsNullOrEmpty(_view.InputFile) || !File.Exists(_view.InputFile))
             {
                 _view.UpdateView(false);
                 return;
             }
+
             var isEncrypted = PdfUtils.IsPdfReaderPasswordSet(_view.InputFile);
             _view.UpdateView(isEncrypted);
         }

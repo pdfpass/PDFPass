@@ -11,10 +11,10 @@ namespace PDFPass
     public static class LocalizationManager
     {
         public static readonly ResourceManager ResourceManager;
-        private static CultureInfo _currentCulture;
+        private static CultureInfo _currentCulture = CultureInfo.InvariantCulture;
 
         // Define the event using EventHandler
-        public static event EventHandler LanguageChanged;
+        public static event EventHandler? LanguageChanged;
 
         /// <summary>
         /// Static constructor to initialize the ResourceManager

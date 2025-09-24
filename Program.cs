@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 using CommandLine;
 using PDFPass.MVP;
@@ -14,16 +13,16 @@ namespace PDFPass
         private class Options
         {
             [Option("owner_pass", Required = false, HelpText = "OwnerPassOption")]
-            public string OwnerPass { get; set; }
+            public string? OwnerPass { get; set; }
 
             [Option("user_pass", Required = false, HelpText = "UserPassOption")]
-            public string UserPass { get; set; }
+            public string? UserPass { get; set; }
 
             [Option('i', "input", Required = false, HelpText = "InputFileOption")]
-            public string InputFile { get; set; }
+            public string? InputFile { get; set; }
 
             [Option('o', "output", Required = false, HelpText = "OutputFileOption")]
-            public string OutputFile { get; set; }
+            public string? OutputFile { get; set; }
 
             [Option("run", HelpText = "RunImmediatelyOption")]
             public bool Immediate { get; set; }
@@ -54,17 +53,14 @@ namespace PDFPass
 
         private static void HandleParsed(Options opts)
         {
-         
-            
             // 1. Create an instance of the View (your form).
             var view = new FrmMain();
- 
+
             // 2. Create an instance of the Presenter, passing the View to its constructor.
             //    (Note: You may need to replace 'MainPresenter' with your actual presenter class name).
             var presenter = new MainPresenter(view, new MainModel());
- 
-            
-        
+
+
             if (opts.InputFile != null)
             {
                 view.InputFile = opts.InputFile;

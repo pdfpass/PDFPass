@@ -6,9 +6,9 @@ namespace PDFPass
 {
     public partial class FrmInputBox : Form
     {
-        public string Result; // The result of the input box action.
-        public string Prompt; // Prompt to be displayed.
-        public string Title; // Title of box
+        public string Result = string.Empty; // The result of the input box action.
+        public string? Prompt; // Prompt to be displayed.
+        public string? Title; // Title of box
         public bool Password; // Is the input a password?
 
         public bool PwdChanged;

@@ -18,8 +18,8 @@ namespace PDFPass
         }
 
         public static bool run_after; // Run program after encrypting?
-        public static string run_after_file; // File to run after encrypting
-        public static string run_after_arguments; // Arguments to pass to the run_after file.
+        public static string run_after_file = string.Empty; // File to run after encrypting
+        public static string run_after_arguments = string.Empty; // Arguments to pass to the run_after file.
         public static bool password_confirm; // Confirm password?
         public static bool close_after; // Close after encrypting?
         public static bool show_folder_after; // Show folder in Explorer after encrypting?
@@ -36,11 +36,11 @@ namespace PDFPass
         public static bool allow_form_fill; // Should end user be allowed to fill in form fields?
         public static bool allow_assembly; // Should end user be allowed to assemble the document?
         public static bool allow_screenreaders; // Should screenreaders be allowed to access the document?
-        public static string owner_password;
+        public static string owner_password = string.Empty;
         public static bool always_default_owner_password;
 
         // i18n
-        public static string language; // The selected language code (e.g., "sk-SK", "en", "cs-CZ")
+        public static string language = "sk-SK"; // The selected language code (e.g., "sk-SK", "en", "cs-CZ")
 
 
         // Events to execute upon setting changes
@@ -58,191 +58,94 @@ namespace PDFPass
             object obj;
 
             // Run program after encryption?
-            obj = Registry.GetValue(RegKey, "run_after", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            run_after = (int)obj == 1; // Convert to boolean.
+            obj = Registry.GetValue(RegKey, "run_after", 0) ?? 0;
+            run_after = Convert.ToInt32(obj) == 1;
 
             // Program to run:
-            obj = Registry.GetValue(RegKey, "run_after_file", null);
-            if (obj == null)
-            {
-                obj = "";
-            }
-
-            run_after_file = (string)obj;
+            run_after_file = (Registry.GetValue(RegKey, "run_after_file", "") as string) ?? string.Empty;
 
             // Run After arguments
-            obj = Registry.GetValue(RegKey, "run_after_arguments", null);
-            if (obj == null)
-            {
-                obj = "";
-            }
-
-            run_after_arguments = (string)obj;
+            run_after_arguments = (Registry.GetValue(RegKey, "run_after_arguments", "") as string) ?? string.Empty;
 
             // Require password confirmation
-            obj = Registry.GetValue(RegKey, "password_confirm", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            password_confirm = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "password_confirm", 0) ?? 0;
+            password_confirm = Convert.ToInt32(obj) == 1;
 
             // Close after encrypting
-            obj = Registry.GetValue(RegKey, "close_after", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            close_after = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "close_after", 0) ?? 0;
+            close_after = Convert.ToInt32(obj) == 1;
 
 
             // Show folder after encrypting
-            obj = Registry.GetValue(RegKey, "show_folder_after", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            show_folder_after = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "show_folder_after", 0) ?? 0;
+            show_folder_after = Convert.ToInt32(obj) == 1;
 
             // Open file after encrypting
-            obj = Registry.GetValue(RegKey, "open_after", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            open_after = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "open_after", 0) ?? 0;
+            open_after = Convert.ToInt32(obj) == 1;
 
 
             // Encryption options:
             // Encryption type:
-            obj = Registry.GetValue(RegKey, "encryption_type", null);
-            if (obj == null)
-            {
-                obj = (int)EncryptionType.AES_256;
-            }
-
-            if (!Enum.IsDefined(typeof(EncryptionType), (int)obj)) // If not a valid option, use default:
-            {
-                encryption_type = EncryptionType.AES_256; // Default to AES_256
-            }
-            else
-            {
-                encryption_type = (EncryptionType)obj;
-            }
+            obj = Registry.GetValue(RegKey, "encryption_type", (int)EncryptionType.AES_256) ??
+                  (int)EncryptionType.AES_256;
+            var encVal = Convert.ToInt32(obj);
+            encryption_type = Enum.IsDefined(typeof(EncryptionType), encVal)
+                ? (EncryptionType)encVal
+                : EncryptionType.AES_256;
 
             // Encrypt metadata
-            obj = Registry.GetValue(RegKey, "encrypt_metadata", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            encrypt_metadata = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "encrypt_metadata", 0) ?? 0;
+            encrypt_metadata = Convert.ToInt32(obj) == 1;
 
             // Allow printing
-            obj = Registry.GetValue(RegKey, "allow_printing", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_printing = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_printing", 0) ?? 0;
+            allow_printing = Convert.ToInt32(obj) == 1;
 
             // Allow degraded printing
-            obj = Registry.GetValue(RegKey, "allow_degraded_printing", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_degraded_printing = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_degraded_printing", 0) ?? 0;
+            allow_degraded_printing = Convert.ToInt32(obj) == 1;
 
             // Allow modifying
-            obj = Registry.GetValue(RegKey, "allow_modifying", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_modifying = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_modifying", 0) ?? 0;
+            allow_modifying = Convert.ToInt32(obj) == 1;
 
             // Allow modifying notations
-            obj = Registry.GetValue(RegKey, "allow_modifying_annotations", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_modifying_annotations = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_modifying_annotations", 0) ?? 0;
+            allow_modifying_annotations = Convert.ToInt32(obj) == 1;
 
             // Allow copying
-            obj = Registry.GetValue(RegKey, "allow_copying", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_copying = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_copying", 0) ?? 0;
+            allow_copying = Convert.ToInt32(obj) == 1;
 
             // Allow form fill
-            obj = Registry.GetValue(RegKey, "allow_form_fill", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_form_fill = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_form_fill", 0) ?? 0;
+            allow_form_fill = Convert.ToInt32(obj) == 1;
 
             // Allow assembly
             obj = Registry.GetValue(RegKey, "allow_assembly", 0) ?? 0;
-            allow_assembly = (int)obj == 1;
+            allow_assembly = Convert.ToInt32(obj) == 1;
 
             // Allow screenreaders
-            obj = Registry.GetValue(RegKey, "allow_screenreaders", 0);
-            if (obj == null)
-            {
-                obj = 0;
-            }
-
-            allow_screenreaders = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "allow_screenreaders", 0) ?? 0;
+            allow_screenreaders = Convert.ToInt32(obj) == 1;
 
             // Owner Password:
-            obj = Registry.GetValue(RegKey, "owner_password", null);
-            if (obj == null)
+            var ownerPwd = Registry.GetValue(RegKey, "owner_password", null) as string;
+            if (string.IsNullOrEmpty(ownerPwd))
             {
-                obj = PdfUtils.GenerateRandomPassword(20, 25);
-                Registry.SetValue(RegKey, "owner_password", (string)obj, RegistryValueKind.String);
+                ownerPwd = PdfUtils.GenerateRandomPassword(20, 25);
+                Registry.SetValue(RegKey, "owner_password", ownerPwd, RegistryValueKind.String);
             }
 
-            owner_password = (string)obj;
+            owner_password = ownerPwd;
 
             //Set Always Deafult Owner Password:
-            obj = Registry.GetValue(RegKey, "always_default_owner_password", 1);
-            if (obj == null)
-            {
-                obj = 1;
-                Registry.SetValue(RegKey, "always_default_owner_password", (int)obj, RegistryValueKind.DWord);
-            }
-
-            always_default_owner_password = (int)obj == 1;
+            obj = Registry.GetValue(RegKey, "always_default_owner_password", 1) ?? 1;
+            always_default_owner_password = Convert.ToInt32(obj) == 1;
 
             // Selected language
-            obj = Registry.GetValue(RegKey, "language", null);
-            if (obj == null)
-            {
-                obj = "sk-SK"; // Default to Slovak
-            }
-
-            language = (string)obj;
+            language = (Registry.GetValue(RegKey, "language", "sk-SK") as string) ?? "sk-SK";
 
             // Notify all listeners of updates.
             CallNotify();
