@@ -373,11 +373,11 @@ namespace PDFPass
             var tooltip = Empty;
             var availableLanguages = LanguageHelper.AvailableLanguages;
 
-            foreach (var key in availableLanguages.Keys)
-            {
-                var value = LocalizationManager.ResourceManager.GetString("SetLanguage", new CultureInfo(key));
-                tooltip = tooltip + value + NewLine;
-            }
+            tooltip = availableLanguages.Keys.Select(key => LocalizationManager.ResourceManager.GetString("SetLanguage",
+                    new CultureInfo(key)))
+                .Aggregate(tooltip,
+                    (current,
+                        value) => current + value + NewLine);
 
             languageToolTip.SetToolTip(pbLanguage, tooltip);
         }
