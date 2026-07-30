@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -82,6 +85,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: "Prečítať pred spustením inštalátora.pdf"
+          asset_path: "others/Prečítať pred spustením inštalátora.pdf"
           asset_name: "PDFPass-installer-inštrukcie.pdf" # Choose a name for your release asset
           asset_content_type: application/octet-stream
