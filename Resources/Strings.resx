@@ -66,334 +66,335 @@
 
     <!-- Main form resources -->
     <data name="ClipboardValuePrefix" xml:space="preserve">
-        <value>Arvo: '</value>
-    </data>
+  <value>Value: '</value>
+</data>
     <data name="ApplicationTitle" xml:space="preserve">
-        <value>PDFPass - Avoimen lähdekoodin PDF-salasananhallinta</value>
-    </data>
+    <value>PDFPass - Open Source PDF Password Manager</value>
+  </data>
     <data name="InputFile" xml:space="preserve">
-        <value>Lähdetiedosto</value>
-    </data>
+    <value>Source File</value>
+  </data>
     <data name="SelectFileForEncryption" xml:space="preserve">
-        <value>Valitse salattava tiedosto:</value>
-    </data>
+    <value>Select a file to encrypt:</value>
+  </data>
     <data name="OutputFile" xml:space="preserve">
-        <value>Kohdetiedosto</value>
-    </data>
+    <value>Destination File</value>
+  </data>
     <data name="SelectPathForEncryptedFile" xml:space="preserve">
-        <value>Valitse polku salatulle tiedostolle:</value>
-    </data>
+    <value>Select destination for encrypted file:</value>
+  </data>
     <data name="Passwords" xml:space="preserve">
-        <value>Salasanat</value>
-    </data>
+    <value>Passwords</value>
+  </data>
     <data name="Change" xml:space="preserve">
-        <value>Vaihda</value>
-    </data>
+    <value>Change</value>
+  </data>
     <data name="OwnerPasswordSet" xml:space="preserve">
-        <value>Omistajan salasana on asetettu.</value>
-    </data>
+    <value>Owner password has been set.</value>
+  </data>
     <data name="OwnerPasswordEmpty" xml:space="preserve">
-        <value>Omistajan salasanaa ei ole asetettu.</value>
-    </data>
+    <value>No owner password set.</value>
+  </data>
     <data name="CopiedToClipboard" xml:space="preserve">
-        <value>Kopioitu leikepöydälle.</value>
-    </data>
+    <value>Copied to clipboard.</value>
+  </data>
     <data name="PasswordForLocking" xml:space="preserve">
-        <value>Salasana PDF:n lukitsemiseen 🔒</value>
-    </data>
+    <value>Password to protect PDF 🔒</value>
+  </data>
     <data name="PasswordForUnlocking" xml:space="preserve">
-        <value>Salasana PDF:n avaamiseen 🔓</value>
-    </data>
+    <value>Password to unlock PDF 🔓</value>
+  </data>
     <data name="Generate" xml:space="preserve">
-        <value>Luo</value>
-    </data>
+    <value>Generate</value>
+  </data>
     <data name="EnterPassword" xml:space="preserve">
-        <value>(kirjoita salasana)</value>
-    </data>
+    <value>(enter password)</value>
+  </data>
     <data name="PasswordLengthWarning" xml:space="preserve">
-        <value>Salasanat, joiden pituus ylittää 32 merkkiä, lyhennetään PDF-spesifikaation mukaisesti.</value>
-    </data>
+    <value>Passwords longer than 32 characters will be truncated per PDF specification.</value>
+  </data>
     <data name="Paste" xml:space="preserve">
-        <value>Liitä</value>
-    </data>
+    <value>Paste</value>
+  </data>
     <data name="Copy" xml:space="preserve">
-        <value>Kopioi</value>
-    </data>
+    <value>Copy</value>
+  </data>
     <data name="Decrypt" xml:space="preserve">
-        <value>Pura</value>
+      <value>Decrypt</value>
     </data>
     <data name="Encrypt" xml:space="preserve">
-        <value>Salaa</value>
+      <value>Encrypt</value>
     </data>
     <data name="Close" xml:space="preserve">
-        <value>Sulje</value>
-    </data>
+    <value>Close</value>
+  </data>
     <data name="PDFFiles" xml:space="preserve">
-        <value>PDF-tiedostot</value>
-    </data>
+    <value>PDF files</value>
+  </data>
     <data name="AllFiles" xml:space="preserve">
-        <value>Kaikki tiedostot</value>
-    </data>
+    <value>All files</value>
+  </data>
     <data name="Settings" xml:space="preserve">
-        <value>Asetukset</value>
-    </data>
+    <value>Settings</value>
+  </data>
     <data name="Version" xml:space="preserve">
-        <value>Versio: </value>
-    </data>
+    <value>Version: </value>
+  </data>
     <data name="Watermark" xml:space="preserve">
-        <value>Vesileima</value>
-    </data>
+    <value>Watermark</value>
+  </data>
     <data name="Text" xml:space="preserve">
-        <value>Teksti:</value>
-    </data>
+    <value>Text:</value>
+  </data>
     <data name="UseWatermark" xml:space="preserve">
-        <value>Lisää vesileima 💧</value>
-    </data>
+    <value>Apply watermark 💧</value>
+  </data>
     <data name="Sample" xml:space="preserve">
-        <value>Näyte</value>
-    </data>
-    <data name="WCopy" xml:space="preserve">
-        <value>Kopioi</value>
-    </data>
+    <value>Sample</value>
+  </data>
+  <data name="WCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
     <data name="Confidential" xml:space="preserve">
-        <value>Luottamuksellinen</value>
-    </data>
+    <value>Confidential</value>
+  </data>
     <data name="Draft" xml:space="preserve">
-        <value>Luonnos</value>
-    </data>
+    <value>Draft</value>
+  </data>
 
     <!-- Error messages -->
     <data name="FileNotPdfOrDamaged" xml:space="preserve">
-        <value>Tiedosto ei ole PDF tai se on vioittunut!</value>
-    </data>
+    <value>The file is not a PDF or is corrupted!</value>
+  </data>
     <data name="ErrorTitle" xml:space="preserve">
-        <value>Virhe</value>
-    </data>
+    <value>Error</value>
+  </data>
     <data name="SourceAndDestinationSame" xml:space="preserve">
-        <value>Lähde- ja kohdetiedostot eivät voi olla samat tai tyhjät.</value>
-    </data>
+    <value>Source and destination files cannot be the same or empty.</value>
+  </data>
     <data name="SourceDestinationError" xml:space="preserve">
-        <value>Virheellinen lähde/kohde</value>
-    </data>
+    <value>Invalid source/destination</value>
+  </data>
     <data name="SourceFileDoesNotExist" xml:space="preserve">
-        <value>Lähdetiedostoa ei löydy.</value>
-    </data>
+    <value>Source file does not exist.</value>
+  </data>
     <data name="ConfirmOverwriteFile" xml:space="preserve">
-        <value>Kohdetiedosto on jo olemassa. Haluatko korvata sen?</value>
-    </data>
+    <value>The destination file already exists. Do you want to overwrite it?</value>
+  </data>
     <data name="OverwriteFile" xml:space="preserve">
-        <value>Korvataanko tiedosto?</value>
-    </data>
+    <value>Overwrite file?</value>
+  </data>
     <data name="NoPasswordEntered" xml:space="preserve">
-        <value>Salasanaa ei ole syötetty! (ainakin yksi salasana on pakollinen)</value>
-    </data>
+    <value>No password entered! (at least one password is required)</value>
+  </data>
     <data name="NoReadingPasswordWarning" xml:space="preserve">
-        <value>Dokumentin salasanaa ei ole syötetty! Jatketaanko silti?</value>
-    </data>
+    <value>No document password entered! Continue anyway?</value>
+  </data>
     <data name="Warning" xml:space="preserve">
-        <value>Varoitus</value>
-    </data>
+    <value>Warning</value>
+  </data>
     <data name="ConfirmReadingPassword" xml:space="preserve">
-        <value>Vahvista asiakirjan salasana.</value>
-    </data>
+    <value>Please confirm the document password.</value>
+  </data>
     <data name="ConfirmReadingPasswordTitle" xml:space="preserve">
-        <value>Vahvista asiakirjan salasana</value>
-    </data>
+    <value>Confirm Document Password</value>
+  </data>
     <data name="PasswordsMismatch" xml:space="preserve">
-        <value>Salasanat eivät täsmää. Yritä uudelleen.</value>
-    </data>
+    <value>Passwords do not match. Please try again.</value>
+  </data>
     <data name="OwnerPasswordSetConfirm" xml:space="preserve">
-        <value>Omistajan salasana on asetettu. Vahvista se nyt.</value>
-    </data>
+    <value>An owner password has been set. Please confirm it now.</value>
+  </data>
     <data name="ConfirmOwnerPasswordTitle" xml:space="preserve">
-        <value>Vahvista omistajan salasana</value>
-    </data>
+    <value>Confirm Owner Password</value>
+  </data>
     <data name="OwnerPasswordMismatch" xml:space="preserve">
-        <value>Omistajan salasana ei täsmää. Yritä uudelleen.</value>
-    </data>
+    <value>Owner password does not match. Please try again.</value>
+  </data>
     <data name="UnknownError" xml:space="preserve">
-        <value>Tiedoston käsittelyn aikana tapahtui odottamaton virhe: </value>
-    </data>
+    <value>An unexpected error occurred while processing the file: </value>
+  </data>
     <data name="IncorrectPassword" xml:space="preserve">
-        <value>Väärä salasana. Yritä uudelleen.</value>
-    </data>
+    <value>Incorrect password. Please try again.</value>
+  </data>
     <data name="OwnerPasswordRequired" xml:space="preserve">
-        <value>Tämä PDF on suojattu myös omistajan salasanalla. Syötä kyseinen salasana.</value>
-    </data>
+    <value>This PDF is also protected with an owner password. You need to enter that password.</value>
+  </data>
     <data name="Information" xml:space="preserve">
-        <value>Tietoa</value>
-    </data>
+    <value>Information</value>
+  </data>
     <data name="UnknownErrorShort" xml:space="preserve">
-        <value>Tapahtui odottamaton virhe!</value>
-    </data>
+    <value>An unexpected error occurred!</value>
+  </data>
     <data name="CannotRunCommand" xml:space="preserve">
-        <value>Komentoa ei voida suorittaa. Virhe: </value>
-    </data>
+    <value>Cannot execute command. Error: </value>
+  </data>
 
     <!-- Settings form resources -->
     <data name="SettingsTitle" xml:space="preserve">
-        <value>Asetukset</value>
-    </data>
+    <value>Settings</value>
+  </data>
     <data name="Copyright" xml:space="preserve">
-        <value>Tekijänoikeus 2025. Lisensoitu AGPL:llä.</value>
+      <value>Copyright 2025. Licensed under AGPL.</value>
     </data>
     <data name="Confirm" xml:space="preserve">
-        <value>Tallenna</value>
-    </data>
+    <value>Save</value>
+  </data>
     <data name="Cancel" xml:space="preserve">
-        <value>Peruuta</value>
-    </data>
+    <value>Cancel</value>
+  </data>
     <data name="AfterSuccessfulEncryption" xml:space="preserve">
-        <value>Salauksen jälkeen</value>
-    </data>
+    <value>After Successful Encryption</value>
+  </data>
     <data name="OutputFilePathAdded" xml:space="preserve">
-        <value>(Kohdetiedoston polku lisätään viimeiseksi parametriksi)</value>
-    </data>
+    <value>(Output file path will be added as the last parameter)</value>
+  </data>
     <data name="Parameters" xml:space="preserve">
-        <value>Parametrit:</value>
-    </data>
+    <value>Parameters:</value>
+  </data>
     <data name="ParametersPlaceholder" xml:space="preserve">
-        <value>(ohjelman parametrit)</value>
-    </data>
+    <value>(program parameters)</value>
+  </data>
     <data name="OpenOutputFile" xml:space="preserve">
-        <value>Avaa kohdetiedosto</value>
-    </data>
+    <value>Open output file</value>
+  </data>
     <data name="OpenFileInExplorer" xml:space="preserve">
-        <value>Näytä kansiossa</value>
-    </data>
+    <value>Show in File Explorer</value>
+  </data>
     <data name="ClosePDFPass" xml:space="preserve">
-        <value>Sulje PDFPass käytön jälkeen</value>
-    </data>
+    <value>Close PDFPass when done</value>
+  </data>
     <data name="RunProgram" xml:space="preserve">
-        <value>Suorita ohjelma:</value>
-    </data>
+    <value>Run program:</value>
+  </data>
     <data name="ProgramPathPlaceholder" xml:space="preserve">
-        <value>(ohjelman polku)</value>
-    </data>
+    <value>(path to program)</value>
+  </data>
     <data name="EncryptionOptions" xml:space="preserve">
-        <value>Salausvaihtoehdot</value>
-    </data>
+    <value>Encryption Options</value>
+  </data>
     <data name="SetAutomatically" xml:space="preserve">
-        <value>Aseta automaattisesti</value>
-    </data>
+    <value>Set automatically</value>
+  </data>
     <data name="OwnerPassword" xml:space="preserve">
-        <value>Omistajan salasana:</value>
-    </data>
+    <value>Owner password:</value>
+  </data>
     <data name="PermanentOwnerPassword" xml:space="preserve">
-        <value>(pysyvä omistajan salasana)</value>
-    </data>
+    <value>(permanent owner password)</value>
+  </data>
     <data name="PermissionsIgnoredWarning" xml:space="preserve">
-        <value>Jotkin PDF-katseluohjelmat saattavat ohittaa nämä käyttöoikeusasetukset.</value>
-    </data>
+    <value>Some PDF viewers may ignore these permission settings.</value>
+  </data>
     <data name="AllowPrintingLowRes" xml:space="preserve">
-        <value>Salli tulostus (matala resoluutio)</value>
-    </data>
+    <value>Allow printing (low resolution)</value>
+  </data>
     <data name="AllowPageArrangement" xml:space="preserve">
-        <value>Salli sivujärjestely</value>
-    </data>
+    <value>Allow page arrangement</value>
+  </data>
     <data name="AllowAccessTechnologies" xml:space="preserve">
-        <value>Salli apuvälineet</value>
-    </data>
+    <value>Allow accessibility technologies</value>
+  </data>
     <data name="AllowFillForm" xml:space="preserve">
-        <value>Salli lomakkeiden täyttö</value>
-    </data>
+    <value>Allow form filling</value>
+  </data>
     <data name="AllowAddAnnotations" xml:space="preserve">
-        <value>Salli kommenttien lisääminen</value>
-    </data>
+    <value>Allow adding annotations</value>
+  </data>
     <data name="AllowDocumentModification" xml:space="preserve">
-        <value>Salli asiakirjan muokkaus</value>
-    </data>
+    <value>Allow document editing</value>
+  </data>
     <data name="AllowContentCopy" xml:space="preserve">
-        <value>Salli sisällön kopiointi</value>
-    </data>
+    <value>Allow content copying</value>
+  </data>
     <data name="PermissionsForOutputFile" xml:space="preserve">
-        <value>Käyttöoikeudet kohdetiedostolle</value>
-    </data>
+    <value>Permissions for Output File</value>
+  </data>
     <data name="AllowPrintingHighRes" xml:space="preserve">
-        <value>Salli tulostus (korkea resoluutio)</value>
-    </data>
+    <value>Allow printing (high resolution)</value>
+  </data>
     <data name="EncryptMetadata" xml:space="preserve">
-        <value>Salaa metatiedot</value>
-    </data>
+    <value>Encrypt metadata</value>
+  </data>
     <data name="Algorithm" xml:space="preserve">
-        <value>Algoritmi:</value>
-    </data>
+    <value>Algorithm:</value>
+  </data>
     <data name="ConfirmPassword" xml:space="preserve">
-        <value>Vahvista salasanat</value>
-    </data>
+    <value>Confirm passwords</value>
+  </data>
     <data name="ExecutableFiles" xml:space="preserve">
-        <value>Suoritettavat tiedostot (*.exe, *.bat, *.com)</value>
-    </data>
+    <value>Executable files (*.exe, *.bat, *.com)</value>
+  </data>
     <data name="SupportDeveloper" xml:space="preserve">
-        <value>Tue kehittäjää pienen lahjoituksen avulla! 💳</value>
-    </data>
+    <value>Support the developer with a small donation! 💳</value>
+  </data>
     <data name="AES256Recommended" xml:space="preserve">
-        <value>AES-256 (Adobe Reader 8+) [suositellaan]</value>
-    </data>
+    <value>AES-256 (Adobe Reader 8+) [recommended]</value>
+  </data>
     <data name="AES128" xml:space="preserve">
-        <value>AES-128 (Adobe Reader 7+)</value>
-    </data>
+    <value>AES-128 (Adobe Reader 7+)</value>
+  </data>
     <data name="RC4128" xml:space="preserve">
-        <value>RC4-128 (Adobe Reader 6+)</value>
-    </data>
+    <value>RC4-128 (Adobe Reader 6+)</value>
+  </data>
     <data name="RunFileNotExists" xml:space="preserve">
-        <value>Suoritettavaa ohjelmatiedostoa ei löydy.</value>
-    </data>
+    <value>The program file to run does not exist.</value>
+  </data>
     <data name="LanguageTitle" xml:space="preserve">
-        <value>Kieli</value>
+      <value>Jazyk / Language / Kieli</value>
     </data>
     <data name="LanguageChangeRestartRequired" xml:space="preserve">
-        <value>Kielen vaihtaminen tulee voimaan, kun sovellus käynnistetään uudelleen.</value>
-    </data>
+  <value>The language change will fully apply after restarting the application.</value>
+</data>
 
     <!-- Input box resources -->
     <data name="SetOwnerPassword" xml:space="preserve">
-        <value>Aseta omistajan salasana</value>
-    </data>
+    <value>Set Owner Password</value>
+  </data>
     <data name="EnterOwnerPasswordPrompt" xml:space="preserve">
-        <value>Syötä omistajan salasana.
-(Omistajan salasana rajoittaa PDF:n muokkausta)
+      <value>Enter the owner password.
+(Owner password restricts modifications to the PDF)
 
-Paina "Peruuta" poistaaksesi omistajan salasanan</value>
+
+Press "Cancel" to REMOVE the owner password</value>
     </data>
     <data name="FillWithDefaultPassword" xml:space="preserve">
-        <value>Käytä asetuksista oletussalasanaa</value>
-    </data>
+    <value>Use default password from Settings</value>
+  </data>
 
     <!-- Command-line options -->
     <data name="OwnerPassOption" xml:space="preserve">
-        <value>Määritä omistajan salasana</value>
-    </data>
+    <value>Specify the owner password</value>
+  </data>
     <data name="UserPassOption" xml:space="preserve">
-        <value>Määritä käyttäjän salasana</value>
-    </data>
+    <value>Specify the user password</value>
+  </data>
     <data name="InputFileOption" xml:space="preserve">
-        <value>Määritä salattava PDF-tiedosto</value>
-    </data>
+    <value>Specify the PDF file to encrypt</value>
+  </data>
     <data name="OutputFileOption" xml:space="preserve">
-        <value>Määritä salattu kohdetiedosto</value>
-    </data>
+    <value>Specify the encrypted output file</value>
+  </data>
     <data name="RunImmediatelyOption" xml:space="preserve">
-        <value>Aloita salaus heti (ilman "Salasanan lisää" -nappia)</value>
-    </data>
+    <value>Start encryption immediately (without clicking the Add Password button)</value>
+  </data>
     <data name="CommandLineError" xml:space="preserve">
-        <value>Komentorivin parametrivirhe: </value>
-    </data>
-    <data name="SettingsChanged" xml:space="preserve">
-        <value>Asetusmuutoksista ilmoitetaan.</value>
+    <value>Command line parameter error: </value>
+  </data>
+  <data name="SettingsChanged" xml:space="preserve">
+        <value>Notification of setting changes.</value>
     </data>
 
     <!-- File handling -->
     <data name="Encrypted" xml:space="preserve">
-        <value>salattu</value>
-    </data>
+    <value>encrypted</value>
+  </data>
     <data name="Decrypted" xml:space="preserve">
-        <value>purettu</value>
-    </data>
+    <value>decrypted</value>
+  </data>
     <data name="FileNotExist" xml:space="preserve">
-        <value>Tiedostoa ei löydy!</value>
+      <value>File doesn't exist!</value>
     </data>
     <data name="SetLanguage" xml:space="preserve">
-        <value>Aseta kieli</value>
+      <value>Set Language</value>
     </data>
 </root>
