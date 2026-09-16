@@ -67,11 +67,14 @@ namespace PDFPass
 	        btnPasteTooltip = new System.Windows.Forms.ToolTip(components);
 	        pbLanguage = new System.Windows.Forms.PictureBox();
 	        languageToolTip = new System.Windows.Forms.ToolTip(components);
+	        statusStrip = new System.Windows.Forms.StatusStrip();
+	        statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
 	        groupBox1.SuspendLayout();
 	        groupBox2.SuspendLayout();
 	        groupBox3.SuspendLayout();
 	        gbWatermark.SuspendLayout();
 	        ((System.ComponentModel.ISupportInitialize)pbLanguage).BeginInit();
+	        statusStrip.SuspendLayout();
 	        SuspendLayout();
 	        // 
 	        // groupBox1
@@ -448,6 +451,24 @@ namespace PDFPass
 	        pbLanguage.Click += pictureBox1_Click;
 	        pbLanguage.MouseHover += pictureBox1_MouseHover;
 	        // 
+	        // statusStrip
+	        //
+	        statusStrip.AutoSize = false;
+	        statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { statusLabel });
+	        statusStrip.Location = new System.Drawing.Point(0, 521);
+	        statusStrip.Name = "statusStrip";
+	        statusStrip.Size = new System.Drawing.Size(561, 29);
+	        statusStrip.SizingGrip = false;
+	        statusStrip.TabIndex = 21;
+	        //
+	        // statusLabel
+	        //
+	        statusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
+	        statusLabel.Name = "statusLabel";
+	        statusLabel.Size = new System.Drawing.Size(546, 24);
+	        statusLabel.Spring = true;
+	        statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+	        //
 	        // FrmMain
 	        // 
 	        AcceptButton = btnEncrypt;
@@ -456,7 +477,8 @@ namespace PDFPass
 	        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 	        BackColor = System.Drawing.SystemColors.Control;
 	        CancelButton = btnClose;
-	        ClientSize = new System.Drawing.Size(561, 521);
+	        ClientSize = new System.Drawing.Size(561, 550);
+	        Controls.Add(statusStrip);
 	        Controls.Add(pbLanguage);
 	        Controls.Add(gbWatermark);
 	        Controls.Add(lblVersion);
@@ -487,6 +509,8 @@ namespace PDFPass
 	        gbWatermark.ResumeLayout(false);
 	        gbWatermark.PerformLayout();
 	        ((System.ComponentModel.ISupportInitialize)pbLanguage).EndInit();
+	        statusStrip.ResumeLayout(false);
+	        statusStrip.PerformLayout();
 	        ResumeLayout(false);
 	        PerformLayout();
         }
@@ -494,6 +518,10 @@ namespace PDFPass
         private System.Windows.Forms.ToolTip languageToolTip;
 
         private System.Windows.Forms.PictureBox pbLanguage;
+
+        private System.Windows.Forms.StatusStrip statusStrip;
+
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
@@ -528,4 +556,3 @@ namespace PDFPass
         private ToolTip btnPasteTooltip;
     }
 }
-

@@ -39,6 +39,7 @@
 	        chkOpen = new System.Windows.Forms.CheckBox();
 	        chkShowFolder = new System.Windows.Forms.CheckBox();
 	        chkCloseAfterCompletion = new System.Windows.Forms.CheckBox();
+	        chkConfirmationDialog = new System.Windows.Forms.CheckBox();
 	        btnRunBrowse = new System.Windows.Forms.Button();
 	        txtRun = new System.Windows.Forms.TextBox();
 	        chkRun = new System.Windows.Forms.CheckBox();
@@ -119,6 +120,7 @@
 	        groupBox1.Controls.Add(chkOpen);
 	        groupBox1.Controls.Add(chkShowFolder);
 	        groupBox1.Controls.Add(chkCloseAfterCompletion);
+	        groupBox1.Controls.Add(chkConfirmationDialog);
 	        groupBox1.Controls.Add(btnRunBrowse);
 	        groupBox1.Controls.Add(txtRun);
 	        groupBox1.Controls.Add(chkRun);
@@ -192,6 +194,18 @@
 	        chkCloseAfterCompletion.Text = "Zatvoriť PDFPass";
 	        chkCloseAfterCompletion.UseVisualStyleBackColor = true;
 	        // 
+	        // chkConfirmationDialog
+	        //
+	        chkConfirmationDialog.AutoSize = true;
+	        chkConfirmationDialog.Font = new System.Drawing.Font("Segoe UI", 9F);
+	        chkConfirmationDialog.Location = new System.Drawing.Point(238, 53);
+	        chkConfirmationDialog.Margin = new System.Windows.Forms.Padding(2);
+	        chkConfirmationDialog.Name = "chkConfirmationDialog";
+	        chkConfirmationDialog.Size = new System.Drawing.Size(180, 19);
+	        chkConfirmationDialog.TabIndex = 21;
+	        chkConfirmationDialog.Text = "Open Encryption Success Dialog";
+	        chkConfirmationDialog.UseVisualStyleBackColor = true;
+	        //
 	        // btnRunBrowse
 	        // 
 	        btnRunBrowse.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
@@ -567,6 +581,7 @@
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.CheckBox chkShowFolder;
 		private System.Windows.Forms.CheckBox chkCloseAfterCompletion;
+		private System.Windows.Forms.CheckBox chkConfirmationDialog;
 		private System.Windows.Forms.Button btnRunBrowse;
 		private System.Windows.Forms.TextBox txtRun;
 		private System.Windows.Forms.CheckBox chkRun;

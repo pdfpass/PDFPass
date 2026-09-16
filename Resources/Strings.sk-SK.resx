@@ -162,6 +162,19 @@
     <value>Návrh</value>
   </data>
 
+    <data name="StatusReady" xml:space="preserve">
+        <value>Pripravené</value>
+    </data>
+    <data name="StatusEncrypting" xml:space="preserve">
+        <value>Šifruje sa...</value>
+    </data>
+    <data name="StatusDecrypting" xml:space="preserve">
+        <value>Dešifruje sa...</value>
+    </data>
+    <data name="StatusCompleted" xml:space="preserve">
+        <value>Operácia bola dokončená.</value>
+    </data>
+
     <!-- Error messages -->
     <data name="FileNotPdfOrDamaged" xml:space="preserve">
     <value>Súbor nie je typu PDF alebo je poškodený!</value>
@@ -231,6 +244,12 @@
   </data>
 
     <!-- Settings form resources -->
+    <data name="OpenEncryptionSuccessDialog" xml:space="preserve">
+        <value>Zobraziť dialóg úspešného šifrovania</value>
+    </data>
+    <data name="EncryptionSuccessful" xml:space="preserve">
+        <value>Šifrovanie bolo úspešné!</value>
+    </data>
     <data name="SettingsTitle" xml:space="preserve">
     <value>Nastavenia</value>
   </data>

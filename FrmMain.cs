@@ -89,6 +89,7 @@ namespace PDFPass
 
         public void ShowError(string message)
         {
+            SetStatus(message);
             MessageBox.Show(message, Strings.ErrorTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -100,7 +101,14 @@ namespace PDFPass
 
         public void ShowInfo(string message)
         {
+            SetStatus(message);
             MessageBox.Show(message, Strings.Information, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void SetStatus(string message)
+        {
+            statusLabel.Text = message;
+            statusStrip.Update();
         }
 
         public void UpdateView(bool isInputEncrypted)
@@ -117,7 +125,7 @@ namespace PDFPass
             btnChangePassword.Enabled = !isInputEncrypted;
             lblOwnerPasswordSet.Visible = !isInputEncrypted;
             gbWatermark.Visible = !isInputEncrypted;
-            Height = isInputEncrypted ? 500 : 560;
+            Height = (isInputEncrypted ? 500 : 560) + statusStrip.Height;
             lblOwnerPasswordSet.ForeColor = IsNullOrEmpty(OwnerPassword)
                 ? Color.FromArgb(255, 153, 0)
                 : Color.FromArgb(0, 192, 192);
@@ -164,6 +172,7 @@ namespace PDFPass
         {
             // Update form title
             this.Text = Strings.ApplicationTitle;
+            SetStatus(Strings.StatusReady);
 
             // Update group boxes
             groupBox1.Text = Strings.InputFile;

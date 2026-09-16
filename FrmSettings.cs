@@ -53,6 +53,7 @@ namespace PDFPass
             chkOpen.Text = Strings.OpenOutputFile;
             chkShowFolder.Text = Strings.OpenFileInExplorer;
             chkCloseAfterCompletion.Text = Strings.ClosePDFPass;
+            chkConfirmationDialog.Text = Strings.OpenEncryptionSuccessDialog;
             chkRun.Text = Strings.RunProgram;
             chkAlwaysDefaultOwnerPassword.Text = Strings.SetAutomatically;
             chkDegradedPrinting.Text = Strings.AllowPrintingLowRes;
@@ -112,6 +113,7 @@ namespace PDFPass
             chkCloseAfterCompletion.Checked = Settings.close_after;
             chkShowFolder.Checked = Settings.show_folder_after;
             chkOpen.Checked = Settings.open_after;
+            chkConfirmationDialog.Checked = Settings.confirmation_dialog_after;
 
             // Encryption options:
             chkEncryptMetadata.Checked = Settings.encrypt_metadata;
@@ -161,6 +163,7 @@ namespace PDFPass
             Settings.close_after = chkCloseAfterCompletion.Checked;
             Settings.show_folder_after = chkShowFolder.Checked;
             Settings.open_after = chkOpen.Checked;
+            Settings.confirmation_dialog_after = chkConfirmationDialog.Checked;
 
             // Encryption options
             if (cboEncryptionType.SelectedValue != null)

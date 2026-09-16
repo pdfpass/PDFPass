@@ -162,6 +162,19 @@
         <value>Luonnos</value>
     </data>
 
+    <data name="StatusReady" xml:space="preserve">
+        <value>Valmis</value>
+    </data>
+    <data name="StatusEncrypting" xml:space="preserve">
+        <value>Salataan...</value>
+    </data>
+    <data name="StatusDecrypting" xml:space="preserve">
+        <value>Puretaan salausta...</value>
+    </data>
+    <data name="StatusCompleted" xml:space="preserve">
+        <value>Toiminto on valmis.</value>
+    </data>
+
     <!-- Error messages -->
     <data name="FileNotPdfOrDamaged" xml:space="preserve">
         <value>Tiedosto ei ole PDF tai se on vioittunut!</value>
@@ -231,6 +244,12 @@
     </data>
 
     <!-- Settings form resources -->
+    <data name="OpenEncryptionSuccessDialog" xml:space="preserve">
+        <value>Näytä salauksen onnistumisikkuna</value>
+    </data>
+    <data name="EncryptionSuccessful" xml:space="preserve">
+        <value>Salaus onnistui!</value>
+    </data>
     <data name="SettingsTitle" xml:space="preserve">
         <value>Asetukset</value>
     </data>

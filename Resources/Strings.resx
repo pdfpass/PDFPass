@@ -162,6 +162,19 @@
     <value>Draft</value>
   </data>
 
+    <data name="StatusReady" xml:space="preserve">
+        <value>Ready</value>
+    </data>
+    <data name="StatusEncrypting" xml:space="preserve">
+        <value>Encrypting...</value>
+    </data>
+    <data name="StatusDecrypting" xml:space="preserve">
+        <value>Decrypting...</value>
+    </data>
+    <data name="StatusCompleted" xml:space="preserve">
+        <value>Operation completed.</value>
+    </data>
+
     <!-- Error messages -->
     <data name="FileNotPdfOrDamaged" xml:space="preserve">
     <value>The file is not a PDF or is corrupted!</value>
@@ -231,6 +244,12 @@
   </data>
 
     <!-- Settings form resources -->
+    <data name="OpenEncryptionSuccessDialog" xml:space="preserve">
+        <value>Open Encryption Success Dialog</value>
+    </data>
+    <data name="EncryptionSuccessful" xml:space="preserve">
+        <value>Encryption succesfull!</value>
+    </data>
     <data name="SettingsTitle" xml:space="preserve">
     <value>Settings</value>
   </data>

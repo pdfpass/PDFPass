@@ -41,6 +41,10 @@ namespace PDFPass.Resources
         public static string Confidential => LocalizationManager.GetString(nameof(Confidential));
         public static string Draft => LocalizationManager.GetString(nameof(Draft));
         public static string ClipboardValuePrefix => LocalizationManager.GetString(nameof(ClipboardValuePrefix));
+        public static string StatusReady => LocalizationManager.GetString(nameof(StatusReady));
+        public static string StatusEncrypting => LocalizationManager.GetString(nameof(StatusEncrypting));
+        public static string StatusDecrypting => LocalizationManager.GetString(nameof(StatusDecrypting));
+        public static string StatusCompleted => LocalizationManager.GetString(nameof(StatusCompleted));
 
         // Error messages
         public static string FileNotPdfOrDamaged => LocalizationManager.GetString(nameof(FileNotPdfOrDamaged));
@@ -92,6 +96,9 @@ namespace PDFPass.Resources
         public static string Parameters => LocalizationManager.GetString(nameof(Parameters));
         public static string ParametersPlaceholder => LocalizationManager.GetString(nameof(ParametersPlaceholder));
         public static string OpenOutputFile => LocalizationManager.GetString(nameof(OpenOutputFile));
+        public static string OpenEncryptionSuccessDialog =>
+            LocalizationManager.GetString(nameof(OpenEncryptionSuccessDialog));
+        public static string EncryptionSuccessful => LocalizationManager.GetString(nameof(EncryptionSuccessful));
         public static string OpenFileInExplorer => LocalizationManager.GetString(nameof(OpenFileInExplorer));
         public static string ClosePDFPass => LocalizationManager.GetString(nameof(ClosePDFPass));
         public static string RunProgram => LocalizationManager.GetString(nameof(RunProgram));

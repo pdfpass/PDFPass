@@ -27,6 +27,7 @@ namespace PDFPass.MVP
         void ShowError(string message);
         bool ShowWarning(string message);
         void ShowInfo(string message);
+        void SetStatus(string message);
         void UpdateView(bool isInputEncrypted);
         void CloseForm();
         void SetPresenter(MainPresenter presenter);

@@ -24,6 +24,7 @@ namespace PDFPass
         public static bool close_after; // Close after encrypting?
         public static bool show_folder_after; // Show folder in Explorer after encrypting?
         public static bool open_after; // Open the destination file in its default program?
+        public static bool confirmation_dialog_after; // Show a confirmation dialog after encrypting?
 
         // Encryption options:
         public static EncryptionType encryption_type; // Type of encryption to use
@@ -83,6 +84,10 @@ namespace PDFPass
             // Open file after encrypting
             obj = Registry.GetValue(RegKey, "open_after", 0) ?? 0;
             open_after = Convert.ToInt32(obj) == 1;
+
+            // Show confirmation dialog after encrypting
+            obj = Registry.GetValue(RegKey, "confirmation_dialog_after", 0) ?? 0;
+            confirmation_dialog_after = Convert.ToInt32(obj) == 1;
 
 
             // Encryption options:
@@ -173,6 +178,8 @@ namespace PDFPass
             Registry.SetValue(RegKey, "close_after", close_after, RegistryValueKind.DWord);
             Registry.SetValue(RegKey, "show_folder_after", show_folder_after, RegistryValueKind.DWord);
             Registry.SetValue(RegKey, "open_after", open_after, RegistryValueKind.DWord);
+            Registry.SetValue(RegKey, "confirmation_dialog_after", confirmation_dialog_after,
+                RegistryValueKind.DWord);
 
             // Encryption options:
             Registry.SetValue(RegKey, "encryption_type", encryption_type, RegistryValueKind.DWord);

@@ -126,6 +126,7 @@ namespace PDFPass.MVP
 
                 try
                 {
+                    _view.SetStatus(Strings.StatusDecrypting);
                     PdfUtils.WriteDecryptedPdf(_view.InputFile, _view.OutputFile, _view.UserPassword);
                 }
                 catch (Exception ex)
@@ -134,6 +135,7 @@ namespace PDFPass.MVP
                     return;
                 }
 
+                _view.SetStatus(Strings.StatusCompleted);
                 ExecuteAfterSteps();
             }
             else
@@ -194,6 +196,7 @@ namespace PDFPass.MVP
 
             try
             {
+                _view.SetStatus(Strings.StatusEncrypting);
                 var writerProperties = GetWriterProperties();
                 var waterMarkText = _view.WatermarkEnabled ? _view.WatermarkText : "";
                 PdfUtils.WriteEncryptedPdf(_view.InputFile, _view.OutputFile, writerProperties, waterMarkText);
@@ -202,6 +205,12 @@ namespace PDFPass.MVP
             {
                 _view.ShowError($"{Strings.UnknownError} {ex.Message}");
                 return;
+            }
+
+            _view.SetStatus(Strings.StatusCompleted);
+            if (Settings.confirmation_dialog_after)
+            {
+                _view.ShowInfo(Strings.EncryptionSuccessful);
             }
 
             ExecuteAfterSteps();
