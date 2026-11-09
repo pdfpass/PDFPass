@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using iText.IO.Font.Constants;
+using iText.IO.Font;
 using iText.Kernel.Exceptions;
 using iText.Kernel.Font;
 using iText.Kernel.Geom;
@@ -160,7 +160,9 @@ public abstract class PdfUtils
 
     private static Paragraph createWatermarkParagraph(String watermark)
     {
-        var font = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+        var fontPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
+        var font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H,
+            PdfFontFactory.EmbeddingStrategy.FORCE_EMBEDDED);
         var text = new Text(watermark);
         text.SetFont(font);
         text.SetFontSize(150);
