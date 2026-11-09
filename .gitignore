@@ -340,3 +340,7 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /.codex/config.toml
+/website/
+/website2/
+/.claude/
+/skills-lock.json
