@@ -232,6 +232,8 @@ namespace PDFPass
             {
                 throw new InvalidOperationException("Presenter is not set.");
             }
+
+            _presenter.OnFormLoad();
         }
 
         private void btnInputBrowse_Click(object sender, EventArgs e)

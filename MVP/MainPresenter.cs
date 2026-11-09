@@ -35,7 +35,7 @@ namespace PDFPass.MVP
             Settings.Load();
             if (Settings.always_default_owner_password)
             {
-                _model.OwnerPassword = Settings.owner_password;
+                _view.OwnerPassword = Settings.owner_password;
             }
 
             UpdateView();
