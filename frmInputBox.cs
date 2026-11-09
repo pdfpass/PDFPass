@@ -18,13 +18,13 @@ namespace PDFPass
             InitializeComponent();
 
             // Update UI text from resources
-            UpdateUIText();
+            UpdateUiText();
 
             // Subscribe to language change events
-            LocalizationManager.LanguageChanged += (sender, e) => UpdateUIText();
+            LocalizationManager.LanguageChanged += (_, _) => UpdateUiText();
         }
 
-        private void UpdateUIText()
+        private void UpdateUiText()
         {
             // Update buttons
             btnOK.Text = Strings.Confirm;
