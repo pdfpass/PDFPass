@@ -12,6 +12,7 @@ namespace PDFPass.MVP
     {
         private readonly IMainView _view;
         private readonly MainModel _model;
+        private string? _lastGeneratedOutputFile;
         private const int PwLengthMin = 12;
         private const int PwLengthMax = 24;
 
@@ -71,9 +72,12 @@ namespace PDFPass.MVP
             }
 
             var isEncrypted = PdfUtils.IsPdfReaderPasswordSet(_model.InputFile);
-            if (IsNullOrEmpty(_view.OutputFile))
+            if (IsNullOrEmpty(_view.OutputFile)
+                || string.Equals(_view.OutputFile, _lastGeneratedOutputFile, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(_view.OutputFile, _model.InputFile, StringComparison.OrdinalIgnoreCase))
             {
-                _view.OutputFile = GetFilenameWithSuffix(_model.InputFile, isEncrypted);
+                _lastGeneratedOutputFile = GetFilenameWithSuffix(_model.InputFile, isEncrypted);
+                _view.OutputFile = _lastGeneratedOutputFile;
             }
 
             _view.UpdateView(isEncrypted);
@@ -308,9 +312,12 @@ namespace PDFPass.MVP
 
         private string GetFilenameWithSuffix(string fileName, bool isInputEncrypted)
         {
+            var name = Path.GetFileNameWithoutExtension(fileName);
             var newFileName = isInputEncrypted
-                ? $"{Path.GetFileNameWithoutExtension(fileName).Replace(Strings.Encrypted, "")}{Strings.Decrypted}.pdf"
-                : $"{Path.GetFileNameWithoutExtension(fileName)}-{Strings.Encrypted}.pdf";
+                ? name.EndsWith(Strings.Encrypted, StringComparison.OrdinalIgnoreCase)
+                    ? $"{name[..^Strings.Encrypted.Length]}{Strings.Decrypted}.pdf"
+                    : $"{name}-{Strings.Decrypted}.pdf"
+                : $"{name}-{Strings.Encrypted}.pdf";
             return Path.Combine(Path.GetDirectoryName(fileName)!, newFileName);
         }
 
