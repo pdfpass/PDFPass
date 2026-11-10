@@ -1,38 +1,41 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-      <TargetFramework>net8.0-windows7.0</TargetFramework>
-    <DefineConstants>WINDOWS</DefineConstants>
-    <TargetOS>windows</TargetOS>
-    <OutputType>WinExe</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-      <Nullable>enable</Nullable>
-      <EnableNETAnalyzers>true</EnableNETAnalyzers>
-      <AnalysisLevel>latest</AnalysisLevel>
-      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows7.0</TargetFramework>
+        <DefineConstants>WINDOWS</DefineConstants>
+        <TargetOS>windows</TargetOS>
+        <OutputType>WinExe</OutputType>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <UseWindowsForms>true</UseWindowsForms>
+        <Nullable>enable</Nullable>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>lock.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup>
-    <SignManifests>false</SignManifests>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ManifestCertificateThumbprint>F6F37A4D0872D6105E6897C593D8B80F65D62538</ManifestCertificateThumbprint>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-  <ItemGroup>
-    <Content Include="lock.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.9.1" />
-    <PackageReference Include="itext7" Version="8.0.5" />
-    <PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.5" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="publish-it.cmd" />
-  </ItemGroup>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ApplicationIcon>lock.ico</ApplicationIcon>
+    </PropertyGroup>
+    <PropertyGroup>
+        <SignManifests>false</SignManifests>
+    </PropertyGroup>
+    <PropertyGroup>
+        <ManifestCertificateThumbprint>F6F37A4D0872D6105E6897C593D8B80F65D62538</ManifestCertificateThumbprint>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>
+    <ItemGroup>
+        <Content Include="lock.ico">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.9.1"/>
+        <PackageReference Include="itext" Version="9.8.0"/>
+        <PackageReference Include="itext.bouncy-castle-adapter" Version="9.8.0"/>
+        <PackageReference Include="itext.commons" Version="9.8.0"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4"/>
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.7.0"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="publish-it.cmd"/>
+    </ItemGroup>
 </Project>
