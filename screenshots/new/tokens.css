@@ -1,0 +1,144 @@
+/*
+ * PDFPass "Sealed Ink" design tokens.
+ * Brand anchors from the repository: the yellow padlock (lock.ico) and the red PDFPass wordmark
+ * (screenshots/ref-card.jpg). Brass and seal-red are their refined website equivalents.
+ * Direction approved by the owner on 2026-11-09: dark editorial default, light theme via toggle.
+ */
+:root {
+  /* Raw palette */
+  --c-ink: #0e0d0c;
+  --c-ink-raised: #171513;
+  --c-ink-high: #23201c;
+  --c-paper: #f2ede4;
+  --c-paper-dim: #b9b1a4;
+  --c-paper-mute: #8f887d;
+  --c-brass: #f2b829;
+  --c-brass-deep: #7a5800;
+  --c-seal: #e5483a;
+  --c-seal-deep: #b42e20;
+  --c-vellum: #e8e6e1;
+  --c-vellum-raised: #f5f4f0;
+
+  /* Typography */
+  --font-sans: 'Archivo Variable', 'Archivo', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'Martian Mono Variable', 'Cascadia Mono', Consolas, monospace;
+
+  /* Width axis presets for Archivo (62–125) */
+  --w-compressed: 62;
+  --w-condensed: 72;
+  --w-semi: 88;
+  --w-normal: 100;
+
+  /* Type scale — perfect fourth for text, fluid display sizes */
+  --fs-micro: 0.8125rem;
+  --fs-small: 0.9375rem;
+  --fs-body: 1.0625rem;
+  --fs-lead: clamp(1.1875rem, 0.95rem + 0.7vw, 1.4375rem);
+  --fs-h4: 1.25rem;
+  --fs-h3: clamp(1.5rem, 1.2rem + 0.9vw, 1.875rem);
+  --fs-h2: clamp(2.25rem, 1.2rem + 3.6vw, 4.75rem);
+  --fs-h1: clamp(2.75rem, 1.1rem + 5.6vw, 7rem);
+  /* Hero size follows its container (.hero__wrap, max 1440px), not the viewport, so ultrawide screens never push the headline into the screenshot. */
+  --fs-hero: clamp(3.3rem, 0.4rem + 11cqi, 10rem);
+
+  --lh-tight: 0.88;
+  --lh-head: 0.98;
+  --lh-text: 1.6;
+
+  /* Space — 4px base, named by role */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+  --s-10: 10rem;
+  --section: clamp(4rem, 2.5rem + 3.2vw, 7rem);
+
+  /* Layout */
+  --page-max: 1440px;
+  --gutter: clamp(1rem, 0.5rem + 1.6vw, 2rem);
+  --margin: clamp(1.25rem, 0.4rem + 4.2vw, 4.5rem);
+  --measure: 62ch;
+  --header-h: 4.25rem;
+
+  /* Shape — hierarchy, not one radius everywhere */
+  --r-control: 999px; /* the shackle curve */
+  --r-frame: 10px; /* app windows and media */
+  --r-tag: 4px;
+
+  /* Motion tokens (mirrored in src/scripts/motion/tokens.ts) */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+
+  color-scheme: dark;
+}
+
+/* Dark ("Ink") is the signature theme and the default */
+:root,
+:root[data-theme='dark'] {
+  --bg: var(--c-ink);
+  --bg-raised: var(--c-ink-raised);
+  --bg-high: var(--c-ink-high);
+  --fg: var(--c-paper);
+  --fg-2: var(--c-paper-dim);
+  --fg-3: var(--c-paper-mute);
+  --rule: rgb(242 237 228 / 0.13);
+  --rule-strong: rgb(242 237 228 / 0.28);
+  --key: var(--c-brass); /* fills: primary buttons, the padlock, "available" */
+  --key-fg: #1a1300; /* text on brass */
+  --key-text: var(--c-brass); /* brass used as text */
+  --seal: var(--c-seal); /* locked state, wordmark */
+  --doc: #f6f2ea; /* illustrated PDF pages */
+  --doc-ink: #2a2622;
+  --lamp: rgb(242 184 41 / 0.13);
+  --shadow-object: 0 1px 0 rgb(255 255 255 / 0.06) inset, 0 40px 80px -30px rgb(0 0 0 / 0.85), 0 18px 30px -18px rgb(0 0 0 / 0.7);
+  --focus: var(--c-brass);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: var(--c-vellum);
+  --bg-raised: var(--c-vellum-raised);
+  --bg-high: #dcd9d2;
+  --fg: #15130f;
+  --fg-2: #46413a;
+  --fg-3: #645e55;
+  --rule: rgb(21 19 15 / 0.14);
+  --rule-strong: rgb(21 19 15 / 0.32);
+  --key: var(--c-brass);
+  --key-fg: #1a1300;
+  --key-text: var(--c-brass-deep);
+  --seal: var(--c-seal-deep);
+  --doc: #ffffff;
+  --doc-ink: #2a2622;
+  --lamp: rgb(242 184 41 / 0.22);
+  --shadow-object: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 40px 70px -34px rgb(40 30 10 / 0.45), 0 14px 24px -16px rgb(40 30 10 / 0.35);
+  --focus: #15130f;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: var(--c-vellum);
+    --bg-raised: var(--c-vellum-raised);
+    --bg-high: #dcd9d2;
+    --fg: #15130f;
+    --fg-2: #46413a;
+    --fg-3: #645e55;
+    --rule: rgb(21 19 15 / 0.14);
+    --rule-strong: rgb(21 19 15 / 0.32);
+    --key-text: var(--c-brass-deep);
+    --seal: var(--c-seal-deep);
+    --doc: #ffffff;
+    --lamp: rgb(242 184 41 / 0.22);
+    --shadow-object: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 40px 70px -34px rgb(40 30 10 / 0.45), 0 14px 24px -16px rgb(40 30 10 / 0.35);
+    --focus: #15130f;
+    color-scheme: light;
+  }
+}

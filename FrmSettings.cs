@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace PDFPass
         public FrmSettings()
         {
             InitializeComponent();
+            ApplyColors();
 
             // Update UI text from resources
             UpdateUiText();
@@ -23,6 +25,76 @@ namespace PDFPass
             // Subscribe to language change events
             LocalizationManager.LanguageChanged += (sender, e) => UpdateUiText();
         }
+
+        private void ApplyColors()
+        {
+            var foreground = ColorTranslator.FromHtml("#15130f");
+            var brassText = ColorTranslator.FromHtml("#7a5800");
+            BackColor = ColorTranslator.FromHtml("#f5f4f0");
+            ForeColor = foreground;
+
+            foreach (var group in new[] { groupBox1, groupBox2, groupBoxLanguage })
+            {
+                group.BackColor = ColorTranslator.FromHtml("#e8e6e1");
+                group.ForeColor = brassText;
+                foreach (Control control in group.Controls)
+                {
+                    if (control is Label or CheckBox)
+                        control.ForeColor = foreground;
+                    if (control is CheckBox checkBox)
+                        checkBox.Paint += CheckboxColors.PaintCheckedBox;
+                }
+            }
+
+            label4.ForeColor = brassText;
+            label6.ForeColor = brassText;
+            linkDonate.LinkColor = brassText;
+            linkDonate.VisitedLinkColor = brassText;
+            linkDonate.ActiveLinkColor = ColorTranslator.FromHtml("#b42e20");
+
+            foreach (var input in new[] { txtArguments, txtRun, txtOwnerPassword })
+            {
+                input.BackColor = Color.White;
+                input.ForeColor = foreground;
+                input.BorderStyle = BorderStyle.FixedSingle;
+                var focusLine = new Label
+                {
+                    BackColor = ColorTranslator.FromHtml("#8f887d"),
+                    AutoSize = false,
+                    Height = 2,
+                    Visible = false
+                };
+                input.Parent!.Controls.Add(focusLine);
+
+                void UpdateFocusLine()
+                {
+                    focusLine.SetBounds(input.Left, input.Bottom - focusLine.Height, input.Width, focusLine.Height);
+                    focusLine.Visible = input.Focused;
+                    focusLine.BringToFront();
+                }
+
+                input.GotFocus += (_, _) => UpdateFocusLine();
+                input.LostFocus += (_, _) => UpdateFocusLine();
+                input.LocationChanged += (_, _) => UpdateFocusLine();
+                input.SizeChanged += (_, _) => UpdateFocusLine();
+            }
+
+            foreach (var combo in new[] { cboEncryptionType, comboBoxLanguage })
+            {
+                combo.BackColor = Color.White;
+                combo.ForeColor = foreground;
+            }
+
+            foreach (var button in new[] { btnOK, btnCancel, btnRunBrowse })
+            {
+                button.UseVisualStyleBackColor = false;
+                button.BackColor = Color.White;
+                button.ForeColor = foreground;
+            }
+
+            btnOK.BackColor = ColorTranslator.FromHtml("#f2b829");
+        }
+
 
         private void UpdateUiText()
         {

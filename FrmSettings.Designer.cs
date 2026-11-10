@@ -1,4 +1,4 @@
-﻿namespace PDFPass
+namespace PDFPass
 {
 	partial class FrmSettings
 	{
@@ -31,8 +31,8 @@
 	        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSettings));
 	        label1 = new System.Windows.Forms.Label();
 	        dlgOpen = new System.Windows.Forms.OpenFileDialog();
-	        btnOK = new System.Windows.Forms.Button();
-	        btnCancel = new System.Windows.Forms.Button();
+	        btnOK = new RoundedButton();
+	        btnCancel = new RoundedButton();
 	        groupBox1 = new System.Windows.Forms.GroupBox();
 	        label6 = new System.Windows.Forms.Label();
 	        txtArguments = new System.Windows.Forms.TextBox();
@@ -40,7 +40,7 @@
 	        chkShowFolder = new System.Windows.Forms.CheckBox();
 	        chkCloseAfterCompletion = new System.Windows.Forms.CheckBox();
 	        chkConfirmationDialog = new System.Windows.Forms.CheckBox();
-	        btnRunBrowse = new System.Windows.Forms.Button();
+	        btnRunBrowse = new RoundedButton();
 	        txtRun = new System.Windows.Forms.TextBox();
 	        chkRun = new System.Windows.Forms.CheckBox();
 	        label5 = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
 	        label1.Name = "label1";
 	        label1.Size = new System.Drawing.Size(373, 15);
 	        label1.TabIndex = 1;
-	        label1.Text = "Copyright 2025. Licencované podľa AGPL.";
+	        label1.Text = "Copyright 2026. Licencované podľa AGPL.";
 	        label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 	        // 
 	        // dlgOpen

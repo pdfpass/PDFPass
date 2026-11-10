@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            btnOK = new System.Windows.Forms.Button();
-            btnCancel = new System.Windows.Forms.Button();
+            btnOK = new RoundedButton();
+            btnCancel = new RoundedButton();
             txtInput = new System.Windows.Forms.TextBox();
             lblPrompt = new System.Windows.Forms.TextBox();
-            btnClose = new System.Windows.Forms.Button();
-            btnDefaultOwnerPassword = new System.Windows.Forms.Button();
+            btnClose = new RoundedButton();
+            btnDefaultOwnerPassword = new RoundedButton();
             toolTipDefaultOwnerPassword = new System.Windows.Forms.ToolTip(components);
             SuspendLayout();
             // 

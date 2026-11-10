@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 using PDFPass.Resources;
 
@@ -16,12 +17,56 @@ namespace PDFPass
         public FrmInputBox()
         {
             InitializeComponent();
+            ApplyColors();
 
             // Update UI text from resources
             UpdateUiText();
 
             // Subscribe to language change events
             LocalizationManager.LanguageChanged += (_, _) => UpdateUiText();
+        }
+
+        private void ApplyColors()
+        {
+            var foreground = ColorTranslator.FromHtml("#15130f");
+            BackColor = ColorTranslator.FromHtml("#f5f4f0");
+            ForeColor = foreground;
+            lblPrompt.BackColor = BackColor;
+            lblPrompt.ForeColor = foreground;
+            txtInput.BackColor = Color.White;
+            txtInput.ForeColor = foreground;
+            txtInput.BorderStyle = BorderStyle.FixedSingle;
+
+            var focusLine = new Label
+            {
+                BackColor = ColorTranslator.FromHtml("#8f887d"),
+                AutoSize = false,
+                Height = 2,
+                Visible = false
+            };
+            txtInput.Parent!.Controls.Add(focusLine);
+
+            void UpdateFocusLine()
+            {
+                focusLine.SetBounds(txtInput.Left, txtInput.Bottom - focusLine.Height, txtInput.Width,
+                    focusLine.Height);
+                focusLine.Visible = txtInput.Focused;
+                focusLine.BringToFront();
+            }
+
+            txtInput.GotFocus += (_, _) => UpdateFocusLine();
+            txtInput.LostFocus += (_, _) => UpdateFocusLine();
+            txtInput.LocationChanged += (_, _) => UpdateFocusLine();
+            txtInput.SizeChanged += (_, _) => UpdateFocusLine();
+
+            foreach (var button in new[] { btnOK, btnCancel, btnClose, btnDefaultOwnerPassword })
+            {
+                button.UseVisualStyleBackColor = false;
+                button.BackColor = Color.White;
+                button.ForeColor = foreground;
+            }
+
+            btnOK.BackColor = ColorTranslator.FromHtml("#f2b829");
         }
 
         private void UpdateUiText()

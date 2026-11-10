@@ -37,28 +37,28 @@ namespace PDFPass
 	        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
 	        groupBox1 = new System.Windows.Forms.GroupBox();
 	        label4 = new System.Windows.Forms.Label();
-	        btnInputBrowse = new System.Windows.Forms.Button();
+	        btnInputBrowse = new RoundedButton();
 	        txtInputFile = new System.Windows.Forms.TextBox();
 	        groupBox2 = new System.Windows.Forms.GroupBox();
 	        label2 = new System.Windows.Forms.Label();
-	        btnOutputBrowse = new System.Windows.Forms.Button();
+	        btnOutputBrowse = new RoundedButton();
 	        txtOutputFile = new System.Windows.Forms.TextBox();
 	        groupBox3 = new System.Windows.Forms.GroupBox();
-	        btnChangePassword = new System.Windows.Forms.Button();
+	        btnChangePassword = new RoundedButton();
 	        lblOwnerPasswordSet = new System.Windows.Forms.Label();
 	        lblCopied = new System.Windows.Forms.Label();
 	        labelPassword = new System.Windows.Forms.Label();
-	        btnPasswordGenerate = new System.Windows.Forms.Button();
+	        btnPasswordGenerate = new RoundedButton();
 	        txtPassword = new System.Windows.Forms.TextBox();
 	        lblPasswordLength = new System.Windows.Forms.Label();
-	        btnPaste = new System.Windows.Forms.Button();
-	        btnCopy = new System.Windows.Forms.Button();
-	        btnDecrypt = new System.Windows.Forms.Button();
-	        btnEncrypt = new System.Windows.Forms.Button();
-	        btnClose = new System.Windows.Forms.Button();
+	        btnPaste = new RoundedButton();
+	        btnCopy = new RoundedButton();
+	        btnDecrypt = new RoundedButton();
+	        btnEncrypt = new RoundedButton();
+	        btnClose = new RoundedButton();
 	        dlgOpen = new System.Windows.Forms.OpenFileDialog();
 	        dlgSave = new System.Windows.Forms.SaveFileDialog();
-	        btnSettings = new System.Windows.Forms.Button();
+	        btnSettings = new RoundedButton();
 	        lblVersion = new System.Windows.Forms.Label();
 	        gbWatermark = new System.Windows.Forms.GroupBox();
 	        cmbWatermark = new System.Windows.Forms.ComboBox();
@@ -199,7 +199,7 @@ namespace PDFPass
 	        btnChangePassword.Location = new System.Drawing.Point(21, 102);
 	        btnChangePassword.Margin = new System.Windows.Forms.Padding(2);
 	        btnChangePassword.Name = "btnChangePassword";
-	        btnChangePassword.Size = new System.Drawing.Size(79, 32);
+	        btnChangePassword.Size = new System.Drawing.Size(87, 32);
 	        btnChangePassword.TabIndex = 17;
 	        btnChangePassword.Text = "Zmeniť";
 	        btnChangePassword.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -316,10 +316,10 @@ namespace PDFPass
 	        btnDecrypt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnDecrypt.Image = ((System.Drawing.Image)resources.GetObject("btnDecrypt.Image"));
 	        btnDecrypt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-	        btnDecrypt.Location = new System.Drawing.Point(429, 473);
+	        btnDecrypt.Location = new System.Drawing.Point(417, 473);
 	        btnDecrypt.Margin = new System.Windows.Forms.Padding(2);
 	        btnDecrypt.Name = "btnDecrypt";
-	        btnDecrypt.Size = new System.Drawing.Size(118, 37);
+	        btnDecrypt.Size = new System.Drawing.Size(130, 37);
 	        btnDecrypt.TabIndex = 17;
 	        btnDecrypt.Text = "Odhesluj";
 	        btnDecrypt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -330,10 +330,10 @@ namespace PDFPass
 	        // 
 	        btnEncrypt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnEncrypt.Image = ((System.Drawing.Image)resources.GetObject("btnEncrypt.Image"));
-	        btnEncrypt.Location = new System.Drawing.Point(429, 473);
+	        btnEncrypt.Location = new System.Drawing.Point(417, 473);
 	        btnEncrypt.Margin = new System.Windows.Forms.Padding(2);
 	        btnEncrypt.Name = "btnEncrypt";
-	        btnEncrypt.Size = new System.Drawing.Size(118, 37);
+	        btnEncrypt.Size = new System.Drawing.Size(130, 37);
 	        btnEncrypt.TabIndex = 14;
 	        btnEncrypt.Text = "Zahesluj";
 	        btnEncrypt.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -345,10 +345,10 @@ namespace PDFPass
 	        btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 	        btnClose.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        btnClose.Image = ((System.Drawing.Image)resources.GetObject("btnClose.Image"));
-	        btnClose.Location = new System.Drawing.Point(322, 473);
+	        btnClose.Location = new System.Drawing.Point(283, 473);
 	        btnClose.Margin = new System.Windows.Forms.Padding(2);
 	        btnClose.Name = "btnClose";
-	        btnClose.Size = new System.Drawing.Size(103, 37);
+	        btnClose.Size = new System.Drawing.Size(130, 37);
 	        btnClose.TabIndex = 15;
 	        btnClose.Text = "Zatvoriť";
 	        btnClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -452,7 +452,7 @@ namespace PDFPass
 	        pbLanguage.MouseHover += pictureBox1_MouseHover;
 	        // 
 	        // statusStrip
-	        //
+	        // 
 	        statusStrip.AutoSize = false;
 	        statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { statusLabel });
 	        statusStrip.Location = new System.Drawing.Point(0, 521);
@@ -460,15 +460,15 @@ namespace PDFPass
 	        statusStrip.Size = new System.Drawing.Size(561, 29);
 	        statusStrip.SizingGrip = false;
 	        statusStrip.TabIndex = 21;
-	        //
+	        // 
 	        // statusLabel
-	        //
+	        // 
 	        statusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
 	        statusLabel.Name = "statusLabel";
 	        statusLabel.Size = new System.Drawing.Size(546, 24);
 	        statusLabel.Spring = true;
 	        statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-	        //
+	        // 
 	        // FrmMain
 	        // 
 	        AcceptButton = btnEncrypt;

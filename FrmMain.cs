@@ -22,12 +22,81 @@ namespace PDFPass
         public FrmMain()
         {
             InitializeComponent();
+            ApplyColors();
 
             // Update UI with localized text
             UpdateUiText();
 
             // Subscribe to language change events
             LocalizationManager.LanguageChanged += (sender, e) => UpdateUiText();
+        }
+
+        private void ApplyColors()
+        {
+            var background = ColorTranslator.FromHtml("#f5f4f0");
+            var surface = ColorTranslator.FromHtml("#e8e6e1");
+            var foreground = ColorTranslator.FromHtml("#15130f");
+            var brass = ColorTranslator.FromHtml("#f2b829");
+            var brassText = ColorTranslator.FromHtml("#7a5800");
+
+            BackColor = background;
+            ForeColor = foreground;
+            foreach (var group in new[] { groupBox1, groupBox2, groupBox3, gbWatermark })
+            {
+                group.BackColor = surface;
+                group.ForeColor = brassText;
+            }
+
+            foreach (var label in new[] { label1, label2, label4, labelPassword })
+                label.ForeColor = foreground;
+            cbWatermark.ForeColor = foreground;
+            cbWatermark.Paint += CheckboxColors.PaintCheckedBox;
+            foreach (var input in new[] { txtInputFile, txtOutputFile, txtPassword })
+            {
+                input.BackColor = Color.White;
+                input.ForeColor = foreground;
+                input.BorderStyle = BorderStyle.FixedSingle;
+                var focusLine = new Label
+                {
+                    BackColor = ColorTranslator.FromHtml("#8f887d"),
+                    AutoSize = false,
+                    Height = 2,
+                    Visible = false
+                };
+                input.Parent!.Controls.Add(focusLine);
+
+                void UpdateFocusLine()
+                {
+                    focusLine.SetBounds(input.Left, input.Bottom - focusLine.Height, input.Width, focusLine.Height);
+                    focusLine.Visible = input.Focused;
+                    focusLine.BringToFront();
+                }
+
+                input.GotFocus += (_, _) => UpdateFocusLine();
+                input.LostFocus += (_, _) => UpdateFocusLine();
+                input.LocationChanged += (_, _) => UpdateFocusLine();
+                input.SizeChanged += (_, _) => UpdateFocusLine();
+            }
+
+            cmbWatermark.BackColor = Color.White;
+            cmbWatermark.ForeColor = foreground;
+            foreach (var button in new[]
+                     {
+                         btnInputBrowse, btnOutputBrowse, btnChangePassword, btnPasswordGenerate, btnPaste, btnCopy,
+                         btnClose, btnSettings, btnEncrypt, btnDecrypt
+                     })
+            {
+                button.UseVisualStyleBackColor = false;
+                button.BackColor = Color.White;
+                button.ForeColor = foreground;
+            }
+
+            btnEncrypt.BackColor = brass;
+            btnDecrypt.BackColor = brass;
+            lblCopied.ForeColor = brassText;
+            lblPasswordLength.ForeColor = brassText;
+            statusStrip.BackColor = surface;
+            statusStrip.ForeColor = foreground;
         }
 
         public void SetPresenter(MainPresenter presenter)
@@ -127,19 +196,19 @@ namespace PDFPass
             gbWatermark.Visible = !isInputEncrypted;
             Height = (isInputEncrypted ? 500 : 560) + statusStrip.Height;
             lblOwnerPasswordSet.ForeColor = IsNullOrEmpty(OwnerPassword)
-                ? Color.FromArgb(255, 153, 0)
-                : Color.FromArgb(0, 192, 192);
+                ? ColorTranslator.FromHtml("#b42e20")
+                : ColorTranslator.FromHtml("#7a5800");
             lblOwnerPasswordSet.Text = IsNullOrEmpty(OwnerPassword)
                 ? Strings.OwnerPasswordEmpty
                 : Strings.OwnerPasswordSet;
             if (isInputEncrypted)
             {
-                btnClose.Location = new Point(291, 413);
-                btnDecrypt.Location = new Point(409, 413);
+                btnClose.Location = new Point(btnEncrypt.Left - btnClose.Width - 4, 413);
+                btnDecrypt.Location = new Point(btnEncrypt.Left, 413);
             }
             else
             {
-                btnClose.Location = new Point(291, 473);
+                btnClose.Location = new Point(btnEncrypt.Left - btnClose.Width - 4, 473);
             }
         }
 
