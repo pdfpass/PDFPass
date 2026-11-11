@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             btnOK = new RoundedButton();
             btnCancel = new RoundedButton();
-            txtInput = new System.Windows.Forms.TextBox();
+            txtInput = new GreyOutlineTextBox();
             lblPrompt = new System.Windows.Forms.TextBox();
             btnClose = new RoundedButton();
             btnDefaultOwnerPassword = new RoundedButton();
