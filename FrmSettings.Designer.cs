@@ -35,18 +35,18 @@ namespace PDFPass
 	        btnCancel = new RoundedButton();
 	        groupBox1 = new System.Windows.Forms.GroupBox();
 	        label6 = new System.Windows.Forms.Label();
-	        txtArguments = new System.Windows.Forms.TextBox();
+	        txtArguments = new GreyOutlineTextBox();
 	        chkOpen = new System.Windows.Forms.CheckBox();
 	        chkShowFolder = new System.Windows.Forms.CheckBox();
 	        chkCloseAfterCompletion = new System.Windows.Forms.CheckBox();
 	        chkConfirmationDialog = new System.Windows.Forms.CheckBox();
 	        btnRunBrowse = new RoundedButton();
-	        txtRun = new System.Windows.Forms.TextBox();
+	        txtRun = new GreyOutlineTextBox();
 	        chkRun = new System.Windows.Forms.CheckBox();
 	        label5 = new System.Windows.Forms.Label();
 	        groupBox2 = new System.Windows.Forms.GroupBox();
 	        chkAlwaysDefaultOwnerPassword = new System.Windows.Forms.CheckBox();
-	        txtOwnerPassword = new System.Windows.Forms.TextBox();
+	        txtOwnerPassword = new GreyOutlineTextBox();
 	        label4 = new System.Windows.Forms.Label();
 	        chkDegradedPrinting = new System.Windows.Forms.CheckBox();
 	        chkAssembly = new System.Windows.Forms.CheckBox();
@@ -91,7 +91,7 @@ namespace PDFPass
 	        // btnOK
 	        // 
 	        btnOK.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        btnOK.Location = new System.Drawing.Point(428, 21);
+	        btnOK.Location = new System.Drawing.Point(484, 21);
 	        btnOK.Margin = new System.Windows.Forms.Padding(2);
 	        btnOK.Name = "btnOK";
 	        btnOK.Size = new System.Drawing.Size(85, 32);
@@ -104,7 +104,7 @@ namespace PDFPass
 	        // 
 	        btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 	        btnCancel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-	        btnCancel.Location = new System.Drawing.Point(428, 65);
+	        btnCancel.Location = new System.Drawing.Point(484, 65);
 	        btnCancel.Margin = new System.Windows.Forms.Padding(2);
 	        btnCancel.Name = "btnCancel";
 	        btnCancel.Size = new System.Drawing.Size(85, 32);
@@ -277,7 +277,7 @@ namespace PDFPass
 	        groupBox2.Margin = new System.Windows.Forms.Padding(2);
 	        groupBox2.Name = "groupBox2";
 	        groupBox2.Padding = new System.Windows.Forms.Padding(2);
-	        groupBox2.Size = new System.Drawing.Size(401, 301);
+	        groupBox2.Size = new System.Drawing.Size(457, 301);
 	        groupBox2.TabIndex = 16;
 	        groupBox2.TabStop = false;
 	        groupBox2.Text = " Možnosti šifrovania ";
@@ -301,7 +301,7 @@ namespace PDFPass
 	        txtOwnerPassword.MaxLength = 32;
 	        txtOwnerPassword.Name = "txtOwnerPassword";
 	        txtOwnerPassword.PlaceholderText = "(trvalé heslo vlastníka)";
-	        txtOwnerPassword.Size = new System.Drawing.Size(263, 23);
+	        txtOwnerPassword.Size = new System.Drawing.Size(319, 23);
 	        txtOwnerPassword.TabIndex = 28;
 	        // 
 	        // label4
@@ -312,7 +312,7 @@ namespace PDFPass
 	        label4.Location = new System.Drawing.Point(15, 170);
 	        label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 	        label4.Name = "label4";
-	        label4.Size = new System.Drawing.Size(374, 15);
+	        label4.Size = new System.Drawing.Size(430, 15);
 	        label4.TabIndex = 26;
 	        label4.Text = "Tieto oprávnenia niektoré PDF prehliadače ignorujú.";
 	        label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -321,7 +321,7 @@ namespace PDFPass
 	        // 
 	        chkDegradedPrinting.AutoSize = true;
 	        chkDegradedPrinting.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        chkDegradedPrinting.Location = new System.Drawing.Point(204, 73);
+	        chkDegradedPrinting.Location = new System.Drawing.Point(235, 73);
 	        chkDegradedPrinting.Margin = new System.Windows.Forms.Padding(2);
 	        chkDegradedPrinting.Name = "chkDegradedPrinting";
 	        chkDegradedPrinting.Size = new System.Drawing.Size(176, 19);
@@ -345,7 +345,7 @@ namespace PDFPass
 	        // 
 	        chkScreenreaders.AutoSize = true;
 	        chkScreenreaders.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        chkScreenreaders.Location = new System.Drawing.Point(204, 149);
+	        chkScreenreaders.Location = new System.Drawing.Point(235, 149);
 	        chkScreenreaders.Margin = new System.Windows.Forms.Padding(2);
 	        chkScreenreaders.Name = "chkScreenreaders";
 	        chkScreenreaders.Size = new System.Drawing.Size(188, 19);
@@ -357,7 +357,7 @@ namespace PDFPass
 	        // 
 	        chkForms.AutoSize = true;
 	        chkForms.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        chkForms.Location = new System.Drawing.Point(204, 123);
+	        chkForms.Location = new System.Drawing.Point(235, 123);
 	        chkForms.Margin = new System.Windows.Forms.Padding(2);
 	        chkForms.Name = "chkForms";
 	        chkForms.Size = new System.Drawing.Size(153, 19);
@@ -369,7 +369,7 @@ namespace PDFPass
 	        // 
 	        chkNotations.AutoSize = true;
 	        chkNotations.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        chkNotations.Location = new System.Drawing.Point(204, 98);
+	        chkNotations.Location = new System.Drawing.Point(235, 98);
 	        chkNotations.Margin = new System.Windows.Forms.Padding(2);
 	        chkNotations.Name = "chkNotations";
 	        chkNotations.Size = new System.Drawing.Size(155, 19);
@@ -428,7 +428,7 @@ namespace PDFPass
 	        // 
 	        chkEncryptMetadata.AutoSize = true;
 	        chkEncryptMetadata.Font = new System.Drawing.Font("Segoe UI", 9F);
-	        chkEncryptMetadata.Location = new System.Drawing.Point(203, 28);
+	        chkEncryptMetadata.Location = new System.Drawing.Point(235, 28);
 	        chkEncryptMetadata.Margin = new System.Windows.Forms.Padding(2);
 	        chkEncryptMetadata.Name = "chkEncryptMetadata";
 	        chkEncryptMetadata.Size = new System.Drawing.Size(132, 19);
@@ -445,7 +445,7 @@ namespace PDFPass
 	        cboEncryptionType.Location = new System.Drawing.Point(127, 206);
 	        cboEncryptionType.Margin = new System.Windows.Forms.Padding(2);
 	        cboEncryptionType.Name = "cboEncryptionType";
-	        cboEncryptionType.Size = new System.Drawing.Size(264, 23);
+	        cboEncryptionType.Size = new System.Drawing.Size(320, 23);
 	        cboEncryptionType.TabIndex = 14;
 	        // 
 	        // chkPasswordConfirmation
@@ -544,7 +544,7 @@ namespace PDFPass
 	        AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 	        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 	        CancelButton = btnCancel;
-	        ClientSize = new System.Drawing.Size(520, 651);
+	        ClientSize = new System.Drawing.Size(576, 651);
 	        Controls.Add(groupBoxLanguage);
 	        Controls.Add(linkDonate);
 	        Controls.Add(groupBox2);
@@ -554,6 +554,7 @@ namespace PDFPass
 	        Controls.Add(label1);
 	        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 	        Margin = new System.Windows.Forms.Padding(2);
+	        ShowInTaskbar = false;
 	        MaximizeBox = false;
 	        MinimizeBox = false;
 	        Text = "Nastavenia";

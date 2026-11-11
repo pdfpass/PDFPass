@@ -101,7 +101,7 @@ namespace PDFPass.MVP
         private void OnSettingsClick(object? sender, EventArgs e)
         {
             var settings = new FrmSettings();
-            settings.ShowDialog();
+            settings.ShowDialog(_view as System.Windows.Forms.IWin32Window);
             UpdateView();
         }
 
