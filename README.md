@@ -130,11 +130,11 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 # Licencia (sk)
 Aplikácia PDFPass a zdrojový kód sú licencované pod licenciou AGPL. Aplikáciu PDFPass môžete sťahovať, inštalovať, používať a šíriť voľne pod licenciou AGPL. Zdrojový kód PDFPass môžete sťahovať, upravovať, vytvárať fork a šíriť pod licenciou AGPL.
 
-Obmedzenia: Na označenie forkov tohto projektu nesmiete používať výraz "Official" alebo "Original" a pri forkoch musíte uviesť Gabriela Bossa (a.k.a. Java Guru) a PDFPass.net v rámci aplikácie a na akejkoľvek dokumentácii a/alebo súvisiacich webových stránkach.
+Obmedzenia: Na označenie forkov tohto projektu nesmiete používať výraz "Official" alebo "Original" a pri forkoch musíte uviesť Gabriela (a.k.a. Java Guru) a pdfpass.app v rámci aplikácie a na akejkoľvek dokumentácii a/alebo súvisiacich webových stránkach.
 
-Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel Boss a nie je licencovaná pod AGPL. Ak chcete vydať rozvetvenú verziu PDFPass, musíte ju premenovať, aby nedošlo k zámene s oficiálnou vetvou.
+Značka "PDFPass" je ochranná známka spoločnosti PDFPass/Gabriel a nie je licencovaná pod AGPL. Ak chcete vydať rozvetvenú verziu PDFPass, musíte ju premenovať, aby nedošlo k zámene s oficiálnou vetvou.
 
-Logo PDFPass je ochranná známka spoločnosti PDFPass/Gabriel Boss, na ktorú sa vzťahujú autorské práva a ktorá nie je licencovaná pod AGPL. Ak tento projekt forknete, musíte si vytvoriť vlastné logo, ktoré sa podstatne líši od oficiálneho loga, aby nedošlo k zámene vášho loga s oficiálnou/pôvodnou verziou.
+Logo PDFPass je ochranná známka spoločnosti PDFPass/Gabriel, na ktorú sa vzťahujú autorské práva a ktorá nie je licencovaná pod AGPL. Ak tento projekt forknete, musíte si vytvoriť vlastné logo, ktoré sa podstatne líši od oficiálneho loga, aby nedošlo k zámene vášho loga s oficiálnou/pôvodnou verziou.
 
 <br><br><br>
 
@@ -269,11 +269,11 @@ You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere
 
 The PDFPass application and source code are licensed under the AGPL.  You may download, install, use, and distribute the PDFPass application freely under the AGPL.  You may download, modify, fork, and distribute the PDFPass source code under the AGPL.
 
-Restrictions: you may not use the term "Official" or "Original" to designate forks of this project, and forks must credit Gabriel Boss (Java Guru) and PDFPass.net both within the application and on any documentation and/or related websites.
+Restrictions: you may not use the term "Official" or "Original" to designate forks of this project, and forks must credit Gabriel (Java Guru) and pdfpass.app both within the application and on any documentation and/or related websites.
 
-**The "PDFPass" brand is a trademark of PDFPass/Gabriel Boss and is not licensed under the AGPL.  If you wish to release a forked version of PDFPass, you must rename it to avoid confusion with the official branch.**
+**The "PDFPass" brand is a trademark of PDFPass/Gabriel and is not licensed under the AGPL.  If you wish to release a forked version of PDFPass, you must rename it to avoid confusion with the official branch.**
 
-**The PDFPass Logo is a trademark of, and copyrighted by, PDFPass/Gabriel Boss and is not licensed under the AGPL. If you fork this project, you must create your own logo which is materially different from the official logo, to avoid confusion between yours and the official/original version.**
+**The PDFPass Logo is a trademark of, and copyrighted by, PDFPass/Gabriel and is not licensed under the AGPL. If you fork this project, you must create your own logo which is materially different from the official logo, to avoid confusion between yours and the official/original version.**
 ```
 
 
