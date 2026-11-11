@@ -41,10 +41,12 @@ namespace PDFPass
 
             BackColor = background;
             ForeColor = foreground;
+            var legendFont = CreateLegendFont();
             foreach (var group in new[] { groupBox1, groupBox2, groupBox3, gbWatermark })
             {
                 group.BackColor = surface;
                 group.ForeColor = brassText;
+                group.Font = legendFont;
             }
 
             foreach (var label in new[] { label1, label2, label4, labelPassword })
@@ -58,7 +60,7 @@ namespace PDFPass
                 input.BorderStyle = BorderStyle.FixedSingle;
                 var focusLine = new Label
                 {
-                    BackColor = ColorTranslator.FromHtml("#8f887d"),
+                    BackColor = brass,
                     AutoSize = false,
                     Height = 2,
                     Visible = false
@@ -97,6 +99,19 @@ namespace PDFPass
             lblPasswordLength.ForeColor = brassText;
             statusStrip.BackColor = surface;
             statusStrip.ForeColor = foreground;
+        }
+
+        internal static Font CreateLegendFont(float emSize = 9.75f)
+        {
+            foreach (var name in new[] { "Martian Mono Variable", "Martian Mono", "Cascadia Mono", "Consolas" })
+            {
+                var family = Array.Find(FontFamily.Families,
+                    f => string.Equals(f.Name, name, StringComparison.OrdinalIgnoreCase));
+                if (family != null && family.IsStyleAvailable(FontStyle.Regular))
+                    return new Font(family, emSize, FontStyle.Regular);
+            }
+
+            return new Font(FontFamily.GenericMonospace, emSize, FontStyle.Regular);
         }
 
         public void SetPresenter(MainPresenter presenter)
@@ -244,10 +259,10 @@ namespace PDFPass
             SetStatus(Strings.StatusReady);
 
             // Update group boxes
-            groupBox1.Text = Strings.InputFile;
-            groupBox2.Text = Strings.OutputFile;
-            groupBox3.Text = Strings.Passwords;
-            gbWatermark.Text = Strings.Watermark;
+            groupBox1.Text = Strings.InputFile.ToUpper();
+            groupBox2.Text = Strings.OutputFile.ToUpper();
+            groupBox3.Text = Strings.Passwords.ToUpper();
+            gbWatermark.Text = Strings.Watermark.ToUpper();
 
             // Update labels
             label1.Text = Strings.Text;

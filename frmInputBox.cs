@@ -39,7 +39,7 @@ namespace PDFPass
 
             var focusLine = new Label
             {
-                BackColor = ColorTranslator.FromHtml("#8f887d"),
+                BackColor = ColorTranslator.FromHtml("#f2b829"),
                 AutoSize = false,
                 Height = 2,
                 Visible = false

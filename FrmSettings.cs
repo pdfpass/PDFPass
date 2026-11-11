@@ -33,10 +33,12 @@ namespace PDFPass
             BackColor = ColorTranslator.FromHtml("#f5f4f0");
             ForeColor = foreground;
 
+            var legendFont = FrmMain.CreateLegendFont();
             foreach (var group in new[] { groupBox1, groupBox2, groupBoxLanguage })
             {
                 group.BackColor = ColorTranslator.FromHtml("#e8e6e1");
                 group.ForeColor = brassText;
+                group.Font = legendFont;
                 foreach (Control control in group.Controls)
                 {
                     if (control is Label or CheckBox)
@@ -59,7 +61,7 @@ namespace PDFPass
                 input.BorderStyle = BorderStyle.FixedSingle;
                 var focusLine = new Label
                 {
-                    BackColor = ColorTranslator.FromHtml("#8f887d"),
+                    BackColor = ColorTranslator.FromHtml("#f2b829"),
                     AutoSize = false,
                     Height = 2,
                     Visible = false
@@ -117,9 +119,9 @@ namespace PDFPass
             btnRunBrowse.Text = "..."; // This is not a text to localize
 
             // Update group boxes
-            groupBox1.Text = Strings.AfterSuccessfulEncryption;
-            groupBox2.Text = Strings.EncryptionOptions;
-            groupBoxLanguage.Text = Strings.LanguageTitle;
+            groupBox1.Text = Strings.AfterSuccessfulEncryption.ToUpper();
+            groupBox2.Text = Strings.EncryptionOptions.ToUpper();
+            groupBoxLanguage.Text = Strings.LanguageTitle.ToUpper();
 
             // Update checkboxes
             chkOpen.Text = Strings.OpenOutputFile;
