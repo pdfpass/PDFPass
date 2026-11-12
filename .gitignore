@@ -342,4 +342,5 @@ healthchecksdb
 /.codex/config.toml
 /website/
 /.claude/
+/.kilo/
 /skills-lock.json
