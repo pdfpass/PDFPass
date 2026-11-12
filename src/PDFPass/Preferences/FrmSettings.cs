@@ -5,9 +5,12 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using PDFPass.Controls;
+using PDFPass.Localization;
+using PDFPass.Main;
 using PDFPass.Resources;
 
-namespace PDFPass
+namespace PDFPass.Preferences
 {
     public partial class FrmSettings : Form
     {

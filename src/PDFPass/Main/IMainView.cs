@@ -1,6 +1,6 @@
 using System;
 
-namespace PDFPass.MVP
+namespace PDFPass.Main
 {
     public interface IMainView
     {

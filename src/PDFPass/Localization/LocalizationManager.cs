@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Resources;
 using System.Threading;
 
-namespace PDFPass
+namespace PDFPass.Localization
 {
     /// <summary>
     /// Provides centralized access to localized resources

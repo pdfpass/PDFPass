@@ -6,32 +6,35 @@ conventions used here.
 ## Project Structure & Module Organization
 
 - `PDFPass.sln`: Solution entry point.
-- `PDFPass.csproj`: Main project (WinForms, `net8.0-windows`).
-- `Program.cs`, `Frm*.cs`, `*.Designer.cs`, `Properties/`: Application code and forms.
-- `assets/`: Sample PDFs and fixtures (keep small, anonymized).
-- `scripts/`: Helper scripts for local tasks (optional).
+- `src/PDFPass/PDFPass.csproj`: Main WinForms project (`net8.0-windows7.0`).
+- `src/PDFPass/Program.cs`: Application entry point (`PDFPass`) and `src/PDFPass/lock.ico`.
+- `src/PDFPass/Main/`, `Input/`, `Preferences/`, `Pdf/`, `Controls/`, `Localization/`: Feature/responsibility folders with matching `PDFPass.<Feature>` namespaces.
+- `src/PDFPass/Properties/` and `src/PDFPass/Resources/`: Assembly/project metadata and localized resources. Keep `PDFPass.Properties` and `PDFPass.Resources` identities unchanged; `AssemblyInfo.cs` remains namespace-free with `GenerateAssemblyInfo=false`.
+- `cmds/`, `pdfpasss-inno.iss`, `others/`: Portable helper scripts, Inno Setup script, and bundled release materials.
 - `bin/`, `obj/`, `out/`: Build outputs (ignored by Git).
 
 ## Build, Test, and Development Commands
 
-- Restore: `dotnet restore`
-- Build: `dotnet build -c Release`
-- Run (GUI): `dotnet run` (or `dotnet run --project PDFPass.csproj`)
-- Publish: `dotnet publish -c Release -r win-x64 --self-contained false -o out`
-- Tests: xUnit referenced, but no test project found. See Testing section to add one.
+- Restore: `dotnet restore PDFPass.sln`
+- Build: `dotnet build PDFPass.sln -c Debug` or `dotnet build PDFPass.sln -c Release`
+- Run (GUI): `dotnet run --project src/PDFPass/PDFPass.csproj`
+- Publish (CI-aligned): `dotnet publish src/PDFPass/PDFPass.csproj -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\Release\"`
+- Publish (framework-dependent local output): `dotnet publish src/PDFPass/PDFPass.csproj -c Release -r win-x64 --self-contained false -o out`
+- Tests: No test project or test/coverage packages are currently present.
 
 ## Coding Style & Naming Conventions
 
 - C# 12, 4-space indent, file-scoped namespaces, nullable enabled.
+- Organize application code under `src/PDFPass/<Feature>` with matching `PDFPass.<Feature>` namespaces, except `Properties` and `Resources` resource identities and namespace-free `Properties/AssemblyInfo.cs`.
 - Names: types/properties/methods use PascalCase; fields/local variables camelCase; constants UPPER_SNAKE_CASE.
 - Async methods end with `Async`. Prefer `readonly`/`record` where appropriate.
-- Analyzers: enable .NET analyzers; treat warnings as errors. Format with `dotnet format`.
+- Analyzers: .NET analyzers are enabled (`EnableNETAnalyzers=true`, `AnalysisLevel=latest`); `TreatWarningsAsErrors` is currently `false` in `src/PDFPass/PDFPass.csproj`. Format with `dotnet format` when explicitly formatting.
 
 ## Testing Guidelines
 
-- Framework: xUnit (project `tests/PDFPass.Tests`).
-- Run tests: `dotnet test -c Release` (from repo root).
-- Coverage: enabled via `coverlet.collector`. Generate coverage:
+- Future convention: place unit tests in `tests/PDFPass.Tests` (for example with xUnit and `coverlet.collector`) and add the project to `PDFPass.sln`.
+- Once added, run tests from repo root with `dotnet test PDFPass.sln -c Release`.
+- Optional coverage once configured:
   `dotnet test -c Release --collect:"XPlat Code Coverage"`.
 - Reports: use `reportgenerator` (optional) to convert to HTML.
 

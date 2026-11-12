@@ -1,9 +1,7 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using PDFPass.Controls;
 
-namespace PDFPass
+namespace PDFPass.Main
 {
 	partial class FrmMain
 	{

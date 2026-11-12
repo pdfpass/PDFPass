@@ -1,4 +1,4 @@
-namespace PDFPass
+namespace PDFPass.Pdf
 {
     public class ProcessResult
     {

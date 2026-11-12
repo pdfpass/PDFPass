@@ -1,4 +1,6 @@
-namespace PDFPass
+using PDFPass.Controls;
+
+namespace PDFPass.Preferences
 {
 	partial class FrmSettings
 	{

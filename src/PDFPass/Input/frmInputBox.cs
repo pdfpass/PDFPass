@@ -1,9 +1,11 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using PDFPass.Localization;
+using PDFPass.Preferences;
 using PDFPass.Resources;
 
-namespace PDFPass
+namespace PDFPass.Input
 {
     public partial class FrmInputBox : Form
     {

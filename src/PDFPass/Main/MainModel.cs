@@ -1,4 +1,4 @@
-namespace PDFPass.MVP
+namespace PDFPass.Main
 {
     public class MainModel
     {

@@ -9,22 +9,68 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      release_Version: '2026.11.1'
     steps:
       - uses: actions/checkout@v7
+      - name: Validate release inputs
+        shell: pwsh
+        run: |
+          $requiredFiles = @(
+            'src\PDFPass\PDFPass.csproj'
+            'src\PDFPass\Properties\AssemblyInfo.cs'
+            'src\PDFPass\lock.ico'
+            'pdfpasss-inno.iss'
+            'LICENSE'
+            'cmds\kontextove-menu-ako-admin-zaregistruj.cmd'
+            'cmds\kontextove-menu-ako-admin-odregistruj.cmd'
+            'cmds\pridaj-odkaz-na-plochu.cmd'
+            'others\Prečítať pred spustením inštalátora.pdf'
+          )
+          foreach ($file in $requiredFiles) {
+            if (!(Test-Path -LiteralPath $file -PathType Leaf) -or (Get-Item -LiteralPath $file).Length -eq 0) {
+              throw "Missing or empty release input: $file"
+            }
+          }
+
+          if ($env:release_Version -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') {
+            throw 'Missing or malformed configured release version.'
+          }
+          $assemblyVersions = [regex]::Matches(
+            (Get-Content -LiteralPath 'src\PDFPass\Properties\AssemblyInfo.cs' -Raw),
+            '(?m)^\s*\[assembly:\s*AssemblyVersion\("([^"]+)"\)\s*\]\s*$')
+          $installerVersions = [regex]::Matches(
+            (Get-Content -LiteralPath 'pdfpasss-inno.iss' -Raw),
+            '(?m)^\s*#define\s+MyAppVersion\s+"([^"]+)"\s*$')
+          foreach ($source in @(
+            @{ Name = 'AssemblyVersion'; Values = $assemblyVersions }
+            @{ Name = 'MyAppVersion'; Values = $installerVersions }
+          )) {
+            if ($source.Values.Count -ne 1 -or $source.Values[0].Groups[1].Value -cne $env:release_Version) {
+              throw "$($source.Name) is missing, malformed, or does not match release version $env:release_Version."
+            }
+          }
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 8.0.x
       - name: Restore dependencies
-        run: dotnet restore
-      - name: Set release version
-        run: echo "release_Version=2026.11.1" | Out-File -FilePath $env:GITHUB_ENV -Append -Encoding utf8
-        shell: pwsh
-      - name: Build
-        run: dotnet publish -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "bin\Release\"
+        run: dotnet restore src\PDFPass\PDFPass.csproj
+      - name: Publish
+        run: dotnet publish src\PDFPass\PDFPass.csproj -r win-x86 -c Release -p:DebugType=none --self-contained true /p:PublishSingleFile=true /p:IncludeNativeLibrariesForSelfExtract=true -o "${{ github.workspace }}\bin\Release\"
+      - name: Validate published executable
+        run: |
+          $exe = 'bin\Release\PDFPass.exe'
+          if (!(Test-Path -LiteralPath $exe -PathType Leaf) -or (Get-Item -LiteralPath $exe).Length -eq 0) {
+            throw "Missing or empty published executable: $exe"
+          }
       - name: Upload Artifact
         uses: actions/upload-artifact@v7
         with:
@@ -34,6 +80,7 @@ jobs:
       - name: Set up Inno Setup
         run: |
           choco upgrade innosetup -y
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup installation failed with exit code $LASTEXITCODE." }
       - name: Create Release Folder (zip)
         run: New-Item -ItemType Directory -Force -Path release-zip\pdfpass-portable
       - name: Create Setup Folder (installer)
@@ -49,13 +96,11 @@ jobs:
       - name: Build installer with Inno Setup
         run: |
           & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" pdfpasss-inno.iss
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup compilation failed with exit code $LASTEXITCODE." }
       - name: List Output InnoSetup Directory
         run: |
           dir release-inno
-      - name: Create GitHub Release
-        if: github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Stage release assets
         run: |
           New-Item -ItemType Directory -Force -Path release-assets
           Copy-Item "release-zip\PDFPass-portable.zip" release-assets\PDFPass-portable.zip
@@ -67,7 +112,89 @@ jobs:
             "release-assets\PDFPass-installer.exe"
             "release-assets\PDFPass-installer-inštrukcie.pdf"
           )
+          foreach ($asset in $assets) {
+            if (!(Test-Path -LiteralPath $asset -PathType Leaf) -or (Get-Item -LiteralPath $asset).Length -eq 0) {
+              throw "Missing or empty release asset: $asset"
+            }
+          }
+      - name: Upload release assets
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-assets
+          path: release-assets\*
+          if-no-files-found: error
+      - name: Publish GitHub release if absent
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          Set-StrictMode -Version Latest
+          $ErrorActionPreference = 'Stop'
 
-          gh release create $env:release_Version $assets `
-            --title "Release $env:release_Version" `
+          function Get-GitHubItems([string] $endpoint) {
+            $response = gh api $endpoint --paginate --slurp
+            if ($LASTEXITCODE -ne 0) { throw "GitHub API query failed: $endpoint (exit $LASTEXITCODE)." }
+            $pages = $response -join "`n" | ConvertFrom-Json -NoEnumerate -ErrorAction Stop
+            if ($pages -isnot [array]) { throw "Expected a paginated JSON array from $endpoint." }
+            foreach ($page in $pages) {
+              if ($page -isnot [array]) { throw "Expected a JSON array page from $endpoint." }
+              foreach ($item in $page) { $item }
+            }
+          }
+
+          $repo = $env:GITHUB_REPOSITORY
+          $version = $env:release_Version
+          $releases = @(Get-GitHubItems "repos/$repo/releases?per_page=100")
+          $existing = @($releases | Where-Object {
+            if ($_.tag_name -isnot [string] -or [string]::IsNullOrWhiteSpace($_.tag_name)) {
+              throw 'Invalid release tag name in GitHub response.'
+            }
+            $_.tag_name -ceq $version
+          })
+          if ($existing.Count -gt 1) { throw "Multiple releases found for $version; maintainer review required." }
+          if ($existing.Count -eq 1) {
+            $release = $existing[0]
+            if ($release.draft -isnot [bool]) { throw 'Invalid release draft state in GitHub response.' }
+            if ($release.html_url -isnot [string] -or [string]::IsNullOrWhiteSpace($release.html_url)) {
+              throw 'Invalid release URL in GitHub response.'
+            }
+            if ($release.draft) {
+              throw "Release $version is a draft ($($release.html_url)); maintainer review required. No changes made."
+            }
+            $notice = "Release $version already exists: $($release.html_url). This run's artifacts were built but not published. The existing release and assets were left unchanged."
+            Write-Host $notice
+            Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Value $notice -Encoding utf8
+            exit 0
+          }
+
+          $tags = @(Get-GitHubItems "repos/$repo/git/matching-refs/tags/$version")
+          $existingTag = @($tags | Where-Object {
+            if ($_.ref -isnot [string] -or [string]::IsNullOrWhiteSpace($_.ref)) {
+              throw 'Invalid tag ref in GitHub response.'
+            }
+            $_.ref -ceq "refs/tags/$version"
+          })
+          if ($existingTag.Count -gt 1) { throw "Multiple tag refs found for $version." }
+          if ($existingTag.Count -eq 1) {
+            $target = $existingTag[0].object
+            while ($target.type -ceq 'tag') {
+              $response = gh api "repos/$repo/git/tags/$($target.sha)"
+              if ($LASTEXITCODE -ne 0) { throw "Could not resolve annotated tag $version (exit $LASTEXITCODE)." }
+              $tag = $response -join "`n" | ConvertFrom-Json -ErrorAction Stop
+              $target = $tag.object
+            }
+            if ($target.type -cne 'commit' -or $target.sha -cne $env:GITHUB_SHA) {
+              throw "Tag $version does not resolve to run commit $env:GITHUB_SHA. Refusing to move it or publish."
+            }
+          }
+
+          $assets = @(
+            'release-assets\PDFPass-portable.zip'
+            'release-assets\PDFPass-installer.exe'
+            'release-assets\PDFPass-installer-inštrukcie.pdf'
+          )
+          gh release create $version $assets --repo $repo --target $env:GITHUB_SHA `
+            --title "Release $version" `
             --notes ""
+          if ($LASTEXITCODE -ne 0) { throw "Release creation or asset upload failed (exit $LASTEXITCODE). Inspect any draft before retrying." }

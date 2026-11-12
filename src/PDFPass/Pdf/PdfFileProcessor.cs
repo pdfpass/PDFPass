@@ -2,9 +2,10 @@ using System;
 using System.IO;
 using System.Text;
 using iText.Kernel.Pdf;
+using PDFPass.Preferences;
 using PDFPass.Resources;
 
-namespace PDFPass
+namespace PDFPass.Pdf
 {
     public class PdfFileProcessor
     {

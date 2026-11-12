@@ -1,3 +1,5 @@
+using PDFPass.Localization;
+
 namespace PDFPass.Resources
 {
     /// <summary>

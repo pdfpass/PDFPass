@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using iText.Kernel.Pdf;
 using Microsoft.Win32;
+using PDFPass.Pdf;
 
 // Registry access
 
 
-namespace PDFPass
+namespace PDFPass.Preferences
 {
     public static class Settings
     {

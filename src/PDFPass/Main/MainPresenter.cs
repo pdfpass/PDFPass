@@ -3,10 +3,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using iText.Kernel.Pdf;
+using PDFPass.Pdf;
+using PDFPass.Preferences;
 using PDFPass.Resources;
 using static System.String;
 
-namespace PDFPass.MVP
+namespace PDFPass.Main
 {
     public class MainPresenter
     {

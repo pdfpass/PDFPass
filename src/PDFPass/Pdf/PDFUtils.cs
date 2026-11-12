@@ -12,7 +12,7 @@ using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 
-namespace PDFPass;
+namespace PDFPass.Pdf;
 
 public abstract class PdfUtils
 {

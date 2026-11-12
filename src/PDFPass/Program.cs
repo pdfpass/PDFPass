@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using CommandLine;
-using PDFPass.MVP;
+using PDFPass.Localization;
+using PDFPass.Main;
+using PDFPass.Preferences;
 using PDFPass.Resources;
 
 namespace PDFPass

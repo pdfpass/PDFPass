@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace PDFPass;
+namespace PDFPass.Controls;
 
 // Flat #d3d3d3 outline from the input-box reference.
 // The reference photo is skewed, so the outline is a uniform 1px frame.

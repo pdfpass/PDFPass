@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace PDFPass
+namespace PDFPass.Localization
 {
     public static class LanguageHelper
     {

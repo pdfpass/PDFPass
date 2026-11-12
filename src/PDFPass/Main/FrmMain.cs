@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using PDFPass.MVP;
+using PDFPass.Controls;
+using PDFPass.Input;
+using PDFPass.Localization;
 using PDFPass.Resources;
 using static System.Environment;
 using static System.String;
@@ -13,7 +15,7 @@ using Clipboard = System.Windows.Forms.Clipboard;
 using MessageBox = System.Windows.Forms.MessageBox;
 using Point = System.Drawing.Point;
 
-namespace PDFPass
+namespace PDFPass.Main
 {
     public partial class FrmMain : Form, IMainView
     {
