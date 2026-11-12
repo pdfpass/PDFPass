@@ -2,7 +2,9 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "PDFPass
-#define MyAppVersion "2026.11.1"
+#ifndef MyAppVersion
+  #error MyAppVersion must be supplied via /DMyAppVersion from AssemblyInfo.cs.
+#endif
 #define MyAppPublisher "PDFPass"
 #define MyAppURL "https://github.com/pdfpass/"
 #define MyAppExeName "PDFPass.exe"
