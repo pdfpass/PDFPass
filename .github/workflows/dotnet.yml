@@ -3,14 +3,12 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 permissions: {}
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -114,12 +112,23 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "Inno Setup installation failed: $LASTEXITCODE" }
           $compiler = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
           if (!(Test-Path -LiteralPath $compiler -PathType Leaf)) { throw "Compiler not found: $compiler" }
-          $info = (Get-Item -LiteralPath $compiler).VersionInfo
-          if ($info.FileMajorPart -ne 6 -or $info.FileMinorPart -ne 7 -or $info.FileBuildPart -ne 1) {
-            throw "Unexpected Inno Setup compiler version: $($info.FileVersion) at $compiler"
-          }
-          Write-Host "Inno Setup compiler: $compiler ($($info.FileVersion))"
-          "INNO_VERSION=$($info.FileVersion)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          # ISCC.exe file metadata can be 0.0.0.0; query the running compiler instead.
+          $probe = @'
+          #if Ver != EncodeVer(6, 7, 1, 0)
+            #error Unexpected Inno Setup compiler version; expected 6.7.1.
+          #endif
+          #pragma message "Inno Setup compiler version: " + DecodeVer(Ver)
+          [Setup]
+          AppName=PDFPass compiler validation
+          AppVersion=1.0
+          CreateAppDir=no
+          Uninstallable=no
+          Output=no
+          '@
+          $probe | & $compiler '-'
+          if ($LASTEXITCODE -ne 0) { throw "Inno Setup compiler validation failed at $compiler (exit $LASTEXITCODE)." }
+          Write-Host "Validated Inno Setup 6.7.1 at $compiler"
+          'INNO_VERSION=6.7.1' | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
       - name: Package and validate release assets
         shell: pwsh
         run: |
