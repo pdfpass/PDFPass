@@ -9,6 +9,8 @@ Kontakt: **pdf.pass@outlook.com**
 
 ## Súbor na stiahnutie 💾
 Aktuálny ```PDFPass-portable.zip``` alebo ```PDFPass-install.exe``` nájdete tu: [stiahnuť](https://github.com/pdfpass/PDFPass/releases/latest)
+
+Nové balíky po migrácii používajú .NET 10 a sú iba pre x64; samostatná inštalácia runtime nie je potrebná. Windows 7/8 nie sú podporované. Používajte podporovaný Windows 11 alebo servisovanú edíciu Windows 10 podporovanú platformou .NET 10. Staré x86 vydania sú historické, nie udržiavaná alternatíva. Migrácia sa zverejní až po manuálnom overení a samostatnom zvýšení verzie.
 <br>
 <br>
 
@@ -112,7 +114,7 @@ Súbor ```PDFPass-portable.zip``` stačí rozbaliť a umiestniť kdekoľvek. Ná
 
 # Zmeny oproti pôvodnej verzii 🔄
 
-* prechod na aktuálnu platformu z .NET 4.7 ➔ .NET 8
+* prechod na aktuálnu platformu z .NET 4.7 ➔ .NET 10
 * preklad do slovenčiny 🇸🇰
 * upgrade knižnice na prácu s PDF (iText7 v8.x). Pôvodná verzia (iText7 v7.x) obsahovala zraniteľnosť. Viac na: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
 * vizuálne vylepšenia
@@ -249,7 +251,7 @@ You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere
 
 # Changes from the original version 🔄
 
-* Transition to the current platform from .NET 4.7 ➔ .NET 8
+* Transition to the current platform from .NET 4.7 ➔ .NET 10
 * Translation to Slovak 🇸🇰
 * Upgrade of the PDF processing library (iText7 v8.x). The original version (iText7 v7.x) contained a vulnerability. More at: https://devhub.checkmarx.com/cve-details/CVE-2023-6299/
 * Visual improvements
@@ -265,6 +267,33 @@ You only need to unzip the ```PDFPass-portable.zip``` file and place it anywhere
 * Dedicated website ⏳
 
 
+## Development And Releases
+
+The application targets .NET 10 LTS (`net10.0-windows`). Install the exact SDK pinned in `global.json` (currently `10.0.404`); preview SDKs and automatic roll-forward are disabled. New portable and installer packages are **x64-only**, self-contained, and do not require a separately installed .NET runtime. Use supported Windows 11 or a serviced Windows 10 edition supported by .NET 10. The installer's Windows 10 build 14393 minimum is a runtime floor, not a guarantee that every Windows 10 edition remains supported. Windows 7/8 are unsupported. Historical x86 releases remain downloadable but are not a maintained fallback. Native ARM64 packages are not provided.
+
+```powershell
+dotnet restore PDFPass.sln --locked-mode
+dotnet build PDFPass.sln -c Debug --no-restore
+dotnet run --project src/PDFPass/PDFPass.csproj
+```
+
+For CI-equivalent self-contained publishing, restore with the same properties before publishing without a second restore:
+
+```powershell
+dotnet restore src/PDFPass/PDFPass.csproj -r win-x64 --locked-mode -p:SelfContained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+dotnet publish src/PDFPass/PDFPass.csproj -r win-x64 -c Release --self-contained true -p:DebugType=none -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --no-restore -o bin/Release
+```
+
+Keep `src/PDFPass/packages.lock.json` committed. Regenerate it intentionally with these restore properties and `--force-evaluate` when dependencies change. There is no executable application unit-test project; package checks do not demonstrate PDF/GUI coverage.
+
+Pull requests validate the full publish, portable ZIP contents/bytes, apphost architecture/version, and Inno installer. The complete `release-assets` artifact is retained for 14 days and includes `SHA256SUMS.txt`. After a successful `master` push, the version in `src/PDFPass/Properties/AssemblyInfo.cs` alone controls automatic publication. Already published versions are skipped unchanged. New releases are created as drafts, verified, and only then published as latest. A failed draft requires maintainer review and explicitly authorized cleanup before retrying; published assets and tags must never be replaced or moved. Checksums verify integrity, not signing or publisher identity.
+
+Migration rollout must not bump the existing `2026.13.0` version. Download a PR artifact and manually validate portable/installed launch on clean Windows VMs without a separate runtime, PDF operations, drag/drop, password paste, language/settings persistence, Unicode/spaced paths, shortcuts/context menu, upgrade and uninstall. Preserve existing HKCU preferences and owner password; do not run registration/uninstall scripts on the developer's main machine. Only after acceptance should a separate AssemblyVersion bump trigger the first .NET 10/x64 public release, with migration information in its release notes. Untested platforms must be reported as untested.
+
+Dependabot proposes weekly grouped Actions and NuGet updates without auto-merge; SDK and Inno pins need explicit maintenance review. PR supersession cancels obsolete runs, but master runs do not cancel in progress. Concurrency is not a durable queue for every intermediate push, so complete one master version-bump run before the next. Maintainers should review the required `build` check and default token permissions without silently adding a new approval policy.
+
+Before rollout, revoke/rotate any PAT previously embedded in a local remote URL, use credential-free HTTPS with an approved credential manager, and restrict/redact retained output. Workflow publication uses only the short-lived `GITHUB_TOKEN`, never a PAT.
+
 # License (en)
 
 The PDFPass application and source code are licensed under the AGPL.  You may download, install, use, and distribute the PDFPass application freely under the AGPL.  You may download, modify, fork, and distribute the PDFPass source code under the AGPL.
@@ -275,6 +304,4 @@ Restrictions: you may not use the term "Official" or "Original" to designate for
 
 **The PDFPass Logo is a trademark of, and copyrighted by, PDFPass/Gabriel and is not licensed under the AGPL. If you fork this project, you must create your own logo which is materially different from the official logo, to avoid confusion between yours and the official/original version.**
 ```
-
-
 

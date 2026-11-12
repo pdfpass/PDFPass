@@ -17,6 +17,7 @@
 AppId={{AD7A8390-4530-40FA-9F3D-55225C2928BB}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
+VersionInfoVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
@@ -26,6 +27,8 @@ DefaultDirName={autopf}\{#MyAppName}
 ; "ArchitecturesAllowed=x64compatible" specifies that Setup cannot run
 ; on anything but x64 and Windows 11 on Arm.
 ArchitecturesAllowed=x64compatible
+; Runtime floor only; supported Windows editions must still be serviced.
+MinVersion=10.0.14393
 ; "ArchitecturesInstallIn64BitMode=x64compatible" requests that the
 ; install be done in "64-bit mode" on x64 or Windows 11 on Arm,
 ; meaning it should use the native 64-bit Program Files directory and
