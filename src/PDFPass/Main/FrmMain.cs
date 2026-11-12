@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -123,38 +124,45 @@ namespace PDFPass.Main
 
         #region Properties
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string InputFile
         {
             get => txtInputFile.Text;
             set => txtInputFile.Text = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string OutputFile
         {
             get => txtOutputFile.Text;
             set => txtOutputFile.Text = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string UserPassword
         {
             get => txtPassword.Text;
             set => txtPassword.Text = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string? OwnerPassword { get; set; }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool WatermarkEnabled
         {
             get => cbWatermark.Checked;
             set => cbWatermark.Checked = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string WatermarkText
         {
             get => cmbWatermark.Text;
             set => cmbWatermark.Text = value;
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool EncryptOnStart { get; set; }
 
         #endregion
@@ -403,24 +411,21 @@ namespace PDFPass.Main
 
         private void FrmMain_DragDrop(object? sender, DragEventArgs e)
         {
-            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data is ITypedDataObject data &&
+                data.TryGetData(DataFormats.FileDrop, out string[]? files) &&
+                files is { Length: > 0 })
             {
-                var data = e.Data.GetData(DataFormats.FileDrop);
-                var files = data as string[];
-                if (files != null && files.Length > 0)
-                {
-                    InputFile = files[0];
-                    InputFileChanged?.Invoke(this, EventArgs.Empty);
-                }
+                InputFile = files[0];
+                InputFileChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
         private void FrmMain_DragEnter(object? sender, DragEventArgs e)
         {
-            if (e.Data != null && e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data is ITypedDataObject data &&
+                data.TryGetData(DataFormats.FileDrop, out string[]? files) &&
+                files is not null)
             {
-                var data = e.Data.GetData(DataFormats.FileDrop);
-                var files = data as string[] ?? Array.Empty<string>();
                 if (files.Length == 1 && Path.GetExtension(files[0]).Equals(".pdf", StringComparison.OrdinalIgnoreCase))
                 {
                     e.Effect = DragDropEffects.Copy; // Allow dropping the file

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0-windows7.0</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
         <DefineConstants>WINDOWS</DefineConstants>
         <TargetOS>windows</TargetOS>
         <OutputType>WinExe</OutputType>
@@ -10,7 +10,9 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <AnalysisLevel>latest</AnalysisLevel>
         <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+        <PublishSingleFile>true</PublishSingleFile>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationIcon>lock.ico</ApplicationIcon>
