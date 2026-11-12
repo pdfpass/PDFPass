@@ -205,6 +205,9 @@ jobs:
     runs-on: windows-2025
     permissions:
       contents: write
+    outputs:
+      # 'true' only when this run published a new release; drives notify-website.
+      published: ${{ steps.publish.outputs.published }}
     steps:
       - name: Download this run's release assets
         uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
@@ -212,6 +215,7 @@ jobs:
           name: release-assets
           path: release-assets
       - name: Publish verified release
+        id: publish
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
@@ -291,6 +295,7 @@ jobs:
               $message = "Release $version already exists: $($release.html_url). This run's artifacts were not published; the release and tag were left untouched."
               Write-Host $message
               $message | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+              'published=false' | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
               exit 0
             }
             $target = Get-TagTarget $repo $version
@@ -336,6 +341,7 @@ jobs:
             $message = "Published release $version for commit $sha as latest: $($published.html_url)."
             Write-Host $message
             $message | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+            'published=true' | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
           } catch {
             $message = "Release $version for commit $sha failed: $($_.Exception.Message)"
             if (!$draftUrl -and $draftAttempted) {
@@ -350,3 +356,39 @@ jobs:
             $message | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
             throw
           }
+
+  # Tells pdfpass-web to sync its release metadata (src/data/release.json) and deploy.
+  # Runs only when publish-release published a new release. If it fails, the release
+  # is still published; pdfpass-web's daily release-sync run catches up.
+  # Needs an org GitHub App installed on pdfpass-web only (Contents: read and write):
+  # variable WEBSITE_SYNC_APP_CLIENT_ID and secret WEBSITE_SYNC_APP_PRIVATE_KEY.
+  notify-website:
+    needs: [build, publish-release]
+    if: needs.publish-release.outputs.published == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Create pdfpass-web token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.WEBSITE_SYNC_APP_CLIENT_ID }}
+          private-key: ${{ secrets.WEBSITE_SYNC_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: pdfpass-web
+          permission-contents: write
+      - name: Send repository_dispatch to pdfpass-web
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          OWNER: ${{ github.repository_owner }}
+          RELEASE_VERSION: ${{ needs.build.outputs.version }}
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          [[ "${RELEASE_VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?$ ]] || { echo "::error::Invalid version ${RELEASE_VERSION}"; exit 1; }
+          gh api --method POST "repos/${OWNER}/pdfpass-web/dispatches" \
+            -f event_type=app-release-published \
+            -f "client_payload[tag]=${RELEASE_VERSION}" \
+            -f "client_payload[sha]=${RELEASE_SHA}"
+          echo "Notified ${OWNER}/pdfpass-web of release ${RELEASE_VERSION}." >> "${GITHUB_STEP_SUMMARY}"
