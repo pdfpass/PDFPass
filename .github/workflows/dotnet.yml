@@ -16,8 +16,6 @@ concurrency:
 jobs:
   build:
     runs-on: windows-latest
-    env:
-      release_Version: '2026.11.1'
     steps:
       - uses: actions/checkout@v7
       - name: Validate release inputs
@@ -40,23 +38,17 @@ jobs:
             }
           }
 
-          if ($env:release_Version -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') {
-            throw 'Missing or malformed configured release version.'
-          }
           $assemblyVersions = [regex]::Matches(
             (Get-Content -LiteralPath 'src\PDFPass\Properties\AssemblyInfo.cs' -Raw),
             '(?m)^\s*\[assembly:\s*AssemblyVersion\("([^"]+)"\)\s*\]\s*$')
-          $installerVersions = [regex]::Matches(
-            (Get-Content -LiteralPath 'pdfpasss-inno.iss' -Raw),
-            '(?m)^\s*#define\s+MyAppVersion\s+"([^"]+)"\s*$')
-          foreach ($source in @(
-            @{ Name = 'AssemblyVersion'; Values = $assemblyVersions }
-            @{ Name = 'MyAppVersion'; Values = $installerVersions }
-          )) {
-            if ($source.Values.Count -ne 1 -or $source.Values[0].Groups[1].Value -cne $env:release_Version) {
-              throw "$($source.Name) is missing, malformed, or does not match release version $env:release_Version."
-            }
+          if ($assemblyVersions.Count -ne 1) {
+            throw 'Expected exactly one AssemblyVersion in AssemblyInfo.cs.'
           }
+          $version = $assemblyVersions[0].Groups[1].Value
+          if ($version -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') {
+            throw "Missing or malformed AssemblyVersion: $version."
+          }
+          Add-Content -LiteralPath $env:GITHUB_ENV -Value "release_Version=$version" -Encoding utf8
       - name: Setup .NET
         uses: actions/setup-dotnet@v6
         with:
@@ -95,7 +87,7 @@ jobs:
         run: Compress-Archive -Path release-zip\* -DestinationPath release-zip\PDFPass-portable.zip
       - name: Build installer with Inno Setup
         run: |
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" pdfpasss-inno.iss
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" "/DMyAppVersion=$env:release_Version" pdfpasss-inno.iss
           if ($LASTEXITCODE -ne 0) { throw "Inno Setup compilation failed with exit code $LASTEXITCODE." }
       - name: List Output InnoSetup Directory
         run: |
