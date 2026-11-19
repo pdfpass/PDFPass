@@ -16,30 +16,30 @@
       },
       "itext": {
         "type": "Direct",
-        "requested": "[9.8.0, )",
-        "resolved": "9.8.0",
-        "contentHash": "p98MrglyOP5SQdY2rkK65R9IjRtaVE37UT/FptQTmsO8HPKAYZgWbGrMcGlxKL/b9rdHA6htSsAdf80N9KPLdA==",
+        "requested": "[9.8.1.1, )",
+        "resolved": "9.8.1.1",
+        "contentHash": "zAclba5cwCdmth/mEFj6qULohPEFgWJw4P41nTd3cJXkQnFLtbfk2DZOGZeWDIdpcx/2aHpew/0/Tvpe+5xkdA==",
         "dependencies": {
           "Microsoft.DotNet.PlatformAbstractions": "1.1.0",
           "Microsoft.Extensions.DependencyModel": "10.0.2",
-          "itext.commons": "9.8.0"
+          "itext.commons": "9.8.1.1"
         }
       },
       "itext.bouncy-castle-adapter": {
         "type": "Direct",
-        "requested": "[9.8.0, )",
-        "resolved": "9.8.0",
-        "contentHash": "3NBR1CByr6gwWSwYgEpT5zaCi3Xd1fZF/qPt1IfemX2LAh76IPH5mtV/C1YYe4g4eSCKx7I5WeAocOpTlDOW7w==",
+        "requested": "[9.8.1.1, )",
+        "resolved": "9.8.1.1",
+        "contentHash": "BpUU7vG3/hk+bD0AtVICB5q92G/9wWtnWttwK2yWkfd43+SJefrL8haHOupIFYX6YzmWwhILlf4axb9eHEzmLQ==",
         "dependencies": {
           "BouncyCastle.Cryptography": "2.7.0",
-          "itext.commons": "9.8.0"
+          "itext.commons": "9.8.1.1"
         }
       },
       "itext.commons": {
         "type": "Direct",
-        "requested": "[9.8.0, )",
-        "resolved": "9.8.0",
-        "contentHash": "0rzuGfScGe9pZScX5d4GpNijZV/KgjDWNF4pFsYqj3NNi7MVF5Q2ftNpIuQicDJybapIbnN6/piVqnWJ4DC2HQ==",
+        "requested": "[9.8.1.1, )",
+        "resolved": "9.8.1.1",
+        "contentHash": "Xv67fDZUH/DNgiIcQSI69svxLjcJjfE46OrGivIRO9q9JToZyvxVZVzAaKPrLVpuBuTRhPEte9dxQRCsVrKf2A==",
         "dependencies": {
           "Microsoft.Extensions.Logging": "5.0.0"
         }
@@ -110,6 +110,7 @@
         "contentHash": "cI/VWn9G1fghXrNDagX9nYaaB/nokkZn0HYAawGaELQrl8InSezfe9OnfPZLcJq3esXxygh3hkq2c3qoV3SDyQ=="
       }
     },
+    "net10.0-windows7.0/linux-x64": {},
     "net10.0-windows7.0/win-x64": {}
   }
 }
