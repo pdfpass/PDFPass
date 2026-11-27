@@ -4,10 +4,7 @@ using System.Text;
 using iText.IO.Font;
 using iText.Kernel.Exceptions;
 using iText.Kernel.Font;
-using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas;
-using iText.Kernel.Pdf.Extgstate;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
@@ -93,21 +90,7 @@ public abstract class PdfUtils
     {
         using var reader = new PdfReader(inputFileName);
         using var writer = new PdfWriter(outputFileName, writerProperties);
-        using var pdfDocument = new PdfDocument(reader, writer);
-        using var document = new Document(pdfDocument);
-
-
-        if (!string.IsNullOrEmpty(watermarkText))
-        {
-            var paragraph = createWatermarkParagraph(watermarkText);
-            var transparentGraphicState = new PdfExtGState().SetFillOpacity(0.2f);
-            for (var i = 1; i <= document.GetPdfDocument().GetNumberOfPages(); i++)
-            {
-                addWatermarkToExistingPage(document, i, paragraph, transparentGraphicState, 0f);
-            }
-        }
-
-        // using statements ensure proper disposal/close
+        StampPdf(reader, writer, watermarkText);
     }
 
     public static void WriteDecryptedPdf(string inputFileName, string outputFileName, string readPassword)
@@ -116,8 +99,51 @@ public abstract class PdfUtils
         var passwordBytes = Encoding.UTF8.GetBytes(readPassword);
         readerProps.SetPassword(passwordBytes);
 
-        using var pdfReader = new PdfReader(inputFileName, readerProps);
-        using var pdfDocument = new PdfDocument(pdfReader, new PdfWriter(outputFileName));
+        using var reader = new PdfReader(inputFileName, readerProps);
+        using var writer = new PdfWriter(outputFileName);
+        StampPdf(reader, writer);
+    }
+
+    public static void WriteFromUnencryptedPdf(string inputFileName, Stream output, WriterProperties writerProperties,
+        string? watermarkText)
+    {
+        using var reader = new PdfReader(inputFileName);
+        using var writer = new PdfWriter(output, writerProperties);
+        StampPdf(reader, writer, watermarkText, requireEncrypted: false);
+    }
+
+    public static void WriteDecryptedPdf(string inputFileName, Stream output, string password)
+    {
+        using var reader = new PdfReader(inputFileName, new ReaderProperties().SetPassword(Encoding.UTF8.GetBytes(password)));
+        using var writer = new PdfWriter(output);
+        StampPdf(reader, writer, requireEncrypted: true);
+    }
+
+    private static void StampPdf(PdfReader reader, PdfWriter writer, string? watermarkText = null,
+        bool? requireEncrypted = null)
+    {
+        // iText's stamping constructor checks IsOpenedWithFullPermission before writing.
+        using var document = new PdfDocument(reader, writer);
+        if (requireEncrypted == true && !reader.IsEncrypted())
+        {
+            throw new PdfInputException("The input PDF is unencrypted. Provide an encrypted PDF to decrypt.");
+        }
+
+        if (requireEncrypted == false && reader.IsEncrypted())
+        {
+            throw new PdfInputException("The input PDF is encrypted. Decrypt it before encrypting or watermarking it.");
+        }
+
+        if (!string.IsNullOrEmpty(watermarkText))
+        {
+            var fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
+            var font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H,
+                PdfFontFactory.EmbeddingStrategy.FORCE_EMBEDDED);
+            for (var i = 1; i <= document.GetNumberOfPages(); i++)
+            {
+                AddWatermark(document.GetPage(i), font, watermarkText);
+            }
+        }
     }
 
     public static string GenerateRandomPassword(int pwLengthMin, int pwLengthMax)
@@ -136,38 +162,22 @@ public abstract class PdfUtils
         return result;
     }
 
-    private static void addWatermarkToExistingPage(Document document, int pageIndex,
-        Paragraph paragraph, PdfExtGState graphicState, float verticalOffset)
+    private static void AddWatermark(PdfPage page, PdfFont font, string watermark)
     {
-        var pdfDocument = document.GetPdfDocument();
-        var pdfPage = pdfDocument.GetPage(pageIndex);
-        var pageSize = (PageSize)pdfPage.GetPageSizeWithRotation();
+        var pageSize = page.GetPageSizeWithRotation();
         var x = (pageSize.GetLeft() + pageSize.GetRight()) / 2.5f;
         var y = (pageSize.GetTop() + pageSize.GetBottom()) / 2f;
-
-        var over = new PdfCanvas(pdfDocument.GetPage(pageIndex));
-        over.SaveState();
-        over.SetExtGState(graphicState);
-        var xOffset = 14 / 2;
-        var rotationInRadians = (float)(Double.Pi / 180 * 45f);
-
-        document.ShowTextAligned(paragraph, x - xOffset, y + verticalOffset,
-            pageIndex, TextAlignment.CENTER, VerticalAlignment.TOP, rotationInRadians);
-        document.Flush();
-        over.RestoreState();
-        over.Release();
-    }
-
-    private static Paragraph createWatermarkParagraph(String watermark)
-    {
-        var fontPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
-        var font = PdfFontFactory.CreateFont(fontPath, PdfEncodings.IDENTITY_H,
-            PdfFontFactory.EmbeddingStrategy.FORCE_EMBEDDED);
         var text = new Text(watermark);
         text.SetFont(font);
         text.SetFontSize(150);
         text.SetOpacity(0.2f);
 
-        return new Paragraph(text);
+        page.SetIgnorePageRotationForContent(true);
+        var canvas = new Canvas(page, pageSize);
+        canvas.ShowTextAligned(new Paragraph(text), x - 7, y, page.GetDocument().GetPageNumber(page),
+            TextAlignment.CENTER, VerticalAlignment.TOP, MathF.PI / 4f);
+        canvas.Close();
     }
 }
+
+public sealed class PdfInputException(string message) : Exception(message);

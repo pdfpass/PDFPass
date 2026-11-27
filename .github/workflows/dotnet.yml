@@ -32,6 +32,12 @@ jobs:
             'src\PDFPass\packages.lock.json'
             'src\PDFPass\Properties\AssemblyInfo.cs'
             'src\PDFPass\lock.ico'
+            'src\PDFPass.Cli\PDFPass.Cli.csproj'
+            'src\PDFPass.Cli\packages.lock.json'
+            'src\PDFPass.Core\PDFPass.Core.csproj'
+            'src\PDFPass.Core\packages.lock.json'
+            'tests\PDFPass.Tests\PDFPass.Tests.csproj'
+            'tests\PDFPass.Tests\packages.lock.json'
             'pdfpasss-inno.iss'
             'LICENSE'
             'cmds\kontextove-menu-ako-admin-zaregistruj.cmd'
@@ -63,19 +69,27 @@ jobs:
         with:
           global-json-file: global.json
           cache: true
-          cache-dependency-path: src/PDFPass/packages.lock.json
+          cache-dependency-path: |
+            src/PDFPass/packages.lock.json
+            src/PDFPass.Cli/packages.lock.json
+            src/PDFPass.Core/packages.lock.json
+            tests/PDFPass.Tests/packages.lock.json
       - name: Restore dependencies
         shell: pwsh
         run: |
           dotnet --info
           if ($LASTEXITCODE -ne 0) { throw 'dotnet --info failed.' }
           dotnet restore src\PDFPass\PDFPass.csproj --locked-mode -r win-x64 -p:SelfContained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
-          if ($LASTEXITCODE -ne 0) { throw "Locked restore failed: $LASTEXITCODE" }
+          if ($LASTEXITCODE -ne 0) { throw "Locked GUI restore failed: $LASTEXITCODE" }
+          dotnet restore src\PDFPass.Cli\PDFPass.Cli.csproj --locked-mode -r win-x64 -p:SelfContained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
+          if ($LASTEXITCODE -ne 0) { throw "Locked CLI restore failed: $LASTEXITCODE" }
       - name: Publish
         shell: pwsh
         run: |
           dotnet publish src\PDFPass\PDFPass.csproj --no-restore -r win-x64 -c Release -p:DebugType=none -p:SelfContained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o bin\Release
-          if ($LASTEXITCODE -ne 0) { throw "Publish failed: $LASTEXITCODE" }
+          if ($LASTEXITCODE -ne 0) { throw "GUI publish failed: $LASTEXITCODE" }
+          dotnet publish src\PDFPass.Cli\PDFPass.Cli.csproj --no-restore -r win-x64 -c Release -p:DebugType=none -p:SelfContained=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o bin\Release\cli
+          if ($LASTEXITCODE -ne 0) { throw "CLI publish failed: $LASTEXITCODE" }
       - name: Validate published executable
         shell: pwsh
         run: |
@@ -104,6 +118,15 @@ jobs:
               throw 'Apphost is not an AMD64 PE executable.'
             }
           } finally { $reader.Dispose() }
+      - name: Test the published CLI
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $env:PDFPASSC_EXE = (Resolve-Path -LiteralPath 'bin\Release\cli\pdfpassc.exe').Path
+          dotnet restore tests\PDFPass.Tests\PDFPass.Tests.csproj --locked-mode
+          if ($LASTEXITCODE -ne 0) { throw "Locked integration test restore failed: $LASTEXITCODE" }
+          dotnet test tests\PDFPass.Tests\PDFPass.Tests.csproj -c Release --no-restore
+          if ($LASTEXITCODE -ne 0) { throw "Published CLI integration tests failed: $LASTEXITCODE" }
       - name: Set up Inno Setup
         shell: pwsh
         run: |
@@ -137,6 +160,7 @@ jobs:
           New-Item -ItemType Directory -Force -Path $portable, 'release-inno', 'release-assets' | Out-Null
           $files = @{
             'PDFPass.exe' = 'bin\Release\PDFPass.exe'
+            'pdfpassc.exe' = 'bin\Release\cli\pdfpassc.exe'
             'kontextove-menu-ako-admin-zaregistruj.cmd' = 'cmds\kontextove-menu-ako-admin-zaregistruj.cmd'
             'kontextove-menu-ako-admin-odregistruj.cmd' = 'cmds\kontextove-menu-ako-admin-odregistruj.cmd'
             'pridaj-odkaz-na-plochu.cmd' = 'cmds\pridaj-odkaz-na-plochu.cmd'
@@ -195,6 +219,7 @@ jobs:
           - Version: ``$env:RELEASE_VERSION``
           - SDK: ``$sdk``; RID: ``win-x64``; Inno Setup: ``$env:INNO_VERSION``
           - Managed assembly, AMD64 apphost, installer, ZIP entries and hashes validated.
+          - CLI integration tests passed against the published ``pdfpassc.exe``.
           - Artifact: ``release-assets`` (this run, retained 14 days).
           - Push concurrency is not a durable queue; bump versions in discrete completed master runs.
           "@ | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
