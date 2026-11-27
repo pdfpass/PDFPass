@@ -57,6 +57,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "release-zip\pdfpass-portable\kontextove-menu-ako-admin-odregistruj.cmd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "release-zip\pdfpass-portable\kontextove-menu-ako-admin-zaregistruj.cmd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "release-zip\pdfpass-portable\PDFPass.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "release-zip\pdfpass-portable\pdfpassc.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "release-zip\pdfpass-portable\pridaj-odkaz-na-plochu.cmd"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 

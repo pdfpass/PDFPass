@@ -2,47 +2,11 @@
   "version": 1,
   "dependencies": {
     "net10.0-windows7.0": {
-      "BouncyCastle.Cryptography": {
-        "type": "Direct",
-        "requested": "[2.7.0, )",
-        "resolved": "2.7.0",
-        "contentHash": "U+12df8UEWHgBi04YVf/Lgi2dy3SItlIYvHjjEVa/BngCQIzDCDRBk50DDByCfDvSbe5pRNFr3b7UrVK2kMcLw=="
-      },
       "CommandLineParser": {
         "type": "Direct",
         "requested": "[2.9.1, )",
         "resolved": "2.9.1",
         "contentHash": "OE0sl1/sQ37bjVsPKKtwQlWDgqaxWgtme3xZz7JssWUzg5JpMIyHgCTY9MVMxOg48fJ1AgGT3tgdH5m/kQ5xhA=="
-      },
-      "itext": {
-        "type": "Direct",
-        "requested": "[9.8.1.1, )",
-        "resolved": "9.8.1.1",
-        "contentHash": "zAclba5cwCdmth/mEFj6qULohPEFgWJw4P41nTd3cJXkQnFLtbfk2DZOGZeWDIdpcx/2aHpew/0/Tvpe+5xkdA==",
-        "dependencies": {
-          "Microsoft.DotNet.PlatformAbstractions": "1.1.0",
-          "Microsoft.Extensions.DependencyModel": "10.0.2",
-          "itext.commons": "9.8.1.1"
-        }
-      },
-      "itext.bouncy-castle-adapter": {
-        "type": "Direct",
-        "requested": "[9.8.1.1, )",
-        "resolved": "9.8.1.1",
-        "contentHash": "BpUU7vG3/hk+bD0AtVICB5q92G/9wWtnWttwK2yWkfd43+SJefrL8haHOupIFYX6YzmWwhILlf4axb9eHEzmLQ==",
-        "dependencies": {
-          "BouncyCastle.Cryptography": "2.7.0",
-          "itext.commons": "9.8.1.1"
-        }
-      },
-      "itext.commons": {
-        "type": "Direct",
-        "requested": "[9.8.1.1, )",
-        "resolved": "9.8.1.1",
-        "contentHash": "Xv67fDZUH/DNgiIcQSI69svxLjcJjfE46OrGivIRO9q9JToZyvxVZVzAaKPrLVpuBuTRhPEte9dxQRCsVrKf2A==",
-        "dependencies": {
-          "Microsoft.Extensions.Logging": "5.0.0"
-        }
       },
       "Microsoft.NET.ILLink.Tasks": {
         "type": "Direct",
@@ -55,6 +19,38 @@
         "requested": "[13.0.4, )",
         "resolved": "13.0.4",
         "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+      },
+      "BouncyCastle.Cryptography": {
+        "type": "Transitive",
+        "resolved": "2.7.0",
+        "contentHash": "U+12df8UEWHgBi04YVf/Lgi2dy3SItlIYvHjjEVa/BngCQIzDCDRBk50DDByCfDvSbe5pRNFr3b7UrVK2kMcLw=="
+      },
+      "itext": {
+        "type": "Transitive",
+        "resolved": "9.8.1.1",
+        "contentHash": "zAclba5cwCdmth/mEFj6qULohPEFgWJw4P41nTd3cJXkQnFLtbfk2DZOGZeWDIdpcx/2aHpew/0/Tvpe+5xkdA==",
+        "dependencies": {
+          "Microsoft.DotNet.PlatformAbstractions": "1.1.0",
+          "Microsoft.Extensions.DependencyModel": "10.0.2",
+          "itext.commons": "9.8.1.1"
+        }
+      },
+      "itext.bouncy-castle-adapter": {
+        "type": "Transitive",
+        "resolved": "9.8.1.1",
+        "contentHash": "BpUU7vG3/hk+bD0AtVICB5q92G/9wWtnWttwK2yWkfd43+SJefrL8haHOupIFYX6YzmWwhILlf4axb9eHEzmLQ==",
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.7.0",
+          "itext.commons": "9.8.1.1"
+        }
+      },
+      "itext.commons": {
+        "type": "Transitive",
+        "resolved": "9.8.1.1",
+        "contentHash": "Xv67fDZUH/DNgiIcQSI69svxLjcJjfE46OrGivIRO9q9JToZyvxVZVzAaKPrLVpuBuTRhPEte9dxQRCsVrKf2A==",
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "5.0.0"
+        }
       },
       "Microsoft.DotNet.PlatformAbstractions": {
         "type": "Transitive",
@@ -108,6 +104,13 @@
         "type": "Transitive",
         "resolved": "5.0.0",
         "contentHash": "cI/VWn9G1fghXrNDagX9nYaaB/nokkZn0HYAawGaELQrl8InSezfe9OnfPZLcJq3esXxygh3hkq2c3qoV3SDyQ=="
+      },
+      "pdfpass.core": {
+        "type": "Project",
+        "dependencies": {
+          "itext": "[9.8.1.1, )",
+          "itext.bouncy-castle-adapter": "[9.8.1.1, )"
+        }
       }
     },
     "net10.0-windows7.0/win-x64": {}

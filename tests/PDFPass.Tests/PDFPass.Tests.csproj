@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <IsPackable>false</IsPackable>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="itext" Version="9.8.1.1"/>
+        <PackageReference Include="itext.bouncy-castle-adapter" Version="9.8.1.1"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0"/>
+        <PackageReference Include="xunit" Version="2.9.3"/>
+        <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all"/>
+        <ProjectReference Include="../../src/PDFPass.Cli/PDFPass.Cli.csproj" ReferenceOutputAssembly="false"/>
+    </ItemGroup>
+</Project>
