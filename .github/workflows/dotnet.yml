@@ -40,8 +40,8 @@ jobs:
             'tests\PDFPass.Tests\packages.lock.json'
             'pdfpasss-inno.iss'
             'LICENSE'
-            'cmds\kontextove-menu-ako-admin-zaregistruj.cmd'
-            'cmds\kontextove-menu-ako-admin-odregistruj.cmd'
+            'cmds\kontextove-menu-zaregistruj.cmd'
+            'cmds\kontextove-menu-odregistruj.cmd'
             'cmds\pridaj-odkaz-na-plochu.cmd'
             'others\Prečítať pred spustením inštalátora.pdf'
           )
@@ -161,8 +161,8 @@ jobs:
           $files = @{
             'PDFPass.exe' = 'bin\Release\PDFPass.exe'
             'pdfpassc.exe' = 'bin\Release\cli\pdfpassc.exe'
-            'kontextove-menu-ako-admin-zaregistruj.cmd' = 'cmds\kontextove-menu-ako-admin-zaregistruj.cmd'
-            'kontextove-menu-ako-admin-odregistruj.cmd' = 'cmds\kontextove-menu-ako-admin-odregistruj.cmd'
+            'kontextove-menu-zaregistruj.cmd' = 'cmds\kontextove-menu-zaregistruj.cmd'
+            'kontextove-menu-odregistruj.cmd' = 'cmds\kontextove-menu-odregistruj.cmd'
             'pridaj-odkaz-na-plochu.cmd' = 'cmds\pridaj-odkaz-na-plochu.cmd'
           }
           foreach ($name in $files.Keys) { Copy-Item -LiteralPath $files[$name] -Destination (Join-Path $portable $name) }

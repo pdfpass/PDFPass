@@ -8,8 +8,8 @@
 #define MyAppPublisher "PDFPass"
 #define MyAppURL "https://github.com/pdfpass/"
 #define MyAppExeName "PDFPass.exe"
-#define RegMenu "kontextove-menu-ako-admin-zaregistruj.cmd"
-#define UnRegMenu "kontextove-menu-ako-admin-odregistruj.cmd"
+#define RegMenu "kontextove-menu-zaregistruj.cmd"
+#define UnRegMenu "kontextove-menu-odregistruj.cmd"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -43,7 +43,7 @@ SetupIconFile=src\PDFPass\lock.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
-PrivilegesRequired=admin
+PrivilegesRequired=lowest
 
 
 
@@ -54,8 +54,8 @@ Name: "slovak"; MessagesFile: "compiler:Languages\Slovak.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "release-zip\pdfpass-portable\kontextove-menu-ako-admin-odregistruj.cmd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release-zip\pdfpass-portable\kontextove-menu-ako-admin-zaregistruj.cmd"; DestDir: "{app}"; Flags: ignoreversion
+Source: "release-zip\pdfpass-portable\{#UnRegMenu}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "release-zip\pdfpass-portable\{#RegMenu}"; DestDir: "{app}"; Flags: ignoreversion
 Source: "release-zip\pdfpass-portable\PDFPass.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "release-zip\pdfpass-portable\pdfpassc.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "release-zip\pdfpass-portable\pridaj-odkaz-na-plochu.cmd"; DestDir: "{app}"; Flags: ignoreversion
@@ -66,8 +66,8 @@ Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#RegMenu}"; Description: "Zaregistruj kontextove menu -> Otvor v PDFPass";  Flags: runhidden runascurrentuser nowait postinstall skipifsilent
+Filename: "{app}\{#RegMenu}"; Description: "Zaregistruj kontextove menu -> Otvor v PDFPass"; Flags: runhidden postinstall skipifsilent
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [UninstallRun]
-Filename: "{app}\{#UnRegMenu}"; Flags: runhidden runascurrentuser
+Filename: "{app}\{#UnRegMenu}"; RunOnceId: "UnregisterPdfMenu"; Flags: runhidden
