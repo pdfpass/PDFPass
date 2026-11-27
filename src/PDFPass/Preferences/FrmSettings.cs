@@ -270,7 +270,7 @@ namespace PDFPass.Preferences
 
         private void linkDonate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            OpenWebSite("https://www.paypal.com/donate/?hosted_button_id=5G336LA7YBMXQ");
+            OpenWebSite("https://pdfpass.app/en/support/");
         }
 
         private static void OpenWebSite(string urlToOpen)
