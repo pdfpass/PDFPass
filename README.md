@@ -2,6 +2,14 @@
 
 Downloads, documentation and support: **[https://pdfpass.app](https://pdfpass.app)**
 
+## Windows installation
+
+The installer sets up PDFPass for your Windows account without administrator rights. You can choose a folder you can write to and enable **Open with PDFPass** in the PDF context menu.
+
+If you installed an earlier version for all users, uninstall it before switching to the per-user installer. Removing that older installation may require administrator rights.
+
+To use the portable ZIP, extract it to a folder of your choice. Run `kontextove-menu-zaregistruj.cmd` to add the PDF context menu for your account, or `kontextove-menu-odregistruj.cmd` to remove it.
+
 ## Command-line usage
 
 `pdfpassc.exe` is included beside `PDFPass.exe` in the portable ZIP and the installer. Run it from that directory or invoke it by its full path. It runs without opening a window or prompting for input.
