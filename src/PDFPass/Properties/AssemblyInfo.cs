@@ -1,7 +1,7 @@
 using System.Reflection;
 using System.Runtime.Versioning;
 
-[assembly: AssemblyVersion("2026.20.2")]
+[assembly: AssemblyVersion("2026.20.3")]
 [assembly: AssemblyDescription("Free PDF Encryption Utility")]
 [assembly: AssemblyProduct("PDFPass")]
 [assembly: SupportedOSPlatform("windows")]
